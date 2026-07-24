@@ -1,0 +1,14 @@
+# Ambientes e dependências locais.
+.venv/
+node_modules/
+
+# Artefatos gerados pelo Sphinx e pelas ferramentas auxiliares.
+build/
+tmp/
+tmp-pdfcrop-*.pdf
+
+# Arquivos locais do sistema e dos editores.
+AGENTS.md
+Thumbs.db
+.DS_Store
+*.log

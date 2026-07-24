@@ -1,0 +1,8 @@
+{
+  "name": "aurora-documentacao",
+  "private": true,
+  "description": "Dependencias locais para gerar a documentacao Sphinx do AURORA.",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.15.0"
+  }
+}

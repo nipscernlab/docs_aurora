@@ -1,0 +1,6 @@
+@ECHO OFF
+SETLOCAL
+SET "INPUT=%~1"
+SET "INPUT=%INPUT:\=/%"
+pdfcrop.exe --margins 6 "%INPUT%"
+EXIT /B %ERRORLEVEL%
