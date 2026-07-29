@@ -1,4 +1,4 @@
-﻿---
+---
 orphan: true
 ---
 
@@ -11,28 +11,55 @@ orphan: true
 ```{toctree}
 :maxdepth: 2
 
-sobre/ecossistema
+inicio/o-que-e
 inicio/instalacao
+inicio/tour-interface
 inicio/primeiro-projeto
 ```
 
 ```{raw} latex
-\part{Uso da AURORA}
+\part{Projetos e processadores}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-uso/interface
 uso/projetos
-uso/editor
 uso/processadores
+uso/editor
 uso/arquivos-verilog
+uso/terminais
 uso/source-control
 ```
 
 ```{raw} latex
-\part{Fluxos principais}
+\part{A linguagem C±}
+```
+
+```{toctree}
+:maxdepth: 2
+
+linguagem/index
+linguagem/diretivas
+linguagem/tipos-operadores
+linguagem/io-biblioteca
+linguagem/avancado
+```
+
+```{raw} latex
+\part{O processador SAPHO}
+```
+
+```{toctree}
+:maxdepth: 2
+
+arquitetura/processador
+arquitetura/ponto-flutuante
+arquitetura/instrucoes
+```
+
+```{raw} latex
+\part{Compilar, simular e analisar}
 ```
 
 ```{toctree}
@@ -41,15 +68,6 @@ uso/source-control
 fluxos/index
 fluxos/verilog
 fluxos/processador-sapho
-```
-
-```{raw} latex
-\part{Compilação, simulação e análise}
-```
-
-```{toctree}
-:maxdepth: 2
-
 fluxos/compilacao
 fluxos/simulacao
 exemplos/galeria-testbenches
@@ -78,6 +96,8 @@ ia/mcp-cli
 :maxdepth: 2
 
 configuracao/preferencias
+referencia/diretivas
+referencia/biblioteca
 referencia/formatos
 referencia/atalhos
 referencia/diagnostico
@@ -92,5 +112,6 @@ referencia/diagnostico
 :maxdepth: 2
 
 glossario
+sobre/ecossistema
 sobre/escopo
 ```

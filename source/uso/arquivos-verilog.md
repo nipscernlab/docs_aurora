@@ -1,4 +1,4 @@
-﻿# Arquivos Verilog e Testbenches
+# Arquivos Verilog e Testbenches
 
 Os arquivos Verilog descrevem o circuito e o ambiente usado para testá-lo. Esta página mostra como classificá-los, definir os pontos de entrada e evitar seleções que levem a uma compilação incompleta.
 
@@ -34,7 +34,7 @@ O Top Level deve declarar ou conter o módulo que representa o circuito completo
 
 Definir um módulo intermediário como Top Level pode produzir uma validação parcial e uma árvore incompleta. Confirme o nome do módulo principal antes de executar o fluxo.
 
-```{figure} ../_static/screenshots/aurora-set-top-level.png
+```{figure} ../_static/assets/screenshots/aurora-set-top-level.png
 :alt: Projeto proj_PMU_padrao com o menu de contexto do arquivo PMU_padrao.v e a seleção de Top Level.
 :width: 100%
 :align: center
@@ -53,7 +53,7 @@ O Testbench Top é necessário para **Analisar Verilog (forma de onda)** e outra
 
 O arquivo selecionado deve conseguir instanciar o circuito e gerar os estímulos do teste. Em cocotb, o arquivo Python contém o módulo de teste, enquanto o Top Level continua apontando para o circuito Verilog.
 
-```{figure} ../_static/screenshots/aurora-set-testbench-top.png
+```{figure} ../_static/assets/screenshots/aurora-set-testbench-top.png
 :alt: Projeto proj_PMU_padrao com o menu de contexto do arquivo pmu_cocotb.py e a seleção de Testbench Top.
 :width: 100%
 :align: center

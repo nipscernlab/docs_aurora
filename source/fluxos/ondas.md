@@ -1,92 +1,162 @@
-# Formas de onda, GTKWave e Surfer
+# Formas de onda: GTKWave e Surfer
 
-As formas de onda mostram como cada sinal muda ao longo do tempo simulado. Esta página explica como escolher sinais, gerar o arquivo de onda e reutilizar layouts no viewer selecionado sem confundir resultados de testbenches diferentes.
+Depois que a simulação gera o arquivo de ondas, a AURORA abre um visualizador para inspecionar cada sinal do circuito ciclo a ciclo. Esta página explica o que a IDE prepara para você, como escolher os sinais gravados e como usar cada um dos dois visualizadores.
+
+## O que a AURORA prepara
+
+Abrir um despejo bruto em um visualizador qualquer significa começar do zero: nenhum sinal selecionado, tudo em binário, nomes hierárquicos crus. A AURORA elimina esse trabalho gerando, a cada simulação, um *layout* curado.
+
+::::{grid} 1 2 2 2
+:gutter: 3
+
+:::{grid-item-card} Organização automática
+
+Cada processador do projeto vira uma seção própria, com divisores nomeados e, no Surfer, um grupo colapsável.
+
+A ordem é pensada para leitura: *clock*, *reset* e interrupção primeiro; depois as portas de entrada e saída em amarelo, as instruções em violeta, as variáveis em laranja e as *flags* ao final.
+:::
+
+:::{grid-item-card} Decodificação de tipos
+
+Variáveis do tipo `comp` são decodificadas para a forma legível $a+bi$ pelo conversor `comp2gtkw` do YANC, em vez de aparecerem como dois sinais binários separados.
+:::
+
+::::
+
+O destaque, porém, são as trilhas de texto que mostram, a cada ciclo de *clock*, o mnemônico *assembly* executado e a linha C± correspondente, avançando em sincronia com o circuito. É o seu programa rodando dentro do *hardware*, visível linha a linha.
+
+Essas trilhas vêm dos arquivos de tradução gerados na compilação. No GTKWave, a curadoria chega como um arquivo {file}`.gtkw`; no Surfer, como um arquivo de estado {file}`.surf.ron`. Nos dois casos, o visualizador já abre pronto para leitura.
+
+:::{important}
+Essa sincronia entre onda, *assembly* e código-fonte só é possível porque no fluxo C± cada variável ocupa um endereço fixo da memória de dados. É a contrapartida direta da ausência de recursão, explicada em {doc}`../arquitetura/processador`.
+:::
 
 ## Gerar uma forma de onda
 
-1. Defina o **Testbench Top**.
-2. Escolha Icarus ou Verilator.
-3. Escolha o viewer de waveform, quando quiser alternar entre GTKWave e Surfer.
-4. Abra **Configuração de Ondas**.
-5. Selecione os sinais desejados.
-6. Clique em **Analisar Verilog (forma de onda)**.
+1. Defina o *testbench* pelo menu de contexto da árvore.
+2. Escolha o simulador na barra superior: Icarus para depurar, Verilator para simulações longas.
+3. Escolha o visualizador, GTKWave ou Surfer.
+4. Abra {guilabel}`Configuração de ondas` e selecione os sinais desejados.
+5. Clique em {guilabel}`Analisar Verilog (forma de onda)`.
 
-A AURORA executa a simulação e abre o resultado no viewer selecionado. GTKWave é o viewer externo padrão. Surfer é uma opção opt-in; se o executável do Surfer não estiver disponível, a AURORA volta para GTKWave e avisa o usuário. Se a compilação ou o testbench falhar, o visualizador pode não ser aberto; nesse caso, o terminal Wave deve ser analisado antes da configuração visual.
+A AURORA executa a simulação e abre o resultado. Acompanhe o progresso no terminal **TWAVE**; se a compilação ou o *testbench* falhar, o visualizador pode não abrir, e é esse terminal que explica por quê.
 
-## Escolher o viewer
+:::{warning}
+Com o Verilator selecionado, apenas os sinais do topo do *testbench* são expostos. Os sinais internos do processador, incluindo as variáveis pelo nome, exigem o Icarus. Se os sinais internos sumiram, é quase sempre esse o motivo.
+:::
 
-Use GTKWave quando quiser o fluxo tradicional com janela externa e layouts `.gtkw`. Use Surfer quando quiser usar layouts `.surf.ron` ou scripts `.sucl` e o viewer estiver disponível na instalação.
+## Escolher os sinais gravados
 
-| Viewer | Layouts | Observação |
-|---|---|---|
-| GTKWave | `.gtkw` | Padrão externo para VCD/FST. |
-| Surfer | `.surf.ron` e `.sucl` | Opção opt-in; pode usar mappings em `%APPDATA%/surfer-project/surfer/config/mappings/`. |
-
-O arquivo de onda real continua sendo `.vcd` ou `.fst`. Layouts apenas organizam sinais e visualização.
-
-## Selecionar sinais
-
-Na **Configuração de Ondas** você pode:
-
-- Pesquisar por nome.
-- Navegar pela hierarquia.
-- Selecionar todos, nenhum ou o conjunto padrão.
-- Filtrar sinais relacionados aos processadores.
-
-```{figure} ../_static/screenshots/aurora-wave-configuration-verilog.png
-:alt: Configuração de ondas com hierarquia de módulos e sinais Verilog selecionáveis.
+```{figure} ../_static/assets/screenshots/aurora-wave-configuration-verilog.png
+:alt: Modal de configuração de ondas com a hierarquia de módulos e os sinais selecionáveis.
 :width: 85%
 :align: center
+:name: fig-config-ondas
 
-Expanda a hierarquia, marque somente os sinais necessários e confira a quantidade selecionada antes de salvar.
+O modal lista todos os sinais descobertos no projeto, com busca por texto ou expressão regular, seleção em massa e um contador no rodapé.
 ```
 
-Atalhos:
+Por padrão, o despejo grava os sinais do escopo do *testbench*. O botão {guilabel}`Configuração de ondas` abre o modal que permite pesquisar por nome, navegar pela hierarquia, selecionar tudo ou nada, restaurar o padrão e filtrar apenas os sinais do processador.
 
-| Atalho | Ação |
-|---|---|
-| `Ctrl+F` | Focar a pesquisa. |
-| `Esc` | Limpar a pesquisa; pressione novamente para fechar. |
+:::{list-table}
+:header-rows: 1
+:widths: 24 76
 
-Selecione primeiro clock, reset, entradas, saídas e os poucos sinais internos necessários para responder à pergunta do teste. Um conjunto menor torna a leitura mais simples, reduz o tamanho do arquivo de onda e evita que detalhes sem relação ocultem o comportamento importante.
+* - Atalho
+  - Ação
+* - {kbd}`Ctrl+F`
+  - Focar a pesquisa
+* - {kbd}`Esc`
+  - Limpar a pesquisa; pressione de novo para fechar
+:::
 
-Depois da simulação, confira se os nomes exibidos no viewer pertencem à hierarquia esperada. Se o circuito foi renomeado ou reorganizado, seleções antigas podem deixar de corresponder ao RTL atual.
+Selecione primeiro *clock*, *reset*, entradas, saídas e os poucos sinais internos necessários para responder à pergunta do teste. Menos sinais significam arquivos menores e simulação mais leve, o que pesa muito em execuções longas.
 
-## Testbench com `$dumpfile` e `$dumpvars`
+### A ordem de precedência do despejo
 
-Se o testbench já define o dump manualmente, a AURORA respeita essa configuração enquanto a **Configuração de Ondas** não tiver sido personalizada para esse testbench. Nesse caso, confirme se o nome do arquivo, o escopo passado a `$dumpvars` e os sinais gerados correspondem ao que deseja abrir. Uma configuração manual muito restrita pode produzir um arquivo válido, mas sem os sinais necessários para a análise.
+Na hora de gravar, a AURORA decide a lista de sinais por uma ordem definida. Conhecê-la evita surpresas:
 
-Quando você salva uma seleção própria na **Configuração de Ondas** ou ativa um layout que dita sinais, a AURORA usa essa seleção como fonte do dump. Se houver `$dumpfile` ou `$dumpvars` manuais, eles são neutralizados apenas na cópia temporária usada para simular; o testbench original não é alterado.
+1. um {file}`.gtkw` ativo no seletor da barra superior, cujos sinais referenciados mandam;
+2. a sua seleção no modal de configuração;
+3. um `$dumpvars` escrito à mão no *testbench*, que é respeitado sem qualquer injeção;
+4. o padrão, que é todo o escopo do *testbench*.
 
-## Usar layouts de viewer
+:::{note}
+O seu *testbench* nunca é modificado. A instrumentação acontece em uma cópia temporária, de modo que um `$dumpfile` ou `$dumpvars` manual permanece intacto no arquivo original.
+:::
 
-O seletor de layout acompanha o viewer ativo. Em GTKWave, ele trabalha com `.gtkw`. Em Surfer, ele trabalha com `.surf.ron` e `.sucl`.
+## O seletor de layout
 
-O seletor permite:
+Ao lado do botão de ondas, o seletor escolhe o *layout* ativo. A opção padrão usa o *layout* curado gerado pela AURORA, e {guilabel}`+ Adicionar arquivo .gtkw...` registra um *layout* seu, salvo de dentro do GTKWave.
 
-- **Default**: Gerar uma organização automática.
-- **Add**: Registrar um layout existente.
-- **Remove**: Remover a referência do seletor.
+O seletor acompanha o visualizador ativo: em GTKWave trabalha com {file}`.gtkw`; em Surfer, com {file}`.surf.ron` e {file}`.sucl`.
 
-Use apenas layouts criados para o mesmo testbench e para uma hierarquia compatível. Um layout organiza nomes de sinais; ele não contém a simulação. Um layout de outro projeto pode apontar para sinais inexistentes mesmo quando o arquivo VCD ou FST foi gerado corretamente.
+O arquivo de ondas em si continua sendo o {file}`.vcd` ou o {file}`.fst`. Os *layouts* apenas organizam quais sinais mostrar, em que ordem e com que cores.
 
-## Se o viewer abrir sem sinais
+:::{warning}
+Use apenas *layouts* criados para o mesmo *testbench* e para uma hierarquia compatível. Um *layout* não contém a simulação, e um *layout* de outro projeto pode apontar para sinais inexistentes mesmo com o arquivo de ondas gerado corretamente.
+:::
 
-Verifique:
+## GTKWave
 
-1. O testbench executou até o fim.
-2. O terminal Wave não informou erro.
-3. Existe dump de sinais.
-4. Os sinais selecionados ainda existem no RTL.
-5. O layout ativo pertence ao testbench atual.
+O GTKWave empacotado não é o original puro: é o *fork* do laboratório, com tema escuro por padrão, ajuste automático de *zoom* ao abrir, rótulos justificados à esquerda, ícones modernizados e *zoom* animado.
 
-Volte para **Default** e gere novamente para descartar um layout incompatível.
+No uso cotidiano:
 
-Se os sinais aparecerem, mas permanecerem sem mudança, verifique o clock, o reset, os estímulos e o intervalo de tempo mostrado. O problema pode estar no testbench ou no zoom da janela, e não na geração do arquivo.
+- os sinais são adicionados a partir da árvore de escopos à esquerda;
+- o cursor primário se posiciona com o clique e o secundário com o botão do meio, com a barra exibindo a diferença de tempo entre eles;
+- o formato de exibição de cada sinal muda pelo menu de contexto, em {menuselection}`Data Format`;
+- o *zoom* responde aos botões de lupa e a {kbd}`Ctrl` com a roda do mouse;
+- a seleção atual de sinais, cores e ordem pode ser salva em um {file}`.gtkw` próprio por {menuselection}`File --> Write Save File`;
+- após uma nova simulação, {menuselection}`File --> Reload Waveform` recarrega o arquivo.
 
-## Se o arquivo de onda não for encontrado
+:::{tip}
+Se você salvar o seu próprio {file}`.gtkw` no projeto e o marcar como ativo no seletor, ele passa a ter precedência sobre o *layout* automático, e a simulação seguinte grava exatamente os sinais que ele referencia.
+:::
 
-- Confira o nome usado em `$dumpfile`.
-- Verifique se o testbench encerrou antes de produzir o arquivo.
-- Remova arquivos de onda antigos que possam causar ambiguidade.
-- Execute novamente e leia o terminal Wave.
+## Surfer
+
+O Surfer é um visualizador moderno escrito em Rust, com interface acelerada por GPU e carregamento preguiçoso dos arquivos, confortável em simulações grandes. A AURORA usa o *fork* `surfer-aurora`, com decodificadores específicos do SAPHO, e baixa o binário automaticamente com verificação de integridade.
+
+Recursos que valem conhecer:
+
+- formatos de exibição ricos, de binário e hexadecimal a ponto fixo e ponto flutuante IEEE em vários tamanhos;
+- grupos colapsáveis, um por processador no *layout* da AURORA, essenciais em projetos multiprocessados;
+- as trilhas de *assembly* e C± instaladas automaticamente como tradutores de mapeamento;
+- cursores e navegação rápidos, com uma linha de comando interna de autocompletar difuso;
+- desenho analógico de sinais, útil para ver amostras processadas como curvas.
+
+Os complexos do SAPHO também funcionam: a AURORA pré-decodifica os sinais `comp` e instala o resultado como tradutor, de modo que a faixa já abre na forma $a+bi$.
+
+:::{note} Uma limitação conhecida no Windows
+O recarregamento automático do arquivo de ondas não dispara na versão empacotada. Por isso a AURORA fecha e reabre a janela do Surfer a cada nova simulação. No modal de configuração há uma opção de manter as janelas abertas, para comparar execuções lado a lado.
+:::
+
+Se o Surfer estiver selecionado mas o executável não estiver presente, a AURORA recua para o GTKWave sem erro, de propósito.
+
+## Se o visualizador abrir sem sinais
+
+Verifique nesta ordem:
+
+1. o *testbench* executou até o fim;
+2. o terminal TWAVE não informou erro;
+3. existe despejo de sinais;
+4. os sinais selecionados ainda existem no RTL atual;
+5. o *layout* ativo pertence ao *testbench* atual.
+
+Volte ao *layout* padrão e gere de novo para descartar um *layout* incompatível.
+
+Se os sinais aparecerem mas permanecerem sem mudança, verifique o *clock*, o *reset*, os estímulos e o intervalo de tempo mostrado. O problema pode estar no *testbench* ou apenas no *zoom* da janela, e não na geração do arquivo.
+
+## Se o arquivo de ondas não for encontrado
+
+- confira o nome usado em `$dumpfile`, se o *testbench* for seu;
+- verifique se o *testbench* encerrou antes de produzir o arquivo;
+- remova arquivos de onda antigos que possam causar ambiguidade;
+- execute novamente e leia o terminal TWAVE.
+
+## Leitura relacionada
+
+- {doc}`simulacao` cobre os motores e os tipos de *testbench*.
+- {doc}`../arquitetura/instrucoes` ajuda a ler a trilha de *assembly*.
+- {doc}`../uso/processadores` mostra onde aumentar o número de ciclos quando a onda termina cedo.

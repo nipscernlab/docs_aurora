@@ -2,7 +2,7 @@
 
 O painel de **Controle de Versão** integra as operações Git mais frequentes ao projeto aberto na AURORA. Ele permite iniciar um repositório, revisar alterações, criar commits, sincronizar com o GitHub e clonar projetos associados à conta conectada.
 
-```{figure} ../_static/screenshots/aurora-source-control.png
+```{figure} ../_static/assets/screenshots/aurora-source-control.png
 :alt: Interface de Controle de Versão da AURORA sem conta conectada, oferecendo a criação ou inicialização de um repositório local.
 :width: 100%
 :align: center
@@ -78,7 +78,7 @@ testbench/
 arquivo.inv
 ```
 
-```{figure} ../_static/screenshots/aurora-inv-comparison.png
+```{figure} ../_static/assets/screenshots/aurora-inv-comparison.png
 :alt: Comparação da visualização Pastas do projeto porta_AND antes e depois de aplicar o filtro .inv.
 :width: 100%
 :align: center

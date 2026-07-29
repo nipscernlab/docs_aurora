@@ -1,10 +1,10 @@
-﻿# Configurações do aplicativo
+# Configurações do aplicativo
 
 Abra **Configurações da AURORA** pela barra superior.
 
 As configurações controlam a apresentação da interface, o nível de detalhes dos terminais e as integrações de IA. Faça uma alteração por vez e confirme o efeito antes de continuar, principalmente ao ajustar opções usadas em diagnóstico.
 
-```{figure} ../_static/screenshots/aurora-settings-general-current.png
+```{figure} ../_static/assets/screenshots/aurora-settings-general-current.png
 :alt: Janela Configurações da AURORA na seção Geral.
 :width: 90%
 :align: center
@@ -36,7 +36,7 @@ Ative **verbose** quando precisar de detalhes para diagnóstico. Esse modo pode 
 
 Consulte {doc}`../referencia/atalhos` para os atalhos confirmados nesta versão.
 
-```{figure} ../_static/screenshots/aurora-settings-shortcuts.png
+```{figure} ../_static/assets/screenshots/aurora-settings-shortcuts.png
 :alt: Seção Atalhos de Teclado nas configurações da AURORA.
 :width: 90%
 :align: center

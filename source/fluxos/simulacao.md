@@ -1,4 +1,4 @@
-﻿# Simular com Icarus, Verilator ou cocotb
+# Simular com Icarus, Verilator ou cocotb
 
 Uma simulação executa o circuito em um ambiente de teste e compara seu comportamento com o resultado esperado. Nesta página, você aprenderá a preparar o projeto, escolher o simulador e reconhecer quando o teste realmente foi concluído.
 
@@ -14,7 +14,7 @@ Antes de clicar em **Analisar Verilog (forma de onda)** ou **Execução rápida*
 
 O Top Level identifica o circuito; o Testbench Top identifica o teste. Antes de continuar, confira os dois nomes na barra de status e verifique se o testbench referencia sinais que existem na versão atual do RTL.
 
-```{figure} ../_static/screenshots/aurora-toolbar-simulation.png
+```{figure} ../_static/assets/screenshots/aurora-toolbar-simulation.png
 :alt: Controles de síntese, PRISM, simuladores, análise de forma de onda, execução rápida e configuração de ondas.
 :width: 80%
 :align: center
@@ -76,7 +76,7 @@ O testbench instancia o circuito com o nome `dut`, aplica os quatro casos da tab
 
 Selecione um arquivo `.py` como Testbench Top. A AURORA usa o ambiente Python incluído na toolchain; você não precisa configurar o Python global do Windows.
 
-```{figure} ../_static/screenshots/aurora-porta-and-cocotb-tree.png
+```{figure} ../_static/assets/screenshots/aurora-porta-and-cocotb-tree.png
 :alt: Árvore Arquivos do projeto porta_AND com porta_and.v e test_porta_and.py.
 :width: 45%
 :align: center

@@ -41,6 +41,19 @@ Assert-Command -Name "node.exe" -InstallHint "Instale o Node.js 18 ou superior."
 Assert-Command -Name "latexmk.exe" -InstallHint "Instale o MiKTeX com latexmk."
 Assert-Command -Name "xelatex.exe" -InstallHint "Instale o mecanismo XeLaTeX pelo MiKTeX."
 
+# latexmk e pdfcrop sao scripts Perl. O MiKTeX nao traz um interpretador proprio,
+# entao usa-se o Perl do Git for Windows quando nao houver outro no PATH.
+if (-not (Get-Command "perl.exe" -ErrorAction SilentlyContinue)) {
+    $gitPerlDir = Join-Path $env:ProgramFiles "Git\usr\bin"
+    if (Test-Path -LiteralPath (Join-Path $gitPerlDir "perl.exe") -PathType Leaf) {
+        $env:PATH = "$gitPerlDir;$env:PATH"
+        Write-Host "Perl nao encontrado no PATH; usando o interpretador do Git for Windows."
+    }
+    else {
+        throw "Comando 'perl' nao encontrado. Instale o Strawberry Perl ou o Git for Windows."
+    }
+}
+
 New-Item -ItemType Directory -Force -Path $latexDir, $pdfDir, $webSourceDir | Out-Null
 
 Write-Host "Gerando fontes LaTeX com Sphinx..."

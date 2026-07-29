@@ -138,6 +138,86 @@ code.literal {
   box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
 }
 
+/* Elementos de interface citados no texto: botões, menus e teclas. */
+.guilabel,
+.menuselection {
+  padding: .05rem .34rem;
+  border: 1px solid var(--aurora-border);
+  border-radius: 3px;
+  background: var(--aurora-panel);
+  font-family: var(--font-stack--sans, inherit);
+  font-size: .93em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+kbd,
+.kbd {
+  display: inline-block;
+  min-width: 1.1rem;
+  padding: .08rem .4rem;
+  border: 1px solid #b9c0c9;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: #fbfbfc;
+  color: var(--aurora-ink);
+  font-family: var(--font-stack--monospace, monospace);
+  font-size: .82em;
+  line-height: 1.45;
+  text-align: center;
+}
+
+body[data-theme="dark"] kbd,
+body[data-theme="dark"] .kbd {
+  border-color: #454b56;
+  background: #22262d;
+}
+
+/* Faixa de ícones das ferramentas do ecossistema. */
+.tool-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  align-items: flex-start;
+  margin: 1.2rem 0;
+}
+
+.tool-strip figure,
+.tool-strip .figure {
+  width: 6.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.tool-strip img {
+  height: 2.6rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.tool-strip figcaption,
+.tool-strip .caption {
+  margin-top: .35rem;
+  font-size: .78rem;
+  line-height: 1.3;
+}
+
+/* Ícone inline ao lado do nome de uma ferramenta. */
+.inline-icon {
+  height: 1.05em;
+  width: auto;
+  vertical-align: -.15em;
+  margin-right: .2em;
+}
+
+/* Cartões de ferramenta com ícone no topo. */
+.sd-card .sd-card-img-top {
+  width: auto;
+  max-height: 2.9rem;
+  margin: 1rem auto .2rem;
+  object-fit: contain;
+}
+
 .caption {
   text-align: center;
   color: var(--aurora-muted);

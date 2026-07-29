@@ -1,39 +1,130 @@
-﻿# Glossário
+# Glossário
 
-Este glossário reúne os termos usados de forma consistente no manual. Quando a interface mantiver um nome em inglês, o termo é preservado para facilitar sua localização na AURORA.
+Os termos usados de forma consistente neste manual. Quando a interface mantém um nome em inglês, o termo é preservado para facilitar a localização na AURORA.
 
-**AURORA**
-: Ambiente desktop do ecossistema SAPHO para organizar projetos, editar fontes, gerar processadores, compilar, simular e analisar circuitos.
+```{glossary}
+:sorted:
 
-**C± / CMM**
-: Linguagem de entrada para geração de processadores dedicados. Os algoritmos são armazenados em arquivos com extensão `.cmm`.
+SAPHO
+  *Scalable-Architecture Processor for Hardware Optimization*. O processador *soft-core* e, por extensão, a plataforma completa e o canal de distribuição.
 
-**YANC / SAPHO**
-: YANC é o conjunto de compiladores usado na transformação de C± em hardware. SAPHO é o ecossistema no qual esse fluxo está inserido.
+AURORA
+  *Advanced Utility Running Optimized Resource Architectures*. A IDE de desktop da plataforma, e a única interface gráfica do ecossistema.
 
-**Top Level / Testbench Top**
-: Top Level é o módulo Verilog raiz do circuito. Testbench Top é o arquivo que inicia e controla a simulação.
+YANC
+  *Yet Another Compiler*. A suíte de compiladores que traduz C± e C++ em processador Verilog, imagens de memória e *testbench*.
 
-**RTL**
-: Representação do circuito em nível de transferência entre registradores, usada pelos módulos Verilog do projeto.
+C±
+  A linguagem de programação da plataforma, um dialeto de C com complexos nativos e notação de Dirac. Arquivos com extensão {file}`.cmm`. Lê-se "C mais-menos".
 
-**Icarus / Verilator / cocotb**
-: Icarus e Verilator são opções de simulação do RTL. O cocotb é o framework Python usado para escrever testbenches executados com um simulador compatível.
+PRISM
+  *Processor Rendering Interface for Schematic Models*. O visualizador de RTL da AURORA, apoiado no Yosys e no netlistsvg.
 
-**VCD / FST / GTKWave / Surfer / layouts**
-: VCD e FST armazenam formas de onda. GTKWave e Surfer são viewers. `.gtkw`, `.surf.ron` e `.sucl` registram organização visual ou comandos de visualização, sem conter os dados da simulação.
+Aurora Intelligence
+  A assistente de inteligência artificial integrada à AURORA, capaz de conversar sobre o projeto e de agir sobre a IDE por ferramentas com permissão controlada.
 
-**Yosys / PRISM**
-: Yosys processa a estrutura RTL usada pelo PRISM, que apresenta módulos e conexões em um diagrama navegável.
+Dagr
+  O painel de controle de versão da AURORA. Do nórdico antigo, "dia"; o painel usa a runa *dagaz* como marca.
 
-**Aurora Intelligence**
-: Assistente integrado que pode consultar o contexto do projeto e, mediante confirmação, executar ações controladas.
+NIPS-CERN
+  O Núcleo de Instrumentação e Processamento de Sinais da UFJF, em parceria com o CERN. O laboratório que desenvolve a plataforma.
 
-**MCP**
-: Model Context Protocol, empregado para disponibilizar ferramentas controladas da AURORA a agentes compatíveis.
+soft-processor
+  Processador descrito em HDL e implementado na malha reconfigurável de um FPGA. Também dito *soft-core*.
 
-**SPF**
-: Formato JSON de projeto com extensão `.spf`. Registra estrutura, processadores, arquivos e seleções relevantes.
+FPGA
+  *Field-Programmable Gate Array*. Circuito integrado cujas conexões internas podem ser reprogramadas depois da fabricação.
 
-**CommandSpec**
-: Contrato interno que representa executável, argumentos, diretório de trabalho e ambiente sem montar um comando de shell.
+HDL
+  *Hardware Description Language*. A classe de linguagens usadas para descrever circuitos, à qual pertencem o Verilog e o VHDL.
+
+Verilog
+  A linguagem de descrição de *hardware* usada pela plataforma.
+
+RTL
+  *Register-Transfer Level*. O nível de abstração em que o circuito é descrito como transferências entre registradores.
+
+.spf
+  *SAPHO Project File*. O arquivo JSON que define um projeto: metadados, processadores, pastas, *top-level* e *testbench*.
+
+.asm
+  O *assembly* intermediário do SAPHO, entre o compilador e o montador.
+
+.mif
+  *Memory Initialization File*. Imagem de memória, de programa ou de dados, embutida no circuito gerado.
+
+testbench
+  O banco de testes da simulação, em Verilog ({file}`_tb.v`) ou em Python com cocotb, que aplica estímulos ao circuito e confere as respostas.
+
+top-level
+  O módulo Verilog que integra os processadores e blocos do projeto. É o topo da síntese e o alvo do PRISM.
+
+ULA
+  Unidade lógica e aritmética. No SAPHO, apenas os operadores usados pelo programa são instanciados nela.
+
+ACC
+  O acumulador, registrador central do processador e destino de toda operação da ULA.
+
+Harvard
+  Arquitetura com memórias de programa e de dados fisicamente separadas, cada uma com o seu barramento.
+
+ISA
+  *Instruction Set Architecture*. O conjunto de instruções do processador.
+
+pipeline
+  O encadeamento de estágios pelos quais uma instrução passa. No SAPHO são três: busca, decodificação e execução.
+
+Icarus Verilog
+  O simulador de Verilog padrão da plataforma. Compila com o `iverilog` e executa com o `vvp`.
+
+Verilator
+  Simulador de alto desempenho que converte o circuito em executável nativo em C++.
+
+cocotb
+  *Coroutine cosimulation testbench*. Arcabouço Python para a escrita de *testbenches*, executado em cossimulação com o Icarus ou o Verilator.
+
+Yosys
+  A ferramenta de síntese usada pelo PRISM e pela visão Hierarquia da árvore de arquivos.
+
+GTKWave
+  Visualizador de formas de onda padrão, em *fork* próprio do laboratório com tema escuro e ajustes de usabilidade.
+
+Surfer
+  Visualizador de formas de onda opcional, escrito em Rust, no *fork* `surfer-aurora`.
+
+VCD
+  *Value Change Dump*. Formato textual de arquivo de formas de onda.
+
+FST
+  *Fast Signal Trace*. Formato binário compacto de formas de onda, cerca de dez vezes menor que o VCD.
+
+.gtkw
+  Arquivo de *layout* do GTKWave: quais sinais mostrar, em que ordem e com que cores. Não contém os dados da simulação.
+
+.surf.ron
+  O equivalente do {file}`.gtkw` para o Surfer.
+
+Monaco
+  O motor de edição de código da AURORA, o mesmo do Visual Studio Code.
+
+LSP
+  *Language Server Protocol*. O mecanismo por trás dos diagnósticos e da navegação de código, servido pelo Verible e pelo slang.
+
+BYOK
+  *Bring Your Own Key*. O modelo de chaves da Aurora Intelligence, no qual você conecta a sua própria conta de um provedor de modelos.
+
+MCP
+  *Model Context Protocol*. O protocolo aberto pelo qual ferramentas de linha de comando de IA acessam as ferramentas da AURORA.
+
+bit-reverso
+  Endereçamento com os bits do índice invertidos, escrito `x[k)`, usado na FFT.
+
+FFT
+  *Fast Fourier Transform*. Algoritmo de transformada discreta de Fourier, cuja variante radix-2 produz resultados em ordem bit-reversa.
+
+DLP
+  Dispositivos Lógicos Programáveis. A disciplina da UFJF que usa a plataforma no ensino de graduação.
+
+CommandSpec
+  Contrato interno da AURORA que representa executável, argumentos, diretório de trabalho e ambiente sem montar um comando de *shell*.
+```
