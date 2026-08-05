@@ -8,10 +8,9 @@ Use este manual para instalar a AURORA, criar projetos, gerar processadores, com
 As páginas são orientadas a tarefas e organizadas conforme o fluxo normal de uso da AURORA.
 
 <div class="hero-actions">
-  <a class="pdf-download-button" href="_static/downloads/AURORA-Manual-6.3.2.pdf" download="AURORA-Manual-6.3.2.pdf">
-    <span class="pdf-download-title">Baixar manual em PDF</span>
-    <span class="pdf-download-meta">Documento completo em formato A4</span>
-  </a>
+
+{{ pdf_button }}
+
 </div>
 </div>
 

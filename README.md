@@ -102,6 +102,33 @@ build\pdf\AURORA-Manual-6.3.2.pdf
 
 O processo usa Sphinx para produzir LaTeX, Mermaid CLI para converter os diagramas e XeLaTeX/latexmk para montar o documento A4.
 
+## Publicar
+
+Este repositório é o único publicador da documentação. Um comando gera tudo e envia para dois canais públicos, que os consumidores acessam por URL:
+
+```powershell
+.\scripts\publish.ps1
+```
+
+| Canal | O que vai | Quem consome |
+|---|---|---|
+| Branch `gh-pages` deste repositório | Site em HTML e o manual em PDF ao lado | `nipscern.com/docs/sapho/`, por um Worker do site |
+| Release `docs-v6.3.2` deste repositório | `sapho-docs-offline-6.3.2.zip` e o `.sha256` | A AURORA, durante o build |
+
+Nenhum consumidor precisa deste repositório em disco, nem de caminho fixo. O site do NIPSCERN não guarda cópia das páginas: a rota `nipscern.com/docs/sapho*` é atendida por um Worker que serve o `gh-pages` daqui, no mesmo padrão já usado pelo CGVWeb. Publicar uma versão nova atualiza o site sem tocar no repositório do site.
+
+Para conferir os artefatos sem enviar nada:
+
+```powershell
+.\scripts\publish.ps1 -DryRun
+```
+
+O branch `gh-pages` é recriado a cada publicação, com um único commit. Sem isso o histórico guardaria uma cópia do site e do PDF por versão.
+
+Pré-requisitos: os mesmos da geração do PDF, mais o GitHub CLI autenticado (`gh auth login`). O PDF é gerado aqui, e não em integração contínua, porque o manual usa a fonte Segoe UI, proprietária da Microsoft, que não pode ser instalada num runner Linux.
+
+Ao mudar a versão do manual, atualize `pdf_name` em `source\conf.py` e `$version` em `scripts\publish.ps1`.
+
 ## Escopo congelado
 
 - versão: `6.3.2`

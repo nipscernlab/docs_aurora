@@ -34,6 +34,44 @@ root_doc = "pdf-index" if pdf_build else "index"
 exclude_patterns = ["index.md"] if pdf_build else ["pdf-index.md"]
 language = "pt_BR"
 
+# Alvo do HTML:
+#
+#   local    conferencia na propria maquina.
+#   web      publicado no branch gh-pages e servido em nipscern.com/docs/sapho
+#            por um Worker.
+#   offline  empacotado dentro da AURORA, sem depender de rede: os diagramas
+#            sao pre-renderizados em SVG.
+#
+# O PDF acompanha o site nos tres casos, sempre em _static/downloads, para que
+# exista um unico publicador: quem gera o HTML gera tambem o manual ao lado.
+docs_target = os.environ.get("AURORA_DOCS_TARGET", "local")
+pdf_name = "AURORA-Manual-6.3.2.pdf"
+pdf_url = f"_static/downloads/{pdf_name}"
+
+if docs_target == "web":
+    html_baseurl = "https://www.nipscern.com/docs/sapho/"
+
+if docs_target == "offline":
+    # Sem isto o Mermaid renderiza no navegador, buscando o script no
+    # cdn.jsdelivr.net. O mermaid-cli desenha em SVG durante o build e a pagina
+    # passa a mostrar uma imagem, sem depender de JavaScript nem de rede.
+    mermaid_output_format = "svg"
+
+# O botao vai inteiro na substituicao, em uma linha so: o MyST nao expande
+# substituicoes dentro de um bloco HTML, apenas em paragrafo de texto.
+pdf_button = (
+    f'<a class="pdf-download-button" href="{pdf_url}" download="{pdf_name}">'
+    '<span class="pdf-download-title">Baixar manual em PDF</span>'
+    '<span class="pdf-download-meta">Documento completo em formato A4</span>'
+    "</a>"
+)
+
+myst_substitutions = {
+    "pdf_url": pdf_url,
+    "pdf_name": pdf_name,
+    "pdf_button": pdf_button,
+}
+
 html_theme = "furo"
 html_title = "AURORA 6.3.2 — Manual completo"
 html_static_path = ["_static"]
@@ -160,6 +198,22 @@ latex_elements = {
 \hypersetup{pageanchor=true}
 """,
     "preamble": r"""
+% A partir do array 2026/02/24 o colortbl passa a usar os ganchos novos de linha
+% e deixa de criar o registro proprio de \everycr. O Sphinx 9.1.0 ainda grava
+% \the\everycr dentro de \CT@everycr para colorir as linhas alternadas, o que
+% se torna autorreferente e estoura a pilha do TeX em toda tabela do manual.
+% Este trecho restaura o arranjo antigo esperado pelo Sphinx e pode ser removido
+% quando o Sphinx corrigir a incompatibilidade.
+\makeatletter
+\@ifpackageloaded{colortbl}{%
+  \ifx\CT@everycr\everycr
+    \RemoveFromHook{tbl/row/end}[colortbl]%
+    \RemoveFromHook{tbl/row/init}[colortbl]%
+    \newtoks\everycr
+    \CT@everycr{\noalign{\global\let\CT@row@color\relax}\the\everycr}%
+  \fi
+}{}
+\makeatother
 \usepackage{microtype}
 \usepackage{titlesec}
 \usepackage{caption}

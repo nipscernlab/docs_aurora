@@ -41,6 +41,24 @@ Assert-Command -Name "node.exe" -InstallHint "Instale o Node.js 18 ou superior."
 Assert-Command -Name "latexmk.exe" -InstallHint "Instale o MiKTeX com latexmk."
 Assert-Command -Name "xelatex.exe" -InstallHint "Instale o mecanismo XeLaTeX pelo MiKTeX."
 
+# 'latexmk' e 'pdfcrop' do MiKTeX sao scripts Perl. Quando nao ha Perl no PATH,
+# usa um interpretador conhecido do Windows antes de desistir.
+if (-not (Get-Command "perl.exe" -ErrorAction SilentlyContinue)) {
+    $perlCandidates = @(
+        "C:\Program Files\Git\usr\bin",
+        "C:\Program Files (x86)\Git\usr\bin",
+        "C:\Strawberry\perl\bin"
+    )
+
+    $perlDir = $perlCandidates | Where-Object { Test-Path -LiteralPath (Join-Path $_ "perl.exe") -PathType Leaf } | Select-Object -First 1
+    if (-not $perlDir) {
+        throw "Perl nao encontrado. Instale o Git para Windows ou o Strawberry Perl; o MiKTeX precisa dele para 'latexmk' e 'pdfcrop'."
+    }
+
+    $env:PATH = "$perlDir;$env:PATH"
+    Write-Host "Usando o Perl de '$perlDir'."
+}
+
 New-Item -ItemType Directory -Force -Path $latexDir, $pdfDir, $webSourceDir | Out-Null
 
 Write-Host "Gerando fontes LaTeX com Sphinx..."

@@ -61,6 +61,11 @@
   margin-top: 1.15rem;
 }
 
+/* O botao chega por substituicao do MyST, que o envolve em um paragrafo. */
+.hero-actions > p {
+  margin: 0;
+}
+
 .pdf-download-button {
   display: inline-flex;
   flex-direction: column;
