@@ -21,6 +21,15 @@ param(
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+# O Set-Content -Encoding UTF8 do Windows PowerShell escreve BOM, e um BOM no
+# inicio do manifesto faz o JSON.parse do Node recusar o arquivo. Tudo que este
+# script grava passa por aqui.
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+function Write-Utf8 {
+    param([string]$Path, [string]$Content)
+    [System.IO.File]::WriteAllText($Path, $Content, $utf8NoBom)
+}
+
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $sourceDir = Join-Path $projectRoot "source"
 $sphinxBuild = Join-Path $projectRoot ".venv\Scripts\sphinx-build.exe"
@@ -148,7 +157,7 @@ Get-ChildItem -LiteralPath $offlineDir -Recurse -Filter "*.html" | ForEach-Objec
             '(?s)<script type="module">\s*import mermaid.*?</script>',
             ''
         )
-        Set-Content -LiteralPath $_.FullName -Value $clean -NoNewline -Encoding UTF8
+        Write-Utf8 -Path $_.FullName -Content $clean
         $stripped++
     }
 }
@@ -188,8 +197,8 @@ $manifest = [ordered]@{
     online    = "https://www.nipscern.com/docs/sapho/"
 }
 $manifestJson = $manifest | ConvertTo-Json
-Set-Content -LiteralPath (Join-Path $webDir "docs-manifest.json") -Value $manifestJson -Encoding UTF8
-Set-Content -LiteralPath (Join-Path $distDir "docs-manifest.json") -Value $manifestJson -Encoding UTF8
+Write-Utf8 -Path (Join-Path $webDir "docs-manifest.json") -Content $manifestJson
+Write-Utf8 -Path (Join-Path $distDir "docs-manifest.json") -Content $manifestJson
 
 if ($DryRun) {
     Write-Host ""
