@@ -35,10 +35,30 @@ $zipName = "sapho-docs-offline-$version.zip"
 $pdfName = "AURORA-Manual-6.3.2.pdf"
 $builtPdf = Join-Path $projectRoot "build\pdf\$pdfName"
 
+$repoSlug = "nipscernlab/docs_aurora"
+
 function Assert-Command {
     param([string]$Name, [string]$Hint)
     if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) {
         throw "Comando '$Name' nao encontrado. $Hint"
+    }
+}
+
+# O gh escreve em stderr em situacoes normais, como "release not found" ao
+# consultar uma tag que ainda nao existe. Com ErrorActionPreference = Stop o
+# PowerShell trata esse stderr como erro terminante, entao as chamadas passam
+# por aqui e sao julgadas pelo codigo de saida.
+function Invoke-Gh {
+    param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Arguments)
+
+    $previous = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $output = & gh @Arguments 2>&1 | Out-String
+        return [pscustomobject]@{ ExitCode = $LASTEXITCODE; Output = $output }
+    }
+    finally {
+        $ErrorActionPreference = $previous
     }
 }
 
@@ -54,10 +74,15 @@ function Invoke-SphinxHtml {
 
     Remove-Item -LiteralPath $OutputDir -Recurse -Force -ErrorAction SilentlyContinue
 
+    # -d mantem os .doctrees fora da saida. Sem isso o Sphinx os grava em
+    # <saida>/.doctrees, e quase 1 MB de estado interno do build acabaria
+    # publicado no site e dentro do pacote offline.
+    $doctreesDir = Join-Path $projectRoot "build\doctrees-$Target"
+
     $previous = [Environment]::GetEnvironmentVariable("AURORA_DOCS_TARGET", "Process")
     try {
         $env:AURORA_DOCS_TARGET = $Target
-        & $sphinxBuild -E -b html $sourceDir $OutputDir
+        & $sphinxBuild -E -b html -d $doctreesDir $sourceDir $OutputDir
         if ($LASTEXITCODE -ne 0) {
             throw "O Sphinx encerrou com codigo $LASTEXITCODE no alvo '$Target'."
         }
@@ -149,6 +174,23 @@ Set-Content -LiteralPath $hashPath -Value "$hash  $zipName" -Encoding ASCII
 Write-Host ("Pacote offline: {0:N1} MiB" -f ((Get-Item $zipPath).Length / 1MB))
 Write-Host "SHA-256: $hash"
 
+# ---------- 3b. Manifesto ----------
+
+# Publicado junto do site, e o que torna a atualizacao automatica: a AURORA le
+# este arquivo, compara com a versao que tem em disco e baixa o pacote novo
+# sozinha. Sem ele, so uma recompilacao do aplicativo traria documentacao nova.
+$manifest = [ordered]@{
+    version   = $version
+    published = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+    package   = "https://github.com/nipscernlab/docs_aurora/releases/download/$tag/$zipName"
+    sha256    = $hash
+    bytes     = (Get-Item $zipPath).Length
+    online    = "https://www.nipscern.com/docs/sapho/"
+}
+$manifestJson = $manifest | ConvertTo-Json
+Set-Content -LiteralPath (Join-Path $webDir "docs-manifest.json") -Value $manifestJson -Encoding UTF8
+Set-Content -LiteralPath (Join-Path $distDir "docs-manifest.json") -Value $manifestJson -Encoding UTF8
+
 if ($DryRun) {
     Write-Host ""
     Write-Host "-DryRun: nada foi enviado. Artefatos em '$distDir' e '$webDir'."
@@ -181,17 +223,19 @@ if ($LASTEXITCODE -ne 0) {
 # ---------- 5. AURORA: release com o pacote offline ----------
 
 Write-Host "== Publicando a Release com o pacote offline =="
-$existing = gh release view $tag --repo (gh repo view --json nameWithOwner --jq .nameWithOwner) 2>$null
-if ($LASTEXITCODE -eq 0 -and $existing) {
-    gh release upload $tag $zipPath $hashPath --clobber
+$manifestAsset = Join-Path $distDir "docs-manifest.json"
+$notes = "Pacote offline da documentacao do SAPHO, consumido pela AURORA.`n`nSHA-256: ``$hash``"
+
+$view = Invoke-Gh release view $tag --repo $repoSlug
+if ($view.ExitCode -eq 0) {
+    $result = Invoke-Gh release upload $tag $zipPath $hashPath $manifestAsset --repo $repoSlug --clobber
 }
 else {
-    gh release create $tag $zipPath $hashPath `
-        --title "Documentacao do SAPHO $version" `
-        --notes "Pacote offline consumido pela AURORA durante o build.`n`nSHA-256: ``$hash``"
+    $result = Invoke-Gh release create $tag $zipPath $hashPath $manifestAsset `
+        --repo $repoSlug --title "Documentacao do SAPHO $version" --notes $notes
 }
-if ($LASTEXITCODE -ne 0) {
-    throw "Falha ao publicar a Release."
+if ($result.ExitCode -ne 0) {
+    throw "Falha ao publicar a Release:`n$($result.Output)"
 }
 
 # ---------- 6. Resumo ----------
