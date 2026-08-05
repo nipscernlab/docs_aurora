@@ -1,4 +1,4 @@
-﻿# Solução de problemas
+# Solução de problemas
 
 Use esta página para localizar a etapa que falhou antes de alterar configurações ou reinstalar ferramentas. Um diagnóstico eficiente registra o contexto, reproduz uma única ação e começa pela primeira mensagem de erro.
 
@@ -15,7 +15,7 @@ Anote o resultado esperado e o que realmente aconteceu. Essa comparação evita 
 ## Interface
 
 **Um botão está desabilitado**
-: Abra o arquivo esperado e confirme Top Level ou Testbench Top. Veja {doc}`../uso/interface`.
+: Abra o arquivo esperado e confirme Top Level ou Testbench Top. Veja {doc}`../inicio/tour-interface`.
 
 **O editor não carrega**
 : Feche e abra a AURORA. Se continuar, reinicie o Windows e repita a abertura.

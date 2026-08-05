@@ -4,7 +4,7 @@ O provedor determina qual serviço processará as mensagens da Aurora Intelligen
 
 Abra **Configurações da AURORA → Assistente IA**.
 
-```{figure} ../_static/screenshots/aurora-settings-ai-current.png
+```{figure} ../_static/assets/screenshots/aurora-settings-ai-current.png
 :alt: Configurações do Assistente IA com cartões de provedores, modelos e campos de chave.
 :width: 90%
 :align: center

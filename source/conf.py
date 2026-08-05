@@ -19,14 +19,31 @@ extensions = [
 ]
 
 myst_enable_extensions = [
+    "attrs_block",
+    "attrs_inline",
     "colon_fence",
     "deflist",
+    "dollarmath",
     "fieldlist",
+    "html_image",
     "substitution",
     "tasklist",
 ]
 myst_heading_anchors = 4
 autosectionlabel_prefix_document = True
+
+# Numeração de figuras, tabelas e listagens, citadas no texto por {numref}.
+numfig = True
+numfig_format = {
+    "figure": "Figura %s",
+    "table": "Tabela %s",
+    "code-block": "Listagem %s",
+}
+
+myst_substitutions = {
+    "versao": version,
+    "cmm": "C±",
+}
 
 templates_path = ["_templates"]
 pdf_build = os.environ.get("AURORA_PDF_BUILD") == "1"
@@ -122,6 +139,9 @@ mermaid_params = [
 ]
 
 latex_engine = "xelatex"
+# O xindy do MiKTeX nao funciona no Windows (espera um symlink do TeX Live);
+# o makeindex atende o indice deste documento, cujas entradas sao ASCII.
+latex_use_xindy = False
 latex_logo = "_static/aurora-logo-pdf.png"
 latex_documents = [
     (
@@ -218,6 +238,20 @@ latex_elements = {
 \usepackage{titlesec}
 \usepackage{caption}
 \usepackage{enumitem}
+\usepackage{float}
+\usepackage{etoolbox}
+% Figuras ficam onde foram declaradas, sem flutuar para o meio de tabelas.
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+% Nenhuma imagem ultrapassa a altura da mancha: capturas em retrato encolhem
+% ate caber, preservando a proporcao.
+\setkeys{Gin}{keepaspectratio, height=0.78\textheight}
+% Tabelas largas cabem na mancha ao reduzir levemente o corpo.
+\AtBeginEnvironment{tabulary}{\small}
+\AtBeginEnvironment{longtable}{\small}
+\AtBeginEnvironment{tabular}{\small}
+% Sem páginas em branco de cortesia entre partes e capítulos.
+\let\cleardoublepage\clearpage
 \definecolor{AuroraInk}{HTML}{20242A}
 \definecolor{AuroraMuted}{HTML}{5F6873}
 \definecolor{AuroraRule}{HTML}{7C8794}

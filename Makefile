@@ -4,10 +4,10 @@ BUILDDIR = build
 
 .PHONY: html html-only pdf clean
 html: pdf
-	$(SPHINXBUILD) -W --keep-going -b html $(SOURCEDIR) $(BUILDDIR)/html
+	$(SPHINXBUILD) -E -a -W --keep-going -b html $(SOURCEDIR) $(BUILDDIR)/html
 
 html-only:
-	$(SPHINXBUILD) -W --keep-going -b html $(SOURCEDIR) $(BUILDDIR)/html
+	$(SPHINXBUILD) -E -a -W --keep-going -b html $(SOURCEDIR) $(BUILDDIR)/html
 
 pdf:
 	powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build-pdf.ps1

@@ -1,4 +1,4 @@
-﻿# Projetos
+# Projetos
 
 Um projeto reúne o arquivo de configuração `.spf`, os algoritmos C±, os módulos Verilog, os testbenches e os resultados gerados. Esta página explica como criar, abrir, mover e preservar esse conjunto sem quebrar referências.
 
@@ -11,7 +11,7 @@ Um projeto reúne o arquivo de configuração `.spf`, os algoritmos C±, os mód
 
 O nome do projeto é usado na pasta e no arquivo `.spf`. Escolha um nome curto, descritivo e sem caracteres que possam ser rejeitados pelo Windows. Depois da confirmação, aguarde a árvore do projeto aparecer antes de criar processadores ou importar arquivos.
 
-```{figure} ../_static/screenshots/aurora-new-project-current.png
+```{figure} ../_static/assets/screenshots/aurora-new-project-current.png
 :alt: Formulário Criar Novo Projeto com os campos de nome e local do projeto.
 :width: 85%
 :align: center

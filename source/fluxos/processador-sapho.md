@@ -1,109 +1,155 @@
 # Fluxo completo para processadores SAPHO
 
-Este roteiro apresenta a geração de hardware do ecossistema SAPHO. Ao final, você terá um processador configurado no **Hub de Processadores**, um algoritmo C± compilado, o Verilog correspondente e um teste executado na AURORA.
+Esta página é o roteiro de referência do fluxo SAPHO, para consulta quando você já conhece o caminho e precisa conferir uma etapa ou tratar um caso menos comum. Se esta é a sua primeira vez, faça antes o {doc}`../inicio/primeiro-projeto`, que percorre o mesmo caminho ensinando cada conceito.
 
-```{figure} ../_static/screenshots/aurora-pmu-cmm-editor.png
+```{figure} ../_static/assets/screenshots/aurora-pmu-cmm-editor.png
 :alt: Projeto proj_PMU_padrao aberto na AURORA com o algoritmo PMU_padrao.cmm no editor.
 :width: 100%
 :align: center
+:name: fig-fluxo-sapho
 
-O projeto `proj_PMU_padrao` aberto em `PMU_padrao.cmm`. Ao abrir o algoritmo C±, o processador `PMU_padrao` fica ativo e as ações relacionadas ao processador são habilitadas.
+Ao abrir um algoritmo C±, o processador correspondente fica ativo e as ações relacionadas a ele são habilitadas na barra superior.
+```
+
+## O caminho em uma olhada
+
+```{mermaid}
+flowchart TD
+  A["1 · Projeto .spf"] --> B["2 · Processador<br><small>Hub de Processadores</small>"]
+  B --> C["3 · Algoritmo C±"]
+  C --> D["4 · Compilar<br><small>Verilog + .mif + testbench</small>"]
+  D --> E["5 · Top-level e testbench"]
+  E --> F{"6 · Forma<br>de execução"}
+  F --> G["Teste do processador<br>sintetizado"]
+  F --> H["Execução rápida"]
+  F --> I["Analisar Verilog<br>(forma de onda)"]
+  I --> J["7 · Inspecionar<br><small>ondas e PRISM</small>"]
 ```
 
 ## 1. Criar ou abrir o projeto
 
-1. Clique em **Novo Projeto**.
-2. Informe um nome para o projeto.
-3. Escolha uma pasta com permissão de escrita.
-4. Confirme a criação.
+Clique em {guilabel}`Novo Projeto`, informe um nome sem espaços nem acentos e escolha uma pasta com permissão de escrita.
 
-O arquivo `.spf` criado pela AURORA registra os processadores, as fontes e as seleções do projeto. Não edite esse arquivo manualmente durante o fluxo normal.
+O arquivo {file}`.spf` criado pela AURORA registra os processadores, as fontes e as seleções do projeto. Ele é JSON legível e amigável a *diffs*, mas a AURORA é a sua única escritora: não o edite à mão no fluxo normal. Detalhes em {doc}`../uso/projetos`.
 
 ## 2. Criar o processador
 
-Abra **Hub de Processadores** e informe apenas o nome do processador. No primeiro projeto, mantenha os valores padrão já preenchidos para bits totais, ganho, mantissa, expoente, pilhas e portas de entrada e saída. Em seguida, clique em **Gerar Processador**.
+Abra o {guilabel}`Hub de Processadores`, informe o nome e os parâmetros e confirme em {guilabel}`Gerar Processador`. No primeiro projeto, mantenha os valores de fábrica, que já formam uma configuração válida.
 
-Os padrões formam uma configuração válida e permitem praticar o fluxo antes de alterar a arquitetura. Para compreender cada campo e preparar configurações específicas, consulte {doc}`../uso/processadores` com o título **Processadores SAPHO**.
+A referência de cada campo, das validações e do que é gerado está em {doc}`../uso/processadores`; o significado de cada parâmetro em termos de *hardware*, em {doc}`../arquitetura/processador`.
 
-Depois da confirmação, o processador aparece na árvore com as pastas:
+Depois da confirmação, o processador aparece na árvore com as três subpastas:
 
 ```text
 <processador>/
-├── Software/
-├── Hardware/
-└── Simulation/
+├── Software/     o algoritmo C± editável
+├── Hardware/     o Verilog e as memórias, gerados
+└── Simulation/   o testbench, os estímulos e as saídas
 ```
 
 ## 3. Escrever o algoritmo C±
 
-Abra `Software/<processador>.cmm`, preserve as diretivas geradas e escreva o algoritmo dentro das funções do arquivo.
+Abra {file}`Software/<processador>.cmm`, preserve as diretivas geradas e escreva o algoritmo. Salve antes de compilar: os compiladores leem o conteúdo gravado no disco, não o que está no editor.
 
-O arquivo `.cmm` define tanto o comportamento quanto os parâmetros usados na geração. Salve antes de compilar. Para testes que precisam identificar o término do algoritmo, use `#TOAQUI` no ponto adequado.
+A linguagem inteira está documentada em {doc}`../linguagem/index`. Para testes que precisam identificar o término do algoritmo, use `#TOAQUI` no ponto adequado.
 
 ## 4. Gerar o hardware
 
-1. Mantenha o arquivo `.cmm` aberto.
-2. Clique em **Compilar C±**.
-3. Acompanhe os terminais **C±** e **ASM**.
-4. Aguarde a criação ou atualização dos arquivos na pasta `Hardware`.
+1. Mantenha o arquivo {file}`.cmm` aberto e em foco.
+2. Clique em {guilabel}`Compilar C±`.
+3. Acompanhe os terminais **TCMM** e **TASM**.
+4. Aguarde a criação ou atualização dos arquivos em {file}`Hardware`.
 
-O YANC transforma o algoritmo em Assembly SAPHO e depois gera o módulo Verilog, as imagens de memória e o testbench padrão. Um arquivo antigo em `Hardware` não comprova que a compilação atual passou; confirme o resultado nos terminais.
+O YANC transforma o algoritmo em *assembly*, depois gera o módulo Verilog, as imagens de memória e o *testbench* padrão. O detalhamento dos três estágios está em {doc}`compilacao`.
 
-## 5. Preparar Top Level e testbench
+:::{warning}
+Um arquivo antigo em {file}`Hardware` não comprova que a compilação atual passou. Confirme o resultado nos terminais.
+:::
 
-O módulo em `Hardware/<processador>.v` pode ser usado como Top Level quando o projeto testa apenas esse processador. Clique nele com o botão direito do mouse e escolha **Definir como Top Level**. Em sistemas maiores, o Top Level pode ser outro módulo Verilog que instancia um ou mais processadores gerados.
+## 5. Definir top-level e testbench
 
-Como Testbench Top, use:
+O módulo em {file}`Hardware/<processador>.v` pode servir como *top-level* quando o projeto testa apenas esse processador. Clique nele com o botão direito e escolha {guilabel}`Definir como Top Level`.
 
-- O testbench padrão criado na pasta `Simulation`.
-- Um testbench Verilog personalizado.
-- Um arquivo Python/cocotb com a diretiva `# aurora-toplevel: <processador>`.
+Em sistemas maiores, o *top-level* é outro módulo Verilog, escrito por você, que instancia um ou mais processadores gerados junto com a infraestrutura convencional de *hardware*. Esse é o padrão de projeto do SAPHO, discutido em {doc}`../arquitetura/processador`.
 
-Clique com o botão direito no testbench escolhido e selecione **Marcar como Testbench**. Confirme o Top Level e o Testbench Top na barra de status antes de simular.
+Como *testbench*, escolha uma das três opções:
+
+::::{tab-set}
+
+:::{tab-item} O gerado
+O {file}`Simulation/<processador>_tb.v` produzido pela compilação. Gera *clock* e *reset*, lê os estímulos de {file}`input_<i>.txt` e grava as saídas em {file}`output_<i>.txt`. Basta para a maioria dos projetos de um único processador.
+:::
+
+:::{tab-item} Um Verilog seu
+Um {file}`.v` escrito por você, quando o estímulo exige lógica que os arquivos de texto não expressam, ou quando o teste envolve vários blocos.
+:::
+
+:::{tab-item} Um cocotb em Python
+Um {file}`.py` com a diretiva `# aurora-toplevel: <processador>` em comentário, ou herdada da configuração do projeto. Indicado quando a verificação se beneficia de NumPy, SciPy e asserções legíveis. Veja {doc}`simulacao`.
+:::
+
+::::
+
+Clique com o botão direito no arquivo escolhido e selecione {guilabel}`Marcar como Testbench`. Confirme os dois papéis na barra de status antes de simular.
 
 ## 6. Escolher a forma de execução
 
-**Teste do processador sintetizado**
-: Executa o processador ativo em um harness dedicado do Verilator. Use para validar entradas, saídas e término sem preparar uma inspeção completa no viewer de ondas. O progresso e o resultado aparecem no terminal **THTEST**.
+:::{list-table}
+:header-rows: 1
+:widths: 34 66
 
-**Execução rápida**
-: Executa o Testbench Top sem abrir formas de onda. Use para verificações automatizadas e regressões curtas.
-
-**Analisar Verilog (forma de onda)**
-: Executa o Testbench Top, gera VCD ou FST e abre o viewer selecionado. Use quando precisa observar sinais, portas e estados internos.
+* - Ação
+  - Quando usar
+* - {guilabel}`Teste do processador sintetizado`
+  - Validação rápida de entradas, saídas e término, sem inspeção visual. Usa um *harness* do Verilator e reporta no terminal **THTEST**
+* - {guilabel}`Execução rápida`
+  - Verificações automatizadas e regressões curtas, sem abrir formas de onda
+* - {guilabel}`Analisar Verilog (forma de onda)`
+  - Quando você precisa observar sinais, portas e estados internos ao longo do tempo
+:::
 
 ## 7. Conferir entradas e saídas
 
 Nos processadores gerados, `out` transporta o valor e `out_en` identifica a porta de saída escrita. O sinal `cheguei` indica que a execução alcançou o marcador `#TOAQUI`.
 
-Um teste adequado deve verificar:
+Um teste adequado verifica:
 
-- Se cada porta recebeu os valores esperados.
-- Se a quantidade e a ordem das saídas estão corretas.
-- Se o processador alcançou o ponto de término.
-- Se existe um limite de ciclos para evitar espera infinita.
+- [ ] se cada porta recebeu os valores esperados;
+- [ ] se a quantidade e a ordem das saídas estão corretas;
+- [ ] se o processador alcançou o ponto de término;
+- [ ] se existe um limite de ciclos que evita espera infinita.
 
 ## 8. Analisar o hardware gerado
 
-Use **Analisar Verilog (forma de onda)** para observar o comportamento temporal e **Abrir PRISM** para examinar a estrutura RTL. O algoritmo C± continua sendo a fonte editável; os arquivos da pasta `Hardware` são resultados da geração e podem ser substituídos na próxima compilação.
+Use {guilabel}`Analisar Verilog (forma de onda)` para observar o comportamento temporal e {guilabel}`Abrir PRISM` para examinar a estrutura RTL.
 
-```{figure} ../_static/screenshots/aurora-wave-configuration-sapho.png
+```{figure} ../_static/assets/screenshots/aurora-wave-configuration-sapho.png
 :alt: Configuração de ondas de um processador SAPHO com clock, reset, portas de saída e sinal de término.
 :width: 85%
 :align: center
+:name: fig-ondas-fluxo
 
-No fluxo SAPHO, comece por `clk`, `rst`, `proc_io_out`, `proc_out_en` e `proc_cheguei`. Expanda o processador somente quando precisar investigar sinais internos.
+No fluxo SAPHO, comece por `clk`, `rst`, as portas de saída e o sinal de término. Expanda o processador somente quando precisar investigar sinais internos.
 ```
+
+:::{important}
+O algoritmo {file}`.cmm` continua sendo a única fonte editável. Os arquivos da pasta {file}`Hardware` são resultado da geração e serão substituídos na próxima compilação: qualquer edição manual neles se perde.
+:::
 
 ## Resultado esperado
 
-O fluxo SAPHO está concluído quando:
+O fluxo está concluído quando:
 
-- O Hub de Processadores criou a estrutura do processador.
-- O algoritmo `.cmm` compila sem erro.
-- O Verilog e os arquivos de memória são atualizados.
-- O Top Level e o Testbench Top estão definidos.
-- A execução produz as saídas esperadas e alcança o término.
-- O viewer de ondas ou o PRISM apresenta o resultado desejado, quando utilizado.
+- [x] o Hub de Processadores criou a estrutura do processador;
+- [x] o algoritmo {file}`.cmm` compila sem erro;
+- [x] o Verilog e as imagens de memória estão atualizados;
+- [x] o *top-level* e o *testbench* aparecem corretamente na barra de status;
+- [x] a execução produz as saídas esperadas e alcança o término;
+- [x] o visualizador de ondas ou o PRISM apresenta o resultado desejado, quando utilizado.
 
-Para compreender os campos do Hub de Processadores, consulte {doc}`../uso/processadores`. Para exemplos C± com testbenches Verilog e cocotb, consulte {doc}`../exemplos/galeria-testbenches`.
+## Leitura relacionada
+
+- {doc}`../linguagem/index` para escrever o algoritmo.
+- {doc}`../uso/processadores` para os campos do Hub e as configurações de simulação.
+- {doc}`../exemplos/galeria-testbenches` para exemplos C± com *testbenches* Verilog e cocotb.
+- {doc}`verilog` se o seu projeto não gera processadores e trabalha só com RTL.

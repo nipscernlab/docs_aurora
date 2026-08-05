@@ -2,7 +2,7 @@
 
 Este roteiro apresenta a AURORA como ambiente de desenvolvimento Verilog independente do fluxo C±. Ao final, você terá um projeto com fontes RTL, Top Level, testbench, validação, simulação, formas de onda e visualização no PRISM.
 
-```{figure} ../_static/screenshots/aurora-alu32-editor.png
+```{figure} ../_static/assets/screenshots/aurora-alu32-editor.png
 :alt: Projeto ALU32 aberto na AURORA com o arquivo alu32.v no editor.
 :width: 100%
 :align: center
@@ -60,7 +60,7 @@ A validação confirma sintaxe, módulos e conexões necessárias para elaborar 
 
 ## 6. Simular
 
-```{figure} ../_static/screenshots/aurora-toolbar-simulation.png
+```{figure} ../_static/assets/screenshots/aurora-toolbar-simulation.png
 :alt: Trecho da barra superior com PRISM, simuladores, análise de forma de onda, execução rápida, cancelamento e configuração de ondas.
 :width: 80%
 :align: center

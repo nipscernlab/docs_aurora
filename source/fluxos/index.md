@@ -1,5 +1,13 @@
 ﻿# Escolha o fluxo de trabalho
 
+A AURORA é o ambiente de desenvolvimento de desktop que reúne, em uma única interface, a criação e a organização de projetos, o editor de código, a compilação, a simulação, a análise de formas de onda, a visualização RTL, o controle de versão e a Aurora Intelligence.
+
+Ela pode ser usada tanto para trabalhar diretamente com circuitos escritos em Verilog quanto para gerar processadores SAPHO a partir de algoritmos C±. Por isso, AURORA e SAPHO não são nomes equivalentes: a AURORA é a aplicação que organiza o trabalho, enquanto o SAPHO é o ecossistema de geração de processadores disponível dentro dela.
+
+As páginas deste manual são orientadas a tarefas e acompanham a ordem normal de uso. Depois desta introdução, você pode seguir o fluxo correspondente ao tipo de projeto que pretende desenvolver.
+
+## Os fluxos disponíveis
+
 A AURORA atende a dois fluxos principais. Você pode desenvolver um projeto diretamente em Verilog ou gerar um processador dedicado do ecossistema SAPHO a partir de um algoritmo C±, armazenado em arquivo `.cmm`. Os dois caminhos usam o mesmo editor, a mesma estrutura de projeto e as mesmas ferramentas de validação e análise, mas começam de pontos diferentes.
 
 ::::{grid} 1 2 2 2
