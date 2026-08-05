@@ -18,7 +18,7 @@ if /I not "%~1" == "html-only" (
 )
 
 if "%SPHINXBUILD%" == "" set SPHINXBUILD=.venv\Scripts\sphinx-build.exe
-%SPHINXBUILD% -M html source build %SPHINXOPTS% %O%
+%SPHINXBUILD% -M html source build -E -a %SPHINXOPTS% %O%
 set EXITCODE=%ERRORLEVEL%
 popd
 exit /B %EXITCODE%

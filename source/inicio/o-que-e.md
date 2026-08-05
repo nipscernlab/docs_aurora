@@ -22,42 +22,54 @@ A consequência é relevante e um pouco surpreendente: o seu programa não é ap
 
 O nome SAPHO designa tanto o processador quanto o guarda-chuva que reúne os componentes. Vale conhecer cada peça antes de abrir o aplicativo, porque os nomes aparecem o tempo todo na interface.
 
-::::{grid} 1 2 2 2
+::::::{grid} 1 2 2 2
 :gutter: 3
 
-:::{grid-item-card}
-:img-top: ../_static/assets/icons/sapho_aurora_icon.*
+:::::{grid-item-card}
+
+:::{raw} html
+<img class="sd-card-img-top" src="../_static/assets/icons/sapho_aurora_icon.png" alt="AURORA">
+:::
 
 **AURORA**
 ^^^
 A IDE de desktop, o programa que você instala e abre. Nela vivem o editor, o gerenciador de projetos, os botões de compilação e simulação, os terminais e os visualizadores. É a única interface gráfica do ecossistema.
-:::
+:::::
 
-:::{grid-item-card}
-:img-top: ../_static/assets/icons/yanc.*
+:::::{grid-item-card}
+
+:::{raw} html
+<img class="sd-card-img-top" src="../_static/assets/icons/yanc.png" alt="YANC">
+:::
 
 **YANC**
 ^^^
 *Yet Another Compiler*, a suíte de compiladores que trabalha por baixo dos panos. Ela traduz o programa C± (ou C++) no processador em Verilog, nas imagens de memória e no *testbench*. Você nunca a chama diretamente.
-:::
+:::::
 
-:::{grid-item-card}
-:img-top: ../_static/assets/icons/sapho.*
+:::::{grid-item-card}
+
+:::{raw} html
+<img class="sd-card-img-top" src="../_static/assets/icons/sapho.png" alt="Processador SAPHO">
+:::
 
 **O processador SAPHO**
 ^^^
 O circuito parametrizável que o YANC emite: acumulador único, arquitetura Harvard e *pipeline* de três estágios. Descrito em {doc}`../arquitetura/processador`.
-:::
+:::::
 
-:::{grid-item-card}
-:img-top: ../_static/assets/icons/cmm_file.*
+:::::{grid-item-card}
+
+:::{raw} html
+<img class="sd-card-img-top" src="../_static/assets/icons/cmm_file.png" alt="Arquivo C±">
+:::
 
 **A linguagem C±**
 ^^^
 O dialeto de C no qual você escreve o algoritmo, com números complexos como tipo nativo e álgebra linear em notação de Dirac. Arquivos com extensão {file}`.cmm`. Descrita em {doc}`../linguagem/index`.
-:::
+:::::
 
-::::
+::::::
 
 Em volta desse núcleo orbitam as ferramentas de apoio, todas de código aberto e todas empacotadas junto com a instalação:
 

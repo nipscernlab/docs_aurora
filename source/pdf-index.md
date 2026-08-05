@@ -11,25 +11,47 @@ orphan: true
 ```{toctree}
 :maxdepth: 2
 
+Conheça a AURORA e os fluxos <fluxos/index>
 inicio/o-que-e
 inicio/instalacao
 inicio/tour-interface
-inicio/primeiro-projeto
 ```
 
 ```{raw} latex
-\part{Projetos e processadores}
+\part{Projetos e ferramentas}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
 uso/projetos
-uso/processadores
 uso/editor
-uso/arquivos-verilog
 uso/terminais
 uso/source-control
+```
+
+```{raw} latex
+\part{Fluxo Verilog}
+```
+
+```{toctree}
+:maxdepth: 2
+
+fluxos/verilog
+uso/arquivos-verilog
+```
+
+```{raw} latex
+\part{Fluxo SAPHO}
+```
+
+```{toctree}
+:maxdepth: 2
+
+fluxos/processador-sapho
+inicio/primeiro-projeto
+uso/processadores
+fluxos/compilacao
 ```
 
 ```{raw} latex
@@ -59,16 +81,12 @@ arquitetura/instrucoes
 ```
 
 ```{raw} latex
-\part{Compilar, simular e analisar}
+\part{Simular e analisar}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-fluxos/index
-fluxos/verilog
-fluxos/processador-sapho
-fluxos/compilacao
 fluxos/simulacao
 exemplos/galeria-testbenches
 fluxos/ondas

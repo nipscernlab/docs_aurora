@@ -19,53 +19,104 @@ Este manual descreve a AURORA 6.3.2 para Windows 10 e 11. Para a versão exata, 
 
 ## Por onde começar
 
-Se esta é a sua primeira vez, siga a trilha na ordem: entenda {doc}`o que é a plataforma <inicio/o-que-e>`, {doc}`instale <inicio/instalacao>`, {doc}`conheça a janela <inicio/tour-interface>` e faça o {doc}`primeiro projeto <inicio/primeiro-projeto>`, um filtro de média móvel construído do começo ao fim. São cerca de trinta minutos até ver o seu próprio processador rodando na forma de onda.
+Se esta é a sua primeira vez, siga a trilha na ordem: conheça {doc}`a AURORA e seus fluxos <fluxos/index>`, entenda {doc}`o que é o SAPHO <inicio/o-que-e>`, {doc}`instale <inicio/instalacao>`, {doc}`conheça a janela <inicio/tour-interface>` e faça o {doc}`primeiro projeto <inicio/primeiro-projeto>`, um filtro de média móvel construído do começo ao fim. São cerca de trinta minutos até ver o seu próprio processador rodando na forma de onda.
 
 Se você já tem um projeto em andamento, use o menu lateral para ir direto à tarefa. As páginas de referência reúnem diretivas, biblioteca, atalhos e sintomas de falha para consulta rápida, sem repetir o tutorial.
+
+### Comece aqui
 
 ::::{grid} 1 2 2 3
 :gutter: 3
 
-:::{grid-item-card} Primeiros passos
-:link: inicio/o-que-e
+:::{grid-item-card} Conheça a AURORA e os fluxos
+:link: fluxos/index
 :link-type: doc
 
-O que é um *soft-processor*, o que cada peça da plataforma faz e como instalar.
+Entenda o papel da AURORA e escolha entre o fluxo Verilog e o fluxo SAPHO.
 :::
 
-:::{grid-item-card} Primeiro projeto
-:link: inicio/primeiro-projeto
+:::{grid-item-card} Instalação e primeiro início
+:link: inicio/instalacao
 :link-type: doc
 
-Tutorial completo: do projeto vazio ao processador simulado, passo a passo.
+Baixe, instale e abra a AURORA pela primeira vez no Windows.
 :::
 
-:::{grid-item-card} A linguagem C±
-:link: linguagem/index
+:::{grid-item-card} Tour pela interface
+:link: inicio/tour-interface
 :link-type: doc
 
-Tipos, operadores, entrada e saída, biblioteca e notação de Dirac.
+Localize a barra de ferramentas, a árvore, o editor, os terminais e a barra de status.
 :::
 
-:::{grid-item-card} O processador
-:link: arquitetura/processador
-:link-type: doc
+::::
 
-Como a máquina executa o seu programa e o que cada parâmetro significa.
-:::
+### Escolha seu fluxo
+
+::::{grid} 1 2 2 2
+:gutter: 3
 
 :::{grid-item-card} Fluxo Verilog
 :link: fluxos/verilog
 :link-type: doc
 
-Escreva ou importe RTL, valide, simule e analise sem passar pelo C±.
+Crie ou importe RTL, defina o Top Level, simule e analise o circuito sem gerar um processador.
 :::
 
-:::{grid-item-card} Resolver problemas
+:::{grid-item-card} Fluxo SAPHO
+:link: inicio/primeiro-projeto
+:link-type: doc
+
+Comece pelo primeiro projeto e percorra da criação do processador à forma de onda.
+:::
+
+::::
+
+### Consulte por tarefa
+
+::::{grid} 1 2 2 3
+:gutter: 3
+
+:::{grid-item-card} Projetos e arquivos
+:link: uso/projetos
+:link-type: doc
+
+Crie, abra, organize e preserve os arquivos de um projeto da AURORA.
+:::
+
+:::{grid-item-card} Linguagem C±
+:link: linguagem/index
+:link-type: doc
+
+Consulte tipos, operadores, diretivas, entrada, saída e recursos da linguagem.
+:::
+
+:::{grid-item-card} Processador SAPHO
+:link: arquitetura/processador
+:link-type: doc
+
+Entenda a arquitetura gerada e o efeito de cada parâmetro do processador.
+:::
+
+:::{grid-item-card} Simulação e análise
+:link: fluxos/simulacao
+:link-type: doc
+
+Escolha Icarus, Verilator ou cocotb e siga para formas de onda e PRISM.
+:::
+
+:::{grid-item-card} Aurora Intelligence
+:link: ia/visao-geral
+:link-type: doc
+
+Configure a assistente e conheça as ações disponíveis sobre o projeto.
+:::
+
+:::{grid-item-card} Solução de problemas
 :link: referencia/diagnostico
 :link-type: doc
 
-Botão desabilitado, compilação que falha, onda vazia, PRISM que recusa.
+Diagnostique falhas de projeto, compilação, simulação, PRISM e IA.
 :::
 
 ::::
@@ -110,22 +161,38 @@ A única etapa que acontece fora da AURORA é a última: levar o Verilog e as im
 :maxdepth: 2
 :caption: Primeiros passos
 
+Conheça a AURORA e os fluxos <fluxos/index>
 inicio/o-que-e
 inicio/instalacao
 inicio/tour-interface
-inicio/primeiro-projeto
 ```
 
 ```{toctree}
 :maxdepth: 2
-:caption: Projetos e processadores
+:caption: Projetos e ferramentas
 
 uso/projetos
-uso/processadores
 uso/editor
-uso/arquivos-verilog
 uso/terminais
 uso/source-control
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Fluxo Verilog
+
+fluxos/verilog
+uso/arquivos-verilog
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Fluxo SAPHO
+
+fluxos/processador-sapho
+inicio/primeiro-projeto
+uso/processadores
+fluxos/compilacao
 ```
 
 ```{toctree}
@@ -150,12 +217,8 @@ arquitetura/instrucoes
 
 ```{toctree}
 :maxdepth: 2
-:caption: Compilar, simular e analisar
+:caption: Simular e analisar
 
-fluxos/index
-fluxos/verilog
-fluxos/processador-sapho
-fluxos/compilacao
 fluxos/simulacao
 exemplos/galeria-testbenches
 fluxos/ondas
