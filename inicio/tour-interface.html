@@ -1,0 +1,632 @@
+<!doctype html>
+<html class="no-js" lang="pt-BR" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Índice" href="../genindex.html"><link rel="search" title="Buscar" href="../search.html"><link rel="next" title="Projetos" href="../uso/projetos.html"><link rel="prev" title="Instalação e primeiro início" href="instalacao.html">
+        <link rel="canonical" href="https://www.nipscern.com/docs/sapho/inicio/tour-interface.html">
+        <link rel="prefetch" href="../_static/aurora.svg" as="image">
+
+    <link rel="shortcut icon" href="../_static/aurora.svg"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Tour pela interface - AURORA 6.3.2 — Manual completo</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/aurora.css?v=caf65c73" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #374151;
+  --color-brand-content: #365b78;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f5f7;
+  --color-sidebar-background: #f7f7f8;
+  --color-sidebar-background-border: #d9dde3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">AURORA 6.3.2 — Manual completo</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/aurora.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">AURORA 6.3.2 — Manual completo</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Primeiros passos</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/index.html">Conheça a AURORA e os fluxos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="o-que-e.html">O que é o SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instalacao.html">Instalação e primeiro início</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tour pela interface</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Projetos e ferramentas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../uso/projetos.html">Projetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/editor.html">Editor, abas e painéis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/terminais.html">Os terminais</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/source-control.html">Source Control e Git</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo Verilog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/verilog.html">Fluxo completo para projetos Verilog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/arquivos-verilog.html">Arquivos Verilog e Testbenches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/processador-sapho.html">Fluxo completo para processadores SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primeiro-projeto.html">Primeiro projeto: um filtro de média móvel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/processadores.html">Criar e configurar processadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/compilacao.html">Compilação: de C± a Verilog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">A linguagem C±</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/index.html">A linguagem C±: fundamentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/diretivas.html">Diretivas: configurando o processador no código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/tipos-operadores.html">Tipos, operadores e controle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/io-biblioteca.html">Entrada, saída e biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/avancado.html">Recursos avançados</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">O processador SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/processador.html">O processador SAPHO por dentro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/ponto-flutuante.html">O ponto flutuante do SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/instrucoes.html">O conjunto de instruções</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simular e analisar</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/simulacao.html">Simular com Icarus, Verilator ou cocotb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exemplos/galeria-testbenches.html">Galeria de projetos e testbenches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/ondas.html">Formas de onda: GTKWave e Surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluxos/prism.html">Visualizar e simular o RTL no PRISM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aurora Intelligence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ia/visao-geral.html">Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/provedores.html">Configurar o provedor de IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/ferramentas.html">Tarefas com a Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/mcp-cli.html">Usar Claude Code e ChatGPT via Codex CLI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuração e ajuda</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuracao/preferencias.html">Configurações do aplicativo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/diretivas.html">Referência de diretivas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/biblioteca.html">Referência da biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/formatos.html">Arquivos do projeto e backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/atalhos.html">Atalhos de teclado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/diagnostico.html">Solução de problemas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apêndices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossario.html">Glossário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobre/ecossistema.html">O ecossistema SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobre/escopo.html">Escopo, versão e método</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/inicio/tour-interface.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="tour-pela-interface">
+<h1>Tour pela interface<a class="headerlink" href="#tour-pela-interface" title="Link para este cabeçalho">¶</a></h1>
+<p>A janela da AURORA não tem a moldura padrão do Windows nem uma barra de menus tradicional. Toda a navegação vive em uma barra de título personalizada, no painel lateral da árvore de arquivos, no editor, nos terminais e na barra de status. Esta página apresenta cada região e o que esperar dela; o uso detalhado fica nas páginas dedicadas.</p>
+<figure class="align-center" id="fig-janela-principal">
+<a class="reference internal image-reference" href="../_images/aurora-interface-full-current.png"><img alt="Janela completa da AURORA com barra superior, árvore do projeto, editor, terminais e barra de status." src="../_images/aurora-interface-full-current.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 1 </span><span class="caption-text">As cinco regiões da janela principal: a barra superior, a árvore do projeto à esquerda, o editor ao centro, os terminais embaixo e a barra de status no rodapé.</span><a class="headerlink" href="#fig-janela-principal" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<p>Antes de percorrer cada uma, guarde o mapa geral:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 78.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Região</p></th>
+<th class="head"><p>Para que serve</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Barra superior</p></td>
+<td><p>Criar e abrir projetos, criar processadores, compilar, simular, abrir o PRISM, acionar a IA e as configurações</p></td>
+</tr>
+<tr class="row-odd"><td><p>Árvore lateral</p></td>
+<td><p>Abrir arquivos, alternar entre três visões do projeto e definir os papéis de <em>top-level</em> e <em>testbench</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Editor</p></td>
+<td><p>Escrever C±, Verilog, SystemVerilog, Python e arquivos auxiliares</p></td>
+</tr>
+<tr class="row-odd"><td><p>Terminais</p></td>
+<td><p>Ler as mensagens de cada etapa da cadeia, uma aba por etapa</p></td>
+</tr>
+<tr class="row-even"><td><p>Barra de status</p></td>
+<td><p>Conferir, antes de agir, qual processador está ativo e o que ainda falta</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>O fluxo normal começa na árvore ou no editor, continua por um botão da barra superior e produz mensagens nos terminais. Antes de executar uma ação, confira a barra de status para não compilar ou simular o arquivo errado.</p>
+<section id="a-barra-superior">
+<h2>A barra superior<a class="headerlink" href="#a-barra-superior" title="Link para este cabeçalho">¶</a></h2>
+<figure class="align-center" id="fig-toolbar">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-toolbar.png"><img alt="Barra superior da AURORA com todos os botões habilitados em um projeto aberto." src="../_images/aurora-pmu-toolbar.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 2 </span><span class="caption-text">A barra superior organiza-se em três zonas: identidade e projeto à esquerda, a cadeia do processador ao centro, apoios e controles de janela à direita.</span><a class="headerlink" href="#fig-toolbar" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<p>À esquerda ficam o ícone do SAPHO, o botão que mostra ou esconde a barra lateral e os botões <span class="guilabel">Novo Projeto</span> e <span class="guilabel">Abrir Projeto</span>.</p>
+<p>O centro concentra a cadeia do processador, disposta na ordem em que ela é usada. Vale ler a tabela abaixo uma vez com calma: ela responde à pergunta mais comum de quem está começando, que é por que um botão está apagado.</p>
+<div class="table-wrapper colwidths-given docutils container" id="tab-botoes">
+<table class="docutils align-default" id="tab-botoes">
+<caption><span class="caption-number">Tabela 1 </span><span class="caption-text">Botões da barra superior, na ordem em que aparecem</span><a class="headerlink" href="#tab-botoes" title="Link para esta tabela">¶</a></caption>
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 44.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Botão</p></th>
+<th class="head"><p>O que faz</p></th>
+<th class="head"><p>Quando fica disponível</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Hub de Processadores</span></p></td>
+<td><p>Abre o formulário que cria um processador SAPHO</p></td>
+<td><p>Com um projeto aberto</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Compilar C±</span></p></td>
+<td><p>Roda a cadeia YANC e gera o Verilog, as memórias e o <em>testbench</em></p></td>
+<td><p>Com um arquivo <code class="file docutils literal notranslate"><span class="pre">.cmm</span></code> aberto no editor</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Configurações de simulação do processador</span></p></td>
+<td><p>Ajusta <em>clock</em>, número de ciclos e exibição de vetores nas ondas</p></td>
+<td><p>Com um processador ativo</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Sintetizar Verilog</span></p></td>
+<td><p>Verifica sintaxe e elaboração dos arquivos Verilog</p></td>
+<td><p>Com <em>top-level</em> definido</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Abrir PRISM</span></p></td>
+<td><p>Sintetiza com o Yosys e abre o diagrama RTL</p></td>
+<td><p>Com <em>top-level</em> definido</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seletor de simulador</p></td>
+<td><p>Alterna entre Icarus Verilog e Verilator, para o aplicativo inteiro</p></td>
+<td><p>Sempre</p></td>
+</tr>
+<tr class="row-even"><td><p>Seletor de visualizador</p></td>
+<td><p>Alterna entre GTKWave e Surfer</p></td>
+<td><p>Sempre</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Analisar Verilog (forma de onda)</span></p></td>
+<td><p>Roda a simulação e abre o visualizador com o resultado</p></td>
+<td><p>Com <em>testbench</em> definido</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Execução rápida</span></p></td>
+<td><p>Simula sem gravar ondas, para quando só interessam as saídas</p></td>
+<td><p>Com <em>testbench</em> <code class="file docutils literal notranslate"><span class="pre">.py</span></code>, ou <code class="file docutils literal notranslate"><span class="pre">.v</span></code> com Verilator selecionado</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Teste do processador sintetizado</span></p></td>
+<td><p>Exercita apenas as portas de entrada e saída, como caixa-preta</p></td>
+<td><p>Com um processador ativo e <em>hardware</em> já gerado</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Configuração de ondas</span></p></td>
+<td><p>Escolhe quais sinais a simulação vai gravar</p></td>
+<td><p>Com um projeto aberto</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Cancelar</span></p></td>
+<td><p>Interrompe todos os processos em andamento, sem fechar a IDE</p></td>
+<td><p>Durante uma compilação ou simulação</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>À direita ficam os apoios: <span class="guilabel">Controle de Versão</span>, que abre o painel Dagr; <span class="guilabel">Configurações do Aurora</span>; <span class="guilabel">Assistente IA</span>, a estrela que abre a Aurora Intelligence; e os botões de minimizar, maximizar e fechar. Um duplo clique na área vazia da barra também maximiza ou restaura a janela.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Todo botão tem uma dica detalhada ao passar o mouse. Se as dicas atrapalharem depois que a interface ficar familiar, desligue-as em <span class="menuselection">Configurações do Aurora ‣ Geral</span>.</p>
+</div>
+</section>
+<section id="a-arvore-de-arquivos">
+<h2>A árvore de arquivos<a class="headerlink" href="#a-arvore-de-arquivos" title="Link para este cabeçalho">¶</a></h2>
+<p>À esquerda fica o painel da árvore, com o nome do projeto aberto junto ao rótulo. O mesmo painel abriga três visões do mesmo projeto, alternadas por um único botão no cabeçalho.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-tree-files.png"><img alt="Visão Arquivos, agrupada por processador." src="../_images/aurora-pmu-tree-files.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 3 </span><span class="caption-text"><strong>Arquivos</strong>, a visão de trabalho: agrupada por processador, com os Verilog separados entre sintetizáveis e <em>testbenches</em>.</span><a class="headerlink" href="#id1" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-tree-hierarchy.png"><img alt="Visão Hierarquia com a árvore de instâncias de módulos." src="../_images/aurora-pmu-tree-hierarchy.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 4 </span><span class="caption-text"><strong>Hierarquia</strong>, disponível após uma síntese: a árvore de instâncias de módulos como o Yosys a enxerga.</span><a class="headerlink" href="#id2" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-tree-folders.png"><img alt="Visão Pastas, um explorador de diretórios convencional." src="../_images/aurora-pmu-tree-folders.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 5 </span><span class="caption-text"><strong>Pastas</strong>, um explorador de diretórios completo, com menu de contexto para criar, renomear e excluir.</span><a class="headerlink" href="#id3" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Um clique em um arquivo o abre no editor como aba de visualização; um clique duplo fixa a aba. Nas pastas, o clique expande ou recolhe.</p>
+<p>O clique com o botão direito abre o menu de contexto, que é onde se atribuem os dois papéis mais importantes do projeto: <span class="guilabel">Definir como Top Level</span>, no módulo Verilog que integra o circuito, e <span class="guilabel">Marcar como Testbench</span>, no arquivo que estimula a simulação. Esses dois papéis são detalhados em <a class="reference internal" href="../uso/arquivos-verilog.html"><span class="doc">Arquivos Verilog e Testbenches</span></a>.</p>
+<p>O cabeçalho da árvore reúne ainda os botões de novo arquivo, atualização, busca nos arquivos (<kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">F</kbd>), abertura no explorador do sistema, <em>backup</em> do projeto em <code class="file docutils literal notranslate"><span class="pre">.zip</span></code>, recolhimento da árvore e fechamento do projeto.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A árvore aceita a importação de arquivos <code class="file docutils literal notranslate"><span class="pre">.v</span></code>, <code class="file docutils literal notranslate"><span class="pre">.sv</span></code>, <code class="file docutils literal notranslate"><span class="pre">.vh</span></code> e <em>testbenches</em> cocotb <code class="file docutils literal notranslate"><span class="pre">.py</span></code> por arrastar e soltar. Outros tipos são recusados com uma dica; arquivos <code class="file docutils literal notranslate"><span class="pre">.gtkw</span></code>, por exemplo, entram pelo seletor próprio da barra superior.</p>
+</div>
+</section>
+<section id="o-editor">
+<h2>O editor<a class="headerlink" href="#o-editor" title="Link para este cabeçalho">¶</a></h2>
+<p>O centro da janela pertence ao editor, construído sobre o Monaco, o mesmo motor do Visual Studio Code. Abas múltiplas, divisão em até três painéis, realce de sintaxe para C±, <em>assembly</em>, Verilog e SystemVerilog, diagnósticos em tempo real e formatação automática vêm de fábrica. A página <a class="reference internal" href="../uso/editor.html"><span class="doc">Editor, abas e painéis</span></a> é dedicada a ele.</p>
+</section>
+<section id="os-terminais">
+<h2>Os terminais<a class="headerlink" href="#os-terminais" title="Link para este cabeçalho">¶</a></h2>
+<p>A área inferior reúne seis terminais em abas. Cinco são consoles de saída, cada etapa da cadeia escrevendo no seu, o que torna previsível onde procurar cada mensagem. O sexto é um <em>shell</em> PowerShell interativo de verdade.</p>
+<figure class="align-center" id="fig-terminais">
+<a class="reference internal image-reference" href="../_images/aurora-terminals-tcmd.png"><img alt="Painel de terminais com a aba TCMM selecionada após uma compilação." src="../_images/aurora-terminals-tcmd.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 6 </span><span class="caption-text">Cada ação direciona a saída para o terminal correspondente, e a AURORA troca de aba sozinha conforme as etapas avançam.</span><a class="headerlink" href="#fig-terminais" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<p>Quem escreve onde: <strong>TCMM</strong> recebe o compilador C±; <strong>TASM</strong> recebe o montador, a geração do Verilog e os avisos de recurso instanciado; <strong>TVERI</strong> concentra o Icarus Verilog e o Yosys; <strong>TWAVE</strong> acompanha a simulação e a abertura dos visualizadores; <strong>THTEST</strong> é dedicado ao teste do processador sintetizado; e <strong>TCMD</strong> é o <em>shell</em> integrado. Detalhes em <a class="reference internal" href="../uso/terminais.html"><span class="doc">Os terminais</span></a>.</p>
+</section>
+<section id="a-barra-de-status">
+<h2>A barra de status<a class="headerlink" href="#a-barra-de-status" title="Link para este cabeçalho">¶</a></h2>
+<figure class="align-center" id="fig-statusbar">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-statusbar.png"><img alt="Barra de status mostrando processador ativo, top-level, testbench e simulador selecionado." src="../_images/aurora-pmu-statusbar.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 7 </span><span class="caption-text">A barra de status resume, em uma linha, tudo o que a próxima compilação ou simulação vai usar.</span><a class="headerlink" href="#fig-statusbar" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<p>Da esquerda para a direita: o indicador Pronto ou Não Pronto, cujo ponto verde ou vermelho resume se o projeto está em condições de compilar; o nome do processador ativo, deduzido do arquivo <code class="file docutils literal notranslate"><span class="pre">.cmm</span></code> em foco no editor; ao centro, o botão <span class="guilabel">Iniciar Compilação</span>; e à direita os avisos de estrutura, o motor de simulação selecionado, a posição do cursor e o indicador do GitHub.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Consulte a barra de status antes de compilar, simular ou abrir o PRISM. A maior parte dos “não funcionou” de quem está começando é, na verdade, o arquivo errado em foco no editor.</p>
+</div>
+</section>
+<section id="paleta-de-comandos-e-notificacoes">
+<h2>Paleta de comandos e notificações<a class="headerlink" href="#paleta-de-comandos-e-notificacoes" title="Link para este cabeçalho">¶</a></h2>
+<p>A paleta de comandos, aberta com <kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd>, oferece busca difusa sobre os comandos da IDE, organizados em grupos. É o caminho mais curto quando se sabe o nome da ação, mas não onde fica o botão.</p>
+<p>Eventos como a criação de arquivos ou a troca de simulador aparecem como notificações discretas no canto da janela.</p>
+</section>
+<section id="quando-um-botao-estiver-desabilitado">
+<h2>Quando um botão estiver desabilitado<a class="headerlink" href="#quando-um-botao-estiver-desabilitado" title="Link para este cabeçalho">¶</a></h2>
+<p>Verifique nesta ordem, que é a ordem das dependências:</p>
+<ol class="arabic simple">
+<li><p>há um projeto aberto;</p></li>
+<li><p>o arquivo certo está aberto e em foco no editor;</p></li>
+<li><p>o processador ativo, na barra de status, é o que você quer compilar;</p></li>
+<li><p>o <em>top-level</em> foi definido, se a ação exige síntese;</p></li>
+<li><p>o <em>testbench</em> foi definido, se a ação exige simulação;</p></li>
+<li><p>nenhuma execução anterior continua em andamento.</p></li>
+</ol>
+<p>Na quase totalidade dos casos, um botão apagado significa que falta uma dessas seleções. Salve o arquivo ativo e aguarde a conclusão de qualquer operação anterior antes de tentar de novo.</p>
+</section>
+<section id="o-proximo-passo">
+<h2>O próximo passo<a class="headerlink" href="#o-proximo-passo" title="Link para este cabeçalho">¶</a></h2>
+<p>Agora que a janela não é mais estranha, construa algo nela: <a class="reference internal" href="primeiro-projeto.html"><span class="doc">Primeiro projeto: um filtro de média móvel</span></a>.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../uso/projetos.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Projetos</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="instalacao.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Instalação e primeiro início</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, NIPSCERN
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tour pela interface</a><ul>
+<li><a class="reference internal" href="#a-barra-superior">A barra superior</a></li>
+<li><a class="reference internal" href="#a-arvore-de-arquivos">A árvore de arquivos</a></li>
+<li><a class="reference internal" href="#o-editor">O editor</a></li>
+<li><a class="reference internal" href="#os-terminais">Os terminais</a></li>
+<li><a class="reference internal" href="#a-barra-de-status">A barra de status</a></li>
+<li><a class="reference internal" href="#paleta-de-comandos-e-notificacoes">Paleta de comandos e notificações</a></li>
+<li><a class="reference internal" href="#quando-um-botao-estiver-desabilitado">Quando um botão estiver desabilitado</a></li>
+<li><a class="reference internal" href="#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=48a2e965"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e9ac5903"></script>
+    <script src="../_static/translations.js?v=71a39b36"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/aurora.js?v=3107fa4b"></script>
+    </body>
+</html>

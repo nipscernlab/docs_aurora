@@ -1,0 +1,1428 @@
+<!doctype html>
+<html class="no-js" lang="pt-BR" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Índice" href="genindex.html"><link rel="search" title="Buscar" href="search.html"><link rel="next" title="Escolha o fluxo de trabalho" href="fluxos/index.html">
+        <link rel="canonical" href="https://www.nipscern.com/docs/sapho/index.html">
+        <link rel="prefetch" href="_static/aurora.svg" as="image">
+
+    <link rel="shortcut icon" href="_static/aurora.svg"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>AURORA 6.3.2 — Manual completo</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/css/aurora.css?v=caf65c73" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #374151;
+  --color-brand-content: #365b78;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f5f7;
+  --color-sidebar-background: #f7f7f8;
+  --color-sidebar-background-border: #d9dde3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">AURORA 6.3.2 — Manual completo</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/aurora.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">AURORA 6.3.2 — Manual completo</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Primeiros passos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/index.html">Conheça a AURORA e os fluxos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/o-que-e.html">O que é o SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/instalacao.html">Instalação e primeiro início</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/tour-interface.html">Tour pela interface</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Projetos e ferramentas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="uso/projetos.html">Projetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso/editor.html">Editor, abas e painéis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso/terminais.html">Os terminais</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso/source-control.html">Source Control e Git</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo Verilog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/verilog.html">Fluxo completo para projetos Verilog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso/arquivos-verilog.html">Arquivos Verilog e Testbenches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/processador-sapho.html">Fluxo completo para processadores SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/primeiro-projeto.html">Primeiro projeto: um filtro de média móvel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uso/processadores.html">Criar e configurar processadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/compilacao.html">Compilação: de C± a Verilog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">A linguagem C±</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/index.html">A linguagem C±: fundamentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/diretivas.html">Diretivas: configurando o processador no código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/tipos-operadores.html">Tipos, operadores e controle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/io-biblioteca.html">Entrada, saída e biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/avancado.html">Recursos avançados</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">O processador SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/processador.html">O processador SAPHO por dentro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/ponto-flutuante.html">O ponto flutuante do SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/instrucoes.html">O conjunto de instruções</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simular e analisar</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/simulacao.html">Simular com Icarus, Verilator ou cocotb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemplos/galeria-testbenches.html">Galeria de projetos e testbenches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/ondas.html">Formas de onda: GTKWave e Surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/prism.html">Visualizar e simular o RTL no PRISM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aurora Intelligence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ia/visao-geral.html">Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ia/provedores.html">Configurar o provedor de IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ia/ferramentas.html">Tarefas com a Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ia/mcp-cli.html">Usar Claude Code e ChatGPT via Codex CLI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuração e ajuda</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuracao/preferencias.html">Configurações do aplicativo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/diretivas.html">Referência de diretivas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/biblioteca.html">Referência da biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/formatos.html">Arquivos do projeto e backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/atalhos.html">Atalhos de teclado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/diagnostico.html">Solução de problemas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apêndices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossario.html">Glossário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sobre/ecossistema.html">O ecossistema SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sobre/escopo.html">Escopo, versão e método</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/index.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="aurora-manual-de-uso">
+<h1>AURORA — manual de uso<a class="headerlink" href="#aurora-manual-de-uso" title="Link para este cabeçalho">¶</a></h1>
+<div class="hero">
+<span class="version-pill">Versão documentada: 6.3.2</span>
+<p>Este manual ensina a usar a AURORA do zero: instalar, criar um projeto, gerar um processador SAPHO sob medida, escrever o algoritmo em C±, compilar, simular e olhar o circuito por dentro. Nenhum conhecimento prévio da plataforma é assumido. Alguma familiaridade com a linguagem C e com a ideia geral de circuitos digitais torna a leitura mais confortável, mas não é pré-requisito.</p>
+<div class="hero-actions">
+<p><a class="pdf-download-button" href="_static/downloads/AURORA-Manual-6.3.2.pdf" download="AURORA-Manual-6.3.2.pdf"><span class="pdf-download-title">Baixar manual em PDF</span><span class="pdf-download-meta">Documento completo em formato A4</span></a></p>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este manual descreve a AURORA 6.3.2 para Windows 10 e 11. Para a versão exata, o commit e o método usado na apuração, veja <a class="reference internal" href="sobre/escopo.html"><span class="doc">Escopo, versão e método</span></a>.</p>
+</div>
+<section id="por-onde-comecar">
+<h2>Por onde começar<a class="headerlink" href="#por-onde-comecar" title="Link para este cabeçalho">¶</a></h2>
+<p>Se esta é a sua primeira vez, siga a trilha na ordem: conheça <a class="reference internal" href="fluxos/index.html"><span class="doc">a AURORA e seus fluxos</span></a>, entenda <a class="reference internal" href="inicio/o-que-e.html"><span class="doc">o que é o SAPHO</span></a>, <a class="reference internal" href="inicio/instalacao.html"><span class="doc">instale</span></a>, <a class="reference internal" href="inicio/tour-interface.html"><span class="doc">conheça a janela</span></a> e faça o <a class="reference internal" href="inicio/primeiro-projeto.html"><span class="doc">primeiro projeto</span></a>, um filtro de média móvel construído do começo ao fim. São cerca de trinta minutos até ver o seu próprio processador rodando na forma de onda.</p>
+<p>Se você já tem um projeto em andamento, use o menu lateral para ir direto à tarefa. As páginas de referência reúnem diretivas, biblioteca, atalhos e sintomas de falha para consulta rápida, sem repetir o tutorial.</p>
+<section id="comece-aqui">
+<h3>Comece aqui<a class="headerlink" href="#comece-aqui" title="Link para este cabeçalho">¶</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Conheça a AURORA e os fluxos</div>
+<p class="sd-card-text">Entenda o papel da AURORA e escolha entre o fluxo Verilog e o fluxo SAPHO.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="fluxos/index.html"><span class="doc">Escolha o fluxo de trabalho</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Instalação e primeiro início</div>
+<p class="sd-card-text">Baixe, instale e abra a AURORA pela primeira vez no Windows.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="inicio/instalacao.html"><span class="doc">Instalação e primeiro início</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Tour pela interface</div>
+<p class="sd-card-text">Localize a barra de ferramentas, a árvore, o editor, os terminais e a barra de status.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="inicio/tour-interface.html"><span class="doc">Tour pela interface</span></a></div>
+</div>
+</div>
+</div>
+</section>
+<section id="escolha-seu-fluxo">
+<h3>Escolha seu fluxo<a class="headerlink" href="#escolha-seu-fluxo" title="Link para este cabeçalho">¶</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Fluxo Verilog</div>
+<p class="sd-card-text">Crie ou importe RTL, defina o Top Level, simule e analise o circuito sem gerar um processador.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="fluxos/verilog.html"><span class="doc">Fluxo completo para projetos Verilog</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Fluxo SAPHO</div>
+<p class="sd-card-text">Comece pelo primeiro projeto e percorra da criação do processador à forma de onda.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="inicio/primeiro-projeto.html"><span class="doc">Primeiro projeto: um filtro de média móvel</span></a></div>
+</div>
+</div>
+</div>
+</section>
+<section id="consulte-por-tarefa">
+<h3>Consulte por tarefa<a class="headerlink" href="#consulte-por-tarefa" title="Link para este cabeçalho">¶</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Projetos e arquivos</div>
+<p class="sd-card-text">Crie, abra, organize e preserve os arquivos de um projeto da AURORA.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="uso/projetos.html"><span class="doc">Projetos</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Linguagem C±</div>
+<p class="sd-card-text">Consulte tipos, operadores, diretivas, entrada, saída e recursos da linguagem.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="linguagem/index.html"><span class="doc">A linguagem C±: fundamentos</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Processador SAPHO</div>
+<p class="sd-card-text">Entenda a arquitetura gerada e o efeito de cada parâmetro do processador.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="arquitetura/processador.html"><span class="doc">O processador SAPHO por dentro</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Simulação e análise</div>
+<p class="sd-card-text">Escolha Icarus, Verilator ou cocotb e siga para formas de onda e PRISM.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="fluxos/simulacao.html"><span class="doc">Simular com Icarus, Verilator ou cocotb</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Aurora Intelligence</div>
+<p class="sd-card-text">Configure a assistente e conheça as ações disponíveis sobre o projeto.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="ia/visao-geral.html"><span class="doc">Aurora Intelligence</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Solução de problemas</div>
+<p class="sd-card-text">Diagnostique falhas de projeto, compilação, simulação, PRISM e IA.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="referencia/diagnostico.html"><span class="doc">Solução de problemas</span></a></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="as-ferramentas-que-voce-vai-usar">
+<h2>As ferramentas que você vai usar<a class="headerlink" href="#as-ferramentas-que-voce-vai-usar" title="Link para este cabeçalho">¶</a></h2>
+<p>A AURORA não substitui as ferramentas consagradas de projeto digital: ela as reúne e as aciona por você. Todas acompanham a instalação, e nenhuma exige licença.</p>
+<div class="tool-strip">
+  <figure><img src="_static/assets/icons/sapho_aurora_icon.svg" alt="AURORA"><figcaption>AURORA<br>a IDE</figcaption></figure>
+  <figure><img src="_static/assets/icons/yanc.svg" alt="YANC"><figcaption>YANC<br>compiladores</figcaption></figure>
+  <figure><img src="_static/assets/icons/Icarus_Verilog_logo.png" alt="Icarus Verilog"><figcaption>Icarus<br>simulação</figcaption></figure>
+  <figure><img src="_static/assets/icons/Verilator_logo.png" alt="Verilator"><figcaption>Verilator<br>simulação rápida</figcaption></figure>
+  <figure><img src="_static/assets/icons/gtkwave.svg" alt="GTKWave"><figcaption>GTKWave<br>formas de onda</figcaption></figure>
+  <figure><img src="_static/assets/icons/surfer.svg" alt="Surfer"><figcaption>Surfer<br>formas de onda</figcaption></figure>
+  <figure><img src="_static/assets/icons/yosys.svg" alt="Yosys"><figcaption>Yosys<br>síntese</figcaption></figure>
+  <figure><img src="_static/assets/icons/aurora_prism.svg" alt="PRISM"><figcaption>PRISM<br>visualizador RTL</figcaption></figure>
+  <figure><img src="_static/assets/icons/python.svg" alt="cocotb"><figcaption>cocotb<br>testes em Python</figcaption></figure>
+</div></section>
+<section id="o-caminho-completo-em-um-diagrama">
+<h2>O caminho completo, em um diagrama<a class="headerlink" href="#o-caminho-completo-em-um-diagrama" title="Link para este cabeçalho">¶</a></h2>
+<p>O percurso abaixo é o mesmo em todo projeto SAPHO, e este manual o segue nessa ordem. Você escreve apenas o bloco à esquerda; a AURORA cuida do resto.</p>
+<pre  class="mermaid">
+        flowchart LR
+  CMM[&quot;Algoritmo C±&lt;br&gt;(.cmm)&quot;] --&gt; YANC[&quot;Cadeia YANC&lt;br&gt;cmmcomp · appcomp · asmcomp&quot;]
+  YANC --&gt; HW[&quot;Processador em Verilog&lt;br&gt;+ memórias .mif&quot;]
+  YANC --&gt; TB[&quot;Testbench gerado&quot;]
+  HW --&gt; SIM[&quot;Simulação&lt;br&gt;Icarus ou Verilator&quot;]
+  TB --&gt; SIM
+  SIM --&gt; WAVE[&quot;Formas de onda&lt;br&gt;GTKWave ou Surfer&quot;]
+  HW --&gt; PRISM[&quot;Diagrama RTL&lt;br&gt;PRISM&quot;]
+  HW --&gt; FPGA[&quot;Síntese em FPGA&lt;br&gt;fora da AURORA&quot;]
+    </pre><p>A única etapa que acontece fora da AURORA é a última: levar o Verilog e as imagens de memória à ferramenta do fabricante do FPGA, como o Quartus ou o Vivado, para a gravação física.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Primeiros passos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/index.html">Conheça a AURORA e os fluxos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/index.html#os-fluxos-disponiveis">Os fluxos disponíveis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/index.html#comparacao-rapida">Comparação rápida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/index.html#etapas-compartilhadas">Etapas compartilhadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/index.html#qual-fluxo-escolher">Qual fluxo escolher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/o-que-e.html">O que é o SAPHO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#o-que-e-um-soft-processor">O que é um soft-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#as-pecas-da-plataforma">As peças da plataforma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#o-fluxo-de-trabalho-de-ponta-a-ponta">O fluxo de trabalho de ponta a ponta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#um-exemplo-condutor">Um exemplo condutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#quem-faz-a-plataforma">Quem faz a plataforma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/o-que-e.html#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/instalacao.html">Instalação e primeiro início</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#antes-de-instalar">Antes de instalar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#baixar-e-instalar">Baixar e instalar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#o-que-e-instalado-e-onde">O que é instalado, e onde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#primeira-execucao">Primeira execução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#atualizacoes">Atualizações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#se-a-aurora-nao-iniciar">Se a AURORA não iniciar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#desinstalacao">Desinstalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/instalacao.html#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/tour-interface.html">Tour pela interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#a-barra-superior">A barra superior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#a-arvore-de-arquivos">A árvore de arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#o-editor">O editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#os-terminais">Os terminais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#a-barra-de-status">A barra de status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#paleta-de-comandos-e-notificacoes">Paleta de comandos e notificações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#quando-um-botao-estiver-desabilitado">Quando um botão estiver desabilitado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/tour-interface.html#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Projetos e ferramentas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="uso/projetos.html">Projetos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#criar">Criar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#abrir">Abrir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#o-que-e-o-arquivo-spf">O que é o arquivo <code class="docutils literal notranslate"><span class="pre">.spf</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#navegar-pela-pasta-do-projeto">Navegar pela pasta do projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#filtrar-a-visualizacao-pastas-com-inv">Filtrar a visualização Pastas com <code class="docutils literal notranslate"><span class="pre">.inv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#importar-arquivos">Importar arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#fechar-e-reabrir">Fechar e reabrir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#backup">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#renomear-ou-excluir">Renomear ou excluir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/projetos.html#versionamento">Versionamento</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uso/editor.html">Editor, abas e painéis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#abrir-arquivos">Abrir arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#abas">Abas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#dividir-o-editor">Dividir o editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#localizar-e-navegar">Localizar e navegar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#salvar">Salvar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#usar-a-selecao-com-ia">Usar a seleção com IA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/editor.html#mudancas-externas">Mudanças externas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uso/terminais.html">Os terminais</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#quem-escreve-onde">Quem escreve onde</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#cartoes-filtros-e-o-modo-verboso">Cartões, filtros e o modo verboso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#ler-os-avisos-de-recurso-instanciado">Ler os avisos de recurso instanciado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#o-tcmd-o-shell-integrado">O TCMD, o shell integrado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#uma-decisao-de-seguranca-que-explica-um-limite">Uma decisão de segurança que explica um limite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#exportar-para-relatar-um-problema">Exportar para relatar um problema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/terminais.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uso/source-control.html">Source Control e Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#comecar-com-o-projeto-aberto">Começar com o projeto aberto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#alteracoes-e-commits">Alterações e commits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#sincronizacao-e-branches">Sincronização e branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#conectar-e-clonar-do-github">Conectar e clonar do GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#usar-inv-sem-alterar-o-git">Usar <code class="docutils literal notranslate"><span class="pre">.inv</span></code> sem alterar o Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/source-control.html#cuidados">Cuidados</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Fluxo Verilog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/verilog.html">Fluxo completo para projetos Verilog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#criar-ou-abrir-o-projeto">1. Criar ou abrir o projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#adicionar-os-modulos-rtl">2. Adicionar os módulos RTL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#definir-o-top-level">3. Definir o Top Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#adicionar-o-testbench">4. Adicionar o testbench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#validar-o-verilog">5. Validar o Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#simular">6. Simular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#analisar-formas-de-onda">7. Analisar formas de onda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#visualizar-no-prism">8. Visualizar no PRISM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/verilog.html#resultado-esperado">Resultado esperado</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uso/arquivos-verilog.html">Arquivos Verilog e Testbenches</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#tipos-de-arquivo">Tipos de arquivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#adicionar-arquivos">Adicionar arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#definir-o-top-level">Definir o Top Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#definir-o-testbench-top">Definir o Testbench Top</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#usar-a-vista-de-hierarquia">Usar a vista de hierarquia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#corrigir-arquivos-ausentes">Corrigir arquivos ausentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/arquivos-verilog.html#evitar-erros-comuns">Evitar erros comuns</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Fluxo SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/processador-sapho.html">Fluxo completo para processadores SAPHO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#o-caminho-em-uma-olhada">O caminho em uma olhada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#criar-ou-abrir-o-projeto">1. Criar ou abrir o projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#criar-o-processador">2. Criar o processador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#escrever-o-algoritmo-c">3. Escrever o algoritmo C±</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#gerar-o-hardware">4. Gerar o hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#definir-top-level-e-testbench">5. Definir top-level e testbench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#escolher-a-forma-de-execucao">6. Escolher a forma de execução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#conferir-entradas-e-saidas">7. Conferir entradas e saídas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#analisar-o-hardware-gerado">8. Analisar o hardware gerado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#resultado-esperado">Resultado esperado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/processador-sapho.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inicio/primeiro-projeto.html">Primeiro projeto: um filtro de média móvel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-1-criar-o-projeto">Passo 1: criar o projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-2-criar-o-processador">Passo 2: criar o processador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-3-escrever-o-algoritmo">Passo 3: escrever o algoritmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-4-compilar">Passo 4: compilar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-5-preparar-o-estimulo-e-simular">Passo 5: preparar o estímulo e simular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-6-ler-a-forma-de-onda">Passo 6: ler a forma de onda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#passo-7-ver-o-circuito-por-dentro">Passo 7: ver o circuito por dentro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#o-que-voce-aprendeu">O que você aprendeu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inicio/primeiro-projeto.html#para-onde-ir-agora">Para onde ir agora</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uso/processadores.html">Criar e configurar processadores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#o-hub-de-processadores">O Hub de Processadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#o-atalho-cmm">O atalho <code class="docutils literal notranslate"><span class="pre">$cmm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#o-que-e-gerado">O que é gerado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#o-processador-ativo">O processador ativo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#configuracoes-de-simulacao">Configurações de simulação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#gerar-o-hardware">Gerar o hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#testar-o-processador-isoladamente">Testar o processador isoladamente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#renomear-e-excluir">Renomear e excluir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uso/processadores.html#varios-processadores-no-mesmo-projeto">Vários processadores no mesmo projeto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/compilacao.html">Compilação: de C± a Verilog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#o-pipeline-do-yanc-em-tres-estagios">O pipeline do YANC em três estágios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#os-botoes-de-compilacao">Os botões de compilação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#antes-de-clicar">Antes de clicar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#onde-cada-artefato-aparece">Onde cada artefato aparece</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#validar-um-projeto-verilog">Validar um projeto Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#acoes-que-preparam-as-suas-dependencias">Ações que preparam as suas dependências</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#interromper-uma-execucao">Interromper uma execução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#uma-decisao-de-seguranca">Uma decisão de segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#erros-comuns">Erros comuns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/compilacao.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">A linguagem C±</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/index.html">A linguagem C±: fundamentos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#a-estrutura-de-um-programa">A estrutura de um programa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#o-que-ler-primeiro">O que ler primeiro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#um-resumo-de-uma-pagina">Um resumo de uma página</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#onde-o-arquivo-vive">Onde o arquivo vive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#constantes-com-define">Constantes com <code class="docutils literal notranslate"><span class="pre">#define</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/index.html#e-se-eu-precisar-do-que-a-c-nao-tem">E se eu precisar do que a C± não tem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/diretivas.html">Diretivas: configurando o processador no código</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#as-diretivas-de-configuracao">As diretivas de configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#como-escolher-cada-valor">Como escolher cada valor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#as-diretivas-comportamentais">As diretivas comportamentais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#onde-as-diretivas-aparecem-depois">Onde as diretivas aparecem depois</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#erros-comuns-com-diretivas">Erros comuns com diretivas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/diretivas.html#referencia-rapida">Referência rápida</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/tipos-operadores.html">Tipos, operadores e controle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#os-quatro-tipos">Os quatro tipos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#operadores">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#estruturas-de-controle">Estruturas de controle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#funcoes">Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#vetores">Vetores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#variaveis-e-escopo">Variáveis e escopo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/tipos-operadores.html#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/io-biblioteca.html">Entrada, saída e biblioteca padrão</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#as-portas-de-entrada-e-saida">As portas de entrada e saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#funcoes-especiais">Funções especiais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#funcoes-nao-lineares-e-de-arredondamento">Funções não lineares e de arredondamento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#funcoes-para-complexos">Funções para complexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#algebra-linear-em-notacao-de-dirac">Álgebra linear em notação de Dirac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#referencia-rapida">Referência rápida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/io-biblioteca.html#o-proximo-passo">O próximo passo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linguagem/avancado.html">Recursos avançados</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#interrupcao-praca">Interrupção: <code class="docutils literal notranslate"><span class="pre">#PRACA</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#sincronizacao-com-o-hardware-toaqui">Sincronização com o hardware: <code class="docutils literal notranslate"><span class="pre">#TOAQUI</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#fft-e-o-enderecamento-bit-reverso">FFT e o endereçamento bit-reverso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#quanto-custa-cada-construcao">Quanto custa cada construção</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#o-caminho-c">O caminho C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#as-mensagens-do-compilador">As mensagens do compilador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linguagem/avancado.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">O processador SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/processador.html">O processador SAPHO por dentro</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#visao-geral">Visão geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#o-caminho-de-dados">O caminho de dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#os-modulos-gerados">Os módulos gerados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#os-parametros-fundamentais">Os parâmetros fundamentais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#entrada-saida-e-o-mundo-externo">Entrada, saída e o mundo externo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#por-que-nao-ha-recursao">Por que não há recursão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#um-processador-por-tarefa">Um processador por tarefa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/processador.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/ponto-flutuante.html">O ponto flutuante do SAPHO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#o-formato">O formato</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#por-que-nao-ieee-754">Por que não IEEE 754</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#o-que-esperar-em-precisao">O que esperar em precisão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#na-pratica-dentro-do-programa">Na prática, dentro do programa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#numeros-complexos">Números complexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#quando-o-float-nao-vale-a-pena">Quando o float não vale a pena</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/ponto-flutuante.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arquitetura/instrucoes.html">O conjunto de instruções</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#como-o-conjunto-e-organizado">Como o conjunto é organizado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#convencoes-de-prefixo-e-sufixo">Convenções de prefixo e sufixo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#as-familias">As famílias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#lendo-a-trilha-na-forma-de-onda">Lendo a trilha na forma de onda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#uma-leitura-comentada">Uma leitura comentada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arquitetura/instrucoes.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Simular e analisar</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/simulacao.html">Simular com Icarus, Verilator ou cocotb</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#preparar-a-simulacao">Preparar a simulação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#escolher-o-simulador">Escolher o simulador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#analise-de-forma-de-onda-ou-execucao-rapida">Análise de forma de onda ou execução rápida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#testbench-verilog">Testbench Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#testbench-cocotb">Testbench cocotb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#confirmar-o-resultado">Confirmar o resultado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/simulacao.html#problemas-comuns">Problemas comuns</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exemplos/galeria-testbenches.html">Galeria de projetos e testbenches</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#como-usar-os-exemplos">Como usar os exemplos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#porta-and-em-verilog">Porta AND em Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#contador-de-4-bits-em-verilog">Contador de 4 bits em Verilog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#soma-de-constantes-em-c">Soma de constantes em C±</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#sequencia-de-quadrados-em-c">Sequência de quadrados em C±</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exemplos/galeria-testbenches.html#escolher-entre-os-dois-tipos-de-testbench">Escolher entre os dois tipos de testbench</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/ondas.html">Formas de onda: GTKWave e Surfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#o-que-a-aurora-prepara">O que a AURORA prepara</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#gerar-uma-forma-de-onda">Gerar uma forma de onda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#escolher-os-sinais-gravados">Escolher os sinais gravados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#o-seletor-de-layout">O seletor de layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#gtkwave">GTKWave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#surfer">Surfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#se-o-visualizador-abrir-sem-sinais">Se o visualizador abrir sem sinais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#se-o-arquivo-de-ondas-nao-for-encontrado">Se o arquivo de ondas não for encontrado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/ondas.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fluxos/prism.html">Visualizar e simular o RTL no PRISM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#o-que-acontece-quando-voce-clica">O que acontece quando você clica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#abrir-o-prism">Abrir o PRISM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#projeto-verilog-puro">Projeto Verilog puro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#processador-sapho">Processador SAPHO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#navegar-no-diagrama">Navegar no diagrama</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#simulacao-interativa">Simulação interativa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#o-que-o-prism-confirma">O que o PRISM confirma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fluxos/prism.html#quando-o-prism-falhar">Quando o PRISM falhar</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Aurora Intelligence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ia/visao-geral.html">Aurora Intelligence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#o-que-a-distingue-de-uma-assistente-generica">O que a distingue de uma assistente genérica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#como-ela-funciona-por-dentro">Como ela funciona por dentro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#abrir-e-usar-o-painel">Abrir e usar o painel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#para-que-ela-e-boa-no-fluxo-sapho">Para que ela é boa no fluxo SAPHO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#como-pedir-bem">Como pedir bem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#um-fluxo-de-trabalho-seguro">Um fluxo de trabalho seguro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#conversas-e-disponibilidade">Conversas e disponibilidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#privacidade">Privacidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/visao-geral.html#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ia/provedores.html">Configurar o provedor de IA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#escolher-uma-opcao">Escolher uma opção</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#provedor-por-api">Provedor por API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#ollama">Ollama</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#claude-code">Claude Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#chatgpt-via-codex-cli">ChatGPT via Codex CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/provedores.html#se-o-teste-falhar">Se o teste falhar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ia/ferramentas.html">Tarefas com a Aurora Intelligence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#entender-o-projeto">Entender o projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#corrigir-compilacao">Corrigir compilação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#editar-com-seguranca">Editar com segurança</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#trabalhar-com-processadores">Trabalhar com processadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#simular-e-analisar-ondas">Simular e analisar ondas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#organizar-arquivos">Organizar arquivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/ferramentas.html#boas-praticas">Boas práticas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ia/mcp-cli.html">Usar Claude Code e ChatGPT via Codex CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ia/mcp-cli.html#como-a-aurora-encontra-os-clis">Como a AURORA encontra os CLIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/mcp-cli.html#preparar-o-claude-code">Preparar o Claude Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/mcp-cli.html#preparar-o-chatgpt-via-codex-cli">Preparar o ChatGPT via Codex CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/mcp-cli.html#durante-a-conversa">Durante a conversa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ia/mcp-cli.html#problemas-comuns">Problemas comuns</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Configuração e ajuda</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuracao/preferencias.html">Configurações do aplicativo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#geral">Geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#aparencia">Aparência</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#terminal">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#atalhos">Atalhos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#ai-assistant">AI Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#about-e-atualizacao">About e atualização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuracao/preferencias.html#zoom-e-janela">Zoom e janela</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/diretivas.html">Referência de diretivas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diretivas.html#diretivas-de-configuracao">Diretivas de configuração</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diretivas.html#diretivas-comportamentais">Diretivas comportamentais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diretivas.html#pre-processador">Pré-processador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diretivas.html#a-restricao-estrutural">A restrição estrutural</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/biblioteca.html">Referência da biblioteca padrão</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#entrada-e-saida">Entrada e saída</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#funcoes-especiais">Funções especiais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#nao-lineares-e-arredondamento">Não lineares e arredondamento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#complexos">Complexos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#notacao-de-dirac">Notação de Dirac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#operadores">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/biblioteca.html#palavras-chave">Palavras-chave</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/formatos.html">Arquivos do projeto e backup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#o-que-deve-ser-preservado">O que deve ser preservado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#mover-um-projeto">Mover um projeto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#o-que-nao-editar-manualmente">O que não editar manualmente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#fazer-backup">Fazer backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#arquivo-inv">Arquivo <code class="docutils literal notranslate"><span class="pre">.inv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#layouts-de-ondas">Layouts de ondas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/formatos.html#verificar-um-backup">Verificar um backup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/atalhos.html">Atalhos de teclado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#arquivos-e-abas">Arquivos e abas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#navegacao-e-comandos">Navegação e comandos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#edicao">Edição</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#ferramentas-de-linguagem">Ferramentas de linguagem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#configuracao-de-ondas">Configuração de ondas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/atalhos.html#redefinir-um-atalho">Redefinir um atalho</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia/diagnostico.html">Solução de problemas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#comece-por-aqui">Comece por aqui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#interface">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#compilacao">Compilação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#simulacao-e-ondas">Simulação e ondas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#prism">PRISM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#aurora-intelligence">Aurora Intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referencia/diagnostico.html#pedir-suporte">Pedir suporte</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Apêndices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossario.html">Glossário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sobre/ecossistema.html">O ecossistema SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sobre/escopo.html">Escopo, versão e método</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="fluxos/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Escolha o fluxo de trabalho</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, NIPSCERN
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">AURORA — manual de uso</a><ul>
+<li><a class="reference internal" href="#por-onde-comecar">Por onde começar</a><ul>
+<li><a class="reference internal" href="#comece-aqui">Comece aqui</a></li>
+<li><a class="reference internal" href="#escolha-seu-fluxo">Escolha seu fluxo</a></li>
+<li><a class="reference internal" href="#consulte-por-tarefa">Consulte por tarefa</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#as-ferramentas-que-voce-vai-usar">As ferramentas que você vai usar</a></li>
+<li><a class="reference internal" href="#o-caminho-completo-em-um-diagrama">O caminho completo, em um diagrama</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=48a2e965"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=e9ac5903"></script>
+    <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="_static/js/aurora.js?v=3107fa4b"></script>
+    </body>
+</html>

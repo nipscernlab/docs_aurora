@@ -1,0 +1,1009 @@
+<!doctype html>
+<html class="no-js" lang="pt-BR" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Índice" href="../genindex.html"><link rel="search" title="Buscar" href="../search.html"><link rel="next" title="Primeiro projeto: um filtro de média móvel" href="../inicio/primeiro-projeto.html"><link rel="prev" title="Arquivos Verilog e Testbenches" href="../uso/arquivos-verilog.html">
+        <link rel="canonical" href="https://www.nipscern.com/docs/sapho/fluxos/processador-sapho.html">
+        <link rel="prefetch" href="../_static/aurora.svg" as="image">
+
+    <link rel="shortcut icon" href="../_static/aurora.svg"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Fluxo completo para processadores SAPHO - AURORA 6.3.2 — Manual completo</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/aurora.css?v=caf65c73" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #374151;
+  --color-brand-content: #365b78;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f5f7;
+  --color-sidebar-background: #f7f7f8;
+  --color-sidebar-background-border: #d9dde3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #d1d5db;
+  --color-brand-content: #aebdca;
+  --color-background-primary: #111318;
+  --color-background-secondary: #181b21;
+  --color-sidebar-background: #15181d;
+  --color-sidebar-background-border: #2a2f38;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">AURORA 6.3.2 — Manual completo</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/aurora.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">AURORA 6.3.2 — Manual completo</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Primeiros passos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Conheça a AURORA e os fluxos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inicio/o-que-e.html">O que é o SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inicio/instalacao.html">Instalação e primeiro início</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inicio/tour-interface.html">Tour pela interface</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Projetos e ferramentas</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../uso/projetos.html">Projetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/editor.html">Editor, abas e painéis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/terminais.html">Os terminais</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/source-control.html">Source Control e Git</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo Verilog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="verilog.html">Fluxo completo para projetos Verilog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/arquivos-verilog.html">Arquivos Verilog e Testbenches</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Fluxo SAPHO</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Fluxo completo para processadores SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inicio/primeiro-projeto.html">Primeiro projeto: um filtro de média móvel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uso/processadores.html">Criar e configurar processadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compilacao.html">Compilação: de C± a Verilog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">A linguagem C±</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/index.html">A linguagem C±: fundamentos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/diretivas.html">Diretivas: configurando o processador no código</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/tipos-operadores.html">Tipos, operadores e controle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/io-biblioteca.html">Entrada, saída e biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linguagem/avancado.html">Recursos avançados</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">O processador SAPHO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/processador.html">O processador SAPHO por dentro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/ponto-flutuante.html">O ponto flutuante do SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arquitetura/instrucoes.html">O conjunto de instruções</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simular e analisar</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulacao.html">Simular com Icarus, Verilator ou cocotb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exemplos/galeria-testbenches.html">Galeria de projetos e testbenches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ondas.html">Formas de onda: GTKWave e Surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prism.html">Visualizar e simular o RTL no PRISM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aurora Intelligence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ia/visao-geral.html">Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/provedores.html">Configurar o provedor de IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/ferramentas.html">Tarefas com a Aurora Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ia/mcp-cli.html">Usar Claude Code e ChatGPT via Codex CLI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuração e ajuda</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuracao/preferencias.html">Configurações do aplicativo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/diretivas.html">Referência de diretivas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/biblioteca.html">Referência da biblioteca padrão</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/formatos.html">Arquivos do projeto e backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/atalhos.html">Atalhos de teclado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencia/diagnostico.html">Solução de problemas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apêndices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../glossario.html">Glossário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobre/ecossistema.html">O ecossistema SAPHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobre/escopo.html">Escopo, versão e método</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/fluxos/processador-sapho.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="fluxo-completo-para-processadores-sapho">
+<h1>Fluxo completo para processadores SAPHO<a class="headerlink" href="#fluxo-completo-para-processadores-sapho" title="Link para este cabeçalho">¶</a></h1>
+<p>Esta página é o roteiro de referência do fluxo SAPHO, para consulta quando você já conhece o caminho e precisa conferir uma etapa ou tratar um caso menos comum. Se esta é a sua primeira vez, faça antes o <a class="reference internal" href="../inicio/primeiro-projeto.html"><span class="doc">Primeiro projeto: um filtro de média móvel</span></a>, que percorre o mesmo caminho ensinando cada conceito.</p>
+<figure class="align-center" id="fig-fluxo-sapho">
+<a class="reference internal image-reference" href="../_images/aurora-pmu-cmm-editor.png"><img alt="Projeto proj_PMU_padrao aberto na AURORA com o algoritmo PMU_padrao.cmm no editor." src="../_images/aurora-pmu-cmm-editor.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 16 </span><span class="caption-text">Ao abrir um algoritmo C±, o processador correspondente fica ativo e as ações relacionadas a ele são habilitadas na barra superior.</span><a class="headerlink" href="#fig-fluxo-sapho" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<section id="o-caminho-em-uma-olhada">
+<h2>O caminho em uma olhada<a class="headerlink" href="#o-caminho-em-uma-olhada" title="Link para este cabeçalho">¶</a></h2>
+<pre  class="mermaid">
+        flowchart TD
+  A[&quot;1 · Projeto .spf&quot;] --&gt; B[&quot;2 · Processador&lt;br&gt;&lt;small&gt;Hub de Processadores&lt;/small&gt;&quot;]
+  B --&gt; C[&quot;3 · Algoritmo C±&quot;]
+  C --&gt; D[&quot;4 · Compilar&lt;br&gt;&lt;small&gt;Verilog + .mif + testbench&lt;/small&gt;&quot;]
+  D --&gt; E[&quot;5 · Top-level e testbench&quot;]
+  E --&gt; F{&quot;6 · Forma&lt;br&gt;de execução&quot;}
+  F --&gt; G[&quot;Teste do processador&lt;br&gt;sintetizado&quot;]
+  F --&gt; H[&quot;Execução rápida&quot;]
+  F --&gt; I[&quot;Analisar Verilog&lt;br&gt;(forma de onda)&quot;]
+  I --&gt; J[&quot;7 · Inspecionar&lt;br&gt;&lt;small&gt;ondas e PRISM&lt;/small&gt;&quot;]
+    </pre></section>
+<section id="criar-ou-abrir-o-projeto">
+<h2>1. Criar ou abrir o projeto<a class="headerlink" href="#criar-ou-abrir-o-projeto" title="Link para este cabeçalho">¶</a></h2>
+<p>Clique em <span class="guilabel">Novo Projeto</span>, informe um nome sem espaços nem acentos e escolha uma pasta com permissão de escrita.</p>
+<p>O arquivo <code class="file docutils literal notranslate"><span class="pre">.spf</span></code> criado pela AURORA registra os processadores, as fontes e as seleções do projeto. Ele é JSON legível e amigável a <em>diffs</em>, mas a AURORA é a sua única escritora: não o edite à mão no fluxo normal. Detalhes em <a class="reference internal" href="../uso/projetos.html"><span class="doc">Projetos</span></a>.</p>
+</section>
+<section id="criar-o-processador">
+<h2>2. Criar o processador<a class="headerlink" href="#criar-o-processador" title="Link para este cabeçalho">¶</a></h2>
+<p>Abra o <span class="guilabel">Hub de Processadores</span>, informe o nome e os parâmetros e confirme em <span class="guilabel">Gerar Processador</span>. No primeiro projeto, mantenha os valores de fábrica, que já formam uma configuração válida.</p>
+<p>A referência de cada campo, das validações e do que é gerado está em <a class="reference internal" href="../uso/processadores.html"><span class="doc">Criar e configurar processadores</span></a>; o significado de cada parâmetro em termos de <em>hardware</em>, em <a class="reference internal" href="../arquitetura/processador.html"><span class="doc">O processador SAPHO por dentro</span></a>.</p>
+<p>Depois da confirmação, o processador aparece na árvore com as três subpastas:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;processador&gt;/
+├── Software/     o algoritmo C± editável
+├── Hardware/     o Verilog e as memórias, gerados
+└── Simulation/   o testbench, os estímulos e as saídas
+</pre></div>
+</div>
+</section>
+<section id="escrever-o-algoritmo-c">
+<h2>3. Escrever o algoritmo C±<a class="headerlink" href="#escrever-o-algoritmo-c" title="Link para este cabeçalho">¶</a></h2>
+<p>Abra <code class="file docutils literal notranslate"><span class="pre">Software/&lt;processador&gt;.cmm</span></code>, preserve as diretivas geradas e escreva o algoritmo. Salve antes de compilar: os compiladores leem o conteúdo gravado no disco, não o que está no editor.</p>
+<p>A linguagem inteira está documentada em <a class="reference internal" href="../linguagem/index.html"><span class="doc">A linguagem C±: fundamentos</span></a>. Para testes que precisam identificar o término do algoritmo, use <code class="docutils literal notranslate"><span class="pre">#TOAQUI</span></code> no ponto adequado.</p>
+</section>
+<section id="gerar-o-hardware">
+<h2>4. Gerar o hardware<a class="headerlink" href="#gerar-o-hardware" title="Link para este cabeçalho">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Mantenha o arquivo <code class="file docutils literal notranslate"><span class="pre">.cmm</span></code> aberto e em foco.</p></li>
+<li><p>Clique em <span class="guilabel">Compilar C±</span>.</p></li>
+<li><p>Acompanhe os terminais <strong>TCMM</strong> e <strong>TASM</strong>.</p></li>
+<li><p>Aguarde a criação ou atualização dos arquivos em <code class="file docutils literal notranslate"><span class="pre">Hardware</span></code>.</p></li>
+</ol>
+<p>O YANC transforma o algoritmo em <em>assembly</em>, depois gera o módulo Verilog, as imagens de memória e o <em>testbench</em> padrão. O detalhamento dos três estágios está em <a class="reference internal" href="compilacao.html"><span class="doc">Compilação: de C± a Verilog</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>Um arquivo antigo em <code class="file docutils literal notranslate"><span class="pre">Hardware</span></code> não comprova que a compilação atual passou. Confirme o resultado nos terminais.</p>
+</div>
+</section>
+<section id="definir-top-level-e-testbench">
+<h2>5. Definir top-level e testbench<a class="headerlink" href="#definir-top-level-e-testbench" title="Link para este cabeçalho">¶</a></h2>
+<p>O módulo em <code class="file docutils literal notranslate"><span class="pre">Hardware/&lt;processador&gt;.v</span></code> pode servir como <em>top-level</em> quando o projeto testa apenas esse processador. Clique nele com o botão direito e escolha <span class="guilabel">Definir como Top Level</span>.</p>
+<p>Em sistemas maiores, o <em>top-level</em> é outro módulo Verilog, escrito por você, que instancia um ou mais processadores gerados junto com a infraestrutura convencional de <em>hardware</em>. Esse é o padrão de projeto do SAPHO, discutido em <a class="reference internal" href="../arquitetura/processador.html"><span class="doc">O processador SAPHO por dentro</span></a>.</p>
+<p>Como <em>testbench</em>, escolha uma das três opções:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+O gerado</label><div class="sd-tab-content docutils">
+<p>O <code class="file docutils literal notranslate"><span class="pre">Simulation/&lt;processador&gt;_tb.v</span></code> produzido pela compilação. Gera <em>clock</em> e <em>reset</em>, lê os estímulos de <code class="file docutils literal notranslate"><span class="pre">input_&lt;i&gt;.txt</span></code> e grava as saídas em <code class="file docutils literal notranslate"><span class="pre">output_&lt;i&gt;.txt</span></code>. Basta para a maioria dos projetos de um único processador.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Um Verilog seu</label><div class="sd-tab-content docutils">
+<p>Um <code class="file docutils literal notranslate"><span class="pre">.v</span></code> escrito por você, quando o estímulo exige lógica que os arquivos de texto não expressam, ou quando o teste envolve vários blocos.</p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Um cocotb em Python</label><div class="sd-tab-content docutils">
+<p>Um <code class="file docutils literal notranslate"><span class="pre">.py</span></code> com a diretiva <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">aurora-toplevel:</span> <span class="pre">&lt;processador&gt;</span></code> em comentário, ou herdada da configuração do projeto. Indicado quando a verificação se beneficia de NumPy, SciPy e asserções legíveis. Veja <a class="reference internal" href="simulacao.html"><span class="doc">Simular com Icarus, Verilator ou cocotb</span></a>.</p>
+</div>
+</div>
+<p>Clique com o botão direito no arquivo escolhido e selecione <span class="guilabel">Marcar como Testbench</span>. Confirme os dois papéis na barra de status antes de simular.</p>
+</section>
+<section id="escolher-a-forma-de-execucao">
+<h2>6. Escolher a forma de execução<a class="headerlink" href="#escolher-a-forma-de-execucao" title="Link para este cabeçalho">¶</a></h2>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 66.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ação</p></th>
+<th class="head"><p>Quando usar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">Teste do processador sintetizado</span></p></td>
+<td><p>Validação rápida de entradas, saídas e término, sem inspeção visual. Usa um <em>harness</em> do Verilator e reporta no terminal <strong>THTEST</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Execução rápida</span></p></td>
+<td><p>Verificações automatizadas e regressões curtas, sem abrir formas de onda</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Analisar Verilog (forma de onda)</span></p></td>
+<td><p>Quando você precisa observar sinais, portas e estados internos ao longo do tempo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="conferir-entradas-e-saidas">
+<h2>7. Conferir entradas e saídas<a class="headerlink" href="#conferir-entradas-e-saidas" title="Link para este cabeçalho">¶</a></h2>
+<p>Nos processadores gerados, <code class="docutils literal notranslate"><span class="pre">out</span></code> transporta o valor e <code class="docutils literal notranslate"><span class="pre">out_en</span></code> identifica a porta de saída escrita. O sinal <code class="docutils literal notranslate"><span class="pre">cheguei</span></code> indica que a execução alcançou o marcador <code class="docutils literal notranslate"><span class="pre">#TOAQUI</span></code>.</p>
+<p>Um teste adequado verifica:</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox">se cada porta recebeu os valores esperados;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox">se a quantidade e a ordem das saídas estão corretas;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox">se o processador alcançou o ponto de término;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox">se existe um limite de ciclos que evita espera infinita.</p></li>
+</ul>
+</section>
+<section id="analisar-o-hardware-gerado">
+<h2>8. Analisar o hardware gerado<a class="headerlink" href="#analisar-o-hardware-gerado" title="Link para este cabeçalho">¶</a></h2>
+<p>Use <span class="guilabel">Analisar Verilog (forma de onda)</span> para observar o comportamento temporal e <span class="guilabel">Abrir PRISM</span> para examinar a estrutura RTL.</p>
+<figure class="align-center" id="fig-ondas-fluxo">
+<a class="reference internal image-reference" href="../_images/aurora-wave-configuration-sapho.png"><img alt="Configuração de ondas de um processador SAPHO com clock, reset, portas de saída e sinal de término." src="../_images/aurora-wave-configuration-sapho.png" style="width: 85%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figura 17 </span><span class="caption-text">No fluxo SAPHO, comece por <code class="docutils literal notranslate"><span class="pre">clk</span></code>, <code class="docutils literal notranslate"><span class="pre">rst</span></code>, as portas de saída e o sinal de término. Expanda o processador somente quando precisar investigar sinais internos.</span><a class="headerlink" href="#fig-ondas-fluxo" title="Link para esta imagem">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>O algoritmo <code class="file docutils literal notranslate"><span class="pre">.cmm</span></code> continua sendo a única fonte editável. Os arquivos da pasta <code class="file docutils literal notranslate"><span class="pre">Hardware</span></code> são resultado da geração e serão substituídos na próxima compilação: qualquer edição manual neles se perde.</p>
+</div>
+</section>
+<section id="resultado-esperado">
+<h2>Resultado esperado<a class="headerlink" href="#resultado-esperado" title="Link para este cabeçalho">¶</a></h2>
+<p>O fluxo está concluído quando:</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">o Hub de Processadores criou a estrutura do processador;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">o algoritmo <code class="file docutils literal notranslate"><span class="pre">.cmm</span></code> compila sem erro;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">o Verilog e as imagens de memória estão atualizados;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">o <em>top-level</em> e o <em>testbench</em> aparecem corretamente na barra de status;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">a execução produz as saídas esperadas e alcança o término;</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox">o visualizador de ondas ou o PRISM apresenta o resultado desejado, quando utilizado.</p></li>
+</ul>
+</section>
+<section id="leitura-relacionada">
+<h2>Leitura relacionada<a class="headerlink" href="#leitura-relacionada" title="Link para este cabeçalho">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../linguagem/index.html"><span class="doc">A linguagem C±: fundamentos</span></a> para escrever o algoritmo.</p></li>
+<li><p><a class="reference internal" href="../uso/processadores.html"><span class="doc">Criar e configurar processadores</span></a> para os campos do Hub e as configurações de simulação.</p></li>
+<li><p><a class="reference internal" href="../exemplos/galeria-testbenches.html"><span class="doc">Galeria de projetos e testbenches</span></a> para exemplos C± com <em>testbenches</em> Verilog e cocotb.</p></li>
+<li><p><a class="reference internal" href="verilog.html"><span class="doc">Fluxo completo para projetos Verilog</span></a> se o seu projeto não gera processadores e trabalha só com RTL.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../inicio/primeiro-projeto.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Primeiro projeto: um filtro de média móvel</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../uso/arquivos-verilog.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Arquivos Verilog e Testbenches</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, NIPSCERN
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Fluxo completo para processadores SAPHO</a><ul>
+<li><a class="reference internal" href="#o-caminho-em-uma-olhada">O caminho em uma olhada</a></li>
+<li><a class="reference internal" href="#criar-ou-abrir-o-projeto">1. Criar ou abrir o projeto</a></li>
+<li><a class="reference internal" href="#criar-o-processador">2. Criar o processador</a></li>
+<li><a class="reference internal" href="#escrever-o-algoritmo-c">3. Escrever o algoritmo C±</a></li>
+<li><a class="reference internal" href="#gerar-o-hardware">4. Gerar o hardware</a></li>
+<li><a class="reference internal" href="#definir-top-level-e-testbench">5. Definir top-level e testbench</a></li>
+<li><a class="reference internal" href="#escolher-a-forma-de-execucao">6. Escolher a forma de execução</a></li>
+<li><a class="reference internal" href="#conferir-entradas-e-saidas">7. Conferir entradas e saídas</a></li>
+<li><a class="reference internal" href="#analisar-o-hardware-gerado">8. Analisar o hardware gerado</a></li>
+<li><a class="reference internal" href="#resultado-esperado">Resultado esperado</a></li>
+<li><a class="reference internal" href="#leitura-relacionada">Leitura relacionada</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=48a2e965"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e9ac5903"></script>
+    <script src="../_static/translations.js?v=71a39b36"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="../_static/js/aurora.js?v=3107fa4b"></script>
+    </body>
+</html>
