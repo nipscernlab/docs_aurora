@@ -241,6 +241,14 @@ if ($LASTEXITCODE -ne 0) {
     throw "Falha ao enviar o branch gh-pages."
 }
 
+# O Pages usa um workflow explicito para que uma fila lenta do servico nao seja
+# cancelada pelo limite fixo de dez minutos do workflow dinamico do GitHub.
+$deployment = Invoke-Gh workflow run deploy-pages.yml --repo $repoSlug --ref main
+if ($deployment.ExitCode -ne 0) {
+    throw "Falha ao iniciar a implantacao do GitHub Pages:`n$($deployment.Output)"
+}
+Write-Host "Implantacao do GitHub Pages iniciada."
+
 # ---------- 5. AURORA: release com o pacote offline ----------
 
 Write-Host "== Publicando a Release com o pacote offline =="
