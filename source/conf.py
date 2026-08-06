@@ -73,6 +73,9 @@ if docs_target == "offline":
     # cdn.jsdelivr.net. O mermaid-cli desenha em SVG durante o build e a pagina
     # passa a mostrar uma imagem, sem depender de JavaScript nem de rede.
     mermaid_output_format = "svg"
+    # As formulas tambem precisam funcionar sem rede. O publicador copia a
+    # distribuicao npm do MathJax para este caminho dentro do pacote offline.
+    mathjax_path = "_static/vendor/mathjax/tex-mml-chtml.js"
 
 # O botao vai inteiro na substituicao, em uma linha so: o MyST nao expande
 # substituicoes dentro de um bloco HTML, apenas em paragrafo de texto.

@@ -3,6 +3,7 @@
   "private": true,
   "description": "Dependencias locais para gerar a documentacao Sphinx do AURORA.",
   "devDependencies": {
-    "@mermaid-js/mermaid-cli": "11.15.0"
+    "@mermaid-js/mermaid-cli": "11.15.0",
+    "mathjax": "4.0.0"
   }
 }

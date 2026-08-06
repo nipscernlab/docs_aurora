@@ -144,6 +144,18 @@ Invoke-SphinxHtml -Target "web" -OutputDir $webDir
 Write-Host "== Gerando o HTML offline =="
 Invoke-SphinxHtml -Target "offline" -OutputDir $offlineDir
 
+# O Sphinx aponta o alvo offline para esta distribuicao local do MathJax.
+# Copiar o pacote completo preserva os modulos e as fontes carregados sob
+# demanda pelo componente combinado tex-mml-chtml.js.
+$mathJaxSource = Join-Path $projectRoot "node_modules\mathjax"
+$mathJaxEntry = Join-Path $mathJaxSource "tex-mml-chtml.js"
+if (-not (Test-Path -LiteralPath $mathJaxEntry -PathType Leaf)) {
+    throw "MathJax local nao encontrado. Execute 'npm.cmd install' na raiz da documentacao."
+}
+$mathJaxTarget = Join-Path $offlineDir "_static\vendor\mathjax"
+New-Item -ItemType Directory -Force -Path $mathJaxTarget | Out-Null
+Copy-Item -Path (Join-Path $mathJaxSource "*") -Destination $mathJaxTarget -Recurse -Force
+
 # A extensao do Mermaid injeta o script do cdn.jsdelivr.net mesmo quando os
 # diagramas ja foram desenhados em SVG durante o build. Offline esse script so
 # falha, entao sai daqui. Nao ha como desligar pela configuracao: a extensao
