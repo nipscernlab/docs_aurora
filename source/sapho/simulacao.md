@@ -1,17 +1,17 @@
-# Simulação e formas de onda
+# Simulação do processador
 
-Um processador SAPHO se simula pelos mesmos botões do fluxo Verilog, com alguns superpoderes a mais: as suas variáveis aparecem pelo nome na onda, e duas trilhas de texto mostram a instrução assembly e a linha C± executadas a cada ciclo.
+Um processador SAPHO se simula pelos mesmos botões e chaves de {doc}`../verilog/ondas`, com três superpoderes específicos: as suas variáveis aparecem pelo nome, duas trilhas de texto acompanham a execução, e existe um modo de teste rápido só de entrada e saída.
 
-## Os três jeitos de simular
+## Os três jeitos de rodar
 
 {guilabel}`Analisar Verilog`
-: O caminho completo: compila, simula o Testbench Top e abre a forma de onda. Use quando quiser ver sinais.
+: O caminho completo: compila, simula o Testbench Top e abre a forma de onda.
 
 {guilabel}`Execução rápida`
-: Roda o testbench sem gravar onda. Ideal para o ciclo de ajuste fino quando você só quer os arquivos de saída ou o veredito dos testes cocotb. Disponível com Verilator selecionado ou testbench em Python.
+: Roda sem gravar onda. Para quando você só quer os arquivos de saída ou o veredito dos testes cocotb.
 
 {guilabel}`Teste do processador sintetizado`
-: O mais direto para processadores: pega o processador ativo, monta um executor nativo com o Verilator e roda só a interface de entrada e saída, lendo {file}`input_N.txt` e escrevendo {file}`output_N.txt`, com barra de progresso no terminal **THTEST**. Sem onda e sem testbench: serve para validar o comportamento com muitos dados, rápido. O fim do programa é detectado por um marcador que a AURORA injeta no {file}`.cmm` (a diretiva `#TOAQUI`, que cria o pino `cheguei` no hardware).
+: O mais direto para processadores: pega o processador ativo, monta um executor nativo com o Verilator e roda só a interface de entrada e saída, lendo {file}`input_N.txt` e escrevendo {file}`output_N.txt`, com barra de progresso no terminal **THTEST**. Serve para validar o comportamento com muitos dados, rápido. O fim do programa é detectado por um marcador que a AURORA injeta no {file}`.cmm` (a diretiva `#TOAQUI`, que cria o pino `cheguei`).
 
 ```{figure} ../_static/assets/screenshots/aurora-teste-hardware.png
 :alt: Terminal THTEST com as etapas do teste e a barra de progresso.
@@ -19,55 +19,20 @@ Um processador SAPHO se simula pelos mesmos botões do fluxo Verilog, com alguns
 :align: center
 ```
 
-## Icarus ou Verilator
+:::{note}
+Com o Verilator, os sinais internos do processador (núcleo, pilhas, ULA) ficam fora da onda; as suas variáveis continuam visíveis. Para ver o processador por dentro, use o Icarus.
+:::
 
-A chave da barra de ferramentas vale também para processadores, com uma diferença que importa:
+## As variáveis pelo nome
 
-- **Icarus** enxerga tudo: variáveis, pilhas, sinais internos do núcleo. É a escolha para depurar de perto.
-- **Verilator** é muito mais rápido, mas os sinais internos do processador ficam fora da onda por construção. As suas variáveis continuam visíveis. A AURORA avisa quando essa limitação afeta o que você selecionou.
-
-## Configuração de ondas
-
-O modal {guilabel}`Configuração de ondas` escolhe quais sinais a simulação grava. Menos sinais, simulação mais leve e arquivo menor.
-
-```{figure} ../_static/assets/screenshots/aurora-wave-config.png
-:alt: Modal de configuração de ondas com a árvore de sinais.
-:width: 85%
-:align: center
-
-A árvore reflete a hierarquia do projeto. O filtro aceita texto e expressão regular, e a opção de mostrar só sinais de processador reduz a lista ao que costuma importar.
-```
-
-A seleção vale por testbench e segue uma ordem de precedência: um arquivo de layout ativo no seletor da barra vence a configuração do modal, que vence um `$dumpvars` escrito à mão no testbench, que vence o padrão (tudo no escopo do módulo do testbench).
-
-## O layout do visualizador
-
-Ao abrir o GTKWave, a AURORA gera um layout com os sinais agrupados: clock e reset, portas, as variáveis do seu programa, as pilhas, e as trilhas decodificadas. Para o Surfer, o equivalente.
-
-Se você reorganizar os sinais no GTKWave e salvar um {file}`.gtkw` (File, Write Save File), registre-o no seletor da barra de ferramentas: ele passa a ser o layout daquele testbench, e o botão {guilabel}`padrão` volta ao automático quando quiser.
-
-```{figure} ../_static/assets/screenshots/aurora-gtkw-picker.png
-:alt: Seletor de arquivo de layout aberto na barra de ferramentas.
-:width: 60%
-:align: center
-```
+Como toda memória do C± é estática, cada variável do seu programa vira um sinal nomeado na onda: `soma`, `x[0]`, `x[1]`. Vetores aparecem elemento a elemento quando a opção {guilabel}`Mostrar arrays` está ligada na engrenagem do processador. Floats aparecem decodificados como número real, e complexos no formato `a + bi`.
 
 ## As trilhas Assembly e C±
 
-Na onda de um processador SAPHO, duas trilhas de texto acompanham o clock: uma mostra o mnemônico da instrução em execução, a outra mostra a linha do seu arquivo {file}`.cmm` correspondente. É o vínculo mais direto entre o código que você escreveu e o circuito que ele virou: dá para seguir um laço `while` acontecendo, ciclo a ciclo.
+Na onda de um processador, duas trilhas de texto acompanham o clock: o mnemônico da instrução em execução e a linha do {file}`.cmm` correspondente. É o vínculo mais direto entre o código e o circuito: dá para seguir um `while` acontecendo, ciclo a ciclo.
 
 ```{figure} ../_static/assets/screenshots/aurora-gtkwave-media-movel.png
 :alt: Onda com as trilhas de assembly e de linha C± visíveis.
-:width: 100%
-:align: center
-```
-
-## Surfer
-
-O Surfer é o visualizador alternativo, moderno e rápido. A chave na barra troca o destino das ondas; os layouts dele têm extensão própria e o mesmo seletor os gerencia. Há uma opção na configuração de ondas para manter janelas antigas abertas, útil para comparar duas simulações lado a lado.
-
-```{figure} ../_static/assets/screenshots/aurora-surfer.png
-:alt: Surfer aberto com uma forma de onda do projeto.
 :width: 100%
 :align: center
 ```
@@ -77,7 +42,13 @@ O Surfer é o visualizador alternativo, moderno e rápido. A chave na barra troc
 | Arquivo | Conteúdo |
 |---|---|
 | {file}`Simulation/input_N.txt` | estímulo da porta de entrada N, um inteiro por linha (você escreve) |
-| {file}`Simulation/output_N.txt` | tudo o que o programa escreveu na porta N (a simulação gera) |
+| {file}`Simulation/output_N.txt` | o que o programa escreveu na porta N (a simulação gera) |
 | o arquivo de onda | os sinais gravados, aberto pelo visualizador |
 
-Os {file}`output_N.txt` são a ponte para a análise externa: uma planilha, um script Python, uma comparação com o modelo de referência.
+Os {file}`output_N.txt` são a ponte para a análise externa: planilha, script Python, comparação com um modelo de referência.
+
+## Exercícios
+
+1. Rode o filtro do tutorial com o {guilabel}`Teste do processador sintetizado` alimentando mil amostras (gere o {file}`input_0.txt` com um script) e confira o {file}`output_0.txt` contra uma média móvel calculada em Python.
+2. Na onda, siga uma iteração completa do `while` pela trilha C±: identifique em que ciclos acontecem as quatro cópias do histórico, a leitura da porta e a escrita.
+3. Aumente o clock configurado de 100 para 200 MHz na engrenagem e observe o que muda (e o que não muda) na simulação.

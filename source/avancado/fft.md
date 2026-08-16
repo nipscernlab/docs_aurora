@@ -99,3 +99,7 @@ Os pontos de atenção:
 Alimente {file}`input_0.txt` com 8 amostras de uma senoide que caiba em um período da janela e simule. No espectro de saída, duas raias simétricas devem se destacar. Compare com o `numpy.fft.fft` das mesmas amostras: os módulos devem bater dentro do erro do formato de ponto flutuante escolhido, o que fecha o laço com o capítulo de {doc}`ponto flutuante <ponto-flutuante>`.
 
 Para tamanhos maiores, ajuste `N`, `NL` e `#FFTSIZ` juntos, e acompanhe no TASM o crescimento do programa.
+
+:::{seealso}
+O índice bit-reverso nasceu de um projeto de processador dedicado à FFT: [Projeto de um Processador Embarcado Otimizado para Aplicação com Transformada de Fourier (2016)](https://cdn.nipscern.com/publications/tcc-2016-leandro-silva.pdf).
+:::

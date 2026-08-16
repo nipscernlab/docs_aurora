@@ -161,6 +161,68 @@ Procure na onda:
 - [x] Sintetizar valida a elaboração e constrói a hierarquia; Analisar simula e abre a onda.
 - [x] O testbench manda na simulação: clock, reset, estímulos, `$dumpvars` e `$finish` são seus.
 
+## Um segundo padrão: máquina de estados
+
+O contador é o primeiro padrão sequencial; o segundo é a máquina de estados finitos, e vale construí-la já. Um semáforo simples: verde, amarelo, vermelho, cada um com sua duração.
+
+Crie {file}`semaforo.v` no mesmo projeto:
+
+```{code-block} verilog
+:caption: semaforo.v
+:linenos:
+
+module semaforo (
+    input  wire       clk,
+    input  wire       rst,
+    output reg  [2:0] luz        // {verde, amarelo, vermelho}
+);
+
+    localparam VERDE    = 2'd0;
+    localparam AMARELO  = 2'd1;
+    localparam VERMELHO = 2'd2;
+
+    localparam T_VERDE    = 4'd8;
+    localparam T_AMARELO  = 4'd2;
+    localparam T_VERMELHO = 4'd6;
+
+    reg [1:0] estado;
+    reg [3:0] tempo;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            estado <= VERDE;
+            tempo  <= 4'd0;
+        end else begin
+            tempo <= tempo + 4'd1;
+            case (estado)
+                VERDE:    if (tempo == T_VERDE    - 1) begin estado <= AMARELO;  tempo <= 0; end
+                AMARELO:  if (tempo == T_AMARELO  - 1) begin estado <= VERMELHO; tempo <= 0; end
+                VERMELHO: if (tempo == T_VERMELHO - 1) begin estado <= VERDE;    tempo <= 0; end
+                default:  estado <= VERDE;
+            endcase
+        end
+    end
+
+    always @(*) begin
+        case (estado)
+            VERDE:    luz = 3'b100;
+            AMARELO:  luz = 3'b010;
+            default:  luz = 3'b001;
+        endcase
+    end
+
+endmodule
+```
+
+O padrão em três blocos: os estados nomeados com `localparam`, um `always` sequencial com o registrador de estado e o temporizador, e um `always` combinacional com a saída em função do estado. Escreva um testbench nos moldes do anterior (solte o reset e deixe rodar uns 200 ciclos), marque os papéis e observe na onda o ciclo verde, amarelo, vermelho se repetindo. A visão {guilabel}`Hierarquia` agora mostra dois módulos de topo possíveis; o Top Level marca qual vale.
+
+## Exercícios
+
+1. Faça o contador contar de 0 a 9 e reiniciar, virando um contador de década.
+2. Acrescente um pino `sobe_desce` ao contador: 1 conta para cima, 0 para baixo. Confirme na onda os dois sentidos.
+3. Dê ao contador uma saída `estouro`, em 1 apenas no ciclo em que a contagem volta a zero. Grave-a na onda.
+4. No semáforo, acrescente um pino de pedestre que, pressionado durante o verde, encurta o tempo restante para no máximo 2 ciclos. Cuidado com o caso do tempo já estar abaixo disso.
+
 ## Para onde ir
 
-O fluxo Verilog em profundidade está em {doc}`fluxo`, e os testbenches, incluindo os escritos em Python com cocotb, em {doc}`testbenches`. Quando quiser gerar um processador em vez de escrever o circuito à mão, siga para a Parte III: {doc}`../sapho/tutorial-filtro`.
+As formas de onda em detalhe estão em {doc}`ondas`, o fluxo em {doc}`fluxo` e os testbenches, incluindo cocotb, em {doc}`testbenches`. Quando quiser gerar um processador em vez de escrever o circuito à mão, siga para a Parte III: {doc}`../sapho/tutorial-filtro`.

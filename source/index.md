@@ -18,7 +18,7 @@ Versão descrita: SAPHO 6.4.2 para Windows 10 e 11. Detalhes da apuração em {d
 
 ## Por onde começar
 
-Nunca usou a plataforma? {doc}`Instale <inicio/instalacao>`, faça o {doc}`tour pela interface <inicio/tour-interface>` e siga direto para o {doc}`tutorial Verilog <verilog/tutorial-contador>`. De lá, o {doc}`tutorial do processador <sapho/tutorial-filtro>` completa a base. São dois tutoriais de vinte a trinta minutos cada.
+Nunca usou a plataforma? {doc}`Instale <inicio/instalacao>`, veja o {doc}`mapa da janela <inicio/mapa-da-janela>` e siga direto para o {doc}`tutorial Verilog <verilog/tutorial-contador>`. De lá, o {doc}`tutorial do processador <sapho/tutorial-filtro>` completa a base. São dois tutoriais de vinte a trinta minutos cada.
 
 Já trabalha em um projeto? O menu lateral vai direto à tarefa, e a {doc}`referência <referencia/diretivas>` responde consultas pontuais sem repetir os tutoriais.
 
@@ -28,8 +28,7 @@ Já trabalha em um projeto? O menu lateral vai direto à tarefa, e a {doc}`refer
 
 inicio/o-que-e
 inicio/instalacao
-inicio/tour-interface
-inicio/organizacao-projeto
+inicio/mapa-da-janela
 ```
 
 ```{toctree}
@@ -37,6 +36,7 @@ inicio/organizacao-projeto
 :caption: Verilog primeiro
 
 verilog/tutorial-contador
+verilog/ondas
 verilog/fluxo
 verilog/testbenches
 ```
@@ -74,16 +74,19 @@ avancado/interrupcao-multiproc
 
 ```{toctree}
 :maxdepth: 2
-:caption: Ferramentas
+:caption: A AURORA no dia a dia
 
-ferramentas/aurora-intelligence
-ferramentas/apoio
+diaadia/tour-interface
+diaadia/organizacao-projeto
+diaadia/aurora-intelligence
+diaadia/apoio
 ```
 
 ```{toctree}
 :maxdepth: 2
 :caption: Referência
 
+referencia/folha-rapida
 referencia/diretivas
 referencia/biblioteca
 referencia/instrucoes
@@ -96,5 +99,6 @@ referencia/diagnostico
 :caption: Apêndices
 
 glossario
+publicacoes
 sobre/escopo
 ```

@@ -13,8 +13,7 @@ orphan: true
 
 inicio/o-que-e
 inicio/instalacao
-inicio/tour-interface
-inicio/organizacao-projeto
+inicio/mapa-da-janela
 ```
 
 ```{raw} latex
@@ -25,6 +24,7 @@ inicio/organizacao-projeto
 :maxdepth: 2
 
 verilog/tutorial-contador
+verilog/ondas
 verilog/fluxo
 verilog/testbenches
 ```
@@ -70,14 +70,16 @@ avancado/interrupcao-multiproc
 ```
 
 ```{raw} latex
-\part{Ferramentas}
+\part{A AURORA no dia a dia}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-ferramentas/aurora-intelligence
-ferramentas/apoio
+diaadia/tour-interface
+diaadia/organizacao-projeto
+diaadia/aurora-intelligence
+diaadia/apoio
 ```
 
 ```{raw} latex
@@ -87,6 +89,7 @@ ferramentas/apoio
 ```{toctree}
 :maxdepth: 2
 
+referencia/folha-rapida
 referencia/diretivas
 referencia/biblioteca
 referencia/instrucoes
@@ -102,5 +105,6 @@ referencia/diagnostico
 :maxdepth: 1
 
 glossario
+publicacoes
 sobre/escopo
 ```

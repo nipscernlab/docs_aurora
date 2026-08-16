@@ -52,4 +52,6 @@ O repositório do YANC traz um sistema completo de detecção de novidade em sin
 Os fontes estão em {file}`Compilers/CMMComp/Tests/DTW` do repositório do YANC: os dois {file}`.cmm`, o top-level, a máquina de estados e o testbench do sistema. É o melhor material de estudo para o padrão multiprocessador.
 :::
 
+O padrão multiprocessador tem literatura própria do laboratório: a [arquitetura multi-core para reconstrução online de energia (CBA, 2020)](https://cdn.nipscern.com/publications/cba-2020-arquitetura-multi-core.pdf) e o [simulador de pulsos do TileCal com SAPHO (SBAI, 2025)](https://cdn.nipscern.com/publications/sbai-2025-simulador-de-pulsos-do-tilecal.pdf), este rodando na eletrônica do experimento ATLAS.
+
 Na onda, cada processador aparece com seu grupo de sinais e suas próprias trilhas de assembly e de linha C±, então dá para acompanhar os dois programas executando em paralelo, ciclo a ciclo.

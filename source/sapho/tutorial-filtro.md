@@ -251,4 +251,11 @@ O experimento que mais ensina: troque `soma >> 2` por `soma / 4`, recompile e cl
 - [x] A onda mostra as suas variáveis pelo nome e a linha do seu código a cada ciclo.
 - [x] Escolhas de linguagem têm custo em hardware, e o PRISM mostra esse custo.
 
+## Exercícios
+
+1. Mude o filtro para média de 8 amostras. O que precisa mudar além do vetor e do deslocamento?
+2. Acrescente uma segunda porta de saída (`#NUIOOU 2`) publicando a amostra crua em paralelo com a média, e compare as duas curvas na onda.
+3. Troque `soma >> 2` por `soma / 4`, recompile e meça a diferença: no relatório do TASM e no diagrama do PRISM.
+4. Sature a saída com `pset()` para o filtro nunca publicar valor negativo, e teste com um degrau que desce.
+
 Siga para a linguagem: {doc}`linguagem`. Ou, se preferir ver os detalhes da cadeia de compilação, {doc}`compilacao`.

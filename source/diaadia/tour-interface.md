@@ -49,9 +49,7 @@ Os botões se agrupam por assunto, da esquerda para a direita. Um botão cinza e
 :align: center
 ```
 
-Da esquerda para a direita: a chave entre **Icarus Verilog** (simulações curtas, todos os sinais visíveis) e **Verilator** (10 a 100 vezes mais rápido em simulações longas); a chave entre **GTKWave** e **Surfer** como visualizador; {guilabel}`Analisar Verilog` compila, simula e abre a forma de onda; {guilabel}`Execução rápida` roda o testbench sem gerar onda; {guilabel}`Cancelar` interrompe o que estiver rodando; {guilabel}`Configuração de ondas` escolhe os sinais gravados; e o seletor de arquivo de layout ({file}`.gtkw`) do visualizador. Quase tudo aqui exige um Testbench Top definido.
-
-O último botão do grupo, {guilabel}`Teste do processador sintetizado`, roda o processador ativo em um teste rápido só de entrada e saída, sem forma de onda. Ele aparece em detalhe em {doc}`../sapho/simulacao`.
+Da esquerda para a direita: as chaves de simulador (Icarus ou Verilator) e de visualizador (GTKWave ou Surfer); {guilabel}`Analisar Verilog`, que simula e abre a onda; {guilabel}`Execução rápida`, sem onda; {guilabel}`Cancelar`; a {guilabel}`Configuração de ondas`; o seletor de layout; e o {guilabel}`Teste do processador sintetizado`. As escolhas deste grupo estão explicadas em {doc}`../verilog/ondas` e {doc}`../sapho/simulacao`.
 
 ### Ferramentas
 
@@ -109,7 +107,7 @@ Seis abas, uma por etapa: **TCMM** (compilação C±), **TASM** (montagem e gera
 
 As mensagens chegam classificadas (erro, aviso, sucesso, dica) e podem ser filtradas pelos botões com contadores. Referências como {file}`arquivo.v:15` são links: o clique abre o arquivo naquela linha. O botão de exportar salva o conteúdo de todos os terminais em um {file}`.txt`.
 
-O TCMD merece um capítulo próprio de dicas em {doc}`../ferramentas/apoio`; por ora, dois comandos: `apython` chama o Python embarcado da AURORA, e `Use-Python aurora` faz `python` significar o embarcado naquela sessão.
+O TCMD merece um capítulo próprio de dicas em {doc}`apoio`; por ora, dois comandos: `apython` chama o Python embarcado da AURORA, e `Use-Python aurora` faz `python` significar o embarcado naquela sessão.
 
 ```{figure} ../_static/assets/screenshots/aurora-terminal-tcmd.png
 :alt: Terminal TCMD com o prompt da AURORA mostrando processador ativo, diretório e branch git.

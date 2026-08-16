@@ -60,4 +60,8 @@ A única etapa fora da AURORA é a última: levar o Verilog e as imagens de mem�
 
 O manual segue a ordem de uma disciplina: primeiro o fluxo Verilog puro (Parte II), depois a criação de processadores em C± (Parte III), depois os dois juntos no mesmo projeto (Parte IV). A Parte V reúne os estudos avançados, voltados à pós-graduação: ponto flutuante configurável, números complexos, notação de Dirac, FFT e a arquitetura interna do processador.
 
+:::{seealso}
+A arquitetura e os resultados em FPGA estão no artigo da plataforma, [SAPHO: An FPGA Customizable Implementation (IEEE, 2026)](https://cdn.nipscern.com/publications/ieee-2026-soft-core-processors.pdf). Mais leituras em {doc}`../publicacoes`.
+:::
+
 Se esta é a sua primeira vez, siga em frente: {doc}`instalacao`.

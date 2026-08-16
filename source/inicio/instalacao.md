@@ -53,4 +53,4 @@ A interface nasce em inglês ou português conforme o sistema. Para trocar: {gui
 
 A AURORA verifica atualizações sozinha, alguns segundos após abrir e depois a cada três horas. Quando há versão nova, uma janela mostra as novidades e pergunta se você quer baixar; nada é baixado sem a sua confirmação. Depois de baixada, a atualização se aplica ao fechar o aplicativo.
 
-Próximo passo: {doc}`tour-interface`.
+Próximo passo: {doc}`mapa-da-janela`.

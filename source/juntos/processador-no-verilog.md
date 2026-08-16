@@ -81,4 +81,10 @@ Com o top-level seu, a visão {guilabel}`Hierarquia` mostra o processador como u
 
 Vários processadores no mesmo projeto seguem a mesma receita: crie cada um no Hub, compile cada um, e instancie todos no seu top-level. Um estudo de caso completo com dois processadores sincronizados está em {doc}`../avancado/interrupcao-multiproc`.
 
+## Exercícios
+
+1. Troque a rampa por um gerador pseudoaleatório (um LFSR de 16 bits) e observe o filtro suavizando o ruído.
+2. Insira um decimador entre o gerador e o processador: só uma a cada duas amostras chega ao filtro.
+3. Coloque dois processadores em cascata: a saída do filtro de média alimenta um segundo processador que detecta quando o valor cruza um limiar e publica 0 ou 1.
+
 Falta só um passo para o hardware de verdade: {doc}`fpga`.

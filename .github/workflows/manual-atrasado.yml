@@ -1,0 +1,58 @@
+# Vigia diario: compara a release mais recente do SAPHO com a versao do manual
+# publicado. Quando o aplicativo ganha versao nova e o manual fica para tras,
+# abre uma issue aqui avisando (uma so; nao duplica enquanto estiver aberta).
+name: Manual atrasado?
+
+on:
+  schedule:
+    - cron: "17 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  comparar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compara as versoes e abre issue se preciso
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+
+          sapho=$(curl -fsSL https://api.github.com/repos/nipscernlab/sapho/releases/latest \
+                  | python3 -c "import json,sys; print(json.load(sys.stdin)['tag_name'].lstrip('v'))")
+
+          manual=$(curl -fsSL https://nipscernlab.github.io/docs_aurora/docs-manifest.json \
+                   | python3 -c "import json,sys; print(json.load(sys.stdin)['version'])")
+
+          # O manual usa um quarto segmento como revisao propria (6.4.2.1
+          # documenta o SAPHO 6.4.2), entao a comparacao olha os tres primeiros.
+          base_manual=$(echo "$manual" | cut -d. -f1-3)
+
+          echo "SAPHO: $sapho | manual: $manual (base $base_manual)"
+
+          if [ "$sapho" = "$base_manual" ]; then
+            echo "Manual em dia."
+            exit 0
+          fi
+
+          titulo="Manual desatualizado: SAPHO $sapho saiu, manual documenta $base_manual"
+
+          existente=$(gh issue list --repo "$GITHUB_REPOSITORY" \
+                        --state open --search "Manual desatualizado in:title" \
+                        --json number --jq length)
+          if [ "$existente" -gt 0 ]; then
+            echo "Ja existe issue aberta; nada a fazer."
+            exit 0
+          fi
+
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "$titulo" \
+            --body "A release mais recente do SAPHO e a **v$sapho**, e o manual publicado documenta a **$base_manual** (manifesto: $manual).
+
+Para atualizar: revise o conteudo contra a versao nova, ajuste as versoes conforme o README e rode \`scripts/publish.ps1\`.
+
+Issue aberta automaticamente pelo workflow manual-atrasado."

@@ -67,6 +67,10 @@ pdf_url = f"_static/downloads/{pdf_name}"
 
 if docs_target == "web":
     html_baseurl = "https://www.nipscern.com/library/sapho/"
+    # Sitemap proprio do manual, referenciado no robots.txt do site, para os
+    # capitulos serem indexados individualmente.
+    extensions.append("sphinx_sitemap")
+    sitemap_url_scheme = "{link}"
 
 if docs_target == "offline":
     # Sem isto o Mermaid renderiza no navegador, buscando o script no
@@ -99,6 +103,11 @@ html_title = "SAPHO & AURORA 6.4.2, Manual de uso"
 html_static_path = ["_static"]
 html_css_files = ["css/aurora.css"]
 html_js_files = ["js/aurora.js"]
+if docs_target == "web":
+    # O mesmo GoatCounter do restante do nipscern.com, para o manual aparecer
+    # nas estatisticas do site. So no alvo web: a copia offline dentro da
+    # AURORA nao deve tentar rede.
+    html_js_files.append("https://www.nipscern.com/assets/js/analytics.min.js")
 html_logo = "_static/aurora.svg"
 html_favicon = "_static/aurora.svg"
 html_theme_options = {

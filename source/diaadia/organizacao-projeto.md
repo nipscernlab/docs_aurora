@@ -67,6 +67,6 @@ Arraste arquivos {file}`.v`, {file}`.sv`, {file}`.vh` ou {file}`.py` de fora par
 
 ## Backup
 
-O botão de backup no cabeçalho da árvore gera {file}`Backup/<projeto>_<data>.zip` com tudo, exceto os backups anteriores. É a forma rápida de congelar um estado antes de uma mudança grande. Para histórico de verdade, o painel de controle de versão está em {doc}`../ferramentas/apoio`.
+O botão de backup no cabeçalho da árvore gera {file}`Backup/<projeto>_<data>.zip` com tudo, exceto os backups anteriores. É a forma rápida de congelar um estado antes de uma mudança grande. Para histórico de verdade, o painel de controle de versão está em {doc}`apoio`.
 
 Pronto para trabalhar. A Parte II começa criando um projeto Verilog do zero: {doc}`../verilog/tutorial-contador`.

@@ -16,17 +16,7 @@ O do tutorial serve de modelo:
 O testbench original nunca é modificado pela AURORA. Quando é preciso instrumentar (para injetar a gravação de ondas, por exemplo), uma cópia é gerada na área temporária e é ela que compila. O seu arquivo permanece como você escreveu.
 :::
 
-## Escolhendo o simulador
-
-A chave na barra de ferramentas alterna o motor:
-
-| | Icarus Verilog | Verilator |
-|---|---|---|
-| Velocidade | referência | 10 a 100 vezes mais rápido |
-| Sinais visíveis | todos | sinais internos de processadores SAPHO ficam de fora da onda |
-| Uso típico | ondas curtas, depuração fina | testbenches longos, regressões |
-
-A troca vale na próxima simulação; a barra de status mostra sempre o motor atual.
+A escolha entre os motores Icarus e Verilator, os visualizadores e a seleção de sinais estão no capítulo anterior, {doc}`ondas`.
 
 ## Testbench em Python: cocotb
 
@@ -85,7 +75,7 @@ Três coisas que valem saber:
 
 - Nada de Makefile: a AURORA monta e executa o projeto cocotb sozinha, com o Python embarcado. Você escreve só as funções `@cocotb.test()`.
 - Teste que falha não esconde a onda: se a simulação rodou e as asserções falharam, o erro aparece em vermelho e a forma de onda abre mesmo assim, porque é nela que se investiga.
-- Bibliotecas extras (pyuvm, extensões de barramento, análise de VCD) se instalam pelo painel {guilabel}`Bibliotecas Python`, descrito em {doc}`../ferramentas/apoio`.
+- Bibliotecas extras (pyuvm, extensões de barramento, análise de VCD) se instalam pelo painel {guilabel}`Bibliotecas Python`, descrito em {doc}`../diaadia/apoio`.
 
 ## Verilog ou cocotb?
 

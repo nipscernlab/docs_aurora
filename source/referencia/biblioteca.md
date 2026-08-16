@@ -38,7 +38,7 @@ Implementadas como rotinas anexadas ao programa quando usadas; cada uma aparece 
 | `sinh(x)`, `cosh(x)`, `tanh(x)` | não |
 | `floor(x)`, `ceil(x)`, `round(x)` | não |
 
-Todas devolvem `float` (ou `comp` nas versões complexas).
+Todas devolvem `float` (ou `comp` nas versões complexas). O método por trás delas está publicado em [Implementação de Funções Não-Lineares em Processador Soft-Core (ENMC, 2025)](https://cdn.nipscern.com/publications/enemc-2025-implementacao-de-funcoes.pdf).
 
 ## Funções de números complexos
 
