@@ -1,4 +1,4 @@
-# SAPHO & AURORA — manual de uso
+# SAPHO & AURORA, manual de uso
 
 <div class="hero">
 <span class="version-pill">Versão documentada: 6.4.2</span>

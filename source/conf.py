@@ -95,7 +95,7 @@ myst_substitutions.update({
 })
 
 html_theme = "furo"
-html_title = "SAPHO & AURORA 6.4.2 — Manual de uso"
+html_title = "SAPHO & AURORA 6.4.2, Manual de uso"
 html_static_path = ["_static"]
 html_css_files = ["css/aurora.css"]
 html_js_files = ["js/aurora.js"]
@@ -152,7 +152,7 @@ latex_documents = [
     (
         "pdf-index",
         "AURORA-Manual-6.4.2.tex",
-        r"SAPHO \& AURORA 6.4.2 — Manual de uso",
+        r"SAPHO \& AURORA 6.4.2, Manual de uso",
         "NIPSCERN",
         "manual",
     ),
