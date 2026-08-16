@@ -4,8 +4,8 @@ from pathlib import Path
 docs_root = Path(__file__).resolve().parent.parent
 
 project = "AURORA"
-author = "NIPSCERN / documentação técnica"
-copyright = "2026, NIPSCERN"
+author = "NIPS-CERN / documentação técnica"
+copyright = "2026, NIPS-CERN"
 version = "6.4.2"
 release = "6.4.2 (commit f71b2f4)"
 
@@ -162,7 +162,7 @@ latex_documents = [
         "pdf-index",
         "AURORA-Manual-6.4.2.tex",
         r"SAPHO \& AURORA 6.4.2, Manual de uso",
-        "NIPSCERN",
+        "NIPS-CERN",
         "manual",
     ),
 ]
@@ -221,7 +221,7 @@ latex_elements = {
     \vfill
 
     {\small\sffamily
-      \textbf{NIPSCERN}\par
+      \textbf{NIPS-CERN}\par
       Núcleo de Inovação e Pesquisa em Sistemas Computacionais\par
       \vspace{2mm}
       Agosto de 2026\par
@@ -325,14 +325,14 @@ latex_elements = {
   \fancyhf{}
   \fancyhead[L]{\small\sffamily\color{AuroraMuted}SAPHO \& AURORA 6.4.2}
   \fancyhead[R]{\small\sffamily\color{AuroraMuted}\nouppercase{\leftmark}}
-  \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPSCERN}
+  \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPS-CERN}
   \fancyfoot[R]{\small\sffamily\color{AuroraInk}\thepage}
   \renewcommand{\headrulewidth}{0.35pt}
   \renewcommand{\footrulewidth}{0pt}
 }
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPSCERN}
+  \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPS-CERN}
   \fancyfoot[R]{\small\sffamily\color{AuroraInk}\thepage}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}

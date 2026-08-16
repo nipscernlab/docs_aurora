@@ -28,7 +28,7 @@ As informações foram consolidadas nesta ordem de confiança:
 3. Arquivos de configuração, scripts de bootstrap, empacotamento e release.
 4. Documentos `ARCHITECTURE.md`, `README.md`, `RELEASE.md`, `SECURITY.md` e documentação interna.
 5. Wiki local de apoio em `C:\Users\Computador\Documents\Arthur\NIPSCERN\Backup_Last_Project\Project_Wiki`, especialmente a rebaseline e o inventário funcional de 9 de julho de 2026.
-6. Páginas públicas oficiais do NIPSCERN sobre AURORA, SAPHO e YANC.
+6. Páginas públicas oficiais do NIPS-CERN sobre AURORA, SAPHO e YANC.
 7. Documentação oficial das tecnologias integradas.
 
 :::{note}
@@ -49,3 +49,7 @@ A wiki local é usada como apoio de rastreabilidade, não como substituta do có
 Este manual não reproduz a especificação completa da linguagem C± nem os manuais de cada ferramenta externa. Ele explica como executar tarefas na AURORA, compreender os arquivos produzidos e verificar os resultados observáveis de cada fluxo.
 
 Não foram alterados arquivos do código-fonte e nenhum commit foi criado durante a produção deste material.
+
+## Créditos
+
+Manual escrito e mantido por Chrysthofer Arthur Amaro Afonso, com orientação de Luciano Manhães de Andrade Filho, no NIPS-CERN (UFJF). Esta edição contou com apoio de redação da Claude, da Anthropic.

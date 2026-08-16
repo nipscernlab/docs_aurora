@@ -4,7 +4,7 @@ O SAPHO roda em Windows 10 e 11, 64 bits. A instalação traz tudo: a AURORA, os
 
 ## Baixar
 
-Baixe o instalador no site do NIPSCERN:
+Baixe o instalador no site do NIPS-CERN:
 
 <https://www.nipscern.com/projects/sapho>
 

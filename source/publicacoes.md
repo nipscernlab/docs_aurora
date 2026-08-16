@@ -1,6 +1,6 @@
 # Publicações
 
-A plataforma nasceu e evolui dentro da pesquisa do NIPSCERN. Esta é uma seleção do que vale ler junto com o manual; a lista completa do laboratório está em <https://www.nipscern.com/publications>.
+A plataforma nasceu e evolui dentro da pesquisa do NIPS-CERN. Esta é uma seleção do que vale ler junto com o manual; a lista completa do laboratório está em <https://www.nipscern.com/publications>.
 
 ## O artigo da plataforma
 
