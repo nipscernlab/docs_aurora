@@ -52,4 +52,4 @@ Não foram alterados arquivos do código-fonte e nenhum commit foi criado durant
 
 ## Créditos
 
-Manual escrito e mantido por Chrysthofer A. A. Afonso, com orientação de Luciano M. A. Filho, no NIPS-CERN (UFJF).
+Manual escrito e mantido por Chrysthofer A. A. Afonso, com orientação de Luciano M. de A. Filho, no NIPS-CERN (UFJF).
