@@ -1,6 +1,8 @@
 # Lista de capturas de tela do manual
 
-Todas as imagens serão refeitas. Padrão de captura:
+Todas as imagens serão refeitas. Enquanto isso, cada nome abaixo existe como uma imagem cinza de espera em `source/_static/assets/screenshots/`; basta substituir o arquivo pelo de mesmo nome, sem tocar nas páginas.
+
+Padrão de captura:
 
 - Interface em português, janela maximizada em monitor 1920x1080 ou maior.
 - Projeto do tutorial básico: projeto `MeuFiltro`, processador `media_movel` (filtro de média móvel do capítulo Primeiro processador).
@@ -55,6 +57,7 @@ Todas as imagens serão refeitas. Padrão de captura:
 | Arquivo | O que deve aparecer |
 |---|---|
 | `aurora-verilog-editor.png` | Editor com um módulo Verilog simples (o contador do capítulo) com realce e diagnósticos do LSP visíveis, se houver. |
+| `aurora-gtkwave-contador.png` | GTKWave com a onda do tutorial do contador: clock, reset, habilita e a contagem subindo de 0 a 15. |
 | `aurora-verilog-validacao.png` | Terminal TVERI após Sintetizar Verilog com sucesso, e a visão Hierarquia habilitada na árvore. |
 | `aurora-testbench-cocotb.png` | Editor com um testbench cocotb em Python, incluindo a linha `# aurora-toplevel:`. |
 | `aurora-surfer.png` | Surfer aberto com uma forma de onda do projeto. |

@@ -1,158 +1,56 @@
-# Referência da biblioteca padrão
+# Biblioteca do C±
 
-Todas as funções intrínsecas da C±, agrupadas por família. Erros de tipo são apontados na compilação; as restrições de cada grupo estão explicadas em {doc}`../linguagem/io-biblioteca`.
+Todas as funções embutidas da linguagem. "T" indica que a função aceita `int` ou `float` e devolve o mesmo tipo.
 
 ## Entrada e saída
 
-:::{list-table}
-:header-rows: 1
-:widths: 22 16 62
+| Função | Devolve | Faz |
+|---|---|---|
+| `in(p)` | `int` | lê a porta de entrada `p` |
+| `fin(p)` | `float` | lê a porta `p` convertendo para float |
+| `out(p, e)` | nada | escreve `e` na porta de saída `p` (float é convertido para int, com aviso) |
+| `fout(p, e)` | nada | escreve mantendo o formato float |
 
-* - Função
-  - Tipos
-  - Descrição
-* - `in(p)`
-  - `int`
-  - Lê a porta de entrada `p`
-* - `fin(p)`
-  - `float`
-  - Lê a porta `p` convertendo para `float`
-* - `out(p, x);`
-  - qualquer
-  - Escreve `x` na porta de saída `p`
-* - `fout(p, x);`
-  - `float`
-  - Escreve em formato `float`
-:::
+O número da porta é sempre um literal inteiro, validado contra `#NUIOIN` e `#NUIOOU`.
 
-## Funções especiais
+## Funções baratas
 
-Existem para economizar *hardware*, cada uma evitando um bloco caro da ULA ou uma sequência de instruções.
+Mapeiam em uma ou poucas instruções.
 
-:::{list-table}
-:header-rows: 1
-:widths: 22 20 58
+| Função | Devolve | Faz |
+|---|---|---|
+| `abs(x)` | T (ou `float` para `comp`) | valor absoluto; para complexo, o módulo |
+| `pset(x)` | T | `x` se positivo, senão 0 |
+| `sign(x, y)` | T | `y` com o sinal de `x` |
+| `norm(x)` | `int` | divide pelo `#NUGAIN` sem instanciar divisor; só `int` |
+| `copy(x, id)` | nada | copia `x` na variável `id` sem checagem de tipo |
 
-* - Função
-  - Tipos
-  - Descrição
-* - `norm(x)`
-  - `int`
-  - Divide pelo valor de `#NUGAIN` sem instanciar o divisor
-* - `pset(x)`
-  - `int`, `float`
-  - Devolve $x$ se não negativo; caso contrário, zero
-* - `abs(x)`
-  - todos
-  - Valor absoluto; magnitude para `comp`
-* - `sign(x, y)`
-  - `int`, `float`
-  - Devolve $y$ com o sinal de $x$
-* - `copy(x, y);`
-  - todos
-  - Cópia bit a bit, sem checagem de tipo
-:::
+## Funções matemáticas
 
-## Não lineares e arredondamento
+Implementadas como rotinas anexadas ao programa quando usadas; cada uma aparece no relatório do TASM.
 
-Custam instruções e ciclos, não blocos de ULA. São macros de *assembly* otimizadas injetadas no programa quando usadas.
+| Função | Aceita `comp`? |
+|---|---|
+| `sqrt(x)` | sim |
+| `sin(x)`, `cos(x)`, `tan(x)`, `atan(x)` | sim |
+| `exp(x)`, `log(x)` | sim |
+| `pow(x, y)` | não |
+| `sinh(x)`, `cosh(x)`, `tanh(x)` | não |
+| `floor(x)`, `ceil(x)`, `round(x)` | não |
 
-:::{list-table}
-:header-rows: 1
-:widths: 32 68
+Todas devolvem `float` (ou `comp` nas versões complexas).
 
-* - Função
-  - Descrição
-* - `sqrt(x)`
-  - Raiz quadrada, pelo método de Newton. Não aceita `comp`
-* - `sin(x)`, `cos(x)`, `tan(x)`
-  - Trigonométricas
-* - `atan(x)`
-  - Arco-tangente
-* - `sinh(x)`, `cosh(x)`, `tanh(x)`
-  - Hiperbólicas
-* - `exp(x)`, `log(x)`
-  - Exponencial e logaritmo natural. Não aceitam `comp`
-* - `pow(x, y)`
-  - Potência. A estratégia depende do expoente
-* - `floor(x)`, `ceil(x)`, `round(x)`
-  - Arredondamentos. Retornam `float`, e o `round` afasta o meio do zero
-:::
+## Funções de números complexos
 
-## Complexos
+| Função | Devolve | Faz |
+|---|---|---|
+| `real(z)` | `float` | parte real |
+| `imag(z)` | `float` | parte imaginária |
+| `mod2(z)` | `float` | módulo ao quadrado |
+| `fase(z)` | `float` | fase em radianos, quatro quadrantes |
+| `complex(a, b)` | `comp` | monta `a + bi` de dois floats |
+| `conj(z)` | `comp` | conjugado; um real vira `x + 0i` |
 
-:::{list-table}
-:header-rows: 1
-:widths: 32 68
+## Operações vetoriais (notação de Dirac)
 
-* - Função
-  - Descrição
-* - `real(z)`, `imag(z)`
-  - Partes real e imaginária
-* - `fase(z)`
-  - Argumento, ou ângulo
-* - `mod2(z)`
-  - Magnitude ao quadrado
-* - `complex(re, im)`
-  - Constrói um `comp`
-* - `conj(z)`
-  - Conjugado
-:::
-
-:::{warning}
-`sqrt`, `exp`, `log`, `pow`, `sign` e `pset` sobre complexos são erro de compilação, assim como o incremento `z++`. O módulo `%` e a `norm()` são exclusivos de inteiros.
-:::
-
-## Notação de Dirac
-
-:::{list-table}
-:header-rows: 1
-:widths: 32 68
-
-* - Sintaxe
-  - Operação
-* - `<a|b>`
-  - Produto interno, usado como expressão
-* - `a # |0>;`
-  - Zera o vetor
-* - `a # |M|b>;`
-  - Matriz vezes vetor
-* - `a # c|b>;`
-  - Vetor escalado
-* - `A # |a><b|;`
-  - Produto externo
-* - `out(p, c|a>);`
-  - Emite o vetor escalado pela porta `p`
-:::
-
-## Operadores
-
-:::{list-table}
-:header-rows: 1
-:widths: 26 74
-
-* - Grupo
-  - Operadores
-* - Aritméticos
-  - `+` &nbsp; `-` &nbsp; `*` &nbsp; `/` &nbsp; `%` (só inteiros) e o `-` unário
-* - Bit a bit
-  - `&` &nbsp; `|` &nbsp; `^` &nbsp; `~`
-* - Deslocamentos
-  - `<<` &nbsp; `>>` &nbsp; `>>>`
-* - Relacionais
-  - `<` &nbsp; `>` &nbsp; `<=` &nbsp; `>=` &nbsp; `==` &nbsp; `!=`
-* - Lógicos
-  - `&&` &nbsp; `||` &nbsp; `!`
-* - Incremento
-  - `++`
-:::
-
-:::{warning} Ausentes na linguagem
-`--`, os operadores compostos (`+=`, `-=`, `*=` e afins), o ternário `?:`, o *cast* explícito e os ponteiros.
-:::
-
-## Palavras-chave
-
-`void`, `int`, `float`, `comp`, `if`, `else`, `while`, `do`, `for`, `switch`, `case`, `default`, `break`, `continue`, `return`.
-
-O identificador `i` é reservado para a unidade imaginária e não pode nomear variáveis.
+A tabela completa das formas `⟨a|b⟩`, `a # |M|b⟩` e demais está em {doc}`../avancado/dirac`. Restrições gerais: dimensões constantes, tipos iguais dos dois lados, sem `comp`.

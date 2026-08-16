@@ -1,86 +1,77 @@
-# Solução de problemas
+# Diagnóstico: sintomas e causas
 
-Use esta página para localizar a etapa que falhou antes de alterar configurações ou reinstalar ferramentas. Um diagnóstico eficiente registra o contexto, reproduz uma única ação e começa pela primeira mensagem de erro.
+As falhas mais comuns de cada fluxo, com a causa e a correção. Regra geral que resolve metade dos casos: leia a primeira mensagem de erro, não a última, e clique no link de linha.
 
-## Comece por aqui
+## Botões desabilitados
 
-1. Salve todos os arquivos.
-2. Confira projeto, processador, Top Level, Testbench Top e simulador na barra de status.
-3. Repita apenas a ação que falhou.
-4. Leia a primeira mensagem de erro no terminal correspondente.
-5. Ative **verbose** somente se precisar de mais detalhes.
+| Botão cinza | Falta |
+|---|---|
+| {guilabel}`Compilar C±` | um arquivo {file}`.cmm` aberto e em foco no editor |
+| {guilabel}`Sintetizar Verilog`, {guilabel}`Abrir PRISM` | um Top Level definido |
+| {guilabel}`Analisar Verilog`, {guilabel}`Configuração de ondas` | um Testbench Top definido |
+| {guilabel}`Execução rápida` | testbench definido, e Verilator selecionado ou testbench em Python |
+| {guilabel}`Teste do processador sintetizado` | um processador ativo (o {file}`.cmm` dele em foco) |
+| engrenagem de configuração | idem |
 
-Anote o resultado esperado e o que realmente aconteceu. Essa comparação evita descrições genéricas como “não funciona” e ajuda a decidir se a falha está na interface, na configuração do projeto, na compilação ou no testbench.
+## Projeto
 
-## Interface
+O nome foi recusado
+: Nomes de projeto e de processador aceitam letras, números, hífen e sublinhado. Sem espaços e sem acentos.
 
-**Um botão está desabilitado**
-: Abra o arquivo esperado e confirme Top Level ou Testbench Top. Veja {doc}`../inicio/tour-interface`.
+Aviso de arquivos ausentes na árvore
+: O {file}`.spf` lista arquivos que sumiram do disco (movidos ou apagados por fora). O botão do aviso remove as referências, com confirmação.
 
-**O editor não carrega**
-: Feche e abra a AURORA. Se continuar, reinicie o Windows e repita a abertura.
+## Compilação C±
 
-**Um arquivo mudou fora da AURORA**
-: Escolha conscientemente entre a versão do disco e a versão do editor.
+O compilador aponta uma linha
+: O link abre o editor no ponto. Erros em cascata quase sempre derivam do primeiro.
 
-## Compilação
+`Constante aproximada`
+: A constante não cabe exata no formato de ponto flutuante escolhido. Informativo; se a precisão incomodar, aumente a mantissa ({doc}`../avancado/ponto-flutuante`).
 
-**Top Level não encontrado**
-: Confirme o módulo principal e inclua suas dependências.
+O total de bits foi recusado
+: `NUBITS` deve ser igual a `NBMANT + NBEXPO + 1`. Vale no Hub e nas diretivas.
 
-**Módulo duplicado**
-: Remova uma das fontes que declaram o mesmo módulo.
+Arquivo em {file}`Hardware/` mas o terminal mostra erro
+: O arquivo é de uma compilação anterior. Vale o terminal.
 
-**A geração C± não atualiza o hardware**
-: Salve o `.cmm`, confirme o processador ativo e execute C± novamente.
+## Validação Verilog
 
-**O cancelamento demora**
-: Aguarde alguns segundos para que processos auxiliares sejam encerrados.
+`Unknown module type: X`
+: Um módulo instanciado não está em nenhum fonte do projeto. Se `X` é um processador, compile o C± dele antes; o {file}`.v` gerado precisa existir.
 
-Depois de uma falha de compilação, não use arquivos antigos em `Hardware` como evidência de sucesso. Verifique a data de atualização e confirme que o terminal da execução atual terminou corretamente.
+Portas incompatíveis
+: A instância diverge da definição. O analisador semântico do editor aponta antes do botão.
 
 ## Simulação e ondas
 
-**Testbench não inicia**
-: Confirme Testbench Top, clock, reset e nomes de módulos.
+A simulação termina antes do resultado
+: Poucos ciclos. Engrenagem do processador, aumente o número de clocks.
 
-**Nenhum arquivo de onda**
-: Confirme que o testbench terminou e possui sinais configurados para dump.
+A onda abre sem os sinais internos do processador
+: Comportamento esperado com o Verilator. Troque para o Icarus para ver o processador por dentro.
 
-**Viewer de ondas abre sem sinais**
-: Volte o layout para **padrão**, revise a **Configuração de Ondas** e gere novamente.
+Sinal selecionado não aparece
+: A seleção de ondas referencia um sinal que não existe mais (código mudou). Reabra a {guilabel}`Configuração de ondas` e salve de novo; a AURORA remove as referências mortas.
 
-**O cocotb não encontra um sinal**
-: Compare o nome usado no Python com as portas reais do módulo.
+O testbench não encontra os dados
+: {file}`input_N.txt` ausente ou com linha inválida. Um inteiro por linha, sem vazios.
 
-Se a simulação não termina, confira se o testbench possui uma condição de encerramento. Use **Cancelar** antes de iniciar outra execução.
+cocotb reprova os testes mas a onda abre
+: Comportamento intencional: a onda é a ferramenta de investigação da falha. O veredito de cada teste está no TWAVE.
+
+cocotb não acha o módulo alvo
+: Falta a linha `# aurora-toplevel: nome` no {file}`.py`, ou o nome não confere.
 
 ## PRISM
 
-Execute **Verilog** antes do PRISM. Corrija primeiro erros de módulo ausente, módulo duplicado e Top Level incorreto.
+Recusa por tamanho no modo interativo
+: O diagrama estático não tem limite; a simulação interativa é para designs pequenos.
 
-Se o Verilog está válido, mas o diagrama continua desatualizado, salve os arquivos e use **Recompile** na janela do PRISM.
+Diagrama desatualizado
+: {guilabel}`Recompile` na própria janela do PRISM.
 
-## Aurora Intelligence
+## Quando nada explica
 
-**Chave salva, mas a conexão falha**
-: Confirme conta, modelo, rede e permissões do provedor.
-
-**Ollama não detecta modelos**
-: Confirme que `ollama serve` está ativo e use `http://localhost:11434/v1`.
-
-**Claude Code ou ChatGPT via Codex CLI não conecta**
-: Execute novamente o login, confirme `--version` e reinicie a AURORA.
-
-## Pedir suporte
-
-Inclua:
-
-- Versão da AURORA e do Windows.
-- Ação exata que falhou.
-- Resultado esperado e observado.
-- Saída exportada do terminal.
-- Projeto mínimo sem dados confidenciais.
-
-Inclua apenas o necessário para reproduzir o problema. Remova chaves, dados pessoais e arquivos que não participam do fluxo. Quando possível, descreva uma sequência curta de passos que leve ao mesmo resultado.
-
+- Ligue o modo verboso ({guilabel}`Configurações`, {guilabel}`Terminal`) e repita: os comandos completos de cada etapa aparecem no terminal.
+- Exporte o log (botão na área de terminais) e anexe ao relato pelo {guilabel}`Relatar um problema` da aba {guilabel}`Sobre`.

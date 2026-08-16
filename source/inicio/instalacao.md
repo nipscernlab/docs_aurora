@@ -1,116 +1,56 @@
-# Instalação e primeiro início
+# Instalação
 
-A AURORA é hoje um aplicativo exclusivamente Windows, para sistemas de 64 bits. A instalação é de um clique e traz embutida toda a cadeia de compilação e simulação, de modo que nenhum outro programa precisa ser instalado antes ou depois.
+O SAPHO roda em Windows 10 e 11, 64 bits. A instalação traz tudo: a AURORA, os compiladores do YANC, os simuladores, os visualizadores de onda e um Python embarcado. Não é preciso instalar nada além do pacote.
 
-## Antes de instalar
+## Baixar
 
-:::{list-table}
-:header-rows: 1
-:widths: 30 70
+Baixe o instalador no site do NIPSCERN:
 
-* - Requisito
-  - Detalhe
-* - Sistema operacional
-  - Windows 10 ou Windows 11, 64 bits
-* - Espaço em disco
-  - Cerca de 2 GB para o aplicativo e a cadeia de ferramentas, mais o espaço dos seus projetos
-* - Permissões
-  - Permissão de escrita na pasta escolhida para os projetos
-* - Conexão
-  - Necessária apenas para baixar o instalador e, depois, para as atualizações e a assistente de IA
+<https://www.nipscern.com/projects/sapho>
+
+O botão {guilabel}`Download Latest Release` baixa diretamente o instalador da versão mais recente, um arquivo com nome no formato {file}`sapho-aurora-Setup-vX.Y.Z.exe`, com cerca de 500 MB. Se preferir, as versões anteriores ficam na página de releases do GitHub, no mesmo lugar.
+
+## Instalar
+
+1. Execute o instalador baixado.
+2. Se o Windows exibir o aviso do SmartScreen dizendo que o aplicativo não é reconhecido, clique em {guilabel}`Mais informações` e depois em {guilabel}`Executar assim mesmo`. O aviso aparece porque o executável ainda não carrega assinatura digital; a assinatura pela SignPath Foundation está em andamento e o aviso deixará de existir.
+3. Siga o assistente: aceite a licença, escolha a pasta de destino e conclua.
+
+```{figure} ../_static/assets/screenshots/aurora-instalador.png
+:alt: Assistente de instalação do SAPHO no Windows.
+:width: 75%
+:align: center
+
+O assistente de instalação. O padrão instala para o usuário atual, sem exigir privilégios de administrador.
+```
+
+:::{warning}
+Não execute o instalador como administrador. A atualização automática usa o mesmo caminho da instalação, e uma instalação feita como administrador impede o atualizador de trabalhar depois.
 :::
 
-Não é preciso instalar Python, compiladores C, simuladores Verilog nem GTKWave por fora. Tudo isso acompanha o instalador em versões validadas em conjunto.
+## Primeiro início
 
-## Baixar e instalar
+Abra o SAPHO pelo menu Iniciar. Após a tela de abertura, você chega à tela de boas-vindas:
 
-1. Acesse o canal oficial de distribuição em [nipscern.com/sapho](https://nipscern.com/sapho) e baixe o instalador, um arquivo chamado {file}`sapho-aurora-Setup-vX.Y.Z.exe`, no qual `X.Y.Z` é a versão.
-2. Dê dois cliques no executável.
-3. Aguarde. O instalador é do tipo *one-click*: não há telas de opções nem escolha de pasta. Ele instala, cria os atalhos na área de trabalho e no menu Iniciar e abre o aplicativo.
-4. Na primeira abertura, confira a versão instalada em {menuselection}`Configurações do Aurora --> Sobre`.
+```{figure} ../_static/assets/screenshots/aurora-primeiro-inicio.png
+:alt: Tela de boas-vindas da AURORA no primeiro início, sem projetos recentes.
+:width: 90%
+:align: center
 
-:::{note}
-O instalador ainda não é assinado digitalmente, e o Windows SmartScreen pode exibir um aviso de editor desconhecido na primeira execução. Nesse caso, clique em {guilabel}`Mais informações` e depois em {guilabel}`Executar assim mesmo`.
-:::
+A tela de boas-vindas. À esquerda, criar ou abrir projeto; à direita, a lista de projetos recentes, vazia no primeiro uso.
+```
 
-Durante a instalação, dois vínculos são registrados no sistema. A extensão {file}`.spf`, dos arquivos de projeto do SAPHO, passa a abrir com a AURORA e ganha ícone próprio, de modo que dois cliques em um projeto no Explorador de Arquivos o abrem diretamente. Também é registrado o protocolo `sapho://`, reservado a integrações via navegador.
+Confirme que está tudo pronto:
 
-## O que é instalado, e onde
+- A barra de status, no rodapé, mostra {guilabel}`Não Pronto`. É o esperado sem projeto aberto; clicar nela abre o diálogo de projeto.
+- Em {guilabel}`Configurações` (ícone de controles deslizantes na barra superior), a aba {guilabel}`Sobre` mostra a versão instalada e a situação do atualizador.
 
-Saber onde as coisas ficam ajuda tanto no diagnóstico quanto no *backup*.
+## Idioma
 
-::::{tab-set}
-
-:::{tab-item} Pasta do aplicativo
-
-Recebe o executável da AURORA e a pasta {file}`components`, que reúne a cadeia de ferramentas completa: os compiladores do YANC, os simuladores Icarus Verilog e Verilator, o Yosys, o GTKWave, o Python com cocotb e os moldes de HDL do processador.
-
-Se essa pasta for movida ou tiver conteúdo removido, os botões de compilação passam a falhar com a mensagem de binário não encontrado. A correção é reinstalar pelo instalador oficial.
-:::
-
-:::{tab-item} Dados do usuário
-
-Ficam em {file}`%APPDATA%\Aurora-IDE`:
-
-- {file}`logs/main.log`, o registro principal de execução, e {file}`logs/main.old.log`, o anterior;
-- a lista de projetos recentes;
-- o registro de versão usado na confirmação após uma atualização;
-- as conversas da Aurora Intelligence.
-
-É o {file}`main.log` que se anexa ao relatar um problema.
-:::
-
-:::{tab-item} Credenciais
-
-As chaves de API da Aurora Intelligence e o *token* do GitHub não vão para arquivo algum. São cifradas pelo cofre de credenciais do próprio Windows, a DPAPI, e usadas somente pelo processo principal da AURORA. A interface exibe apenas se existe uma chave configurada, nunca o valor.
-:::
-
-:::{tab-item} Seus projetos
-
-Ficam onde você quiser. A AURORA pergunta a pasta ao criar cada projeto e não impõe um diretório de trabalho. Para fazer *backup* do seu trabalho, copie a pasta completa que contém o {file}`.spf`; veja {doc}`../uso/projetos`.
-:::
-
-::::
-
-## Primeira execução
-
-Ao abrir, a AURORA exibe uma tela de abertura com o progresso real da inicialização e, em seguida, a tela de boas-vindas: o fundo animado de aurora boreal, os botões {guilabel}`Novo Projeto` e {guilabel}`Abrir Projeto` e a lista de projetos recentes, vazia na primeira vez.
-
-Confirme que a instalação está saudável verificando estes cinco pontos:
-
-- [ ] a janela principal abriu e não ficou presa na tela de carregamento;
-- [ ] {guilabel}`Novo Projeto` e {guilabel}`Abrir Projeto` respondem ao clique;
-- [ ] a área central do editor aparece;
-- [ ] {guilabel}`Configurações do Aurora` abre e mostra a versão em {guilabel}`Sobre`;
-- [ ] a barra inferior indica que a aplicação está pronta.
-
-Cerca de seis segundos após abrir, a AURORA consulta silenciosamente se há uma versão mais nova. Se você já está na última, nada acontece. Havendo versão nova, a janela de atualização aparece, com o registro de mudanças e o tamanho do download; nada é baixado sem o seu aval.
+A interface nasce em inglês ou português conforme o sistema. Para trocar: {guilabel}`Configurações`, aba {guilabel}`Idioma`. A escolha vale também para as mensagens dos compiladores, que falam português ou inglês conforme essa opção.
 
 ## Atualizações
 
-Manter o SAPHO em dia não exige nada além de aceitar as atualizações quando oferecidas. Ao aceitar, a barra de progresso mostra percentual, velocidade e tempo restante, e é possível continuar trabalhando durante o download. Com o pacote pronto, o botão vira {guilabel}`Reiniciar e instalar`: a AURORA fecha, o instalador roda e a IDE reabre na versão nova.
+A AURORA verifica atualizações sozinha, alguns segundos após abrir e depois a cada três horas. Quando há versão nova, uma janela mostra as novidades e pergunta se você quer baixar; nada é baixado sem a sua confirmação. Depois de baixada, a atualização se aplica ao fechar o aplicativo.
 
-A integridade do pacote é verificada por resumo criptográfico antes de instalar, e cada instalador carrega a versão da cadeia de ferramentas testada com aquela versão da IDE. Atualizar a AURORA atualiza o conjunto inteiro, em versões validadas juntas, sem nada para gerenciar manualmente.
-
-:::{admonition} Dois repositórios, por desenho
-:class: dropdown
-
-O desenvolvimento acontece no repositório `nipscernlab/aurora`, e as versões estáveis são publicadas em `nipscernlab/sapho`, que é o canal consumido pelo instalador e pelo atualizador. Você sempre recebe versões estáveis, nunca o estado intermediário do desenvolvimento.
-:::
-
-## Se a AURORA não iniciar
-
-1. Aguarde alguns segundos e confirme que a preparação inicial não está apenas em andamento.
-2. Verifique se outra janela da AURORA já está aberta.
-3. Reinicie o aplicativo pelo menu Iniciar.
-4. Se o problema persistir, anote a versão do Windows e a etapa em que a abertura parou e anexe o {file}`%APPDATA%\Aurora-IDE\logs\main.log` ao relato.
-
-Consulte {doc}`../referencia/diagnostico` para uma investigação orientada por sintomas.
-
-## Desinstalação
-
-Use as Configurações do Windows, em Aplicativos, e desinstale o item Aurora-IDE. Os projetos criados por você não são apagados: eles pertencem às pastas que você escolheu.
-
-## O próximo passo
-
-Com o aplicativo aberto, siga para {doc}`tour-interface` e conheça as regiões da janela, ou vá direto ao {doc}`primeiro-projeto` se preferir aprender construindo.
+Próximo passo: {doc}`tour-interface`.

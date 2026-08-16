@@ -11,125 +11,96 @@ orphan: true
 ```{toctree}
 :maxdepth: 2
 
-Conheça a AURORA e os fluxos <fluxos/index>
 inicio/o-que-e
 inicio/instalacao
 inicio/tour-interface
+inicio/organizacao-projeto
 ```
 
 ```{raw} latex
-\part{Projetos e ferramentas}
+\part{Verilog primeiro}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-uso/projetos
-uso/editor
-uso/terminais
-uso/source-control
+verilog/tutorial-contador
+verilog/fluxo
+verilog/testbenches
 ```
 
 ```{raw} latex
-\part{Fluxo Verilog}
+\part{C± e o processador}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-fluxos/verilog
-uso/arquivos-verilog
+sapho/tutorial-filtro
+sapho/linguagem
+sapho/compilacao
+sapho/simulacao
+sapho/prism
 ```
 
 ```{raw} latex
-\part{Fluxo SAPHO}
+\part{Os dois juntos}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-fluxos/processador-sapho
-inicio/primeiro-projeto
-uso/processadores
-fluxos/compilacao
+juntos/processador-no-verilog
+juntos/fpga
 ```
 
 ```{raw} latex
-\part{A linguagem C±}
+\part{Estudos avançados}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-linguagem/index
-linguagem/diretivas
-linguagem/tipos-operadores
-linguagem/io-biblioteca
-linguagem/avancado
+avancado/ponto-flutuante
+avancado/complexos
+avancado/dirac
+avancado/fft
+avancado/modulos-hdl
+avancado/interrupcao-multiproc
 ```
 
 ```{raw} latex
-\part{O processador SAPHO}
+\part{Ferramentas}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-arquitetura/processador
-arquitetura/ponto-flutuante
-arquitetura/instrucoes
+ferramentas/aurora-intelligence
+ferramentas/apoio
 ```
 
 ```{raw} latex
-\part{Simular e analisar}
+\part{Referência}
 ```
 
 ```{toctree}
 :maxdepth: 2
 
-fluxos/simulacao
-exemplos/galeria-testbenches
-fluxos/ondas
-fluxos/prism
-```
-
-```{raw} latex
-\part{Aurora Intelligence}
-```
-
-```{toctree}
-:maxdepth: 2
-
-ia/visao-geral
-ia/provedores
-ia/ferramentas
-ia/mcp-cli
-```
-
-```{raw} latex
-\part{Configuração e ajuda}
-```
-
-```{toctree}
-:maxdepth: 2
-
-configuracao/preferencias
 referencia/diretivas
 referencia/biblioteca
-referencia/formatos
+referencia/instrucoes
 referencia/atalhos
 referencia/diagnostico
 ```
 
 ```{raw} latex
-\appendix
 \part{Apêndices}
 ```
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
 glossario
-sobre/ecossistema
 sobre/escopo
 ```
