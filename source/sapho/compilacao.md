@@ -7,7 +7,7 @@ O botão {guilabel}`Compilar C±` esconde uma cadeia de três compiladores. Conh
 ```{mermaid}
 flowchart LR
   CMM[".cmm"] -->|"cmmcomp"| ASM[".asm"]
-  ASM -->|"appcomp"| PRE["enderecos e<br>tamanhos resolvidos"]
+  ASM -->|"appcomp"| PRE["endereços e<br>tamanhos resolvidos"]
   PRE -->|"asmcomp"| OUT[".v  +  .mif  +  testbench"]
 ```
 

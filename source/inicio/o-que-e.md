@@ -11,28 +11,28 @@ A plataforma também serve para o caminho inverso: escrever Verilog à mão, val
 
 :::{grid-item-card}
 <img class="sd-card-img-top" src="../_static/assets/icons/sapho_aurora_icon.svg" alt="AURORA">
-**AURORA**
+AURORA
 ^^^
 A IDE. O programa que você instala e abre. Nela vivem o editor, o gerenciador de projetos, os botões de compilação e simulação, os terminais e os visualizadores. É a única interface gráfica da plataforma.
 :::
 
 :::{grid-item-card}
 <img class="sd-card-img-top" src="../_static/assets/icons/yanc.svg" alt="YANC">
-**YANC**
+YANC
 ^^^
 A suíte de compiladores que trabalha por baixo. Traduz o programa C± no processador em Verilog, nas imagens de memória e no testbench. Você nunca a chama diretamente.
 :::
 
 :::{grid-item-card}
 <img class="sd-card-img-top" src="../_static/assets/icons/sapho.svg" alt="Processador SAPHO">
-**O processador SAPHO**
+O processador SAPHO
 ^^^
 O circuito que o YANC emite: acumulador único, arquitetura Harvard, pipeline de três estágios. Só os blocos que o seu programa usa são sintetizados.
 :::
 
 :::{grid-item-card}
 <img class="sd-card-img-top" src="../_static/assets/icons/cmm_file.svg" alt="Arquivo C±">
-**A linguagem C±**
+A linguagem C±
 ^^^
 O dialeto de C no qual você escreve o algoritmo. Arquivos com extensão {file}`.cmm`. A versão essencial está no capítulo {doc}`../sapho/linguagem`; os recursos de pós-graduação, nos {doc}`estudos avançados <../avancado/ponto-flutuante>`.
 :::

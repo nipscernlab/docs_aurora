@@ -52,4 +52,4 @@ Não foram alterados arquivos do código-fonte e nenhum commit foi criado durant
 
 ## Créditos
 
-Manual escrito e mantido por Chrysthofer Arthur Amaro Afonso, com orientação de Luciano Manhães de Andrade Filho, no NIPS-CERN (UFJF). Esta edição contou com apoio de redação da Claude, da Anthropic.
+Manual escrito e mantido por Chrysthofer A. A. Afonso, com orientação de Luciano M. A. Filho, no NIPS-CERN (UFJF).

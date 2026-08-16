@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [switch]$SkipPdf,
     [switch]$DryRun
@@ -42,7 +42,7 @@ $pagesDir = Join-Path $projectRoot "build\gh-pages"
 # mudar de versao do aplicativo, acrescente um quarto segmento (6.4.2.1): as
 # instalacoes ja feitas so baixam a doc nova quando veem um numero maior no
 # manifesto.
-$version = "6.4.2.3"
+$version = "6.4.2.5"
 $tag = "docs-v$version"
 $zipName = "sapho-docs-offline-$version.zip"
 $pdfName = "AURORA-Manual-6.4.2.pdf"

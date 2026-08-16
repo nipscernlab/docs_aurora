@@ -7,11 +7,11 @@ Uma página para deixar na bancada. Imprima pelo navegador ou pelo PDF do manual
 ```{mermaid}
 flowchart LR
   CMM[".cmm"] -->|"Compilar C±"| HW[".v + .mif"]
-  V["seus .v"] --> VAL
-  HW --> VAL["Sintetizar Verilog"]
-  VAL --> SIM["Analisar Verilog"]
-  SIM --> ONDA["forma de onda"]
-  VAL --> PRISM["PRISM"]
+  SEUS["seus .v"] --> FONTES["fontes do projeto"]
+  HW --> FONTES
+  FONTES -->|"Sintetizar Verilog"| VAL["validação e hierarquia"]
+  FONTES -->|"Analisar Verilog"| ONDA["forma de onda"]
+  FONTES -->|"Abrir PRISM"| PRISM["diagrama do circuito"]
 ```
 
 ## Os botões e seus pré-requisitos
