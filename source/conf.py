@@ -6,8 +6,8 @@ docs_root = Path(__file__).resolve().parent.parent
 project = "AURORA"
 author = "NIPSCERN / documentação técnica"
 copyright = "2026, NIPSCERN"
-version = "6.3.2"
-release = "6.3.2 (commit cee4922)"
+version = "6.4.2"
+release = "6.4.2 (commit f71b2f4)"
 
 extensions = [
     "myst_parser",
@@ -54,7 +54,7 @@ language = "pt_BR"
 # Alvo do HTML:
 #
 #   local    conferencia na propria maquina.
-#   web      publicado no branch gh-pages e servido em nipscern.com/docs/sapho
+#   web      publicado no branch gh-pages e servido em nipscern.com/library/sapho
 #            por um Worker.
 #   offline  empacotado dentro da AURORA, sem depender de rede: os diagramas
 #            sao pre-renderizados em SVG.
@@ -62,11 +62,11 @@ language = "pt_BR"
 # O PDF acompanha o site nos tres casos, sempre em _static/downloads, para que
 # exista um unico publicador: quem gera o HTML gera tambem o manual ao lado.
 docs_target = os.environ.get("AURORA_DOCS_TARGET", "local")
-pdf_name = "AURORA-Manual-6.3.2.pdf"
+pdf_name = "AURORA-Manual-6.4.2.pdf"
 pdf_url = f"_static/downloads/{pdf_name}"
 
 if docs_target == "web":
-    html_baseurl = "https://www.nipscern.com/docs/sapho/"
+    html_baseurl = "https://www.nipscern.com/library/sapho/"
 
 if docs_target == "offline":
     # Sem isto o Mermaid renderiza no navegador, buscando o script no
@@ -86,14 +86,16 @@ pdf_button = (
     "</a>"
 )
 
-myst_substitutions = {
+# update, e nao atribuicao: uma atribuicao aqui apagaria as substituicoes
+# definidas mais acima (versao, cmm), usadas ao longo do manual.
+myst_substitutions.update({
     "pdf_url": pdf_url,
     "pdf_name": pdf_name,
     "pdf_button": pdf_button,
-}
+})
 
 html_theme = "furo"
-html_title = "AURORA 6.3.2 — Manual completo"
+html_title = "SAPHO & AURORA 6.4.2 — Manual de uso"
 html_static_path = ["_static"]
 html_css_files = ["css/aurora.css"]
 html_js_files = ["js/aurora.js"]
@@ -149,8 +151,8 @@ latex_logo = "_static/aurora-logo-pdf.png"
 latex_documents = [
     (
         "pdf-index",
-        "AURORA-Manual-6.3.2.tex",
-        "AURORA 6.3.2 — Manual completo",
+        "AURORA-Manual-6.4.2.tex",
+        r"SAPHO \& AURORA 6.4.2 — Manual de uso",
         "NIPSCERN",
         "manual",
     ),
@@ -201,11 +203,11 @@ latex_elements = {
 
     {\color{AuroraRule}\rule{\textwidth}{1.4pt}}\par
     \vspace{9mm}
-    {\fontsize{36}{40}\selectfont\bfseries\sffamily AURORA\par}
+    {\fontsize{34}{38}\selectfont\bfseries\sffamily SAPHO \& AURORA\par}
     \vspace{4mm}
     {\fontsize{20}{25}\selectfont\sffamily Manual de uso e referência técnica\par}
     \vspace{7mm}
-    {\large\color{AuroraMuted} Versão 6.3.2\par}
+    {\large\color{AuroraMuted} Versão 6.4.2\par}
 
     \vfill
 
@@ -213,7 +215,7 @@ latex_elements = {
       \textbf{NIPSCERN}\par
       Núcleo de Inovação e Pesquisa em Sistemas Computacionais\par
       \vspace{2mm}
-      Junho de 2026\par
+      Agosto de 2026\par
     }
   \end{flushleft}
 \end{titlepage}
@@ -312,7 +314,7 @@ latex_elements = {
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \fancypagestyle{normal}{
   \fancyhf{}
-  \fancyhead[L]{\small\sffamily\color{AuroraMuted}AURORA 6.3.2}
+  \fancyhead[L]{\small\sffamily\color{AuroraMuted}SAPHO \& AURORA 6.4.2}
   \fancyhead[R]{\small\sffamily\color{AuroraMuted}\nouppercase{\leftmark}}
   \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPSCERN}
   \fancyfoot[R]{\small\sffamily\color{AuroraInk}\thepage}
@@ -382,7 +384,7 @@ extlinks = {
 }
 
 rst_prolog = """
-.. |snapshot| replace:: AURORA 6.3.2 (`cee4922`)
+.. |snapshot| replace:: AURORA 6.4.2 (`f71b2f4`)
 """
 
 nitpicky = False

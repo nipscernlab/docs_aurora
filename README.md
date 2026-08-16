@@ -4,7 +4,7 @@
   <img src="source/_static/aurora.svg" alt="Logo da AURORA" width="240">
 </p>
 
-Documentação técnica e de usuário da AURORA 6.3.2, produzida com Sphinx e MyST Markdown a partir do código-fonte local, da wiki de apoio e dos documentos do repositório.
+Documentação técnica e de usuário do SAPHO e da AURORA 6.4.2, produzida com Sphinx e MyST Markdown a partir do código-fonte local, da wiki de apoio e dos documentos do repositório.
 
 ## Editar as informações do site
 
@@ -45,9 +45,9 @@ Esse comando realiza o fluxo completo:
 Confira os resultados nestes caminhos:
 
 ```text
-build\pdf\AURORA-Manual-6.3.2.pdf
+build\pdf\AURORA-Manual-6.4.2.pdf
 build\html\index.html
-build\html\_static\downloads\AURORA-Manual-6.3.2.pdf
+build\html\_static\downloads\AURORA-Manual-6.4.2.pdf
 ```
 
 Antes de publicar, abra o HTML e o PDF para verificar textos, imagens, navegação e formatação.
@@ -97,7 +97,7 @@ make pdf
 O arquivo final será gravado em:
 
 ```text
-build\pdf\AURORA-Manual-6.3.2.pdf
+build\pdf\AURORA-Manual-6.4.2.pdf
 ```
 
 O processo usa Sphinx para produzir LaTeX, Mermaid CLI para converter os diagramas e XeLaTeX/latexmk para montar o documento A4.
@@ -112,10 +112,10 @@ Este repositório é o único publicador da documentação. Um comando gera tudo
 
 | Canal | O que vai | Quem consome |
 |---|---|---|
-| Branch `gh-pages` deste repositório | Site em HTML e o manual em PDF ao lado | `nipscern.com/docs/sapho/`, por um Worker do site |
-| Release `docs-v6.3.2` deste repositório | `sapho-docs-offline-6.3.2.zip` e o `.sha256` | A AURORA, durante o build |
+| Branch `gh-pages` deste repositório | Site em HTML e o manual em PDF ao lado | `nipscern.com/library/sapho/`, por um Worker do site |
+| Release `docs-v6.4.2` deste repositório | `sapho-docs-offline-6.4.2.zip` e o `.sha256` | A AURORA, durante o build |
 
-Nenhum consumidor precisa deste repositório em disco, nem de caminho fixo. O site do NIPSCERN não guarda cópia das páginas: a rota `nipscern.com/docs/sapho*` é atendida por um Worker que serve o `gh-pages` daqui, no mesmo padrão já usado pelo CGVWeb. Publicar uma versão nova atualiza o site sem tocar no repositório do site.
+Nenhum consumidor precisa deste repositório em disco, nem de caminho fixo. O site do NIPSCERN não guarda cópia das páginas: a rota `nipscern.com/library/sapho*` é atendida por um Worker que serve o `gh-pages` daqui, no mesmo padrão já usado pelo CGVWeb. Publicar uma versão nova atualiza o site sem tocar no repositório do site.
 
 Para conferir os artefatos sem enviar nada:
 
@@ -131,8 +131,8 @@ Ao mudar a versão do manual, atualize `pdf_name` em `source\conf.py` e `$versio
 
 ## Escopo congelado
 
-- versão: `6.3.2`
-- commit: `cee4922189e746b83e0198fd998ed50646f18371`
+- versão: `6.4.2`
+- commit: `f71b2f4551bb59f20a2ae33dcd715eea3bd78050`
 - data da análise: `9 de julho de 2026`
 - plataforma descrita: Windows 10/11
 

@@ -7,7 +7,7 @@ param(
 # Publica a documentacao nos dois canais publicos que os consumidores usam:
 #
 #   1. branch gh-pages deste repositorio, servido em nipscernlab.github.io e
-#      espelhado em nipscern.com/docs/sapho por um Worker do site;
+#      espelhado em nipscern.com/library/sapho por um Worker do site;
 #   2. uma Release deste repositorio, com o pacote offline que a AURORA baixa
 #      durante o build.
 #
@@ -38,10 +38,14 @@ $offlineDir = Join-Path $projectRoot "build\offline"
 $distDir = Join-Path $projectRoot "build\dist"
 $pagesDir = Join-Path $projectRoot "build\gh-pages"
 
-$version = "6.3.2"
+# Acompanha a versao do SAPHO documentada. Para corrigir a documentacao sem
+# mudar de versao do aplicativo, acrescente um quarto segmento (6.4.2.1): as
+# instalacoes ja feitas so baixam a doc nova quando veem um numero maior no
+# manifesto.
+$version = "6.4.2"
 $tag = "docs-v$version"
 $zipName = "sapho-docs-offline-$version.zip"
-$pdfName = "AURORA-Manual-6.3.2.pdf"
+$pdfName = "AURORA-Manual-6.4.2.pdf"
 $builtPdf = Join-Path $projectRoot "build\pdf\$pdfName"
 
 $repoSlug = "nipscernlab/docs_aurora"
@@ -206,7 +210,7 @@ $manifest = [ordered]@{
     package   = "https://github.com/nipscernlab/docs_aurora/releases/download/$tag/$zipName"
     sha256    = $hash
     bytes     = (Get-Item $zipPath).Length
-    online    = "https://www.nipscern.com/docs/sapho/"
+    online    = "https://www.nipscern.com/library/sapho/"
 }
 $manifestJson = $manifest | ConvertTo-Json
 Write-Utf8 -Path (Join-Path $webDir "docs-manifest.json") -Content $manifestJson
@@ -271,10 +275,10 @@ if ($result.ExitCode -ne 0) {
 
 Write-Host ""
 Write-Host "Publicado:"
-Write-Host "  site     https://www.nipscern.com/docs/sapho/"
-Write-Host "  manual   https://www.nipscern.com/docs/sapho/_static/downloads/$pdfName"
+Write-Host "  site     https://www.nipscern.com/library/sapho/"
+Write-Host "  manual   https://www.nipscern.com/library/sapho/_static/downloads/$pdfName"
 Write-Host "  pacote   https://github.com/nipscernlab/docs_aurora/releases/download/$tag/$zipName"
 Write-Host ""
 Write-Host "O site depende da rota do Worker no painel da Cloudflare:"
-Write-Host "  nipscern.com/docs/sapho*"
-Write-Host "  www.nipscern.com/docs/sapho*"
+Write-Host "  nipscern.com/library/sapho*"
+Write-Host "  www.nipscern.com/library/sapho*"

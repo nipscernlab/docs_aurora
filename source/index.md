@@ -1,9 +1,9 @@
-# AURORA — manual de uso
+# SAPHO & AURORA — manual de uso
 
 <div class="hero">
-<span class="version-pill">Versão documentada: 6.3.2</span>
+<span class="version-pill">Versão documentada: 6.4.2</span>
 
-Este manual ensina a usar a AURORA do zero: instalar, criar um projeto, gerar um processador SAPHO sob medida, escrever o algoritmo em C±, compilar, simular e olhar o circuito por dentro. Nenhum conhecimento prévio da plataforma é assumido. Alguma familiaridade com a linguagem C e com a ideia geral de circuitos digitais torna a leitura mais confortável, mas não é pré-requisito.
+Este manual ensina a usar o processador SAPHO e a AURORA, a interface onde ele é criado: instalar, criar um projeto, gerar um processador sob medida, escrever o algoritmo em C±, compilar, simular e olhar o circuito por dentro. Nenhum conhecimento prévio da plataforma é assumido. Alguma familiaridade com a linguagem C e com a ideia geral de circuitos digitais torna a leitura mais confortável, mas não é pré-requisito.
 
 <div class="hero-actions">
 
@@ -13,7 +13,7 @@ Este manual ensina a usar a AURORA do zero: instalar, criar um projeto, gerar um
 </div>
 
 :::{note}
-Este manual descreve a AURORA 6.3.2 para Windows 10 e 11. Para a versão exata, o commit e o método usado na apuração, veja {doc}`sobre/escopo`.
+Este manual descreve a AURORA 6.4.2 para Windows 10 e 11. Para a versão exata, o commit e o método usado na apuração, veja {doc}`sobre/escopo`.
 :::
 
 ## Por onde começar

@@ -2,7 +2,7 @@
 orphan: true
 ---
 
-# AURORA 6.3.2
+# SAPHO & AURORA 6.4.2
 
 ```{raw} latex
 \part{Primeiros passos}

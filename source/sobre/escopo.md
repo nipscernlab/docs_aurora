@@ -11,8 +11,8 @@ Esta documentação descreve a aplicação desktop AURORA no estado observado no
 | Item | Valor congelado |
 |---|---|
 | Produto | AURORA IDE / SAPHO |
-| Versão do pacote | 6.3.2 |
-| Commit | `cee4922189e746b83e0198fd998ed50646f18371` |
+| Versão do pacote | 6.4.2 |
+| Commit | `f71b2f4551bb59f20a2ae33dcd715eea3bd78050` |
 | Branch | `main` |
 | Plataforma primária | Windows 10/11 |
 | Runtime | Electron 39.8.10 e Node.js 18+ |

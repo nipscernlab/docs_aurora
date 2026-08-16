@@ -28,7 +28,7 @@ O nome SAPHO designa tanto o processador quanto o guarda-chuva que reúne os com
 :::::{grid-item-card}
 
 :::{raw} html
-<img class="sd-card-img-top" src="../_static/assets/icons/sapho_aurora_icon.png" alt="AURORA">
+<img class="sd-card-img-top" src="../_static/assets/icons/sapho_aurora_icon.svg" alt="AURORA">
 :::
 
 **AURORA**
@@ -39,7 +39,7 @@ A IDE de desktop, o programa que você instala e abre. Nela vivem o editor, o ge
 :::::{grid-item-card}
 
 :::{raw} html
-<img class="sd-card-img-top" src="../_static/assets/icons/yanc.png" alt="YANC">
+<img class="sd-card-img-top" src="../_static/assets/icons/yanc.svg" alt="YANC">
 :::
 
 **YANC**
@@ -50,7 +50,7 @@ A IDE de desktop, o programa que você instala e abre. Nela vivem o editor, o ge
 :::::{grid-item-card}
 
 :::{raw} html
-<img class="sd-card-img-top" src="../_static/assets/icons/sapho.png" alt="Processador SAPHO">
+<img class="sd-card-img-top" src="../_static/assets/icons/sapho.svg" alt="Processador SAPHO">
 :::
 
 **O processador SAPHO**
@@ -61,7 +61,7 @@ O circuito parametrizável que o YANC emite: acumulador único, arquitetura Harv
 :::::{grid-item-card}
 
 :::{raw} html
-<img class="sd-card-img-top" src="../_static/assets/icons/cmm_file.png" alt="Arquivo C±">
+<img class="sd-card-img-top" src="../_static/assets/icons/cmm_file.svg" alt="Arquivo C±">
 :::
 
 **A linguagem C±**

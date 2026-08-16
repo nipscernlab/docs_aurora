@@ -12,8 +12,8 @@ $webSourceDir = Join-Path $sourceDir "_static\downloads"
 $webBuildDir = Join-Path $projectRoot "build\html\_static\downloads"
 $sphinxBuild = Join-Path $projectRoot ".venv\Scripts\sphinx-build.exe"
 $mermaidCli = Join-Path $projectRoot "node_modules\@mermaid-js\mermaid-cli\src\cli.js"
-$texName = "AURORA-Manual-6.3.2.tex"
-$pdfName = "AURORA-Manual-6.3.2.pdf"
+$texName = "AURORA-Manual-6.4.2.tex"
+$pdfName = "AURORA-Manual-6.4.2.pdf"
 
 function Assert-Command {
     param(
