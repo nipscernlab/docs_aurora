@@ -49,10 +49,8 @@ jobs:
             exit 0
           fi
 
+          corpo=$(printf 'A release mais recente do SAPHO e a **v%s**, e o manual publicado documenta a **%s** (manifesto: %s).\n\nPara atualizar: revise o conteudo contra a versao nova, ajuste as versoes conforme o README e rode scripts/publish.ps1.\n\nIssue aberta automaticamente pelo workflow manual-atrasado.' "$sapho" "$base_manual" "$manual")
+
           gh issue create --repo "$GITHUB_REPOSITORY" \
             --title "$titulo" \
-            --body "A release mais recente do SAPHO e a **v$sapho**, e o manual publicado documenta a **$base_manual** (manifesto: $manual).
-
-Para atualizar: revise o conteudo contra a versao nova, ajuste as versoes conforme o README e rode \`scripts/publish.ps1\`.
-
-Issue aberta automaticamente pelo workflow manual-atrasado."
+            --body "$corpo"
