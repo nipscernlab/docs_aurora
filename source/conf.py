@@ -259,7 +259,7 @@ latex_elements = {
 \floatplacement{table}{H}
 % Nenhuma imagem ultrapassa a altura da mancha: capturas em retrato encolhem
 % ate caber, preservando a proporcao.
-\setkeys{Gin}{keepaspectratio, height=0.78\textheight}
+\setkeys{Gin}{keepaspectratio, width=\linewidth, height=0.78\textheight}
 % Tabelas largas cabem na mancha ao reduzir levemente o corpo.
 \AtBeginEnvironment{tabulary}{\small}
 \AtBeginEnvironment{longtable}{\small}

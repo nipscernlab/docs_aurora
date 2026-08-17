@@ -62,10 +62,28 @@ Da esquerda para a direita: as chaves de simulador (Icarus ou Verilator) e de vi
 
 ## A árvore de arquivos
 
-```{figure} ../_static/assets/screenshots/aurora-arvore-arquivos.png
-:alt: Árvore lateral na visão Arquivos, com separadores por processador.
-:width: 45%
+```{list-table}
+:widths: 33 33 33
 :align: center
+
+* - **Arquivos**
+
+    ```{image} ../_static/assets/screenshots/aurora-arvore-arquivos.png
+    :alt: Árvore lateral na visão Arquivos, com separadores por processador.
+    :width: 100%
+    ```
+  - **Pastas**
+
+    ```{image} ../_static/assets/screenshots/aurora-arvore-pastas.png
+    :alt: Árvore lateral na visão Pastas, com a estrutura do projeto expandida.
+    :width: 100%
+    ```
+  - **Hierarquia**
+
+    ```{image} ../_static/assets/screenshots/aurora-arvore-hierarquia.png
+    :alt: Árvore lateral na visão Hierarquia, com as instâncias do design sintetizado.
+    :width: 100%
+    ```
 ```
 
 A árvore tem três visões, alternadas pelo botão no seu cabeçalho:

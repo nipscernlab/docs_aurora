@@ -53,13 +53,25 @@ Top Level
 Testbench Top
 : O arquivo que comanda a simulação, {file}`.v` ou {file}`.py`. Define o que roda quando você clica em {guilabel}`Analisar Verilog`. Marque por {guilabel}`Marcar como Testbench`.
 
-```{figure} ../_static/assets/screenshots/aurora-arvore-menu-contexto.png
-:alt: Menu de contexto de um arquivo Verilog com a opção Definir como Top Level.
-:width: 55%
+```{list-table}
+:widths: 50 50
 :align: center
 
-Os dois papéis são exclusivos: marcar um arquivo desmarca o anterior. A barra de status mostra os dois o tempo todo.
+* - **Top Level**
+
+    ```{image} ../_static/assets/screenshots/aurora-top-level.png
+    :alt: Arquivo Verilog marcado como Top Level na árvore de arquivos.
+    :width: 100%
+    ```
+  - **Testbench Top**
+
+    ```{image} ../_static/assets/screenshots/aurora-top-testbench.png
+    :alt: Arquivo de teste marcado como Testbench Top na árvore de arquivos.
+    :width: 100%
+    ```
 ```
+
+Os dois papéis são exclusivos: marcar um arquivo desmarca o anterior. A barra de status mostra os dois o tempo todo.
 
 ## Importar e criar arquivos
 

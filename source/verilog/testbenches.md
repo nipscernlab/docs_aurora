@@ -32,25 +32,27 @@ Crie pelo menu de contexto da árvore: {guilabel}`Novo testbench cocotb (.py)`. 
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge
+from cocotb.triggers import Timer
 
 
 @cocotb.test()
-async def conta_ate_quinze(dut):
-    cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
-
+async def test_contador(dut):
+    dut.clk.value = 0
     dut.rst.value = 1
     dut.habilita.value = 0
-    for _ in range(2):
-        await RisingEdge(dut.clk)
+    clock = Clock(dut.clk, 10, unit="ns")
+    cocotb.start_soon(clock.start())
+
+    await Timer(12, unit="ns")
     dut.rst.value = 0
 
+    await Timer(8, unit="ns")
     dut.habilita.value = 1
-    for esperado in range(1, 16):
-        await RisingEdge(dut.clk)
-        assert dut.conta.value == esperado, (
-            f"esperava {esperado}, veio {int(dut.conta.value)}"
-        )
+
+    await Timer(200, unit="ns")
+    dut.habilita.value = 0
+
+    await Timer(40, unit="ns")
 ```
 
 ```{figure} ../_static/assets/screenshots/aurora-testbench-cocotb.png
