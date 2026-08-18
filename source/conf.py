@@ -6,8 +6,23 @@ docs_root = Path(__file__).resolve().parent.parent
 project = "AURORA"
 author = "NIPS-CERN / documentação técnica"
 copyright = "2026, NIPS-CERN"
-version = "6.4.2"
-release = "6.4.2 (commit f71b2f4)"
+
+# A versão não é escrita aqui. Ela acompanha a release do SAPHO, e quem a
+# resolve é scripts/version.ps1, na hora de publicar: os três primeiros
+# segmentos vêm da release mais recente do aplicativo e o quarto conta as
+# revisões da documentação. O publicador exporta o resultado nestas variáveis
+# de ambiente; num build solto, o docs-version.json responde.
+_version_file = docs_root / "docs-version.json"
+_gravado = {}
+if _version_file.is_file():
+    import json
+
+    _gravado = json.loads(_version_file.read_text(encoding="utf-8"))
+
+version = os.environ.get("AURORA_DOCS_BASE") or _gravado.get("base", "6.4.2")
+docs_version = os.environ.get("AURORA_DOCS_VERSION") or _gravado.get("version", version)
+sapho_commit = os.environ.get("AURORA_DOCS_COMMIT") or _gravado.get("commit", "")
+release = f"{version} (commit {sapho_commit})" if sapho_commit else version
 
 extensions = [
     "myst_parser",
@@ -62,7 +77,7 @@ language = "pt_BR"
 # O PDF acompanha o site nos tres casos, sempre em _static/downloads, para que
 # exista um unico publicador: quem gera o HTML gera tambem o manual ao lado.
 docs_target = os.environ.get("AURORA_DOCS_TARGET", "local")
-pdf_name = "AURORA-Manual-6.4.2.pdf"
+pdf_name = f"AURORA-Manual-{version}.pdf"
 pdf_url = f"_static/downloads/{pdf_name}"
 
 if docs_target == "web":
@@ -100,7 +115,7 @@ myst_substitutions.update({
 })
 
 html_theme = "furo"
-html_title = "SAPHO & AURORA 6.4.2, Manual de uso"
+html_title = f"SAPHO & AURORA {version}, Manual de uso"
 html_static_path = ["_static"]
 html_css_files = ["css/aurora.css"]
 html_js_files = ["js/aurora.js"]
@@ -161,12 +176,22 @@ latex_logo = "_static/aurora-logo-pdf.png"
 latex_documents = [
     (
         "pdf-index",
-        "AURORA-Manual-6.4.2.tex",
-        r"SAPHO \& AURORA 6.4.2, Manual de uso",
+        f"AURORA-Manual-{version}.tex",
+        rf"SAPHO \& AURORA {version}, Manual de uso",
         "NIPS-CERN",
         "manual",
     ),
 ]
+# A versão aparece na capa e no cabeçalho do PDF. Os blocos abaixo são strings
+# cruas de LaTeX, feito de chaves: uma f-string obrigaria a dobrar todas elas,
+# então a troca sai num passe único depois que o dicionário está montado.
+def _versionar(elementos):
+    for chave in ("maketitle", "preamble"):
+        if chave in elementos:
+            elementos[chave] = elementos[chave].replace("@VERSAO@", version)
+    return elementos
+
+
 latex_show_urls = "footnote"
 latex_elements = {
     "papersize": "a4paper",
@@ -217,7 +242,7 @@ latex_elements = {
     \vspace{4mm}
     {\fontsize{20}{25}\selectfont\sffamily Manual de uso e referência técnica\par}
     \vspace{7mm}
-    {\large\color{AuroraMuted} Versão 6.4.2\par}
+    {\large\color{AuroraMuted} Versão @VERSAO@\par}
 
     \vfill
 
@@ -331,7 +356,7 @@ latex_elements = {
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \fancypagestyle{normal}{
   \fancyhf{}
-  \fancyhead[L]{\small\sffamily\color{AuroraMuted}SAPHO \& AURORA 6.4.2}
+  \fancyhead[L]{\small\sffamily\color{AuroraMuted}SAPHO \& AURORA @VERSAO@}
   \fancyhead[R]{\small\sffamily\color{AuroraMuted}\nouppercase{\leftmark}}
   \fancyfoot[L]{\scriptsize\sffamily\color{AuroraMuted}NIPS-CERN}
   \fancyfoot[R]{\small\sffamily\color{AuroraInk}\thepage}
@@ -395,13 +420,15 @@ div.error_title-foreground-TeXcolor={HTML}{20242A}
 """,
 }
 
+_versionar(latex_elements)
+
 extlinks = {
     "repo": ("https://github.com/nipscernlab/aurora/%s", "%s"),
     "nipscern": ("https://nipscern.com/%s", "%s"),
 }
 
-rst_prolog = """
-.. |snapshot| replace:: AURORA 6.4.2 (`f71b2f4`)
+rst_prolog = f"""
+.. |snapshot| replace:: AURORA {version} (`{sapho_commit}`)
 """
 
 nitpicky = False

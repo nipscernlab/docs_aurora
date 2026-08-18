@@ -49,7 +49,7 @@ jobs:
             exit 0
           fi
 
-          corpo=$(printf 'A release mais recente do SAPHO e a **v%s**, e o manual publicado documenta a **%s** (manifesto: %s).\n\nPara atualizar: revise o conteudo contra a versao nova, ajuste as versoes conforme o README e rode scripts/publish.ps1.\n\nIssue aberta automaticamente pelo workflow manual-atrasado.' "$sapho" "$base_manual" "$manual")
+          corpo=$(printf 'A release mais recente do SAPHO e a **v%s**, e o manual publicado documenta a **%s** (manifesto: %s).\n\nPara atualizar: revise o conteudo contra a versao nova e publique adotando a versao dela, com `.\\scripts\\publish.ps1 -AdoptSapho`.\n\nA revisao da doc, o quarto segmento, e resolvida sozinha pelo scripts/version.ps1 a cada publicacao. So a base precisa desta decisao, porque ela afirma que o texto foi conferido contra a release nova.\n\nIssue aberta automaticamente pelo workflow manual-atrasado.' "$sapho" "$base_manual" "$manual")
 
           gh issue create --repo "$GITHUB_REPOSITORY" \
             --title "$titulo" \

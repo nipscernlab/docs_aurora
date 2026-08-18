@@ -1,7 +1,15 @@
 ﻿[CmdletBinding()]
 param(
     [switch]$SkipPdf,
-    [switch]$DryRun
+    [switch]$DryRun,
+    # Versao completa escrita a mao (x.y.z.w), para republicar um numero exato.
+    [string]$Version,
+    # Nova versao do SAPHO documentada, depois de revisar o conteudo.
+    [string]$Base,
+    # Adota a release mais recente do SAPHO como versao documentada.
+    [switch]$AdoptSapho,
+    # Reconstroi os artefatos sem avancar a revisao da doc.
+    [switch]$Freeze
 )
 
 # Publica a documentacao nos dois canais publicos que os consumidores usam:
@@ -38,14 +46,23 @@ $offlineDir = Join-Path $projectRoot "build\offline"
 $distDir = Join-Path $projectRoot "build\dist"
 $pagesDir = Join-Path $projectRoot "build\gh-pages"
 
-# Acompanha a versao do SAPHO documentada. Para corrigir a documentacao sem
-# mudar de versao do aplicativo, acrescente um quarto segmento (6.4.2.1): as
-# instalacoes ja feitas so baixam a doc nova quando veem um numero maior no
-# manifesto.
-$version = "6.4.2.6"
+# A versao nao mora mais aqui. Ela e derivada da release mais recente do SAPHO
+# e da revisao que ja esta publicada no manifesto, pelo scripts/version.ps1: os
+# tres primeiros segmentos sao os do aplicativo, e o quarto conta as revisoes da
+# doc dentro daquela versao, que e o numero que faz as instalacoes baixarem
+# manual novo.
+. (Join-Path $PSScriptRoot "version.ps1")
+
+Write-Host "Resolvendo a versao do manual..."
+$resolvida = Resolve-DocsVersion -Version $Version -Base $Base -AdoptSapho:$AdoptSapho -Freeze:$Freeze
+Set-DocsVersionEnv -Resolved $resolvida
+$version = $resolvida.Version
+$baseVersion = $resolvida.Base
+Write-Host "  versao a publicar: $version  ($($resolvida.Origem))"
+
 $tag = "docs-v$version"
 $zipName = "sapho-docs-offline-$version.zip"
-$pdfName = "AURORA-Manual-6.4.2.pdf"
+$pdfName = "AURORA-Manual-$baseVersion.pdf"
 $builtPdf = Join-Path $projectRoot "build\pdf\$pdfName"
 
 $repoSlug = "nipscernlab/docs_aurora"

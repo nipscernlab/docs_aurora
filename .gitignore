@@ -12,3 +12,6 @@ AGENTS.md
 Thumbs.db
 .DS_Store
 *.log
+
+# Cache do Python gerado ao importar o conf.py fora do Sphinx.
+__pycache__/

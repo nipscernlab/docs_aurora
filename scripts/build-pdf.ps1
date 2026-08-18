@@ -12,8 +12,19 @@ $webSourceDir = Join-Path $sourceDir "_static\downloads"
 $webBuildDir = Join-Path $projectRoot "build\html\_static\downloads"
 $sphinxBuild = Join-Path $projectRoot ".venv\Scripts\sphinx-build.exe"
 $mermaidCli = Join-Path $projectRoot "node_modules\@mermaid-js\mermaid-cli\src\cli.js"
-$texName = "AURORA-Manual-6.4.2.tex"
-$pdfName = "AURORA-Manual-6.4.2.pdf"
+# Os nomes seguem a versao do SAPHO documentada, a mesma que o conf.py usa no
+# titulo e na capa. Quem resolve e o version.ps1; aqui basta perguntar.
+. (Join-Path $PSScriptRoot "version.ps1")
+if ($env:AURORA_DOCS_BASE) {
+    # Chamado pelo publish.ps1, que ja resolveu e exportou.
+    $baseVersion = $env:AURORA_DOCS_BASE
+} else {
+    $resolvidaPdf = Resolve-DocsVersion -Freeze
+    Set-DocsVersionEnv -Resolved $resolvidaPdf
+    $baseVersion = $resolvidaPdf.Base
+}
+$texName = "AURORA-Manual-$baseVersion.tex"
+$pdfName = "AURORA-Manual-$baseVersion.pdf"
 
 function Assert-Command {
     param(

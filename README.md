@@ -127,7 +127,20 @@ O branch `gh-pages` é recriado a cada publicação, com um único commit. Sem i
 
 Pré-requisitos: os mesmos da geração do PDF, mais o GitHub CLI autenticado (`gh auth login`). O PDF é gerado aqui, e não em integração contínua, porque o manual usa a fonte Segoe UI, proprietária da Microsoft, que não pode ser instalada num runner Linux.
 
-Ao mudar a versão do manual, atualize `pdf_name` em `source\conf.py` e `$version` em `scripts\publish.ps1`.
+### A versão, que se resolve sozinha
+
+A versão do manual é `<versão do SAPHO documentada>.<revisão da doc>`, e não é mais escrita à mão em lugar nenhum. Quem resolve é `scriptsersion.ps1`, chamado pelo publicador:
+
+- a **revisão**, o quarto segmento, avança sozinha a cada publicação. É o número que o `docs-manifest.json` publica e que faz as instalações da AURORA baixarem manual novo, então esquecê-lo significava publicar para ninguém. A contagem parte do que está no ar, não de um arquivo local, para funcionar mesmo publicando de outra máquina;
+- a **base**, os três primeiros segmentos, não segue a release do SAPHO sozinha, de propósito. Ela afirma que o texto foi conferido contra aquela versão do aplicativo, e segui-la automaticamente publicaria um manual anunciando uma versão nova com o conteúdo apurado na antiga. O publicador compara com a release mais recente e avisa em amarelo quando o aplicativo está na frente.
+
+Depois de revisar o conteúdo contra uma release nova, adote a versão dela:
+
+```powershell
+.\scripts\publish.ps1 -AdoptSapho      # ou -Base 6.6.0
+```
+
+O estado fica em `docs-version.json`, na raiz, que também responde quando não há rede. Para reconstruir artefatos sem avançar a revisão, use `-Freeze`; para republicar um número exato, `-Version 6.4.2.9`.
 
 ## Escopo congelado
 
