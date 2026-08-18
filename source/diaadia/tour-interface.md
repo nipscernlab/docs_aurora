@@ -109,6 +109,14 @@ O cabeçalho da árvore ainda traz: novo arquivo, atualizar, busca nos arquivos 
 
 O editor é o Monaco, o mesmo do VS Code, com realce para C±, assembly SAPHO, Verilog, SystemVerilog e Python. Clique simples na árvore abre o arquivo em modo prévia (aba em itálico, substituída pela próxima prévia); duplo clique fixa a aba.
 
+```{figure} ../_static/assets/screenshots/aurora-editor-split.png
+:alt: Editor dividido, com o fonte C± a esquerda e o Verilog gerado a direita.
+:width: 100%
+:align: center
+
+O uso mais proveitoso da divisão: o {file}`.cmm` de um lado e o {file}`.v` que o YANC gerou dele do outro, com a instância do `processor` e seus parâmetros à vista.
+```
+
 Três botões flutuam no painel em foco: dividir o editor (até três painéis), pré-visualizar Markdown e HTML, e formatar o arquivo ({kbd}`Shift+Alt+F`). Para Verilog, dois analisadores trabalham enquanto você digita: um sintático, que também formata, e um semântico, que elabora o projeto inteiro e aponta sinais não declarados e incompatibilidades de porta.
 
 Selecionar um trecho de código faz aparecer uma estrela: é o acesso rápido à Aurora Intelligence sobre aquela seleção (explicar, corrigir, melhorar, comentar).
@@ -152,6 +160,14 @@ Da esquerda para a direita: {guilabel}`Pronto` ou {guilabel}`Não Pronto` (clic�
 :alt: Paleta de comandos aberta sobre o editor.
 :width: 70%
 :align: center
+```
+
+```{figure} ../_static/assets/screenshots/aurora-busca-arquivos.png
+:alt: Modal de busca nos arquivos, com os resultados agrupados por arquivo.
+:width: 100%
+:align: center
+
+A busca varre o projeto inteiro e agrupa por arquivo, com a contagem de ocorrências de cada um. O clique numa linha abre o arquivo naquele ponto.
 ```
 
 Com o mapa em mãos, o próximo capítulo explica como um projeto se organiza no disco: {doc}`organizacao-projeto`.

@@ -57,6 +57,14 @@ O painel {guilabel}`Bibliotecas Python` instala pacotes para os testbenches coco
 | Assistente IA | os cartões de provedores do capítulo anterior |
 | Sobre | versão, situação do atualizador, equipe, manual online e offline, relatar problema, licenças |
 
+```{figure} ../_static/assets/screenshots/aurora-settings-geral.png
+:alt: Configuracoes da AURORA na aba Geral.
+:width: 90%
+:align: center
+
+A aba Geral. As opções de conta do GitHub são as primeiras, porque são as que mais importam em computador compartilhado.
+```
+
 ```{figure} ../_static/assets/screenshots/aurora-settings-atalhos.png
 :alt: Aba de atalhos com um atalho em modo de gravacao.
 :width: 85%

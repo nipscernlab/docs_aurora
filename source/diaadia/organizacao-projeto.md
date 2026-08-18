@@ -73,6 +73,14 @@ Ao importar um {file}`.v`, a AURORA o classifica sozinha lendo o conteúdo: sina
 
 O que a classificação não escolhe é o papel de raiz, e isso é seu:
 
+```{figure} ../_static/assets/screenshots/aurora-arvore-menu-contexto.png
+:alt: Menu de contexto de um arquivo Verilog com a opcao Definir como Top Level.
+:width: 45%
+:align: center
+
+O menu de contexto de um {file}`.v` sintetizável na visão Arquivos.
+```
+
 Top Level
 : O módulo raiz do circuito sintetizável. Define de onde a elaboração parte e o que o PRISM desenha. Marque pelo menu de contexto do arquivo na visão Arquivos: {guilabel}`Definir como Top Level`.
 

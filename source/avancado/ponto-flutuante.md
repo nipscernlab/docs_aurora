@@ -60,11 +60,11 @@ Na simulação com Icarus, o processador expõe dois sinais didáticos: `delta_f
 ```
 
 ```{figure} ../_static/assets/screenshots/aurora-hub-ponto-flutuante.png
-:alt: Hub de Processadores com uma configuração de 32 bits.
+:alt: Hub de Processadores com o formato numérico em destaque.
 :width: 80%
 :align: center
 
-Para comparar formatos, gere dois processadores iguais mudando apenas mantissa e expoente, rode o mesmo estímulo e compare os `output_N.txt`.
+Os três campos que definem o formato ficam juntos no Hub. Aqui está a configuração padrão, 23 bits com mantissa 16 e expoente 6; para comparar formatos, gere dois processadores iguais mudando apenas mantissa e expoente, rode o mesmo estímulo e compare os `output_N.txt`.
 ```
 
 ## O custo em hardware

@@ -1,6 +1,6 @@
 # Lista de capturas de tela do manual
 
-Situação em 17/08/2026: **45 capturas prontas, 13 faltando.**
+Situação em 17/08/2026, noite: **53 capturas prontas, 5 faltando.**
 
 As que faltam continuam como imagem cinza de espera em `source/_static/assets/screenshots/`, com os dizeres `CAPTURA PENDENTE` e o nome do arquivo. Para completar, basta salvar o PNG novo por cima, com o mesmo nome, sem tocar em nenhuma página.
 
@@ -16,34 +16,15 @@ Padrão de captura:
 
 ## O que falta capturar
 
-### Já usadas no manual, hoje com o cinza aparecendo
-
-Estas sete aparecem nas páginas publicadas: enquanto não forem trocadas, o leitor vê o cinza.
+Todas as cinco aparecem em páginas publicadas, então enquanto não forem trocadas o leitor vê o cinza.
 
 | Arquivo | Onde aparece | O que deve aparecer |
 |---|---|---|
-| `aurora-instalador.png` | Instalação | Instalador do SAPHO no Windows, tela inicial do assistente. |
 | `aurora-prism-divisor.png` | Primeiro processador | PRISM depois de trocar `soma >> 2` por `soma / 4` e recompilar, na visão que mostra o divisor dentro da ULA (desça um nível a partir do topo, entre em `ula`). É o par da `aurora-prism-interno.png`, para comparar lado a lado. |
-| `aurora-teste-hardware.png` | Simulação e testes | Terminal THTEST depois do teste do processador sintetizado: etapas, barra de progresso e o aviso do pino cheguei. |
-| `aurora-dagr-historico.png` | Ferramentas de apoio | Painel Dagr na aba Histórico, com o diff de um commit aberto. |
-| `aurora-hub-ponto-flutuante.png` | Ponto flutuante | Hub de Processadores com uma configuração de ponto flutuante diferente: 32 bits, mantissa 23, expoente 8. |
-| `aurora-onda-delta-float.png` | Ponto flutuante | Onda com `delta_float` visível, mostrando o erro de arredondamento por operação. |
+| `aurora-onda-delta-float.png` | Ponto flutuante | Onda com `delta_float` visível, mostrando o erro de arredondamento por operação. Simule com Icarus e acrescente o sinal na configuração de ondas. |
 | `aurora-rls-dirac.png` | Notação de Dirac | Editor com `proc_rls.cmm` mostrando a notação de Dirac (`⟨w\|x⟩`, `# \|P\|x⟩`) com o realce e o espaçamento dos brackets. |
-
-### Capturadas na lista antiga, ainda sem uso no manual
-
-Estas seis estão previstas aqui desde o começo, mas nenhuma página as referencia hoje. Capture na mesma leva; assim que os arquivos existirem, elas entram nas páginas indicadas.
-
-| Arquivo | Destino | O que deve aparecer |
-|---|---|---|
-| `aurora-boas-vindas.png` | Tour pela interface | Tela de boas-vindas com projetos recentes preenchidos. |
-| `aurora-busca-arquivos.png` | Tour pela interface | Modal Buscar nos arquivos com um termo pesquisado e resultados agrupados por arquivo. |
-| `aurora-editor-split.png` | Tour pela interface | Editor dividido: `.cmm` à esquerda, `media_movel.v` gerado à direita. |
-| `aurora-arvore-menu-contexto.png` | Organização de um projeto | Menu de contexto de um `.v` sintetizável mostrando Definir como Top Level. |
-| `aurora-settings-geral.png` | Ferramentas de apoio | Configurações, aba Geral. |
+| `aurora-dagr-historico.png` | Ferramentas de apoio | Painel de controle de versão na aba Histórico, com o diff de um commit aberto. |
 | `aurora-atualizacao.png` | Ferramentas de apoio | Janela de notificação de atualização com o changelog, se houver atualização disponível na época da captura. |
-
----
 
 ## O que já está pronto
 

@@ -14,6 +14,14 @@ O botão {guilabel}`Download Latest Release` baixa diretamente o instalador da v
 
 1. Execute o instalador baixado.
 2. Se o Windows exibir o aviso do SmartScreen dizendo que o aplicativo não é reconhecido, clique em {guilabel}`Mais informações` e depois em {guilabel}`Executar assim mesmo`. O aviso aparece porque o executável ainda não carrega assinatura digital; a assinatura pela SignPath Foundation está em andamento e o aviso deixará de existir.
+```{figure} ../_static/assets/screenshots/aurora-smartscreen.png
+:alt: Aviso do SmartScreen dizendo que o aplicativo nao e reconhecido.
+:width: 55%
+:align: center
+
+O aviso do SmartScreen. {guilabel}`Mais informações` revela o botão {guilabel}`Executar assim mesmo`.
+```
+
 3. Siga o assistente: aceite a licença, escolha a pasta de destino e conclua.
 
 ```{figure} ../_static/assets/screenshots/aurora-instalador.png
@@ -29,6 +37,14 @@ Não execute o instalador como administrador. A atualização automática usa o 
 :::
 
 ## Primeiro início
+
+```{figure} ../_static/assets/screenshots/aurora-boas-vindas.png
+:alt: Tela de boas-vindas da AURORA com a lista de projetos recentes.
+:width: 100%
+:align: center
+
+A tela de boas-vindas. Os projetos abertos recentemente ficam à direita, e os que sumiram do disco aparecem riscados, com o botão de esquecê-los.
+```
 
 Abra o SAPHO pelo menu Iniciar. Após a tela de abertura, você chega à tela de boas-vindas:
 
