@@ -215,12 +215,29 @@ body[data-theme="dark"] .kbd {
   margin-right: .2em;
 }
 
-/* Cartões de ferramenta com ícone no topo. */
+/* Cartões com ícone no topo
+   ------------------------------------------------------------------
+   O tema põe a imagem e o título dentro do mesmo cabeçalho, então a
+   imagem em linha deixava o ícone à esquerda e o texto ao lado dele,
+   desalinhando cartão a cartão conforme a largura de cada marca. Bloco
+   com margem automática empilha o ícone acima e centra os dois. */
+.sd-card .sd-card-header {
+  text-align: center;
+}
+
 .sd-card .sd-card-img-top {
+  display: block;
   width: auto;
-  max-height: 2.9rem;
-  margin: 1rem auto .2rem;
+  max-width: 60%;
+  max-height: 2.4rem;
+  margin: .2rem auto .5rem;
   object-fit: contain;
+}
+
+/* As bandeiras são só uma marca de país ao lado de um endereço, não a
+   identidade do cartão: entram no tamanho de um marcador. */
+.sd-card .sd-card-img-top[src*="bandeira-"] {
+  max-height: 1.1rem;
 }
 
 .caption {
