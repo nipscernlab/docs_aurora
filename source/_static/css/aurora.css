@@ -229,6 +229,27 @@ body[data-theme="dark"] .kbd {
   font-size: .9rem;
 }
 
+/* O número da legenda e o texto dela
+   ------------------------------------------------------------------
+   O tema escreve o rótulo e a legenda em spans vizinhos, separados só
+   por um espaço no fim do primeiro. Espaço no fim de elemento colapsa,
+   e o resultado era "Listagem 1contador.v" coladinho. Uma margem
+   resolve nos dois casos, figura e listagem. */
+.caption-number {
+  margin-right: .4em;
+}
+
+/* As listas de conferência do "O que você aprendeu"
+   ------------------------------------------------------------------
+   A caixa de marcação nasce encostada na primeira letra. */
+.task-list-item-checkbox {
+  margin-right: .55em;
+  vertical-align: middle;
+}
+.task-list-item > p {
+  display: inline;
+}
+
 body[data-theme="dark"] {
   --aurora-ink: #e5e7eb;
   --aurora-muted: #a8afb9;

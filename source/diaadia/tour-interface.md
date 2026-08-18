@@ -125,7 +125,9 @@ Seis abas, uma por etapa: **TCMM** (compilação C±), **TASM** (montagem e gera
 
 As mensagens chegam classificadas (erro, aviso, sucesso, dica) e podem ser filtradas pelos botões com contadores. Referências como {file}`arquivo.v:15` são links: o clique abre o arquivo naquela linha. O botão de exportar salva o conteúdo de todos os terminais em um {file}`.txt`.
 
-O TCMD merece um capítulo próprio de dicas em {doc}`apoio`; por ora, dois comandos: `apython` chama o Python embarcado da AURORA, e `Use-Python aurora` faz `python` significar o embarcado naquela sessão.
+O TCMD não é um console de mentira nem um espelho de saída: é o seu próprio shell, um PowerShell de verdade rodando na máquina, com as suas variáveis de ambiente, o seu histórico e as suas permissões. Vale ali tudo o que valeria na janela do sistema: `git`, `pip`, um script seu, navegar até outra pasta. A AURORA só acrescenta o contexto do projeto ao prompt (processador ativo, diretório, branch) e alguns comandos próprios.
+
+Por ora, dois deles: `apython` chama o Python embarcado da AURORA, e `Use-Python aurora` faz `python` significar o embarcado naquela sessão. O TCMD merece um capítulo próprio de dicas em {doc}`apoio`.
 
 ```{figure} ../_static/assets/screenshots/aurora-terminal-tcmd.png
 :alt: Terminal TCMD com o prompt da AURORA mostrando processador ativo, diretório e branch git.

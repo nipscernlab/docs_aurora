@@ -12,6 +12,10 @@ Um filtro de média móvel de quatro amostras: lê um valor pela porta de entrad
 
 Crie um projeto chamado `MeuFiltro`, como no tutorial anterior: {guilabel}`Novo Projeto`, nome, local, {guilabel}`Gerar Projeto`.
 
+:::{warning}
+Se você ainda estiver com o projeto do contador aberto, feche-o ou confira os papéis antes de simular. Top Level e Testbench Top são marcações do projeto ativo, e um {file}`contador.v` esquecido no papel de Top Level faz a compilação do filtro simular o circuito errado, sem erro nenhum. A barra de status mostra os dois o tempo todo: neste tutorial, os dois nomes têm que ser do `media_movel`.
+:::
+
 ## Passo 2: criar o processador
 
 1. Clique em {guilabel}`Hub de Processadores`, na barra superior.
@@ -234,6 +238,8 @@ O PRISM desenha o circuito como um diagrama navegável: clique em um módulo par
 
 :::{tip}
 O experimento que mais ensina: troque `soma >> 2` por `soma / 4`, recompile e clique em {guilabel}`Recompile` no PRISM. Um divisor inteiro aparece no diagrama, e o TASM anuncia o bloco novo. Desfaça e ele some. É a relação entre construção de linguagem e custo de hardware, tornada visível.
+
+Para enxergar o divisor, desça até a ULA: no diagrama recompilado, clique no processador para entrar nele e depois em {guilabel}`ula`. No nível do topo nada muda de aparência, porque as portas externas do processador continuam as mesmas; o que muda é o conteúdo da unidade aritmética.
 
 ```{figure} ../_static/assets/screenshots/aurora-prism-divisor.png
 :alt: PRISM mostrando o divisor instanciado após a troca do deslocamento pela divisão.

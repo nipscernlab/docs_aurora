@@ -44,6 +44,34 @@ Vários processadores SAPHO convivem no mesmo projeto e no mesmo circuito. A rec
 
 O padrão de interconexão mais comum é o produtor e consumidor: a porta de saída de um processador alimenta a porta de entrada do outro, com o aperto de mão `out_en` e `req_in` fazendo a sincronização, possivelmente com uma FIFO entre eles quando os ritmos diferem.
 
+### O top level como sistema
+
+Vale insistir num ponto que muda a forma de pensar o projeto: o Top Level não precisa ser um processador. Ele é o módulo raiz do circuito, e um processador SAPHO gerado pelo YANC é apenas mais um módulo Verilog, com portas de entrada e de saída como qualquer outro. Nada impede que o seu top level instancie três, cinco, dez deles.
+
+A partir daí o encadeamento é livre, e é o que abre a porta para arquiteturas de verdade:
+
+- **Cascata**: a saída de um alimenta a entrada do seguinte, cada estágio fazendo uma parte do processamento. Um filtra, o próximo transforma, o último decide.
+- **Paralelo com divisão de dados**: o mesmo programa replicado em vários processadores, cada um cuidando de um canal, com um módulo Verilog distribuindo as amostras e outro juntando os resultados.
+- **Realimentação**: a saída de um estágio posterior volta como entrada de um anterior, que é como se escreve um controle em malha fechada ou um algoritmo iterativo, com o próprio circuito repetindo o ciclo até convergir.
+- **Hierarquia**: um processador coordenador lê resultados dos outros e decide o que fazer, funcionando como supervisor de um conjunto de processadores especializados.
+
+Cada processador continua sendo do tamanho do seu próprio programa, então um sistema de cinco processadores pequenos pode custar menos área que um único processador genérico que fizesse tudo. Como o circuito inteiro nasce do mesmo projeto, a simulação também é uma só: você vê todos eles na mesma onda, cada um com suas trilhas.
+
+```{mermaid}
+flowchart LR
+  IN["entrada<br>do sistema"] --> A
+  subgraph TOP["top level, em Verilog"]
+    direction LR
+    A["proc_filtro<br><i>SAPHO</i>"] --> B["proc_fft<br><i>SAPHO</i>"]
+    B --> C["proc_decisao<br><i>SAPHO</i>"]
+    C -->|realimentação| A
+    FSM["máquina de estados<br>coordena e sincroniza"] -.-> A
+    FSM -.-> B
+    FSM -.-> C
+  end
+  C --> OUT["saída<br>do sistema"]
+```
+
 :::{admonition} Estudo de caso: DTW com dois processadores
 :class: note
 

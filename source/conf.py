@@ -84,7 +84,8 @@ if docs_target == "offline":
 # O botao vai inteiro na substituicao, em uma linha so: o MyST nao expande
 # substituicoes dentro de um bloco HTML, apenas em paragrafo de texto.
 pdf_button = (
-    f'<a class="pdf-download-button" href="{pdf_url}" download="{pdf_name}">'
+    f'<a class="pdf-download-button" href="{pdf_url}" download="{pdf_name}"'
+    ' target="_blank" rel="noopener">'
     '<span class="pdf-download-title">Baixar manual em PDF</span>'
     '<span class="pdf-download-meta">Documento completo em formato A4</span>'
     "</a>"
@@ -222,7 +223,8 @@ latex_elements = {
 
     {\small\sffamily
       \textbf{NIPS-CERN}\par
-      Núcleo de Inovação e Pesquisa em Sistemas Computacionais\par
+      Núcleo de Instrumentação e Processamento de Sinais\par
+      UFJF e CERN\par
       \vspace{2mm}
       Agosto de 2026\par
     }
@@ -232,6 +234,12 @@ latex_elements = {
 \hypersetup{pageanchor=true}
 """,
     "preamble": r"""
+% O rotulo das listagens em portugues. O Sphinx traduz "Listing" por um
+% \addto\captionsbrazil, que o babel so executa ao carregar o idioma: como o
+% sphinxmessages entra depois, a adicao nunca roda e o PDF saia com "Listing"
+% no meio de figuras e tabelas ja em portugues. Aqui a troca e direta.
+\renewcommand{\literalblockname}{Listagem}
+
 % A partir do array 2026/02/24 o colortbl passa a usar os ganchos novos de linha
 % e deixa de criar o registro proprio de \everycr. O Sphinx 9.1.0 ainda grava
 % \the\everycr dentro de \CT@everycr para colorir as linhas alternadas, o que

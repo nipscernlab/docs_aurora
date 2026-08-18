@@ -1,6 +1,8 @@
-# PRISM: o circuito desenhado
+# PRISM: o visualizador de RTL
 
-O PRISM transforma o projeto em um diagrama de circuito navegável. Ele responde à pergunta que a forma de onda não responde: em que estrutura o meu código virou hardware?
+O PRISM é o visualizador de RTL da plataforma: ele lê o Verilog do projeto e o desenha como um diagrama de circuito navegável. Responde à pergunta que a forma de onda não responde: em que estrutura o meu código virou hardware?
+
+O desenho é sempre um retrato do Verilog atual. Quem produz a estrutura é o Yosys, elaborando os mesmos arquivos que iriam para a síntese, então qualquer mudança no código muda o diagrama: acrescente um módulo e ele aparece, troque um operador e o bloco correspondente entra ou some, renomeie um sinal e o rótulo acompanha. Nada ali é decorativo ou desenhado à mão.
 
 ## Abrir
 
@@ -33,6 +35,10 @@ Dentro de um processador SAPHO: a ULA, as memórias e as pilhas têm desenho ded
 ## O uso didático
 
 O PRISM fecha o ciclo pedagógico da plataforma: cada construção do C± tem um custo em blocos, e aqui os blocos aparecem. O experimento do tutorial (trocar um deslocamento por uma divisão e ver o divisor surgir no diagrama) vale para qualquer recurso: chame `sqrt()` e observe o que muda, acrescente uma variável `float` e compare.
+
+:::{tip}
+**Em que nível olhar.** O divisor, o multiplicador e os demais blocos de operação moram dentro da ULA, e não no topo. Depois do {guilabel}`Recompile`, clique no processador para descer um nível, e então em {guilabel}`ula`: é ali que o bloco novo aparece, ao lado dos que já existiam. No nível do topo você só veria o mesmo retângulo de antes, porque as portas externas do processador não mudam quando a aritmética interna muda.
+:::
 
 ## Simulação interativa
 

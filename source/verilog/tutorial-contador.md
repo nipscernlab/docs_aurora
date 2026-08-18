@@ -109,8 +109,20 @@ Repare nos ingredientes que todo testbench tem: o clock gerado por `always #5`, 
 
 ## Passo 4: definir os papéis
 
+Um projeto pode ter dezenas de arquivos, e a AURORA precisa saber dois deles pelo nome: qual é o circuito e qual é o teste.
+
+Top Level
+: O módulo que está no alto da hierarquia, a raiz do seu projeto. É dele que a elaboração parte, e tudo o que ele instancia, direta ou indiretamente, faz parte do design. O que não for alcançável a partir do Top Level não participa: fica no projeto, mas fora do circuito. É também o módulo que você levaria à ferramenta do fabricante para gravar no FPGA, e o que o PRISM desenha quando abre. Aqui é o {file}`contador.v`, porque o contador é o circuito.
+
+Testbench Top
+: O módulo que comanda a simulação, o que gera clock, reset e estímulos. Ele instancia o Top Level como um componente e o observa de fora. Não vai para o FPGA: existe só para exercitar o circuito na bancada. Aqui é o {file}`tb_contador.v`.
+
+Marque cada um:
+
 1. Botão direito em {file}`contador.v`, escolha {guilabel}`Definir como Top Level`.
 2. Botão direito em {file}`tb_contador.v`, escolha {guilabel}`Marcar como Testbench`.
+
+Os dois papéis são exclusivos: marcar um arquivo novo desmarca o anterior. Se um dia a compilação reclamar de módulo não encontrado, ou a onda vier vazia, o primeiro lugar a conferir é este par.
 
 **Confira:** a barra de status agora mostra os dois nomes, e os botões {guilabel}`Sintetizar Verilog` e {guilabel}`Analisar Verilog` acenderam.
 

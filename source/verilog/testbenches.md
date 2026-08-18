@@ -24,6 +24,10 @@ Com o cocotb, o testbench é um módulo Python: o simulador roda o circuito e o 
 
 Crie pelo menu de contexto da árvore: {guilabel}`Novo testbench cocotb (.py)`. O modelo gerado já traz a estrutura:
 
+:::{note}
+Na primeira execução de um testbench cocotb o simulador precisa ser construído, e a AURORA gera um executável a partir do seu Verilog antes de rodar o Python. Isso leva alguns segundos e aparece no terminal TWAVE; da segunda vez em diante o executável é reaproveitado, e só é refeito quando o Verilog muda. Se o antivírus do Windows perguntar sobre esse executável recém-criado dentro da pasta do projeto, é ele.
+:::
+
 ```{code-block} python
 :caption: teste_contador.py
 :linenos:

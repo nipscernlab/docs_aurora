@@ -29,6 +29,32 @@ MeuProjeto/
 
 O projeto nasce só com o {file}`.spf`. As pastas de processador aparecem quando você cria um processador no Hub; as demais, conforme o uso.
 
+Em desenho, o caminho de um arquivo até o hardware:
+
+```{mermaid}
+flowchart TB
+  subgraph P["MeuProjeto/"]
+    SPF["MeuProjeto.spf<br><i>quem é top level, quem é testbench</i>"]
+    V["contador.v, tb_contador.v<br><i>Verilog escrito à mão</i>"]
+    subgraph PROC["media_movel/ (um processador)"]
+      direction LR
+      SW["Software/<br><b>você escreve</b><br>.cmm, .asm"]
+      HW["Hardware/<br><b>YANC gera</b><br>.v, .mif"]
+      SIM["Simulation/<br><b>bancada</b><br>testbench, entradas, saídas"]
+      SW -->|compilar| HW
+      HW -->|simular| SIM
+    end
+  end
+  SPF -.governa.- PROC
+  SPF -.governa.- V
+```
+
+:::{warning}
+**Escolha bem o caminho da pasta.** As ferramentas de linha de comando que rodam por baixo (compiladores, Icarus, Verilator, Yosys) recebem esse caminho como argumento, e várias delas engasgam com acentos, espaços duplos, cedilha, `#`, `&`, `%` ou parênteses. O sintoma é ruim de diagnosticar: um erro estranho de arquivo não encontrado, vindo de uma etapa que não tem nada a ver com o seu código.
+
+Use letras sem acento, números, hífen e sublinhado. `C:\Projetos\meu_filtro` está bom; `C:\Meus Projetos (2026)\Simulação #1` não. Vale para o nome do projeto, para o nome do processador e para toda a árvore de pastas acima deles, inclusive o nome de usuário do Windows.
+:::
+
 ## O arquivo .spf
 
 É um JSON legível. Guarda o nome e o caminho base do projeto, a lista de processadores com suas configurações de simulação, as listas de fontes sintetizáveis e de testbenches, e os dois ponteiros centrais: `topLevelFile` e `testbenchFile`. Caminhos dentro do projeto são gravados relativos, então o projeto pode ser movido ou copiado de máquina para máquina sem quebrar.

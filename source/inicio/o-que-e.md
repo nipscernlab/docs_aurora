@@ -4,6 +4,14 @@ SAPHO (*Scalable-Architecture Processor for Hardware Optimization*) é uma plata
 
 A plataforma também serve para o caminho inverso: escrever Verilog à mão, validar, simular e visualizar, tudo na mesma janela. É assim que este manual começa.
 
+## De onde ela vem
+
+O SAPHO nasceu no NIPS-CERN, o Núcleo de Instrumentação e Processamento de Sinais da UFJF, que mantém desde 2001 uma colaboração com o CERN, o laboratório europeu de física de partículas, em Genebra. Lá, no experimento ATLAS do LHC, o calorímetro de telhas (TileCal) mede a energia das partículas produzidas nas colisões, e a eletrônica que lê esses sinais precisa de processamento em tempo real, dentro do FPGA, com resposta em poucos ciclos de relógio.
+
+Foi esse problema que deu forma à plataforma. Um processador SAPHO comanda hoje o simulador de pulsos usado nas bancadas de teste da eletrônica do TileCal, e a linguagem C± carrega as marcas dessa origem: aritmética de ponto flutuante com formato escolhido por você, números complexos como tipo nativo, notação de Dirac para produtos internos, índice com bits invertidos para FFT. São recursos de processamento de sinais e de física, não de programação de propósito geral.
+
+A mesma plataforma é a base da disciplina de Dispositivos Lógicos Programáveis na UFJF, onde cada estudante projeta, compila e simula um processador próprio.
+
 ## As peças
 
 ::::{grid} 1 2 2 2
@@ -13,14 +21,14 @@ A plataforma também serve para o caminho inverso: escrever Verilog à mão, val
 <img class="sd-card-img-top" src="../_static/assets/icons/sapho_aurora_icon.svg" alt="AURORA">
 AURORA
 ^^^
-A IDE. O programa que você instala e abre. Nela vivem o editor, o gerenciador de projetos, os botões de compilação e simulação, os terminais e os visualizadores. É a única interface gráfica da plataforma.
+A IDE. O programa que você instala e abre. Nela vivem o editor, o gerenciador de projetos, os botões de compilação e simulação, os terminais e os visualizadores. Tudo passa por ela: os compiladores e as ferramentas de apoio rodam por baixo, chamados pelos seus botões, e você não precisa de linha de comando para nada do fluxo.
 :::
 
 :::{grid-item-card}
 <img class="sd-card-img-top" src="../_static/assets/icons/yanc.svg" alt="YANC">
 YANC
 ^^^
-A suíte de compiladores que trabalha por baixo. Traduz o programa C± no processador em Verilog, nas imagens de memória e no testbench. Você nunca a chama diretamente.
+O conjunto de compiladores que trabalha por baixo. O YANC traduz o programa C± no processador em Verilog, nas imagens de memória e no testbench. Você nunca o chama diretamente.
 :::
 
 :::{grid-item-card}
@@ -34,12 +42,25 @@ O circuito que o YANC emite: acumulador único, arquitetura Harvard, pipeline de
 <img class="sd-card-img-top" src="../_static/assets/icons/cmm_file.svg" alt="Arquivo C±">
 A linguagem C±
 ^^^
-O dialeto de C no qual você escreve o algoritmo. Arquivos com extensão {file}`.cmm`. A versão essencial está no capítulo {doc}`../sapho/linguagem`; os recursos de pós-graduação, nos {doc}`estudos avançados <../avancado/ponto-flutuante>`.
+Um subconjunto de C, de médio nível, com adições voltadas a processamento de sinais e física. Arquivos com extensão {file}`.cmm`. A versão essencial está no capítulo {doc}`../sapho/linguagem`; os recursos de pós-graduação, nos {doc}`estudos avançados <../avancado/ponto-flutuante>`.
 :::
 
 ::::
 
-Em volta desse núcleo, a instalação traz as ferramentas de apoio, todas de código aberto: Icarus Verilog e Verilator para simulação, GTKWave e Surfer para formas de onda, Yosys para análise estrutural, PRISM para visualizar o circuito, cocotb para testes em Python.
+## As ferramentas que vêm juntas
+
+Em volta desse núcleo, a instalação traz um conjunto de ferramentas de código aberto, cada uma consagrada no que faz. Você não precisa instalar, configurar nem chamar nenhuma delas: a AURORA já vem com as versões certas e as aciona pelos botões.
+
+| Ferramenta | Para que serve |
+|---|---|
+| **Icarus Verilog** | Simulador Verilog interpretado, o mais fiel ao padrão. É o motor padrão da AURORA: enxerga todos os sinais internos e gera o {file}`.vcd` completo. Mais lento em simulações longas. |
+| **Verilator** | Compila o Verilog para C++ e roda muito mais rápido, ao custo de só aceitar código sintetizável e de expor menos sinais. É a escolha para varreduras longas e para testes automatizados. |
+| **GTKWave** | Visualizador de formas de onda clássico, o padrão de fato no mundo Verilog. Abre o {file}`.vcd`, guarda layouts em {file}`.gtkw` e é onde as trilhas de assembly e de linha C± aparecem. |
+| **Surfer** | Visualizador de ondas moderno, escrito em Rust, com navegação mais fluida. A AURORA traz um fork nosso, integrado ao projeto. |
+| **Yosys** | Ferramenta de síntese lógica. Aqui ela não gera bitstream: elabora o projeto, resolve a hierarquia e produz a estrutura que o PRISM desenha. |
+| **PRISM** | Visualizador de RTL da casa. Transforma a saída do Yosys em um diagrama navegável do circuito, com um clique para descer na hierarquia e outro para voltar ao código-fonte. |
+| **cocotb** | Biblioteca que permite escrever testbenches em Python em vez de Verilog, com `async`/`await`. Roda sobre o Icarus ou o Verilator. |
+| **Pylibs** | O gerenciador de bibliotecas Python da AURORA. Um catálogo com NumPy, SciPy, Matplotlib, cocotb e companhia, instaláveis com um clique no Python embarcado, sem mexer no Python do sistema. |
 
 ## O caminho completo
 
