@@ -6,7 +6,7 @@ Três recursos que aparecem quando o processador deixa de ser um exercício e vi
 
 A diretiva `#PRACA`, colocada como um comando dentro de `main()`, marca o endereço de atendimento de interrupção e cria o pino `itr` no processador. Enquanto `itr` estiver em 1, o contador de programa salta para o ponto marcado; quando volta a 0, o programa retoma de onde estava.
 
-```{code-block} c
+```{code-block} cmm
 :caption: esqueleto com atendimento de interrupcao
 
 void main()

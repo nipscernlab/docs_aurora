@@ -4,7 +4,7 @@ O C± tem números complexos como tipo nativo: `comp`. Um complexo é um par de 
 
 ## Declarar e operar
 
-```c
+```cmm
 comp z;
 comp w = 3.0 + 4.0i;
 comp data[8];              // vetor de complexos
@@ -52,7 +52,7 @@ A decodificação funciona no GTKWave e no Surfer, com o formato de ponto flutua
 
 O clássico $e^{i\pi} = -1$, direto no processador:
 
-```{code-block} c
+```{code-block} cmm
 :caption: euler.cmm (trecho)
 
 comp z = 0.0 + 3.14159i;

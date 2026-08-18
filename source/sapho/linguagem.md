@@ -17,7 +17,7 @@ Não existem `char`, `double`, `unsigned`, `bool`, `struct`, ponteiros nem strin
 
 ## Variáveis e vetores
 
-```c
+```cmm
 int a, b;
 float ganho = 0.5;
 int v[128];                     // vetor
@@ -29,13 +29,13 @@ Toda memória é estática: sem `malloc`, sem ponteiro, cada variável tem ender
 
 ## Operadores
 
-```
-aritmeticos     + - * / %          (% so entre inteiros)
-relacionais     < > <= >= == !=
-logicos         && || !
-bits            & | ^ ~ << >> >>>  (>>> preserva o sinal)
-pos-incremento  a++  v[i]++
-```
+| Família | Operadores | Observação |
+|---|---|---|
+| Aritméticos | `+` `-` `*` `/` `%` | `%` só entre inteiros |
+| Relacionais | `<` `>` `<=` `>=` `==` `!=` | resultado 0 ou 1 |
+| Lógicos | `&&` `\|\|` `!` | |
+| Bit a bit | `&` `\|` `^` `~` `<<` `>>` `>>>` | `>>>` preserva o sinal |
+| Pós-incremento | `a++` `v[i]++` | não existe `--` |
 
 Não existem `--`, operadores compostos (`+=`, `-=` e família), operador ternário `?:`, cast explícito nem `sizeof`. Conversões entre `int` e `float` acontecem sozinhas, com aviso do compilador.
 
@@ -51,7 +51,7 @@ O `for` aceita as formas simples: `for (i = 0; i < 8; i++)`, com declaração no
 
 ## Funções
 
-```c
+```cmm
 float media(float a, float b)
 {
     return (a + b) * 0.5;
@@ -67,7 +67,7 @@ float media(float a, float b)
 
 O processador conversa com o mundo por portas numeradas, definidas por `#NUIOIN` e `#NUIOOU`:
 
-```c
+```cmm
 int  a = in(0);      // le um inteiro da porta 0
 float g = fin(1);    // le da porta 1 convertendo para float
 out(0, a + 1);       // escreve na porta de saida 0

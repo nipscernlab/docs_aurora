@@ -31,7 +31,7 @@ O filtro adaptativo RLS (*Recursive Least Squares*) é o caso de uso perfeito: s
 
 Crie um processador `proc_rls` (32 bits, mantissa 23, expoente 8, uma porta de entrada e uma de saída, pilha de dados 8) e use o programa:
 
-```{code-block} text
+```{code-block} cmm
 :caption: proc_rls.cmm, o nucleo do algoritmo
 :linenos:
 

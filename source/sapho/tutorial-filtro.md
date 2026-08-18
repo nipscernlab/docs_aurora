@@ -84,7 +84,7 @@ Um campo fora da regra fica com a borda vermelha e trava o botão.
 
 Abra {file}`Software/media_movel.cmm` e substitua o conteúdo por:
 
-```{code-block} c
+```{code-block} cmm
 :caption: media_movel.cmm
 :linenos:
 

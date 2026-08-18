@@ -8,7 +8,7 @@ A FFT radix-2 com decimação no tempo consome as amostras em ordem bit-reversa:
 
 No SAPHO, o embaralhamento custa zero: a linguagem tem um modo de indexação que inverte os bits do índice no próprio hardware de endereçamento.
 
-```c
+```cmm
 data[j]     // acesso normal
 data[j)     // acesso com os bits de j invertidos
 ```
@@ -19,7 +19,7 @@ O parêntese no lugar do colchete final é a sintaxe. Quantos bits são invertid
 
 Crie um processador `proc_fft` (32 bits, mantissa 23, expoente 8) e escreva a FFT de 8 pontos:
 
-```{code-block} c
+```{code-block} cmm
 :caption: proc_fft.cmm, FFT radix-2 de 8 pontos
 :linenos:
 

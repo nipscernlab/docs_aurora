@@ -24,6 +24,47 @@ docs_version = os.environ.get("AURORA_DOCS_VERSION") or _gravado.get("version", 
 sapho_commit = os.environ.get("AURORA_DOCS_COMMIT") or _gravado.get("commit", "")
 release = f"{version} (commit {sapho_commit})" if sapho_commit else version
 
+# ------------------------------------------------------------------
+# Realce do C±
+# ------------------------------------------------------------------
+# O Pygments não conhece o dialeto, e marcar as listagens como `c` pinta de
+# erro tudo o que o C não tem: só no filtro RLS são vinte brackets de Dirac
+# em vermelho. Foi por isso que aquela listagem estava como `text`, isto é,
+# sem realce nenhum, destoando das vizinhas.
+#
+# Herdar do lexer de C e acrescentar o que o dialeto tem de próprio resolve
+# os dois casos de uma vez, e vale para todas as listagens do manual.
+from pygments.lexer import inherit
+from pygments.lexers.c_cpp import CLexer
+from pygments.token import Keyword, Name, Operator
+from sphinx.highlighting import lexers as _lexers
+
+
+class CmmLexer(CLexer):
+    """C± é C com o que vira hardware, e sem o que não vira."""
+
+    name = "C±"
+    aliases = ["cmm"]
+    filenames = ["*.cmm"]
+
+    tokens = {
+        "statements": [
+            # A notação de Dirac: bra e ket.
+            (r"[⟨⟩]", Operator),
+            (r"->", Operator),
+            # O `#` de atribuição vetorial vem cercado de espaço; as diretivas
+            # (#PRNAME e companhia) colam no nome e continuam a cargo da regra
+            # de preprocessador herdada do C.
+            (r"#(?=\s)", Operator),
+            (r"\b(comp)\b", Keyword.Type),
+            (r"\b(in|out|fin|fout|complex|abs|sqrt|sin|cos|exp|log|atan)\b(?=\s*\()", Name.Builtin),
+            inherit,
+        ],
+    }
+
+
+_lexers["cmm"] = CmmLexer()
+
 extensions = [
     "myst_parser",
     "sphinx_design",

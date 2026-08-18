@@ -34,7 +34,7 @@ Detalhes de uso em {doc}`../avancado/interrupcao-multiproc`.
 
 ## Constantes
 
-```c
+```cmm
 #define NOME valor
 ```
 
