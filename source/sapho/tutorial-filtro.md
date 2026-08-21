@@ -241,10 +241,24 @@ O experimento que mais ensina: troque `soma >> 2` por `soma / 4`, recompile e cl
 
 Para enxergar o divisor, desça até a ULA: no diagrama recompilado, clique no processador para entrar nele e depois em {guilabel}`ula`. No nível do topo nada muda de aparência, porque as portas externas do processador continuam as mesmas; o que muda é o conteúdo da unidade aritmética.
 
-```{figure} ../_static/assets/screenshots/aurora-prism-divisor.png
-:alt: PRISM mostrando o divisor instanciado após a troca do deslocamento pela divisão.
-:width: 100%
+A comparação é direta. Com `soma >> 2`, dentro da `ula` moram o somador e o deslocador; com `soma / 4`, o deslocador dá lugar ao divisor, um bloco visivelmente mais caro. É o `generate if` do capítulo {doc}`../avancado/modulos-hdl` acontecendo à sua frente: o parâmetro `SHR` foi a zero e o `DIV` foi a um.
+
+```{list-table}
+:widths: 50 50
 :align: center
+
+* - **Com `soma >> 2`**
+
+    ```{image} ../_static/assets/screenshots/aurora-prism-deslocador.png
+    :alt: PRISM dentro da ula, com os blocos ula_add e ula_shr.
+    :width: 100%
+    ```
+  - **Com `soma / 4`**
+
+    ```{image} ../_static/assets/screenshots/aurora-prism-divisor.png
+    :alt: PRISM dentro da ula, com os blocos ula_add e ula_div.
+    :width: 100%
+    ```
 ```
 :::
 
