@@ -1,8 +1,8 @@
 # Lista de capturas de tela do manual
 
-Situação em 20/08/2026: **60 capturas, todas reais. Nenhuma pendente.**
+Situação em 21/08/2026: **63 capturas reais e 1 pendente** (`aurora-dirac-autocompletar.png`, marcada abaixo).
 
-Não há mais nenhuma imagem cinza de espera. Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela.
+A pendente está no repositório como um retângulo cinza, e não faltando: o build roda com `-W`, então uma imagem ausente derruba a documentação inteira. Salvar o PNG novo por cima resolve, sem tocar em mais nada. Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela.
 
 Padrão de captura:
 
