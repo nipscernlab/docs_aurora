@@ -15,3 +15,8 @@ Thumbs.db
 
 # Cache do Python gerado ao importar o conf.py fora do Sphinx.
 __pycache__/
+
+# Capturas cruas largadas na raiz enquanto se escolhe o enquadramento.
+# As que entram no manual vivem em source/_static/assets/screenshots/.
+SAPHO_*.png
+electron_*.png
