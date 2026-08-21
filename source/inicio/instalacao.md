@@ -38,6 +38,14 @@ Não execute o instalador como administrador. A atualização automática usa o 
 
 ## Primeiro início
 
+```{figure} ../_static/assets/screenshots/aurora-splash.png
+:alt: Tela de abertura da AURORA, com o logotipo e a barra de carregamento.
+:width: 70%
+:align: center
+
+A tela de abertura enquanto os componentes são conferidos. O rodapé mostra o progresso e a versão.
+```
+
 ```{figure} ../_static/assets/screenshots/aurora-boas-vindas.png
 :alt: Tela de boas-vindas da AURORA com a lista de projetos recentes.
 :width: 100%
@@ -67,6 +75,30 @@ A interface nasce em inglês ou português conforme o sistema. Para trocar: {gui
 
 ## Atualizações
 
-A AURORA verifica atualizações sozinha, alguns segundos após abrir e depois a cada três horas. Quando há versão nova, uma janela mostra as novidades e pergunta se você quer baixar; nada é baixado sem a sua confirmação. Depois de baixada, a atualização se aplica ao fechar o aplicativo.
+A AURORA verifica atualizações sozinha, alguns segundos após abrir e depois a cada três horas. Quando há versão nova, uma janela mostra as novidades e pergunta se você quer baixar; nada é baixado sem a sua confirmação.
+
+```{figure} ../_static/assets/screenshots/aurora-atualizacao.png
+:alt: Janela de atualizacao com a versao nova e a lista de novidades.
+:width: 65%
+:align: center
+
+O aviso traz a versão atual, a nova, o tamanho do pacote e o changelog da release.
+```
+
+O download acontece em segundo plano, com progresso à vista, e ao terminar a AURORA pergunta se pode reiniciar. Quem responder {guilabel}`Instalar depois` não perde nada: a atualização se aplica sozinha no próximo fechamento.
+
+```{list-table}
+:widths: 50 50
+:align: center
+
+* - ```{image} ../_static/assets/screenshots/aurora-atualizacao-baixando.png
+    :alt: Janela mostrando o progresso do download da atualizacao.
+    :width: 100%
+    ```
+  - ```{image} ../_static/assets/screenshots/aurora-atualizacao-pronta.png
+    :alt: Janela avisando que a atualizacao esta pronta para instalar.
+    :width: 100%
+    ```
+```
 
 Próximo passo: {doc}`mapa-da-janela`.

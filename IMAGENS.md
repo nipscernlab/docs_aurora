@@ -1,6 +1,6 @@
 # Lista de capturas de tela do manual
 
-Situação em 17/08/2026, noite: **53 capturas prontas, 5 faltando.**
+Situação em 20/08/2026: **57 capturas prontas, 2 faltando.**
 
 As que faltam continuam como imagem cinza de espera em `source/_static/assets/screenshots/`, com os dizeres `CAPTURA PENDENTE` e o nome do arquivo. Para completar, basta salvar o PNG novo por cima, com o mesmo nome, sem tocar em nenhuma página.
 
@@ -16,19 +16,30 @@ Padrão de captura:
 
 ## O que falta capturar
 
-Todas as cinco aparecem em páginas publicadas, então enquanto não forem trocadas o leitor vê o cinza.
+As duas aparecem em páginas publicadas, então enquanto não forem trocadas o leitor vê o cinza.
 
-| Arquivo | Onde aparece | O que deve aparecer |
-|---|---|---|
-| `aurora-prism-divisor.png` | Primeiro processador | PRISM depois de trocar `soma >> 2` por `soma / 4` e recompilar, na visão que mostra o divisor dentro da ULA (desça um nível a partir do topo, entre em `ula`). É o par da `aurora-prism-interno.png`, para comparar lado a lado. |
-| `aurora-onda-delta-float.png` | Ponto flutuante | Onda com `delta_float` visível, mostrando o erro de arredondamento por operação. Simule com Icarus e acrescente o sinal na configuração de ondas. |
-| `aurora-rls-dirac.png` | Notação de Dirac | Editor com `proc_rls.cmm` mostrando a notação de Dirac (`⟨w\|x⟩`, `# \|P\|x⟩`) com o realce e o espaçamento dos brackets. |
-| `aurora-dagr-historico.png` | Ferramentas de apoio | Painel de controle de versão na aba Histórico, com o diff de um commit aberto. |
-| `aurora-atualizacao.png` | Ferramentas de apoio | Janela de notificação de atualização com o changelog, se houver atualização disponível na época da captura. |
+### `aurora-onda-delta-float.png`, no capítulo Ponto flutuante
+
+`delta_float` é um sinal de simulação que vive dentro da ULA (`ula.v`): a cada operação de ponto flutuante ele guarda a diferença entre o resultado exato, calculado em precisão dupla pelo simulador, e o que o hardware produziu. É o erro de arredondamento daquela operação, e vale zero fora das operações de float.
+
+Para capturar:
+
+1. Use um processador de ponto flutuante (o `proc_rls` serve) e simule com **Icarus**, não com Verilator: o arnês é só de simulação e o sinal é do tipo `real`.
+2. Na {guilabel}`Configuração de ondas`, o caminho do sinal é `<testbench> → proc → p_<processador> → core → ula → delta_float`. No RLS, `proc_rsl_tb.proc.p_proc_rls.core.ula.delta_float`.
+3. No GTKWave, o sinal precisa virar curva para dizer alguma coisa: botão direito nele, {guilabel}`Data Format` › {guilabel}`Analog` › {guilabel}`Interpolated`, e depois {guilabel}`Insert Analog Height Extension` duas ou três vezes para dar altura à trilha.
+4. Enquadre alguns ciclos do laço, com a trilha de assembly junto, para o erro aparecer saltando a cada operação e voltando a zero entre elas.
+
+### `aurora-prism-divisor.png`, no capítulo Primeiro processador
+
+O PRISM mostra um módulo por vez, e o divisor não está no diagrama de cima: ele é um bloco de dentro da ULA. O caminho é `<processador>` → `p_<processador>` → `core` → `ula`.
+
+Dentro de `ula`, cada operação é um bloco condicionado por `generate if`. Com `soma / 4` o compilador liga `.DIV(1)` e aparece o bloco `my_div`, do tipo `ula_div`; com `soma >> 2` esse bloco não existe e no lugar está `my_shr`, do tipo `ula_shr`.
+
+Para não caçar às cegas: depois de recompilar com `/ 4`, abra o `Hardware/<processador>.v` e confirme que a lista de parâmetros traz `.DIV(1)`. Aí é só descer até `ula` no PRISM e enquadrar a região onde `my_div` aparece. A captura companheira, `aurora-prism-interno.png`, já mostra essa mesma visão sem o divisor, e é com ela que a nova vai ser comparada.
 
 ## O que já está pronto
 
-As 45 abaixo já são capturas reais e não precisam de nada.
+As 57 abaixo já são capturas reais e não precisam de nada.
 
 ### Interface geral (Tour pela interface)
 
