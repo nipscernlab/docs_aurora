@@ -183,7 +183,17 @@ Copy-Item -Path (Join-Path $mathJaxSource "*") -Destination $mathJaxTarget -Recu
 # valida mermaid_version e recusa string vazia.
 $stripped = 0
 Get-ChildItem -LiteralPath $offlineDir -Recurse -Filter "*.html" | ForEach-Object {
-    $html = Get-Content -LiteralPath $_.FullName -Raw
+    # -Encoding UTF8 NAO e detalhe. O Windows PowerShell 5.1 le com a pagina de
+    # codigo ANSI do sistema quando ninguem manda o contrario, entao cada acento
+    # do HTML virava mojibake ja na leitura, e o Write-Utf8 logo abaixo gravava
+    # essa corrupcao de volta, em UTF-8, com acento duplamente codificado.
+    #
+    # O estrago passava batido por atingir SO as paginas com diagrama Mermaid,
+    # que sao as unicas reescritas aqui: 8 das 37 do pacote 6.4.2.9, com 184
+    # ocorrencias numa delas. O site nunca mostrou o problema porque e publicado
+    # a partir do build, e nao desta pasta, entao so quem lia o manual offline
+    # dentro da AURORA via "O que Ã© o SAPHO".
+    $html = Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8
     if ($html -match 'cdn\.jsdelivr\.net') {
         $clean = [regex]::Replace(
             $html,
