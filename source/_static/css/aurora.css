@@ -1,3 +1,54 @@
+/* ── Tipografia ─────────────────────────────────────────────────────────────
+   As mesmas faces da AURORA, empacotadas aqui: o manual e lido dentro da
+   janela do proprio programa, e ate agora ele caia na pilha generica do
+   sistema, entao a documentacao parecia de outro lugar.
+
+   Empacotadas, e nao buscadas de um servico de fontes, porque a copia offline
+   e o caso de uso principal e ela precisa funcionar sem rede. Sao 176 KB num
+   pacote de 25 MB.
+
+   Inter e JetBrains Mono estao sob a SIL Open Font License 1.1, que permite
+   redistribuir junto. Os arquivos sao os mesmos que a IDE ja carrega.
+   ────────────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  --font-stack: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-stack--monospace: 'JetBrains Mono', 'Cascadia Mono', 'Consolas', monospace;
+  font-feature-settings: 'cv05' 1, 'cv08' 1, 'ss03' 1;
+}
+
 :root {
   --aurora-ink: #20242a;
   --aurora-muted: #68707b;
@@ -6,9 +57,17 @@
   --aurora-link: #365b78;
 }
 
+/* O texto e o html_title inteiro, "SAPHO & AURORA <versao>, Manual de uso",
+   numa linha so. Sem poder separar produto de metadado no HTML do tema, o que
+   resta e dar ritmo ao bloco: corpo menor, entrelinha folgada e quebra
+   equilibrada, para ele parar de ler como uma tira de texto espremida. */
 .sidebar-brand-text {
-  font-weight: 650;
-  letter-spacing: .01em;
+  font-weight: 600;
+  font-size: var(--sidebar-item-font-size, .9rem);
+  line-height: 1.35;
+  letter-spacing: -.005em;
+  text-wrap: balance;
+  color: var(--aurora-ink);
 }
 
 .sidebar-logo {
