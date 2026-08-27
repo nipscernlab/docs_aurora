@@ -52,7 +52,7 @@ Convenções de nome: prefixo `P_` empilha o acumulador antes; `F_` opera em pon
 | bit a bit | `AND`, `ORR`, `XOR`, `INV` e variantes |
 | lógicos | `LAN`, `LOR`, `LIN` e variantes |
 | deslocamentos | `SHL`, `SHR` (lógico), `SRS` (aritmético) e variantes `S_` |
-| comparações | `LES`, `GRE`, `EQU` nas formas inteira, float e de pilha; resultado 0 ou 1 |
+| comparações | `LES` e `GRE` nas formas inteira, float e de pilha; `EQU` só nas formas inteira e de pilha, porque igualdade exata de ponto flutuante não merece bloco próprio; resultado 0 ou 1 |
 
 ## Cirurgia de expoente
 

@@ -13,7 +13,7 @@ Este capítulo cobre o essencial para a graduação. Complexos, notação de Dir
 | `comp` | número complexo (dois floats); assunto de {doc}`../avancado/complexos` |
 | `void` | apenas como retorno de função |
 
-Não existem `char`, `double`, `unsigned`, `bool`, `struct`, ponteiros nem strings. O identificador `i` é reservado para a parte imaginária dos complexos; não o use como variável.
+Não existem `char`, `double`, `unsigned`, `bool`, `struct`, ponteiros nem strings. O identificador `i` é reservado para a parte imaginária dos complexos, e usá-lo como nome de variável é erro de compilação, não aviso: o programa não compila.
 
 ## Variáveis e vetores
 
@@ -35,7 +35,7 @@ Toda memória é estática: sem `malloc`, sem ponteiro, cada variável tem ender
 | Relacionais | `<` `>` `<=` `>=` `==` `!=` | resultado 0 ou 1 |
 | Lógicos | `&&` `\|\|` `!` | |
 | Bit a bit | `&` `\|` `^` `~` `<<` `>>` `>>>` | `>>>` preserva o sinal |
-| Pós-incremento | `a++` `v[i]++` | não existe `--` |
+| Pós-incremento | `a++` `v[k]++` | não existe `--` |
 
 Não existem `--`, operadores compostos (`+=`, `-=` e família), operador ternário `?:`, cast explícito nem `sizeof`. Conversões entre `int` e `float` acontecem sozinhas, com aviso do compilador.
 
@@ -47,7 +47,7 @@ Deslocamentos substituem multiplicações e divisões por potências de dois: `x
 
 `if`/`else`, `while`, `do while`, `for`, `switch`/`case`/`default` (com fall-through como em C), `break`, `continue` e `return`. Sem `goto`.
 
-O `for` aceita as formas simples: `for (i = 0; i < 8; i++)`, com declaração no início ou cláusulas vazias. Não aceita múltiplas cláusulas separadas por vírgula.
+O `for` aceita as formas simples: `for (k = 0; k < 8; k++)`, com declaração no início ou cláusulas vazias. Não aceita múltiplas cláusulas separadas por vírgula.
 
 ## Funções
 
@@ -59,7 +59,7 @@ float media(float a, float b)
 ```
 
 - `main()` é obrigatória e é onde o programa vive.
-- Até 16 parâmetros, passados por valor. Vetores não podem ser parâmetros.
+- Até nove parâmetros, passados por valor. Vetores não podem ser parâmetros.
 - Sem recursão: as variáveis locais têm endereço fixo, então uma função não pode chamar a si mesma.
 - Sem protótipos: defina a função antes de usar, em um único arquivo {file}`.cmm`.
 

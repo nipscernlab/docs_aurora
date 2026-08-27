@@ -13,6 +13,7 @@ O processador é montado a partir de uma biblioteca fixa de módulos Verilog, in
 | {file}`instr_dec.v` | o decodificador de instruções |
 | {file}`ula.v` | a unidade lógica e aritmética, um submódulo por operação |
 | {file}`addr_dec.v` | o decodificador one-hot das portas de I/O |
+| {file}`myFIFO.v` | uma FIFO de uso geral, útil como amortecedor entre processadores no padrão produtor–consumidor de {doc}`interrupcao-multiproc` |
 
 O arquivo gerado por projeto, {file}`Hardware/<proc>.v`, é um invólucro fino: instancia `processor` com os parâmetros do seu programa e liga as portas externas.
 
@@ -23,7 +24,7 @@ Um processador de **acumulador único**, **Harvard**, com **três estágios de p
 - Memórias separadas de programa e de dados, com larguras independentes. As duas são inicializadas pelos {file}`.mif` via `$readmemb`.
 - Não há banco de registradores: toda operação passa pelo acumulador. Expressões aninhadas usam a pilha de dados (profundidade `#NDSTAC`); chamadas de função usam a pilha de retorno (profundidade `#SDEPTH`).
 - Os desvios resolvem no estágio de busca, sem penalidade. Não há forwarding nem stall porque a arquitetura não cria hazards: o caminho de dados e o de controle são casados por construção.
-- Reset síncrono em tudo, uma escolha amigável a FPGA.
+- Reset síncrono em todos os registradores de estado, uma escolha amigável a FPGA. A exceção deliberada são as memórias: para não impedir a inferência de block-RAM, as memórias de instrução e de dados não são resetadas. Depois de um `rst`, o contador de programa volta a zero e o programa recomeça, mas as variáveis guardam o valor da rodada anterior; um programa que dependa de estado inicial deve atribuí-lo explicitamente no começo do `main()`.
 - O conjunto completo de instruções, com os 108 opcodes, está em {doc}`../referencia/instrucoes`.
 
 ## A otimização que dá nome à plataforma

@@ -23,6 +23,7 @@ O literal exige as duas partes: `3.0 + 4.0i` funciona, `4.0i` sozinho não. O id
 |---|---|
 | `+  -  *  /` e o `-` unário | sim, com a álgebra completa |
 | comparações (`<`, `==`, ...) | comparam o módulo, com aviso |
+| lógicos (`&&`, `\|\|`, `!`) | compilam, mas com aviso: só a parte real conta, arredondada para inteiro |
 | `%`, bits (`&`, `|`, `^`, `~`), deslocamentos, `++` | não |
 | `abs` | sim: devolve o módulo |
 | `sqrt`, `exp`, `log`, `sin`, `cos`, `tan`, `atan` | sim, nas versões complexas |

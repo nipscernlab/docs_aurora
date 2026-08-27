@@ -77,7 +77,7 @@ flowchart LR
 
 O repositório do YANC traz um sistema completo de detecção de novidade em sinais de 60 Hz usando dois processadores: um `ZeroCross`, que detecta cruzamentos de zero e segmenta o sinal, e um `ProcDTW`, que calcula a distância DTW contra um padrão. Uma máquina de estados em Verilog puro coordena os dois, e o conjunto foi validado em FPGA real.
 
-Os fontes estão em {file}`Compilers/CMMComp/Tests/DTW` do repositório do YANC: os dois {file}`.cmm`, o top-level, a máquina de estados e o testbench do sistema. É o melhor material de estudo para o padrão multiprocessador.
+Os fontes estão no repositório do YANC, repartidos em três pastas de {file}`Compilers/CMMComp/Tests`: os {file}`.cmm` moram em {file}`ZeroCross` e {file}`ProcDTW`, e a pasta {file}`DTW` traz o top-level, a máquina de estados e o testbench do sistema. É o melhor material de estudo para o padrão multiprocessador.
 :::
 
 O padrão multiprocessador tem literatura própria do laboratório: a [arquitetura multi-core para reconstrução online de energia (CBA, 2020)](https://cdn.nipscern.com/publications/cba-2020-arquitetura-multi-core.pdf) e o [simulador de pulsos do TileCal com SAPHO (SBAI, 2025)](https://cdn.nipscern.com/publications/sbai-2025-simulador-de-pulsos-do-tilecal.pdf), este rodando na eletrônica do experimento ATLAS.

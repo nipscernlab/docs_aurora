@@ -69,4 +69,4 @@ Os três campos que definem o formato ficam juntos no Hub. Aqui está a configur
 
 ## O custo em hardware
 
-As operações de soma, multiplicação e divisão em ponto flutuante têm blocos dedicados na ULA, instanciados apenas se o programa as usa. As funções matemáticas (`sqrt`, `exp`, trigonométricas) não têm bloco: viram rotinas de software sobre essas operações básicas, e o custo delas é tempo de execução, não área. O relatório do TASM mostra as duas coisas.
+As operações de soma, multiplicação e divisão em ponto flutuante têm blocos dedicados na ULA, instanciados apenas se o programa as usa. Algumas funções matemáticas também: `sqrt` usa um bloco de rotação, e `exp` e `log` usam blocos de escala por potência de dois e de extração de expoente, todos condicionados ao mesmo `generate if` das demais operações. As trigonométricas (`sin`, `cos`, `tan`, `atan`) são rotinas de software, avaliadas por polinômios sobre as operações básicas: o custo delas é tempo de execução, não área. O relatório do TASM mostra as duas coisas: os recursos da ULA instanciados e o tamanho do programa.

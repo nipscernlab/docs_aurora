@@ -40,16 +40,16 @@ void main()
 {
     comp  data[N];
     comp  tw, t, u;
-    int   i, j, k, par, salto;
+    int   n, j, k, par, salto;
     float ang;
 
     while (1)
     {
         // carrega as amostras ja em ordem bit-reversa:
-        // data[i) grava na posicao com os bits de i invertidos
-        for (i = 0; i < N; i++)
+        // data[n) grava na posicao com os bits de n invertidos
+        for (n = 0; n < N; n++)
         {
-            data[i) = complex(fin(0), 0.0);
+            data[n) = complex(fin(0), 0.0);
         }
 
         // as tres etapas de borboletas
@@ -74,9 +74,9 @@ void main()
         }
 
         // publica o espectro: modulo de cada raia
-        for (i = 0; i < N; i++)
+        for (n = 0; n < N; n++)
         {
-            fout(0, abs(data[i]));
+            fout(0, abs(data[n]));
         }
     }
 }
@@ -84,7 +84,8 @@ void main()
 
 Os pontos de atenção:
 
-- A linha 27 é o truque inteiro: `data[i)` grava a amostra `i` já na posição embaralhada. Nenhuma rotina de reordenação, nenhum ciclo gasto.
+- A linha 27 é o truque inteiro: `data[n)` grava a amostra `n` já na posição embaralhada. Nenhuma rotina de reordenação, nenhum ciclo gasto.
+- O índice de amostra se chama `n`, e não `i`, porque `i` é reservado no C± e usá-lo como variável é erro de compilação ({doc}`../sapho/linguagem`).
 - O twiddle `tw` sai de `exp` complexo, que o compilador implementa por rotina. Uma versão otimizada usaria uma tabela pré-calculada em arquivo (`comp tw[4] "twiddles.txt"` não existe para `comp`; use dois vetores `float` com as partes real e imaginária), bom exercício para a turma.
 - `abs` de complexo devolve o módulo, direto para a saída.
 

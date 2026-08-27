@@ -14,7 +14,7 @@ Vivem no topo do arquivo, uma por linha, e definem o hardware gerado.
 | `#SDEPTH n` | 10 | profundidade da pilha de chamadas |
 | `#NUIOIN n` | 1 | portas de entrada |
 | `#NUIOOU n` | 1 | portas de saída |
-| `#NUGAIN n` | 64 | divisor fixo da função `norm()`; potência de dois |
+| `#NUGAIN n` | 64 | divisor fixo da função `norm()`; use potência de dois — o compilador não confere, e é ela que deixa a divisão virar deslocamento |
 | `#FFTSIZ n` | 8 | quantos bits do índice o acesso bit-reverso `x[i)` inverte |
 
 Regra estrutural, verificada na compilação: `NUBITS = NBMANT + NBEXPO + 1`.
@@ -23,7 +23,7 @@ Os padrões acima são os do compilador, aplicados quando a diretiva é omitida.
 
 ## De comportamento
 
-Aparecem dentro de `main()`, como comandos, no máximo uma de cada por programa.
+Aparecem no corpo de uma função, como comandos, no máximo uma de cada por programa; o lugar usual é o `main()`.
 
 | Diretiva | Cria o pino | Faz |
 |---|---|---|

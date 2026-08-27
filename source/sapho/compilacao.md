@@ -20,7 +20,11 @@ appcomp
 asmcomp
 : O montador e gerador de hardware: produz as imagens de memória, o módulo Verilog do processador e o testbench. Escreve no terminal **TASM**, incluindo os avisos de recurso instanciado e a estimativa de ocupação do conjunto de instruções.
 
-Os três falam o idioma escolhido nas configurações da AURORA, português ou inglês.
+Os três falam o idioma escolhido nas configurações da AURORA, português ou inglês; umas poucas mensagens pontuais, como as do marcador `#TOAQUI`, saem sempre em inglês.
+
+:::{note}
+O pacote traz ainda um front-end alternativo de C++, a dupla `cpppp` e `cppcomp`, que aceita um subconjunto de C++ com classes e produz o mesmo {file}`.asm`; dali em diante a cadeia é idêntica. Ele não tem botão na interface: usa-se pela linha de comando no TCMD ou pela Aurora Intelligence, que o conhece. Os parâmetros do processador entram por `#pragma yanc` no topo do {file}`.cpp` em vez das diretivas `#`; sem pragmas, o processador nasce com 32 bits e ponto flutuante IEEE 754 de precisão simples.
+:::
 
 ## O que cada compilação gera
 
@@ -37,7 +41,7 @@ Para um processador chamado `media_movel`:
 O {file}`.v` e os dois {file}`.mif` são exatamente o que se leva ao Quartus ou ao Vivado na hora de gravar o FPGA, como descreve {doc}`../juntos/fpga`.
 
 :::{note}
-O testbench gerado só é copiado para {file}`Simulation/` se você ainda não tiver um testbench próprio para o processador. O seu nunca é sobrescrito.
+O testbench é o único artefato da tabela que não sai direto do asmcomp: ele nasce na área temporária, e é a AURORA quem o copia para {file}`Simulation/`, e só se você ainda não tiver um testbench próprio para o processador. O seu nunca é sobrescrito.
 :::
 
 :::{warning}
