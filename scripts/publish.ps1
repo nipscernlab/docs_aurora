@@ -162,6 +162,20 @@ else {
 Write-Host "== Gerando o HTML do site =="
 Invoke-SphinxHtml -Target "web" -OutputDir $webDir
 
+# O site do NIPS-CERN aponta para um nome estavel, sem versao no caminho, para
+# que uma release nova do manual nao exija commit nenhum la. O apelido e criado
+# so no alvo web: no pacote offline ele dobraria o peso do zip. PDFs de versoes
+# anteriores tambem ficam de fora do site, so o atual viaja.
+$webDownloads = Join-Path $webDir "_static\downloads"
+$webPdf = Join-Path $webDownloads $pdfName
+if (-not (Test-Path -LiteralPath $webPdf -PathType Leaf)) {
+    throw "O PDF '$pdfName' nao chegou ao site em '$webDownloads'."
+}
+Copy-Item -LiteralPath $webPdf -Destination (Join-Path $webDownloads "AURORA-Manual.pdf") -Force
+Get-ChildItem -LiteralPath $webDownloads -Filter "AURORA-Manual-*.pdf" |
+    Where-Object { $_.Name -ne $pdfName } |
+    Remove-Item -Force
+
 Write-Host "== Gerando o HTML offline =="
 Invoke-SphinxHtml -Target "offline" -OutputDir $offlineDir
 

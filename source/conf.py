@@ -104,7 +104,11 @@ myst_substitutions = {
 templates_path = ["_templates"]
 pdf_build = os.environ.get("AURORA_PDF_BUILD") == "1"
 root_doc = "pdf-index" if pdf_build else "index"
-exclude_patterns = ["index.md"] if pdf_build else ["pdf-index.md"]
+# O LEIA-ME das fontes e documentacao da pasta, nao pagina do manual: fora do
+# toctree ele viraria warning, e warning derruba o build do PDF.
+exclude_patterns = (["index.md"] if pdf_build else ["pdf-index.md"]) + [
+    "_static/fonts/LEIA-ME.md",
+]
 language = "pt_BR"
 
 # Alvo do HTML:

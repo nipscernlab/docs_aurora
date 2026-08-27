@@ -7,6 +7,10 @@ build/
 tmp/
 tmp-pdfcrop-*.pdf
 
+# O PDF do manual e gerado pelo publish, que o poe aqui para o Sphinx servir;
+# nao e fonte, e cada versao pesaria megabytes no historico.
+source/_static/downloads/*.pdf
+
 # Arquivos locais do sistema e dos editores.
 AGENTS.md
 Thumbs.db
