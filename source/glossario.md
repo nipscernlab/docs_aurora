@@ -9,8 +9,14 @@ C±
 cocotb
 : Framework de testbenches em Python: o simulador roda o circuito, o Python dirige os sinais.
 
+Componente
+: Uma ferramenta que a AURORA baixa por demanda em vez de trazer no instalador: a cadeia de compilação, os visualizadores de onda, os agentes de IA. Gerenciados em Configurações, aba Componentes.
+
 Fonte sintetizável
 : Arquivo Verilog classificado como parte do circuito. A classificação é automática, pelo conteúdo.
+
+Git-D
+: O painel de controle de versão da AURORA, com contas GitHub e GitLab. Chamava-se Dagr até a versão 6.4; só o nome mudou.
 
 Icarus Verilog
 : Simulador interpretado, o padrão para ondas curtas; enxerga todos os sinais.
@@ -37,7 +43,7 @@ spf
 : *SAPHO Project File*, o JSON que define um projeto: fontes, papéis, processadores.
 
 Surfer
-: O visualizador de ondas alternativo ao GTKWave.
+: O visualizador de ondas alternativo ao GTKWave; abre como aba dentro do próprio editor.
 
 Testbench
 : O código que exercita o circuito na simulação, em Verilog ou Python.
@@ -49,7 +55,7 @@ Top Level
 : O módulo raiz do circuito sintetizável; ponto de partida da elaboração e do PRISM.
 
 Verilator
-: Simulador compilado, muito mais rápido; não expõe os sinais internos dos processadores na onda.
+: Simulador compilado, muito mais rápido; grava a onda por escopo, e o miolo mais profundo dos processadores fica de fora (os monitores de pilha e ULA entram por espelhos no testbench).
 
 YANC
 : A suíte de compiladores que transforma C± em processador: tradutor, pré-montador e montador gerador de hardware.

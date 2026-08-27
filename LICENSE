@@ -266,7 +266,7 @@ estes mesmos termos.
 
 ## D3. Como o manual chega ao usuário
 
-A documentação é publicada em duas formas: o site em nipscern.com/docs/sapho e
+A documentação é publicada em duas formas: o site em nipscern.com/library/sapho e
 um pacote anexado a uma Release. O instalador da AURORA carrega uma cópia desse
 pacote, para que o manual abra sem rede. Essa cópia é redistribuição da Obra sob
 esta licença, e vai acompanhada dela.

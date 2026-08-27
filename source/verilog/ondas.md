@@ -9,17 +9,19 @@ A chave na barra de ferramentas escolhe o motor de simulação:
 | | Icarus Verilog | Verilator |
 |---|---|---|
 | Velocidade | referência | 10 a 100 vezes mais rápido |
-| Sinais visíveis | todos | sinais internos de processadores SAPHO ficam de fora |
+| Sinais visíveis | todos | quase todos: os monitores didáticos dos processadores SAPHO (pilhas, ULA) entram por espelhos no testbench; o miolo mais profundo fica de fora |
 | Uso típico | ondas curtas, depuração fina | testbenches longos, regressões |
 
 A troca vale na próxima simulação, e a barra de status mostra o motor atual.
 
 ## GTKWave ou Surfer
 
-A segunda chave escolhe o visualizador. O GTKWave é o clássico; o Surfer é o alternativo, moderno e rápido. Os dois abrem em janela própria com o layout preparado pela AURORA: sinais agrupados, nomeados e coloridos, em vez do despejo bruto.
+A segunda chave escolhe o visualizador. O GTKWave é o clássico e abre em janela própria; o Surfer é o moderno e abre como **aba do próprio editor**, ao lado dos fontes — a onda e o código na mesma janela. Nos dois casos o layout chega preparado pela AURORA: sinais agrupados, nomeados e coloridos, em vez do despejo bruto.
+
+Quem preferir o Surfer em janela própria desmarca a caixa {guilabel}`Surfer: abrir a onda como aba do editor` no modal de {guilabel}`Configuração de ondas`; ela vem marcada por padrão.
 
 ```{figure} ../_static/assets/screenshots/aurora-surfer.png
-:alt: Surfer aberto com uma forma de onda.
+:alt: Surfer aberto como aba do editor, ao lado dos fontes.
 :width: 100%
 :align: center
 ```
@@ -38,9 +40,11 @@ A árvore reflete a hierarquia do projeto; o filtro aceita texto e expressão re
 
 A seleção vale por testbench e segue uma precedência: um arquivo de layout ativo vence a configuração do modal, que vence um `$dumpvars` escrito à mão no testbench, que vence o padrão (tudo no escopo do módulo do testbench).
 
+Sob o Verilator há uma diferença de grão, que o próprio modal avisa: ele grava por **escopo**, não por sinal. Todo sinal público de um módulo com ao menos um sinal selecionado entra no dump; módulos sem nada selecionado ficam fora; o escopo do testbench é sempre gravado. A seleção continua valendo — ela decide quais módulos entram —, só não desce ao sinal individual.
+
 ## Layouts salvos
 
-Organizou os sinais do seu jeito no GTKWave? Salve um {file}`.gtkw` (File, Write Save File) e registre-o no seletor da barra de ferramentas: ele vira o layout daquele testbench. O item {guilabel}`padrão` volta ao layout automático. Com o Surfer, o mesmo seletor gerencia os arquivos de layout dele.
+Organizou os sinais do seu jeito no GTKWave? Salve um {file}`.gtkw` (File, Write Save File) e registre-o no seletor da barra de ferramentas: ele vira o layout daquele testbench. O item {guilabel}`padrão` volta ao layout automático. Com o Surfer, o mesmo seletor gerencia os arquivos de layout dele. A Aurora Intelligence também sabe **criar** um layout sob encomenda: peça no chat os sinais e a organização que quer, e ela grava o arquivo e o registra no seletor.
 
 ```{figure} ../_static/assets/screenshots/aurora-gtkw-picker.png
 :alt: Seletor de arquivo de layout aberto.

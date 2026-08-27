@@ -20,7 +20,7 @@ Um processador SAPHO se simula pelos mesmos botões e chaves de {doc}`../verilog
 ```
 
 :::{note}
-Com o Verilator, os sinais internos do processador (núcleo, pilhas, ULA) ficam fora da onda; as suas variáveis continuam visíveis. Para ver o processador por dentro, use o Icarus.
+Com o Verilator, as suas variáveis continuam visíveis, e os monitores didáticos do processador — as pilhas e os erros de arredondamento da ULA — entram na onda por espelhos que a AURORA declara no testbench. Um programa sem funções não tem pilha de instruções, então o monitor dela nem aparece; não é defeito. Para enxergar qualquer sinal interno sem exceção, use o Icarus.
 :::
 
 ## As variáveis pelo nome

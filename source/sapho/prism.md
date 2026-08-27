@@ -18,9 +18,11 @@ O nível do topo. Processadores SAPHO aparecem com símbolo próprio; os demais 
 
 ## Navegar
 
-- **Clique** em um módulo entra nele: o diagrama desce um nível na hierarquia, e a trilha no topo da janela mostra o caminho. {guilabel}`Back` sobe.
+- **Clique** em qualquer ponto de um módulo entra nele: o diagrama desce um nível na hierarquia, e a trilha no topo da janela mostra o caminho. {guilabel}`Back` sobe.
+- **Shift+clique** em uma célula acende todas as conexões que a tocam; o menu de contexto oferece o mesmo em {guilabel}`Destacar conexões`. Clicar em um fio destaca só aquele fio.
 - **Duplo clique** em uma célula abre o código-fonte correspondente no editor da janela principal, na linha exata.
 - Zoom com a roda do mouse, arraste para mover, {guilabel}`Fit` reenquadra.
+- Cada barramento carrega uma etiqueta com a largura sobre o próprio fio (`/32/`), e células que o Yosys batiza com nomes gerados, cheios de `$`, aparecem rotuladas pelo tipo — `mem read`, `dff` — em vez do nome ilegível.
 - {guilabel}`Download` salva o diagrama atual como SVG, pronto para relatório ou slide.
 - {guilabel}`Recompile` refaz tudo após uma mudança no código, sem fechar a janela.
 

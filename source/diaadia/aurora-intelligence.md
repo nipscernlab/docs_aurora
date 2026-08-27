@@ -6,7 +6,9 @@ A assistente de IA integrada. Ela conhece o projeto aberto, a linguagem C± e o 
 
 O que separa a Aurora Intelligence de um chat comum é o acesso: ela conversa com as mesmas funções internas que os seus botões chamam. A AURORA expõe à assistente um conjunto de ferramentas, e o modelo escolhe qual usar a cada passo.
 
-São as operações do dia a dia da IDE: listar e ler os arquivos do projeto, escrever ou alterar um arquivo, abrir um arquivo no editor, disparar a compilação C± ou a análise Verilog, ler o que saiu em cada terminal, consultar a configuração do processador ativo, rodar um comando no TCMD, abrir o PRISM ou um visualizador de ondas, e pesquisar o próprio manual.
+São as operações do dia a dia da IDE: listar e ler os arquivos do projeto, escrever ou alterar um arquivo, abrir um arquivo no editor, disparar a compilação C± ou a análise Verilog, perguntar se uma execução ainda está rodando, ler o que saiu em cada terminal, consultar a configuração do processador ativo, rodar um comando no TCMD, abrir o PRISM ou um visualizador de ondas, criar um layout de ondas sob encomenda, e conhecer e instalar os {doc}`projetos de exemplo <organizacao-projeto>`.
+
+Ela também pesquisa e lê **este manual**: perguntas sobre a plataforma são respondidas citando as páginas certas, em vez de de memória. E sabe o que a máquina tem — recebe a lista de componentes ainda não baixados, e não gasta o seu tempo propondo uma ferramenta que não vai rodar.
 
 O ciclo é sempre o mesmo: você descreve o objetivo, o modelo pede uma ferramenta, a AURORA executa e devolve o resultado, e o modelo decide o passo seguinte com esse resultado em mãos. Por isso um pedido como "compile e me diga por que o TASM reclamou" funciona: ela compila de verdade, lê o terminal de verdade e responde sobre o seu erro, não sobre um erro genérico.
 

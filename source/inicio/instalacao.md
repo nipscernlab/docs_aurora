@@ -1,6 +1,6 @@
 # Instalação
 
-O SAPHO roda em Windows 10 e 11, 64 bits. A instalação traz tudo: a AURORA, os compiladores do YANC, os simuladores, os visualizadores de onda e um Python embarcado. Não é preciso instalar nada além do pacote.
+O SAPHO roda em Windows 10 e 11, 64 bits. O instalador traz a AURORA e os compiladores do YANC, que são o SAPHO em si; o resto — simuladores, visualizadores de onda e o Python embarcado — são componentes que a própria AURORA baixa quando você for usar, sem instalar nada por fora. O primeiro download é guiado, como mostra a seção {ref}`cadeia-de-compilacao` abaixo.
 
 ## Baixar
 
@@ -8,7 +8,7 @@ Baixe o instalador no site do NIPS-CERN:
 
 <https://www.nipscern.com/projects/sapho>
 
-O botão {guilabel}`Download Latest Release` baixa diretamente o instalador da versão mais recente, um arquivo com nome no formato {file}`sapho-aurora-Setup-vX.Y.Z.exe`, com cerca de 500 MB. Se preferir, as versões anteriores ficam na página de releases do GitHub, no mesmo lugar.
+O botão {guilabel}`Download Latest Release` baixa diretamente o instalador da versão mais recente, um arquivo com nome no formato {file}`sapho-aurora-Setup-vX.Y.Z.exe`, com cerca de 140 MB. Se preferir, as versões anteriores ficam na página de releases do GitHub, no mesmo lugar.
 
 ## Instalar
 
@@ -22,19 +22,36 @@ O botão {guilabel}`Download Latest Release` baixa diretamente o instalador da v
 O aviso do SmartScreen. {guilabel}`Mais informações` revela o botão {guilabel}`Executar assim mesmo`.
 ```
 
-3. Siga o assistente: aceite a licença, escolha a pasta de destino e conclua.
+3. Leia e aceite a licença. Com o aceite, a instalação segue sozinha até o fim: instala para o usuário atual, sem pedir pasta nem senha de administrador.
 
 ```{figure} ../_static/assets/screenshots/aurora-instalador.png
-:alt: Assistente de instalação do SAPHO no Windows.
+:alt: Página de licença do instalador do SAPHO no Windows.
 :width: 75%
 :align: center
 
-O assistente de instalação. O padrão instala para o usuário atual, sem exigir privilégios de administrador.
+A página de licença do instalador; o aceite é obrigatório. O padrão instala para o usuário atual, sem exigir privilégios de administrador.
 ```
 
 :::{warning}
-Não execute o instalador como administrador. A atualização automática usa o mesmo caminho da instalação, e uma instalação feita como administrador impede o atualizador de trabalhar depois.
+Não execute o instalador como administrador. Rodado com "Executar como administrador", o SAPHO se instala no perfil do administrador, e o aluno que fizer login depois não encontra nada; além disso, a atualização automática deixa de funcionar. Se a máquina do laboratório pede senha para instalar, a senha serve para liberar a política de execução, não para elevar o instalador.
 :::
+
+O instalador também registra as extensões {file}`.spf`, {file}`.cmm` e {file}`.v`: um duplo clique num {file}`.spf` abre o projeto, e num {file}`.cmm` ou {file}`.v` abre o arquivo solto no editor.
+
+(cadeia-de-compilacao)=
+## A cadeia de compilação
+
+Na primeira abertura, a AURORA avisa que a máquina ainda não compila: a cadeia de compilação — Icarus Verilog, Verilator, Yosys e o Python embarcado — não vem no instalador, para que ele caiba em 140 MB. Um diálogo oferece o download (cerca de 272 MB), e aceitar já abre a aba {guilabel}`Componentes` das Configurações com o download andando.
+
+```{figure} ../_static/assets/screenshots/aurora-componentes-boot.png
+:alt: Diálogo avisando que a cadeia de compilação ainda não foi baixada.
+:width: 65%
+:align: center
+
+O aviso do primeiro início. {guilabel}`Baixar agora` resolve; {guilabel}`Agora não` deixa para depois, e o aviso volta na próxima abertura.
+```
+
+Até esse download terminar, os botões de compilar e simular não funcionam, e a engrenagem de {guilabel}`Configurações` na barra superior fica com um ponto de aviso aceso. Tudo o que se baixa, se conserta e se remove por ali está descrito em {doc}`../diaadia/apoio`.
 
 ## Primeiro início
 
@@ -51,7 +68,7 @@ A tela de abertura enquanto os componentes são conferidos. O rodapé mostra o p
 :width: 100%
 :align: center
 
-A tela de boas-vindas. Os projetos abertos recentemente ficam à direita, e os que sumiram do disco aparecem riscados, com o botão de esquecê-los.
+A tela de boas-vindas. Os projetos abertos recentemente ficam à direita; os que sumiram do disco aparecem riscados, com uma lupa que os procura no computador e o botão de esquecê-los.
 ```
 
 Abra o SAPHO pelo menu Iniciar. Após a tela de abertura, você chega à tela de boas-vindas:
@@ -61,7 +78,7 @@ Abra o SAPHO pelo menu Iniciar. Após a tela de abertura, você chega à tela de
 :width: 90%
 :align: center
 
-A tela de boas-vindas. À esquerda, criar ou abrir projeto; à direita, a lista de projetos recentes, vazia no primeiro uso.
+A tela de boas-vindas. À esquerda, criar ou abrir projeto e o botão {guilabel}`Projetos de exemplo...`, que instala cinco projetos prontos; à direita, a lista de projetos recentes, vazia no primeiro uso.
 ```
 
 Confirme que está tudo pronto:

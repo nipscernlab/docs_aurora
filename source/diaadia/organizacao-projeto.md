@@ -29,6 +29,18 @@ MeuProjeto/
 
 O projeto nasce só com o {file}`.spf`. As pastas de processador aparecem quando você cria um processador no Hub; as demais, conforme o uso.
 
+## Projetos de exemplo
+
+Quem prefere partir de algo pronto tem o botão {guilabel}`Projetos de exemplo...` na tela de boas-vindas: ele pergunta só onde salvar e cria **cinco projetos completos**, cada um com o seu {file}`.spf` e o testbench já registrado, todos dentro de uma pasta {file}`exemplos-sapho`. Os cinco entram na lista de recentes, do mais simples para o mais completo:
+
+1. **Contador em Verilog** — Verilog puro, sem processador; o caminho mais curto para ver a AURORA elaborar e simular.
+2. **Média móvel** — o processador do {doc}`tutorial <../sapho/tutorial-filtro>`, em aritmética inteira.
+3. **Trigonometria** — ponto flutuante: seno, cosseno e arco-tangente.
+4. **Notação de Dirac** — a álgebra linear escrita como na física, uma operação por linha.
+5. **Cruzamento por zero** — duas entradas, cinco saídas, filtros IIR e o endereçamento de porta.
+
+Os fontes viajam dentro do aplicativo, então o botão funciona sem internet. Instalar de novo na mesma pasta não sobrescreve nada: o que já existe é respeitado. A Aurora Intelligence conhece os cinco e também sabe criá-los, a pedido, pelo chat.
+
 Em desenho, o caminho de um arquivo até o hardware:
 
 ```{mermaid}

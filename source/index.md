@@ -1,7 +1,7 @@
 # SAPHO & AURORA, manual de uso
 
 <div class="hero">
-<span class="version-pill">Versão documentada: 6.4.2</span>
+<span class="version-pill">Versão documentada: 6.10.0</span>
 
 Este manual ensina a usar o processador SAPHO e a AURORA, a interface onde ele é criado. O caminho segue a ordem de uma disciplina: primeiro projetos Verilog escritos à mão, depois a geração de processadores em C±, depois os dois juntos no mesmo circuito. A parte final reúne os estudos avançados, voltados à pós-graduação.
 
@@ -13,7 +13,7 @@ Este manual ensina a usar o processador SAPHO e a AURORA, a interface onde ele �
 </div>
 
 :::{note}
-Versão descrita: SAPHO 6.4.2 para Windows 10 e 11. Detalhes da apuração em {doc}`sobre/escopo`.
+Versão descrita: SAPHO 6.10.0 para Windows 10 e 11. Detalhes da apuração em {doc}`sobre/escopo`.
 :::
 
 ## Por onde começar

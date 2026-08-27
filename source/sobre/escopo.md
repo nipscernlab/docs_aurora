@@ -11,13 +11,13 @@ Esta documentação descreve a aplicação desktop AURORA no estado observado no
 | Item | Valor congelado |
 |---|---|
 | Produto | AURORA IDE / SAPHO |
-| Versão do pacote | 6.4.2 |
-| Commit | `f71b2f4551bb59f20a2ae33dcd715eea3bd78050` |
+| Versão do pacote | 6.10.0 |
+| Commit | `15908dc9fc73188158b25fd0e43155ed88aecdbb` |
 | Branch | `main` |
 | Plataforma primária | Windows 10/11 |
-| Runtime | Electron 39.8.10 e Node.js 18+ |
+| Runtime | Electron 43.4 |
 | Editor | Monaco Editor 0.52.2, fixado exatamente |
-| Data da análise | 9 de julho de 2026 |
+| Data da análise | 27 de agosto de 2026 (base anterior, 6.4.2, apurada em 9 de julho de 2026) |
 
 ## Fontes e precedência
 

@@ -13,6 +13,8 @@ As falhas mais comuns de cada fluxo, com a causa e a correção. Regra geral que
 | {guilabel}`Teste do processador sintetizado` | um processador ativo (o {file}`.cmm` dele em foco) |
 | engrenagem de configuração | idem |
 
+Um caso à parte: se o clique abre o diálogo {guilabel}`Componente não instalado`, não falta pré-requisito de projeto — falta a ferramenta. {guilabel}`Baixar agora` resolve na hora, e o painel completo está em {doc}`../diaadia/apoio`.
+
 ## Projeto
 
 O nome foi recusado
@@ -49,7 +51,13 @@ A simulação termina antes do resultado
 : Poucos ciclos. Engrenagem do processador, aumente o número de clocks.
 
 A onda abre sem os sinais internos do processador
-: Comportamento esperado com o Verilator. Troque para o Icarus para ver o processador por dentro.
+: Com o Verilator, os monitores de pilha e ULA entram por espelhos no testbench, mas o miolo mais profundo fica de fora; e um programa sem funções não tem pilha de instruções para monitorar. Para ver tudo, troque para o Icarus.
+
+A simulação aborta citando o arquivo de onda
+: O arquivo da rodada anterior está aberto em outro programa ou ficou somente-leitura, e a AURORA prefere abortar a mostrar uma onda velha como se fosse nova. Feche o visualizador (GTKWave/Surfer) e simule de novo.
+
+`$fopen devolveu 0` ou "invalid file descriptor"
+: O testbench abre um arquivo que não existe ou não pode ser escrito. A AURORA avisa antes de rodar quando o caminho de leitura não existe; confira os caminhos dos `$fopen` do testbench.
 
 Sinal selecionado não aparece
 : A seleção de ondas referencia um sinal que não existe mais (código mudou). Reabra a {guilabel}`Configuração de ondas` e salve de novo; a AURORA remove as referências mortas.
@@ -74,4 +82,5 @@ Diagrama desatualizado
 ## Quando nada explica
 
 - Ligue o modo verboso ({guilabel}`Configurações`, {guilabel}`Terminal`) e repita: os comandos completos de cada etapa aparecem no terminal.
-- Exporte o log (botão na área de terminais) e anexe ao relato pelo {guilabel}`Relatar um problema` da aba {guilabel}`Sobre`.
+- Rode {guilabel}`Verificar e consertar` na aba {guilabel}`Componentes`: ele limpa os caches de compilação, confere os arquivos de cada componente e baixa de novo o que estiver incompleto ou quebrado — o conserto clássico para uma toolchain que o antivírus mordeu.
+- Use o {guilabel}`Relatar` da aba {guilabel}`Geral`: o relato já vai com o diagnóstico da instalação e o terminal recortado em volta dos erros, e a tela mostra tudo antes de enviar.

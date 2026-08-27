@@ -49,18 +49,18 @@ Um subconjunto de C, de médio nível, com adições voltadas a processamento de
 
 ## As ferramentas que vêm juntas
 
-Em volta desse núcleo, a instalação traz um conjunto de ferramentas de código aberto, cada uma consagrada no que faz. Você não precisa instalar, configurar nem chamar nenhuma delas: a AURORA já vem com as versões certas e as aciona pelos botões.
+Em volta desse núcleo trabalha um conjunto de ferramentas de código aberto, cada uma consagrada no que faz. Você não precisa instalar, configurar nem chamar nenhuma delas por fora: a AURORA baixa as versões certas pelo painel de Componentes ({doc}`../diaadia/apoio`) e as aciona pelos botões.
 
 | Ferramenta | Para que serve |
 |---|---|
 | **Icarus Verilog** | Simulador Verilog interpretado, o mais fiel ao padrão. É o motor padrão da AURORA: enxerga todos os sinais internos e gera o {file}`.vcd` completo. Mais lento em simulações longas. |
 | **Verilator** | Compila o Verilog para C++ e roda muito mais rápido, ao custo de só aceitar código sintetizável e de expor menos sinais. É a escolha para varreduras longas e para testes automatizados. |
 | **GTKWave** | Visualizador de formas de onda clássico, o padrão de fato no mundo Verilog. Abre o {file}`.vcd`, guarda layouts em {file}`.gtkw` e é onde as trilhas de assembly e de linha C± aparecem. |
-| **Surfer** | Visualizador de ondas moderno, escrito em Rust, com navegação mais fluida. A AURORA traz um fork nosso, integrado ao projeto. |
+| **Surfer** | Visualizador de ondas moderno, escrito em Rust, com navegação mais fluida. A AURORA traz um fork nosso, integrado ao projeto, que abre como uma aba dentro do próprio editor. |
 | **Yosys** | Ferramenta de síntese lógica. Aqui ela não gera bitstream: elabora o projeto, resolve a hierarquia e produz a estrutura que o PRISM desenha. |
 | **PRISM** | Visualizador de RTL da casa. Transforma a saída do Yosys em um diagrama navegável do circuito, com um clique para descer na hierarquia e outro para voltar ao código-fonte. |
 | **cocotb** | Biblioteca que permite escrever testbenches em Python em vez de Verilog, com `async`/`await`. Roda sobre o Icarus ou o Verilator. |
-| **Pylibs** | O gerenciador de bibliotecas Python da AURORA. Um catálogo com NumPy, SciPy, Matplotlib, cocotb e companhia, instaláveis com um clique no Python embarcado, sem mexer no Python do sistema. |
+| **Pylibs** | O gerenciador de bibliotecas Python da AURORA. Um catálogo curado de bibliotecas para testbenches e análise — cocotb, verificação UVM, leitura de ondas por script, gráficos —, instaláveis com um clique no Python embarcado, sem mexer no Python do sistema. |
 
 ## O caminho completo
 

@@ -8,6 +8,10 @@ Este é o primeiro tutorial do manual. Ao final, você terá criado um projeto, 
 Um contador de 4 bits com habilitação: conta a cada borda de clock enquanto `habilita` estiver em 1, e zera no reset. É o circuito sequencial mais simples que exercita o fluxo inteiro: clock, reset, registrador e testbench.
 :::
 
+:::{note}
+Com pressa? O botão {guilabel}`Projetos de exemplo...` da tela de boas-vindas cria um contador equivalente já pronto. O tutorial vale mais construído à mão, mas o exemplo serve de gabarito para conferir o seu.
+:::
+
 ## Passo 1: criar o projeto
 
 1. Clique em {guilabel}`Novo Projeto`, na barra superior ou na tela de boas-vindas.
