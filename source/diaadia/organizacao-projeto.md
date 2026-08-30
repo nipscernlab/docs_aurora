@@ -24,6 +24,7 @@ MeuProjeto/
 │       ├── input_0.txt
 │       └── output_0.txt
 ├── testbench/                  estado de ondas por testbench
+├── .aurora/                    registros da AURORA (histórico de execuções)
 └── Backup/                     zips gerados pelo botão de backup
 ```
 

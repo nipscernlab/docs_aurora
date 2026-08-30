@@ -23,6 +23,8 @@ Um processador SAPHO se simula pelos mesmos botões e chaves de {doc}`../verilog
 Com o Verilator, as suas variáveis continuam visíveis, e os monitores didáticos do processador — as pilhas e os erros de arredondamento da ULA — entram na onda por espelhos que a AURORA declara no testbench. Um programa sem funções não tem pilha de instruções, então o monitor dela nem aparece; não é defeito. Para enxergar qualquer sinal interno sem exceção, use o Icarus.
 :::
 
+Há ainda uma quarta lupa, fora desta página: o modo {guilabel}`Simular` do PRISM, que liga um módulo isolado com relógio e entradas clicáveis ({doc}`prism`). Vale para entender um pedaço do circuito, não para rodar o programa.
+
 ## As variáveis pelo nome
 
 Como toda memória do C± é estática, cada variável do seu programa vira um sinal nomeado na onda: `soma`, `x[0]`, `x[1]`. Vetores aparecem elemento a elemento quando a opção {guilabel}`Mostrar arrays` está ligada na engrenagem do processador. Floats aparecem decodificados como número real, e complexos no formato `a + bi`.

@@ -1,12 +1,12 @@
 # Lista de capturas de tela do manual
 
-Situação em 27/08/2026 (revisão da base 6.10.0): **69 capturas reais, nenhuma pendente e 16 marcadas para refazer** (lista abaixo).
+Situação em 30/08/2026 (revisão da base 6.11.0): **69 capturas reais, 9 pendentes da 6.11.0** (retângulos cinza no repositório) **e 17 itens marcados para refazer** (listas abaixo).
 
 Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela. O build roda com `-W`, então uma imagem ausente derruba a documentação inteira: nunca apague, sempre substitua.
 
 ## Para refazer
 
-Todas numa AURORA **6.10.0 instalada** (não em modo de desenvolvimento), com a **interface em português**.
+Todas numa AURORA **6.11.0 instalada** (não em modo de desenvolvimento), com a **interface em português**.
 
 1. `aurora-prism-media-movel.png`, `aurora-prism-interno.png`, `aurora-prism-deslocador.png`, `aurora-prism-divisor.png`: **prioridade máxima**. Na 6.4.2 instalada as skins do SAPHO não carregavam; refazer com skins, a etiqueta de largura `/32/` e, se couber, o menu de contexto com "Destacar conexões".
 2. `aurora-settings-manual.png`: a captura atual mostra as chaves cruas `modal.settings.manualInstalled` no cartão de estado (bug da AURORA, a reportar) e está em inglês. Refazer depois da correção, em português.
@@ -19,15 +19,32 @@ Todas numa AURORA **6.10.0 instalada** (não em modo de desenvolvimento), com a 
 9. `aurora-boas-vindas.png`: entram o item "Projetos de exemplo...", o "Localizar ausentes" e a lupa nas linhas riscadas.
 10. `aurora-primeiro-inicio.png`: idem, o item "Projetos de exemplo..." na coluna Início.
 11. `aurora-dagr-alteracoes.png` e `aurora-dagr-historico.png`: o painel se chama Git-D agora (os nomes de arquivo ficam, só a captura muda).
-12. `aurora-wave-config.png`: o modal ganhou o aviso do Verilator e a caixa "Surfer: abrir a onda como aba do editor".
-13. `aurora-settings-geral.png`: a aba Geral ganhou Relatar, a limpeza de acesso ao Git e o aviso de internet; a barra lateral agora tem 9 abas.
+12. `aurora-wave-config.png`: o modal ganhou o aviso do Verilator. A escolha de aba ou janela do Surfer saiu do modal: mora nas Configurações, aba Geral, junto com a do PRISM.
+13. `aurora-settings-geral.png`: a aba Geral ganhou a limpeza de acesso ao Git, o aviso de internet e as opções "Onde o PRISM abre" e "Onde o Surfer abre"; o Relatar mora na barra lateral, que tem 9 abas.
 14. `aurora-settings-sobre.png`: o manual e o relatar problema saíram da aba Sobre.
 15. `aurora-barra-status.png`: entram as duas fichas de conta (GitHub e GitLab) e o indicador de energia (capturar num laptop).
-16. `aurora-terminais.png`: se possível, capturar durante uma simulação, com a barra de progresso e o marcador de tamanho do dump no TWAVE.
+16. `aurora-terminais.png`: agora são sete abas, com a TPRISM; se possível, capturar durante uma simulação, com a barra de progresso e o marcador de tamanho do dump no TWAVE.
+17. `aurora-settings-ia.png`: o cartão da Anthropic ganhou o Sonnet 5 como padrão e o campo "Esforço e raciocínio".
 
 ## Recebidas em 27/08 e já no lugar
 
 `aurora-dirac-autocompletar.png` e `aurora-componentes-boot.png` chegaram em português e ficam como estão. As quatro dos itens 2 a 5 acima também entraram (são melhores que o retângulo cinza), mas com as ressalvas anotadas.
+
+## Pendentes da 6.11.0 (retângulos cinza no repositório)
+
+O modo Simular do PRISM se captura melhor no projeto do contador (tutorial Verilog): pequeno, com `clk`, e a contagem faz uma onda legível.
+
+| Arquivo | O que deve mostrar |
+|---|---|
+| `aurora-prism-simulacao.png` | PRISM no modo Simular com o contador: a barra de tempo (Rodar, Tick, Próximo evento, Rápido, Reiniciar, contador de ticks, meio período, velocidade), o painel Entradas e saídas e o monitor Formas de onda abertos, com `conta` subindo. |
+| `aurora-prism-sim-parada.png` | O monitor depois de um "parar em" disparar (por exemplo `conta` = F): o aviso "Parou no tick N" e o cursor de tempo numa onda, com os valores daquele tick em cada linha. |
+| `aurora-prism-sim-fio.png` | O balão de um barramento ao passar o mouse sobre o fio, com nome, faixa de bits e as linhas hex, dec e bin. Recorte de região. |
+| `aurora-prism-sim-submodulo.png` | Dentro de um submódulo durante a simulação, com a trilha de caminho no topo e o Voltar. A `ula` do `media_movel` é um bom alvo; se não couber no limite, qualquer módulo com submódulo serve. |
+| `aurora-prism-aba.png` | O PRISM aberto numa aba do editor, ao lado do `.cmm`, depois de escolher "Aba do editor" em Configurações, Geral. |
+| `aurora-prism-onda.png` | O visualizador de ondas aberto pelo "Abrir no WAVE" da simulação, com os sinais do monitor agrupados por papel (relógio, entradas, saídas). |
+| `aurora-historico-compilacoes.png` | O modal Histórico de compilações com uma execução aberta: a lista (Pedido, Quando, Duração, Passos, Desfecho), o "Estado do projeto na hora" e "O que rodou". Melhor ainda com uma execução em andamento no topo. |
+| `aurora-ia-tutorial.png` | Painel da Aurora Intelligence logo depois de clicar no capelo: a primeira resposta do tutorial guiado. |
+| `aurora-ia-prism-sim.png` | Uma conversa em que a assistente opera o Simular do PRISM: o cartão de permissão de uma ferramenta `prism_sim` ou a resposta com os valores lidos. |
 
 Padrão de captura:
 

@@ -18,6 +18,9 @@ Fonte sintetizável
 Git-D
 : O painel de controle de versão da AURORA, com contas GitHub e GitLab. Chamava-se Dagr até a versão 6.4; só o nome mudou.
 
+Histórico de compilações
+: O registro que cada clique de compilação deixa: o que rodou, quanto durou e o retrato do projeto na hora. Fica em {file}`.aurora/execucoes/`, dentro do projeto.
+
 Icarus Verilog
 : Simulador interpretado, o padrão para ondas curtas; enxerga todos os sinais.
 
@@ -31,7 +34,7 @@ Processador ativo
 : O processador cujo {file}`.cmm` está em foco no editor. É o alvo do botão C±, da engrenagem e do teste de hardware, e aparece na barra de status.
 
 PRISM
-: O visualizador de circuito: desenha o RTL elaborado como diagrama navegável.
+: O visualizador de circuito: desenha o RTL elaborado como diagrama navegável e, no modo Simular, liga o módulo da tela, com relógio e entradas clicáveis.
 
 Processador SAPHO
 : O núcleo gerado pelo YANC: acumulador único, memórias separadas de programa e dados, e apenas os blocos que o programa usa.

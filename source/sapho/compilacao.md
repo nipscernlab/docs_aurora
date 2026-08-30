@@ -54,6 +54,20 @@ A parte mais importante de toda a cadeia acontece em silêncio no asmcomp: o mó
 
 Por isso o TASM anuncia os recursos instanciados: aquela lista é literalmente o inventário do seu circuito. Um programa só de inteiros não carrega somador de ponto flutuante; um programa sem divisão não carrega divisor. O tamanho do processador acompanha o algoritmo, e é isso que torna o SAPHO um soft-core otimizado. O mecanismo por dentro está em {doc}`../avancado/modulos-hdl`.
 
+## Cada clique fica registrado
+
+Todo botão de compilação grava uma execução: o que foi pedido, quando, quanto durou, que ferramentas rodaram e como terminou, junto com um retrato do projeto naquele momento (Top Level, testbench, simulador, visualizador, processadores e fontes). O botão do relógio na barra dos terminais ({kbd}`Ctrl+Shift+H`) abre o {guilabel}`Histórico de compilações`, que lista as execuções e se atualiza enquanto uma compilação acontece: a execução viva aparece no topo, com os passos e o tempo crescendo.
+
+```{figure} ../_static/assets/screenshots/aurora-historico-compilacoes.png
+:alt: Modal do histórico de compilações com uma execução aberta.
+:width: 95%
+:align: center
+
+Uma execução aberta: o estado do projeto na hora e a cadeia de ferramentas que rodou, com a duração de cada passo.
+```
+
+Serve para responder o que o terminal sozinho não responde: o que exatamente foi clicado antes de dar errado, com que Top Level, em que ordem. Os registros ficam no próprio projeto, em {file}`.aurora/execucoes/`, um JSON por execução. Duas compilações ao mesmo tempo geram dois registros; um passo que não dá para atribuir com certeza a uma delas sai marcado como sobreposto, e não como erro.
+
 ## Lendo erros de compilação
 
 - As mensagens do cmmcomp apontam a linha do {file}`.cmm`; a referência é um link clicável no terminal.

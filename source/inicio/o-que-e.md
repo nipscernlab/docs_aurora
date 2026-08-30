@@ -58,7 +58,7 @@ Em volta desse núcleo trabalha um conjunto de ferramentas de código aberto, ca
 | **GTKWave** | Visualizador de formas de onda clássico, o padrão de fato no mundo Verilog. Abre o {file}`.vcd`, guarda layouts em {file}`.gtkw` e é onde as trilhas de assembly e de linha C± aparecem. |
 | **Surfer** | Visualizador de ondas moderno, escrito em Rust, com navegação mais fluida. A AURORA traz um fork nosso, integrado ao projeto, que abre como uma aba dentro do próprio editor. |
 | **Yosys** | Ferramenta de síntese lógica. Aqui ela não gera bitstream: elabora o projeto, resolve a hierarquia e produz a estrutura que o PRISM desenha. |
-| **PRISM** | Visualizador de RTL da casa. Transforma a saída do Yosys em um diagrama navegável do circuito, com um clique para descer na hierarquia e outro para voltar ao código-fonte. |
+| **PRISM** | Visualizador de RTL da casa. Transforma a saída do Yosys em um diagrama navegável do circuito, com um clique para descer na hierarquia e outro para voltar ao código-fonte. No modo Simular, o diagrama vira um circuito vivo, com relógio e entradas clicáveis. |
 | **cocotb** | Biblioteca que permite escrever testbenches em Python em vez de Verilog, com `async`/`await`. Roda sobre o Icarus ou o Verilator. |
 | **Pylibs** | O gerenciador de bibliotecas Python da AURORA. Um catálogo curado de bibliotecas para testbenches e análise — cocotb, verificação UVM, leitura de ondas por script, gráficos —, instaláveis com um clique no Python embarcado, sem mexer no Python do sistema. |
 

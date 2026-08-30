@@ -99,7 +99,7 @@ Como o painel se comporta:
 
 | Aba | O que tem |
 |---|---|
-| Geral | tooltips da interface; confiar em links externos do chat da IA; {guilabel}`Relatar um problema`; limpar o acesso ao GitHub e ao GitLab ao fechar (ligado por padrão) e {guilabel}`Limpar agora`; avisar quando a internet cair |
+| Geral | tooltips da interface; confiar em links externos do chat da IA; onde o PRISM e o Surfer abrem, janela própria ou aba do editor; limpar o acesso ao GitHub e ao GitLab ao fechar (ligado por padrão) e {guilabel}`Limpar agora`; avisar quando a internet cair |
 | Componentes | baixar, atualizar, consertar e remover as ferramentas; a seção acima |
 | Aparência | o fundo animado da tela de boas-vindas (desligado por padrão); trocar o ícone do aplicativo |
 | Idioma | Português ou English, para a interface e para as mensagens dos compiladores |
@@ -133,7 +133,7 @@ Detalhe que evita surpresa: fechar o painel sem {guilabel}`Salvar Alterações` 
 
 ## Este manual, dentro da AURORA
 
-O manual tem aba própria nas Configurações: {guilabel}`Manual`. Um cartão de estado diz se a cópia offline está {guilabel}`Neste computador`, com a versão dela, e três botões fazem o resto: {guilabel}`Abrir na AURORA` abre a cópia local, sem internet; {guilabel}`Abrir no navegador` abre este site; {guilabel}`Procurar atualização` busca uma versão nova na hora. A cópia offline também se atualiza sozinha quando saem correções, sem esperar uma versão nova do aplicativo.
+O manual tem aba própria nas Configurações: {guilabel}`Manual`. Um cartão de estado diz se a cópia offline está {guilabel}`Neste computador`, com a versão dela, e três botões fazem o resto: {guilabel}`Abrir na AURORA` abre a cópia local, sem internet; {guilabel}`Abrir no navegador` abre este site; {guilabel}`Procurar atualização` busca uma versão nova na hora. A cópia offline também se atualiza sozinha quando saem correções, sem esperar uma versão nova do aplicativo. E são esses mesmos capítulos que os botões de ajuda da IDE abrem: os modais principais, do Hub de Processadores ao Histórico de compilações, trazem um ponto de interrogação que cai direto na página certa, na cópia local ou, na falta dela, no site.
 
 ```{figure} ../_static/assets/screenshots/aurora-settings-manual.png
 :alt: Aba Manual das Configuracoes, com o estado da copia offline e os botoes de abrir.
@@ -143,7 +143,7 @@ O manual tem aba própria nas Configurações: {guilabel}`Manual`. Um cartão de
 
 ## Relatar um problema
 
-O botão {guilabel}`Relatar`, na aba {guilabel}`Geral`, abre o formulário de relato: o que aconteceu, o que você esperava e como reproduzir, mais um e-mail opcional para receber a resposta. Antes de enviar, a seção {guilabel}`Ver o diagnóstico que vai junto` mostra exatamente o que acompanha o relato: versão, sistema, quais componentes a máquina tem e o terminal recortado em volta dos erros, com a vizinhança de cada um. Conteúdo de arquivos, senhas e conversas com a Aurora Intelligence nunca vão junto, e o nome de usuário é removido dos caminhos.
+O botão {guilabel}`Relatar um problema`, na barra lateral das Configurações, abre o formulário de relato: o que aconteceu, o que você esperava e como reproduzir, mais um e-mail opcional para receber a resposta. Antes de enviar, a seção {guilabel}`Ver o diagnóstico que vai junto` mostra exatamente o que acompanha o relato: versão, sistema, quais componentes a máquina tem e o terminal recortado em volta dos erros, com a vizinhança de cada um. Conteúdo de arquivos, senhas e conversas com a Aurora Intelligence nunca vão junto, e o nome de usuário é removido dos caminhos.
 
 {guilabel}`Enviar relato` manda direto para a equipe; {guilabel}`Enviar por e-mail` monta a mensagem no seu webmail, para quem preferir. Quanto mais contexto no relato, melhor a resposta.
 

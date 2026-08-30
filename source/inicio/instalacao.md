@@ -102,7 +102,7 @@ A AURORA verifica atualizações sozinha, alguns segundos após abrir e depois a
 O aviso traz a versão atual, a nova, o tamanho do pacote e o changelog da release.
 ```
 
-O download acontece em segundo plano, com progresso à vista, e ao terminar a AURORA pergunta se pode reiniciar. Quem responder {guilabel}`Instalar depois` não perde nada: a atualização se aplica sozinha no próximo fechamento.
+O download acontece em segundo plano, com progresso à vista, e ao terminar a AURORA pergunta se pode reiniciar. Quem responder {guilabel}`Instalar depois` não perde nada: a atualização baixada fica guardada e se instala sozinha na próxima vez que a AURORA abrir, antes de a janela aparecer.
 
 ```{list-table}
 :widths: 50 50

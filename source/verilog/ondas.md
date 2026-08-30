@@ -18,7 +18,7 @@ A troca vale na próxima simulação, e a barra de status mostra o motor atual.
 
 A segunda chave escolhe o visualizador. O GTKWave é o clássico e abre em janela própria; o Surfer é o moderno e abre como **aba do próprio editor**, ao lado dos fontes — a onda e o código na mesma janela. Nos dois casos o layout chega preparado pela AURORA: sinais agrupados, nomeados e coloridos, em vez do despejo bruto.
 
-Quem preferir o Surfer em janela própria desmarca a caixa {guilabel}`Surfer: abrir a onda como aba do editor` no modal de {guilabel}`Configuração de ondas`; ela vem marcada por padrão.
+Quem preferir o Surfer em janela própria troca em {guilabel}`Configurações`, aba {guilabel}`Geral`, {guilabel}`Onde o Surfer abre`; a aba é o padrão. E trabalhar na aba tem uma vantagem a mais: salvar ali de dentro grava o estado no projeto e o registra como layout ativo daquele testbench, e a próxima simulação abre a onda do jeito que você deixou.
 
 ```{figure} ../_static/assets/screenshots/aurora-surfer.png
 :alt: Surfer aberto como aba do editor, ao lado dos fontes.

@@ -262,6 +262,8 @@ A comparação é direta. Com `soma >> 2`, dentro da `ula` moram o somador e o d
 ```
 :::
 
+Fica o convite para o capítulo do PRISM: além do diagrama, ele tem um modo {guilabel}`Simular`, que liga o módulo da tela com relógio e entradas clicáveis. A `ula` é um bom alvo, pequena o bastante para o modo aceitar, e dá para ver o divisor dividindo. O tour completo está em {doc}`prism`.
+
 ## O que você aprendeu
 
 - [x] Um processador é uma pasta com {file}`Software`, {file}`Hardware` e {file}`Simulation`, criada pelo Hub.

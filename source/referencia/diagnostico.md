@@ -73,8 +73,11 @@ cocotb não acha o módulo alvo
 
 ## PRISM
 
-Recusa por tamanho no modo interativo
-: O diagrama estático não tem limite; a simulação interativa é para designs pequenos.
+Grande demais para simular ao vivo
+: O módulo passa do limite de células do modo {guilabel}`Simular`. Abra um submódulo menor no esquemático e simule aquele; o diagrama estático não tem limite prático.
+
+O relógio não bate na simulação do PRISM
+: O modo só cria relógio para uma entrada de um bit chamada `clk` ou `clock` no módulo simulado. Sem ela, avance com {guilabel}`Tick`.
 
 Diagrama desatualizado
 : {guilabel}`Recompile` na própria janela do PRISM.
@@ -82,5 +85,6 @@ Diagrama desatualizado
 ## Quando nada explica
 
 - Ligue o modo verboso ({guilabel}`Configurações`, {guilabel}`Terminal`) e repita: os comandos completos de cada etapa aparecem no terminal.
+- O {guilabel}`Histórico de compilações` (relógio na barra dos terminais, {kbd}`Ctrl+Shift+H`) mostra o que cada clique fez e o estado do projeto na hora, o que ajuda a reconstruir o caminho até o erro.
 - Rode {guilabel}`Verificar e consertar` na aba {guilabel}`Componentes`: ele limpa os caches de compilação, confere os arquivos de cada componente e baixa de novo o que estiver incompleto ou quebrado — o conserto clássico para uma toolchain que o antivírus mordeu.
-- Use o {guilabel}`Relatar` da aba {guilabel}`Geral`: o relato já vai com o diagnóstico da instalação e o terminal recortado em volta dos erros, e a tela mostra tudo antes de enviar.
+- Use o {guilabel}`Relatar um problema` da barra lateral das Configurações: o relato já vai com o diagnóstico da instalação e o terminal recortado em volta dos erros, e a tela mostra tudo antes de enviar.

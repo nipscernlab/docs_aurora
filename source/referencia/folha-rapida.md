@@ -24,6 +24,7 @@ flowchart LR
 | {guilabel}`Execução rápida` | simula sem onda | Testbench Top e Verilator (ou testbench .py) |
 | {guilabel}`Teste do processador sintetizado` | roda só a E/S, com arquivos | processador ativo |
 | {guilabel}`Abrir PRISM` | desenha o circuito | Top Level |
+| {guilabel}`Simular`, no PRISM | liga o módulo da tela, com relógio e chaves | módulo pequeno o bastante |
 | {guilabel}`Cancelar` | interrompe o que roda | nada |
 
 ## Os papéis
@@ -54,8 +55,10 @@ A barra de status mostra os três o tempo todo.
 | | |
 |---|---|
 | {kbd}`Ctrl+S` salvar | {kbd}`Ctrl+Shift+F` buscar nos arquivos |
+| {kbd}`F6` compilar C± | {kbd}`F7` sintetizar Verilog |
+| {kbd}`F8` simular com onda | {kbd}`F10` abrir o PRISM |
 | {kbd}`Ctrl+Shift+K` paleta de comandos | {kbd}`Ctrl+K` assistente de IA |
-| {kbd}`Shift+Alt+F` formatar | {kbd}`F12` ir à definição |
+| {kbd}`Shift+Alt+F` formatar | {kbd}`Ctrl+Shift+H` histórico de compilações |
 
 ## Quando algo der errado
 

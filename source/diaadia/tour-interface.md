@@ -124,14 +124,14 @@ Selecionar um trecho de código faz aparecer uma estrela: é o acesso rápido à
 ## Os terminais
 
 ```{figure} ../_static/assets/screenshots/aurora-terminais.png
-:alt: Área de terminais com as seis abas e mensagens agrupadas em cards.
+:alt: Área de terminais com as sete abas e mensagens agrupadas em cards.
 :width: 90%
 :align: center
 ```
 
-Seis abas, uma por etapa: **TCMM** (compilação C±), **TASM** (montagem e geração do Verilog), **TVERI** (validação Verilog, hierarquia, PRISM), **TWAVE** (simulação e ondas), **THTEST** (teste do processador sintetizado) e **TCMD**, que é um PowerShell de verdade dentro da AURORA.
+Sete abas, uma por etapa: **TCMM** (compilação C±), **TASM** (montagem e geração do Verilog), **TVERI** (validação Verilog e hierarquia), **TWAVE** (simulação e ondas), **THTEST** (teste do processador sintetizado), **TPRISM** (a síntese do esquemático do PRISM) e **TCMD**, que é um PowerShell de verdade dentro da AURORA.
 
-As mensagens chegam classificadas (erro, aviso, sucesso, dica) e podem ser filtradas pelos botões com contadores. Referências como {file}`arquivo.v:15` são links: o clique abre o arquivo naquela linha. O botão de exportar salva o conteúdo de todos os terminais em um {file}`.txt`.
+As mensagens chegam classificadas (erro, aviso, sucesso, dica) e podem ser filtradas pelos botões com contadores. Toda referência de linha que uma ferramenta imprime vira link, no formato de cada uma: o caminho com linha do Icarus, o caminho com linha e coluna do Verilator, o `Erro na linha N` do compilador C± e o traceback do cocotb; o clique abre o arquivo naquele ponto. O botão de limpar vale para o terminal aberto ou, no modo todos, para todos de uma vez; o de exportar salva o conteúdo de todos os terminais em um {file}`.txt`; e o do relógio abre o {guilabel}`Histórico de compilações`, descrito em {doc}`../sapho/compilacao`.
 
 Três gentilezas evitam a rolagem infinita: qualquer contador que sobe — do simulador, do cocotb ou de um `$display` seu no testbench — vira uma barra de progresso em vez de uma linha por atualização; uma linha repetida em sequência vira um contador `xN` na própria linha; e, durante uma simulação, um marcador no TWAVE mostra o arquivo de onda crescendo ao vivo e congela no tamanho final quando ela termina (o mouse em cima revela o caminho do arquivo). Quando uma mensagem cita um componente que ainda não foi baixado, a linha ganha o botão {guilabel}`Abrir Componentes`.
 
