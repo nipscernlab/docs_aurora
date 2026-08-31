@@ -1,6 +1,6 @@
 # Lista de capturas de tela do manual
 
-Situação em 30/08/2026, depois da sessão de capturas da tarde: **19 capturas novas ou refeitas entraram**, feitas na AURORA rodando do repositório (`npm start`), em português, num monitor 2560x1440. **Faltam 3**, todas dependentes de algo que só o Chrysthofer pode fazer, listadas logo abaixo.
+Situação em 30/08/2026, ao fim do dia: **26 capturas novas ou refeitas entraram**, todas feitas na AURORA rodando do repositório (`npm start`), em português, num monitor 2560x1440. **Nenhuma está pendente**: as três que dependiam de chave de API e de conta conectada foram feitas na segunda rodada, depois que os cinco defeitos da tarde foram corrigidos.
 
 Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela. O build roda com `-W`, então uma imagem ausente derruba a documentação inteira: nunca apague, sempre substitua.
 
@@ -16,22 +16,22 @@ Capturadas com a AURORA rodando do repositório (`npm start`, versão de desenvo
 
 Todas numa AURORA **6.11.0 instalada** (não em modo de desenvolvimento), com a **interface em português**.
 
-1. `aurora-prism-deslocador.png` e `aurora-prism-divisor.png`: o par do experimento do tutorial. Exige compilar o `.cmm` com `soma >> 2`, entrar na `ula` e capturar, depois trocar por `soma / 4`, recompilar e capturar de novo. (As outras duas do PRISM, `aurora-prism-media-movel.png` e `aurora-prism-interno.png`, já saíram em 30/08 com as skins.)
-2. `aurora-settings-manual.png`: **o bug continua**. Em 30/08, com a interface em português, o cartão de estado ainda mostra as chaves cruas `modal.settings.manualInstalled` e `modal.settings.manualVersion`. As chaves existem em `locales/pt.json` (linhas 385-388) e em `dist/locales/pt.json`, então o defeito está em quem as resolve, não na tradução. Refazer depois da correção.
-3. `aurora-gitd-contas.png`: a atual está em inglês e sem nenhuma conta conectada. Refazer em português, com ao menos uma conta logada. (É a mesma tela de `aurora-dagr-gitlab.png`, que também falta.)
+1. `aurora-prism-deslocador.png` e `aurora-prism-divisor.png`: o par do experimento do tutorial, e o único item de peso que sobra. Exige compilar o `.cmm` com `soma >> 2`, entrar na `ula` e capturar, depois trocar por `soma / 4`, recompilar e capturar de novo, no mesmo enquadramento. (As outras duas do PRISM, `aurora-prism-media-movel.png` e `aurora-prism-interno.png`, já saíram em 30/08 com as skins.)
+2. ~~`aurora-settings-manual.png`~~: consertado e refeito na mesma noite.
+3. ~~`aurora-gitd-contas.png`~~: refeita com as duas contas conectadas.
 4. ~~`aurora-relato.png`~~: feita em 30/08, em português e com o diagnóstico expandido.
 5. ~~`aurora-componentes.png`~~: feita em 30/08, em português e do topo da lista. Nesta máquina todos os componentes estão instalados, então o selo "Necessário para compilar" não aparece; quem tiver uma instalação limpa pode melhorar a captura.
 6. ~~`aurora-surfer.png`~~: feita em 30/08, com o Surfer na aba do editor.
 7. `aurora-instalador.png`: o instalador agora abre na página de licença com aceite obrigatório.
-8. `aurora-splash.png`: a splash mudou, com o céu real do catálogo HYG e a aurora nova.
+8. ~~`aurora-splash.png`~~: refeita à noite, gravada quadro a quadro durante a abertura (a splash dura poucos segundos).
 9. `aurora-boas-vindas.png`: feita em 30/08 com o item "Projetos de exemplo...", mas **sem nenhum recente riscado**, porque nesta máquina todos os projetos existem. Para mostrar a lupa e o "Localizar ausentes", mova a pasta de um projeto recente para fora e capture de novo.
 10. `aurora-primeiro-inicio.png`: idem, o item "Projetos de exemplo..." na coluna Início.
 11. `aurora-dagr-alteracoes.png` e `aurora-dagr-historico.png`: o painel se chama Git-D agora (os nomes de arquivo ficam, só a captura muda).
 12. `aurora-wave-config.png`: o modal ganhou o aviso do Verilator. A escolha de aba ou janela do Surfer saiu do modal: mora nas Configurações, aba Geral, junto com a do PRISM.
 13. ~~`aurora-settings-geral.png`~~: feita em 30/08, com as duas opções novas à vista.
 14. ~~`aurora-settings-sobre.png`~~: feita em 30/08.
-15. `aurora-barra-status.png`: feita em 30/08, com o indicador de energia. As fichas de conta não aparecem porque não havia conta conectada; vale refazer junto com a do Git-D.
-16. `aurora-terminais.png`: agora são sete abas, com a TPRISM. **Não consegui capturar**: nesta sessão o painel de terminais ficou colapsado no rodapé e não abriu com clique na aba, duplo clique, arrasto da divisória nem pela paleta de comandos (que só oferece "Clear terminal"). Capturar com o painel aberto, de preferência durante uma simulação, com a barra de progresso e o marcador de tamanho do dump no TWAVE.
+15. ~~`aurora-barra-status.png`~~: refeita à noite, com as duas fichas de conta e o indicador de energia.
+16. ~~`aurora-terminais.png`~~: refeita à noite, com as sete abas e o TASM de uma compilação. Fica a nota de que o painel, uma vez recolhido, foi impossível de reabrir na sessão da tarde.
 17. ~~`aurora-settings-ia.png`~~: feita em 30/08, com o Sonnet 5 como modelo padrão da Anthropic. O campo "Esforço e raciocínio" não aparece no cartão sem chave configurada.
 
 ## Recebidas em 27/08 e já no lugar
@@ -46,18 +46,19 @@ Anotado para quem for repetir o trabalho:
 - O balão de célula do PRISM ("Clique para abrir · Shift+clique destaca conexões") **fica preso na tela** depois que o ponteiro sai da célula. É por isso que ele aparece na `aurora-prism-sim-submodulo.png`. Some ao recompilar o diagrama.
 - O `.gtkw` que o "Abrir no WAVE" gera abre com os três grupos **colapsados** (`@c00200`), então a onda parece vazia; basta clicar em cada grupo. Vale considerar gerar com `@800200`.
 - O Surfer em aba demora bastante para o WebAssembly carregar o VCD: na primeira olhada parece que não abriu, e um minuto depois a onda está lá.
+- Para capturar a splash, que dura poucos segundos, o jeito é gravar quadro a quadro durante a abertura, filtrando as janelas pelo executável do repositório: o VS Code também roda em Electron e entra na peneira se o filtro for só o nome do processo.
+- Quando a assistente precisa de um módulo específico na tela do PRISM, ela pergunta em vez de chutar: a síntese do topo `mediamovel` estoura o limite de 45 s do Yosys, e ela pediu que o `core` fosse aberto antes de entrar no Simular.
 
-## As três que faltam
+## Segunda rodada, 30/08 à noite
 
-Nenhuma delas dá para fazer sem você: duas gastam a sua chave de API e uma precisa de conta conectada.
+Depois que os cinco defeitos da tarde foram corrigidos (commit `0f29097a` da AURORA), entraram as últimas sete:
 
-| Arquivo | O que deve mostrar | Por que depende de você |
-|---|---|---|
-| `aurora-ia-tutorial.png` | Painel da Aurora Intelligence logo depois de clicar no capelo do cabeçalho: a primeira resposta do tutorial guiado. | Precisa de um provedor configurado, e a conversa consome créditos. |
-| `aurora-ia-prism-sim.png` | Uma conversa em que a assistente opera o Simular do PRISM: o cartão de permissão de uma ferramenta `prism_sim`, ou a resposta com os valores lidos do circuito. | Idem, e ainda exige o PRISM em simulação ao lado. |
-| `aurora-dagr-gitlab.png` | Painel Git-D com as contas do GitHub e do GitLab lado a lado, ou o botão Entrar com GitLab. | Precisa de pelo menos uma conta conectada. |
-
-As três continuam no repositório como retângulos cinza, e o build passa.
+- `aurora-ia-tutorial.png` e `aurora-gitd-contas.png` / `aurora-dagr-gitlab.png`: capturadas pelo Chrysthofer. A do Git-D mostra as duas contas conectadas, `@Chrysthofer` no GitHub e `@chrysthofer` no GitLab, cada uma com Clonar e Projetos.
+- `aurora-ia-prism-sim.png`: a assistente operando a simulação de verdade. O pedido foi entrar no Simular do `core` do `mediamovel`, avançar 60 ticks e trazer `instr_addr` e `mem_data_wr` para o monitor. Ela executou treze ferramentas `prism_sim_*`, e a captura mostra o PRISM simulando à esquerda e, à direita, a tabela de valores lidos com a explicação de por que os barramentos de entrada estão flutuando. De passagem ela também percebeu que falta a diretiva `#NUGAIN` no `mediamovel.cmm` do projeto de exemplo.
+- `aurora-settings-manual.png`: o cartão agora diz "Neste computador" e "versão 6.10.0.1", sem chaves cruas. O conserto do i18n funcionou.
+- `aurora-terminais.png`: as sete abas com o painel aberto, o TASM depois de uma compilação. O painel abre normalmente; na sessão da tarde ele estava recolhido e nenhum gesto o trazia de volta.
+- `aurora-barra-status.png`: refeita com as duas fichas de conta ao lado do indicador de energia.
+- `aurora-splash.png`: a splash nova, com a aurora boreal sobre o céu do catálogo HYG, capturada quadro a quadro durante a abertura.
 
 Padrão de captura:
 
