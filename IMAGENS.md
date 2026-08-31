@@ -38,6 +38,18 @@ Todas numa AURORA **6.11.0 instalada** (não em modo de desenvolvimento), com a 
 
 `aurora-dirac-autocompletar.png` e `aurora-componentes-boot.png` chegaram em português e ficam como estão.
 
+## Enquadramento
+
+Em 30/08, à noite, onze capturas foram reenquadradas. As de diagrama do PRISM saíam com a barra de título, a faixa de abas e um oceano de grade pontilhada em volta de um circuito pequeno; agora começam na trilha, que diz onde a pessoa está, e terminam logo depois do desenho. Os modais do Git-D saíam com a janela inteira ao redor. O corte foi medido, não chutado: um script acha onde o circuito começa e termina dentro do canvas (os botões de zoom, grudados na borda, ficam de fora da conta) e corta com margem fixa de 45 px. A `aurora-prism-media-movel.png` encolheu 91%, a `aurora-prism-divisor.png` 74%.
+
+Quem for refazer alguma delas: capture com a árvore recolhida e o diagrama já enquadrado pelo botão {guilabel}`Ajustar`, que evita o recorte depois.
+
+## As duas do Git-D
+
+`aurora-dagr-alteracoes.png` e `aurora-dagr-historico.png` estavam em inglês e com o painel antigo. Foram refeitas em 30/08 à noite, no projeto de exemplo `media-movel`: o repositório foi criado ali mesmo pelo botão {guilabel}`Inicializar repositório`, os 23 arquivos entraram no stage, e o commit "Primeira versao do filtro de media movel" virou a entrada que aparece na aba History com o diff aberto.
+
+Duas observações que sobraram dali: as abas do painel se chamam **Changes** e **History**, em inglês, com a interface em português; e o `.git` criado para a captura continua no projeto de exemplo, que não vinha com repositório. Apagar a pasta `.git` de lá devolve o exemplo ao estado original.
+
 ## O que a sessão de capturas ensinou
 
 Anotado para quem for repetir o trabalho:
