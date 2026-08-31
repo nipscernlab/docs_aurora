@@ -45,6 +45,26 @@ O capítulo de apoio ganhou uma seção sobre o ponto de interrogação dos moda
 - `aurora-ajuda-contextual.png`: o cabeçalho do modal de Configuração de Ondas, com o botão de ajuda e a dica "Abrir o capítulo do manual sobre formas de onda" à vista. Recorte de região.
 - `aurora-manual-na-aurora.png`: o que aquele botão abre, o manual na janela própria da AURORA, no capítulo de formas de onda, com busca e sumário. É a janela inteira do manual, 1803x1294.
 
+## Aparo das bordas, 31/08
+
+Uma segunda passada de enquadramento, agora em todas as capturas de uma vez.
+O critério não é "a faixa é escura", e sim "a faixa não tem nada": para cada
+linha, os pixels são comparados com a cor que mais aparece naquela mesma linha,
+o fundo local. Linha em que quase nenhum pixel se afasta desse fundo é faixa
+vazia, seja ela o preto da área de trabalho, o cinza de um painel ou o vazio
+dentro de um modal alto com pouca coisa dentro. Foi o caso da
+`aurora-settings-atalhos.png` e da `aurora-settings-manual.png`, que carregavam
+o preto da tela em cima e embaixo do modal, e da `aurora-novo-projeto.png`, que
+encolheu 66%.
+
+O sentido contrário também foi corrigido: cinco capturas estavam recortadas
+rentes ao modal, sem respiro, e a `aurora-relato.png` chegava a cortar a barra
+de rolagem pela metade. Foram refeitas a partir do original com margem de 30 px,
+que deixa a sombra e o canto arredondado à vista.
+
+Regra que ficou: margem de 24 px quando o corte é medido pelo conteúdo, 30 px
+quando o alvo é um modal inteiro. Rente nunca.
+
 ## Enquadramento
 
 Em 30/08, à noite, onze capturas foram reenquadradas. As de diagrama do PRISM saíam com a barra de título, a faixa de abas e um oceano de grade pontilhada em volta de um circuito pequeno; agora começam na trilha, que diz onde a pessoa está, e terminam logo depois do desenho. Os modais do Git-D saíam com a janela inteira ao redor. O corte foi medido, não chutado: um script acha onde o circuito começa e termina dentro do canvas (os botões de zoom, grudados na borda, ficam de fora da conta) e corta com margem fixa de 45 px. A `aurora-prism-media-movel.png` encolheu 91%, a `aurora-prism-divisor.png` 74%.
