@@ -1,6 +1,6 @@
 # Lista de capturas de tela do manual
 
-Situação em 30/08/2026, ao fim do dia: **26 capturas novas ou refeitas entraram**, todas feitas na AURORA rodando do repositório (`npm start`), em português, num monitor 2560x1440. **Nenhuma está pendente**: as três que dependiam de chave de API e de conta conectada foram feitas na segunda rodada, depois que os cinco defeitos da tarde foram corrigidos.
+Situação em 30/08/2026, ao fim do dia: **28 capturas novas ou refeitas entraram**, todas feitas na AURORA rodando do repositório (`npm start`), em português, num monitor 2560x1440. **Nenhuma está pendente, e nada sobrou da lista de refazer**: as três que dependiam de chave de API e de conta conectada saíram na segunda rodada, depois que os cinco defeitos da tarde foram corrigidos, e o par do experimento do tutorial fechou a lista.
 
 Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela. O build roda com `-W`, então uma imagem ausente derruba a documentação inteira: nunca apague, sempre substitua.
 
@@ -16,7 +16,7 @@ Capturadas com a AURORA rodando do repositório (`npm start`, versão de desenvo
 
 Todas numa AURORA **6.11.0 instalada** (não em modo de desenvolvimento), com a **interface em português**.
 
-1. `aurora-prism-deslocador.png` e `aurora-prism-divisor.png`: o par do experimento do tutorial, e o único item de peso que sobra. Exige compilar o `.cmm` com `soma >> 2`, entrar na `ula` e capturar, depois trocar por `soma / 4`, recompilar e capturar de novo, no mesmo enquadramento. (As outras duas do PRISM, `aurora-prism-media-movel.png` e `aurora-prism-interno.png`, já saíram em 30/08 com as skins.)
+1. ~~`aurora-prism-deslocador.png`~~ e ~~`aurora-prism-divisor.png`~~: o par do experimento do tutorial, feito pelo Chrysthofer em 30/08. As duas mostram o interior da `ula`, na mesma trilha `mediamovel › processor › core › ula`: numa moram `ula_add` e `ula_shr`, na outra o deslocador deu lugar a `ula_div`. (As outras duas do PRISM, `aurora-prism-media-movel.png` e `aurora-prism-interno.png`, saíram no mesmo dia, com as skins.)
 2. ~~`aurora-settings-manual.png`~~: consertado e refeito na mesma noite.
 3. ~~`aurora-gitd-contas.png`~~: refeita com as duas contas conectadas.
 4. ~~`aurora-relato.png`~~: feita em 30/08, em português e com o diagnóstico expandido.
