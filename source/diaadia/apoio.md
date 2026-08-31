@@ -133,13 +133,39 @@ Detalhe que evita surpresa: fechar o painel sem {guilabel}`Salvar Alterações` 
 
 ## Este manual, dentro da AURORA
 
-O manual tem aba própria nas Configurações: {guilabel}`Manual`. Um cartão de estado diz se a cópia offline está {guilabel}`Neste computador`, com a versão dela, e três botões fazem o resto: {guilabel}`Abrir na AURORA` abre a cópia local, sem internet; {guilabel}`Abrir no navegador` abre este site; {guilabel}`Procurar atualização` busca uma versão nova na hora. A cópia offline também se atualiza sozinha quando saem correções, sem esperar uma versão nova do aplicativo. E são esses mesmos capítulos que os botões de ajuda da IDE abrem: os modais principais, do Hub de Processadores ao Histórico de compilações, trazem um ponto de interrogação que cai direto na página certa, na cópia local ou, na falta dela, no site.
+O manual tem aba própria nas Configurações: {guilabel}`Manual`. Um cartão de estado diz se a cópia offline está {guilabel}`Neste computador`, com a versão dela, e três botões fazem o resto: {guilabel}`Abrir na AURORA` abre a cópia local, sem internet; {guilabel}`Abrir no navegador` abre este site; {guilabel}`Procurar atualização` busca uma versão nova na hora. A cópia offline também se atualiza sozinha quando saem correções, sem esperar uma versão nova do aplicativo.
 
 ```{figure} ../_static/assets/screenshots/aurora-settings-manual.png
 :alt: Aba Manual das Configuracoes, com o estado da copia offline e os botoes de abrir.
 :width: 90%
 :align: center
 ```
+
+### O ponto de interrogação dos modais
+
+Você quase nunca vai precisar abrir o manual pelo começo. Os modais que exigem alguma decisão trazem um ponto de interrogação ao lado do X, com a dica dizendo qual assunto ele abre: são o Hub de Processadores, o Novo Projeto, a Configuração de ondas, o Histórico de compilações, a busca nos arquivos, as Bibliotecas Python, o Controle de Versão e as próprias Configurações.
+
+```{figure} ../_static/assets/screenshots/aurora-ajuda-contextual.png
+:alt: Cabecalho do modal de Configuracao de Ondas, com o botao de ajuda e a dica.
+:width: 85%
+:align: center
+
+O botão no cabeçalho do modal de ondas. A dica diz aonde ele leva, antes do clique.
+```
+
+O clique não abre um índice para você procurar: abre o capítulo que trata daquela tela, direto. O manual aparece numa janela da própria AURORA, com busca, sumário e os botões de voltar e avançar, e funciona sem internet, porque é a cópia instalada que está sendo lida. Se a cópia offline não estiver na máquina, o mesmo botão abre a página equivalente no site.
+
+```{figure} ../_static/assets/screenshots/aurora-manual-na-aurora.png
+:alt: O manual aberto dentro da AURORA, no capitulo de formas de onda.
+:width: 90%
+:align: center
+
+O que o botão do modal de ondas abriu: este capítulo, na cópia instalada, dentro da AURORA.
+```
+
+:::{note}
+Para quem escreve o manual: esses botões guardam o caminho da página, e não um número de capítulo. Renomear ou mover um arquivo do manual quebra o botão correspondente na IDE, em silêncio. As páginas referenciadas hoje são as de formas de onda, tutorial do processador, compilação e artefatos, organização de projeto, este capítulo e o tour pela interface.
+:::
 
 ## Relatar um problema
 

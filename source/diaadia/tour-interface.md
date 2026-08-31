@@ -156,6 +156,8 @@ Da esquerda para a direita: {guilabel}`Pronto` ou {guilabel}`Não Pronto` (clic�
 
 ## Paleta de comandos e busca
 
+Um detalhe que economiza tempo: quase todo modal traz um ponto de interrogação ao lado do X, que abre o capítulo deste manual sobre aquela tela, sem sair da AURORA ({doc}`apoio`).
+
 {kbd}`Ctrl+Shift+K` (ou {kbd}`Ctrl+Shift+P`) abre a paleta de comandos, com tudo o que os botões fazem, pesquisável pelo nome. {kbd}`Ctrl+Shift+F` abre a busca em todos os arquivos do projeto, com opções de maiúsculas, palavra inteira e expressão regular.
 
 ```{figure} ../_static/assets/screenshots/aurora-paleta-comandos.png

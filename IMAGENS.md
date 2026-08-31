@@ -38,6 +38,13 @@ Todas numa AURORA **6.11.0 instalada** (não em modo de desenvolvimento), com a 
 
 `aurora-dirac-autocompletar.png` e `aurora-componentes-boot.png` chegaram em português e ficam como estão.
 
+## Duas capturas novas, 30/08 tarde da noite
+
+O capítulo de apoio ganhou uma seção sobre o ponto de interrogação dos modais, com duas figuras:
+
+- `aurora-ajuda-contextual.png`: o cabeçalho do modal de Configuração de Ondas, com o botão de ajuda e a dica "Abrir o capítulo do manual sobre formas de onda" à vista. Recorte de região.
+- `aurora-manual-na-aurora.png`: o que aquele botão abre, o manual na janela própria da AURORA, no capítulo de formas de onda, com busca e sumário. É a janela inteira do manual, 1803x1294.
+
 ## Enquadramento
 
 Em 30/08, à noite, onze capturas foram reenquadradas. As de diagrama do PRISM saíam com a barra de título, a faixa de abas e um oceano de grade pontilhada em volta de um circuito pequeno; agora começam na trilha, que diz onde a pessoa está, e terminam logo depois do desenho. Os modais do Git-D saíam com a janela inteira ao redor. O corte foi medido, não chutado: um script acha onde o circuito começa e termina dentro do canvas (os botões de zoom, grudados na borda, ficam de fora da conta) e corta com margem fixa de 45 px. A `aurora-prism-media-movel.png` encolheu 91%, a `aurora-prism-divisor.png` 74%.
