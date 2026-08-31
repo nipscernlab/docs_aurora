@@ -163,10 +163,6 @@ O clique não abre um índice para você procurar: abre o capítulo que trata da
 O que o botão do modal de ondas abriu: este capítulo, na cópia instalada, dentro da AURORA.
 ```
 
-:::{note}
-Para quem escreve o manual: esses botões guardam o caminho da página, e não um número de capítulo. Renomear ou mover um arquivo do manual quebra o botão correspondente na IDE, em silêncio. As páginas referenciadas hoje são as de formas de onda, tutorial do processador, compilação e artefatos, organização de projeto, este capítulo e o tour pela interface.
-:::
-
 ## Relatar um problema
 
 O botão {guilabel}`Relatar um problema`, na barra lateral das Configurações, abre o formulário de relato: o que aconteceu, o que você esperava e como reproduzir, mais um e-mail opcional para receber a resposta. Antes de enviar, a seção {guilabel}`Ver o diagnóstico que vai junto` mostra exatamente o que acompanha o relato: versão, sistema, quais componentes a máquina tem e o terminal recortado em volta dos erros, com a vizinhança de cada um. Conteúdo de arquivos, senhas e conversas com a Aurora Intelligence nunca vão junto, e o nome de usuário é removido dos caminhos.
