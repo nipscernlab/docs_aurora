@@ -4,6 +4,10 @@ Situação em 30/08/2026, ao fim do dia: **28 capturas novas ou refeitas entrara
 
 Para trocar qualquer captura, salve o PNG novo por cima, com o mesmo nome, em `source/_static/assets/screenshots/`, e passe o `python scripts/enquadrar.py <arquivo>`, que corta a sobra de fundo e recorta o canto arredondado da janela. O build roda com `-W`, então uma imagem ausente derruba a documentação inteira: nunca apague, sempre substitua.
 
+As capturas que precisam voltar a ser tiradas na 6.11.1 estão listadas em
+[REFAZER.md](REFAZER.md), com o que cada uma deve mostrar. Este arquivo aqui é
+o registro do que já foi feito.
+
 ## Feitas em 30/08/2026
 
 Capturadas com a AURORA rodando do repositório (`npm start`, versão de desenvolvimento 6.10.0), interface em português, no projeto de exemplo `contador` (o modo Simular do PRISM) e no `media-movel` (o processador). Todas em 2560x1368, exceto os recortes de região.
