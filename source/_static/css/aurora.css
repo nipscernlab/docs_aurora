@@ -354,8 +354,15 @@ body[data-theme="dark"] .pdf-download-meta {
   color: #4b5563;
 }
 
+/* Escuro pelo esquema do sistema. O seletor e o MESMO que o Furo usa para se
+   escurecer, `body:not([data-theme="light"])`, e nao `body[data-theme="auto"]`:
+   o atributo so existe depois de o script inline do tema rodar, e onde esse
+   script nao roda (uma janela com politica de seguranca que bloqueia inline,
+   como a AURORA teve em 03/09/2026) o Furo ja estava escuro e estas regras
+   nao entravam, deixando cartoes, admonicoes e a marca nas cores claras
+   sobre o fundo escuro. Casar o seletor do tema fecha essa fresta de vez. */
 @media (prefers-color-scheme: dark) {
-  body[data-theme="auto"] {
+  body:not([data-theme="light"]) {
     --aurora-ink: #e5e7eb;
     --aurora-muted: #a8afb9;
     --aurora-border: #343943;
@@ -363,24 +370,32 @@ body[data-theme="dark"] .pdf-download-meta {
     --aurora-link: #aebdca;
   }
 
-  body[data-theme="auto"] .admonition > .admonition-title {
+  body:not([data-theme="light"]) .admonition > .admonition-title {
     background: #252931 !important;
   }
 
-  body[data-theme="auto"] .pdf-download-button {
+  body:not([data-theme="light"]) .pdf-download-button {
     border-color: #d1d5db;
     color: #17191d !important;
     background: #d1d5db;
   }
 
-  body[data-theme="auto"] .pdf-download-button:hover {
+  body:not([data-theme="light"]) .pdf-download-button:hover {
     border-color: #f3f4f6;
     color: #111318 !important;
     background: #f3f4f6;
   }
 
-  body[data-theme="auto"] .pdf-download-meta {
+  body:not([data-theme="light"]) .pdf-download-meta {
     color: #4b5563;
+  }
+
+  /* kbd so tinha a versao do escuro explicito; no automatico ficava com o
+     fundo claro e o texto claro da tinta escura. */
+  body:not([data-theme="light"]) kbd,
+  body:not([data-theme="light"]) .kbd {
+    border-color: #454b56;
+    background: #22262d;
   }
 }
 
