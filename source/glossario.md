@@ -13,7 +13,7 @@ Componente
 : Uma ferramenta que a AURORA baixa por demanda em vez de trazer no instalador: a cadeia de compilação, os visualizadores de onda, os agentes de IA. Gerenciados em Configurações, aba Componentes.
 
 Fonte sintetizável
-: Arquivo Verilog classificado como parte do circuito. A classificação é automática, pelo conteúdo.
+: Arquivo Verilog marcado como parte do circuito. O papel é você quem escolhe, pelo menu de contexto da árvore; um arquivo novo entra sem papel.
 
 Git-D
 : O painel de controle de versão da AURORA, com contas GitHub e GitLab. Chamava-se Dagr até a versão 6.4; só o nome mudou.

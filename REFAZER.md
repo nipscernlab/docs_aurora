@@ -42,24 +42,3 @@ o processador e `contador` para o Simular. Salvar por cima, mesmo nome, em
 
 Marca, quando houver: retângulo de 3 px, sem preenchimento, cor `#8b7ff5`, um
 por imagem.
-
-## Capturas que o YANC 7.1 tornou velhas
-
-A AURORA com o YANC 7.1 guarda o fonte de cada processador em `<proc>/` e o que o
-YANC gera em `<proc>/<proc>/`; as pastas Software, Hardware e Simulation, o
-`#PRNAME` no fonte e as pilhas no Hub deixaram de existir. Estas capturas ainda
-mostram o formato antigo:
-
-| Arquivo | O que deve mostrar | Marca | Motivo |
-|---|---|---|---|
-| `aurora-hub-processadores.png` | Hub preenchido com os valores do tutorial, sem os campos de pilha | não | pilhas saíram do Hub |
-| `aurora-hub-validacao.png` | o mesmo Hub com um campo em vermelho e o botão travado | não | pilhas saíram do Hub |
-| `aurora-compilacao-sucesso.png` | árvore com `media_movel/` e a pasta de saída `media_movel/media_movel/` aberta; o fonte sem `#PRNAME`; TASM terminando em sucesso | sim, na árvore e no terminal | estrutura de pastas nova |
-| `aurora-compilacao-erro.png` | TCMM com um erro e o link de linha clicável, com a árvore no formato novo | não | estrutura de pastas nova |
-| `aurora-simulacao-input.png` | `input_0.txt` aberto, ao lado do fonte em `media_movel/`, na visão Pastas | não | estrutura de pastas nova |
-| `aurora-top-level.png` | `media_movel/media_movel/media_movel.v` marcado como Top Level | não | estrutura de pastas nova |
-| `aurora-top-testbench.png` | um testbench marcado como Testbench Top, árvore no formato novo | não | estrutura de pastas nova |
-| `aurora-arvore-menu-contexto.png` | menu do botão direito de um `.v`, com a escolha de papel | não | papel escolhido pela pessoa |
-
-Captura nova, se couber: o diálogo de conversão de um projeto antigo, aberto
-com um projeto que ainda tenha `Software/`, e o relatório depois dele.

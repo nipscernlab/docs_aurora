@@ -12,11 +12,11 @@ Passando a checagem, o Yosys constrói a hierarquia de instâncias, que alimenta
 Validar não é sintetizar para FPGA. A AURORA prova que o design elabora e desenha a estrutura; a síntese física, com mapeamento em células e bitstream, acontece no Quartus ou no Vivado, como descrito em {doc}`../juntos/fpga`.
 :::
 
-## A classificação automática das fontes
+## O papel de cada fonte
 
-Cada {file}`.v` importado é lido e pontuado: gravação de onda, `$finish` ou `$stop`, módulo sem portas e blocos `initial` pesam mais; `$display`, atrasos `#` e nome terminando em `_tb` pesam menos. Passando do limiar, o arquivo é testbench; na dúvida, é sintetizável. A pontuação se refaz a cada atualização da árvore.
+Cada {file}`.v` que entra no projeto, criado ou importado, chega sem papel: aparece com um ponto de interrogação no ícone e fica fora da elaboração e da simulação até você escolher, pelo botão direito, {guilabel}`Marcar como síntese` ou {guilabel}`Marcar como testbench`. Antes de compilar, o terminal lista os arquivos que ficaram de fora por não ter papel.
 
-Na prática isso significa: escreva testbenches com cara de testbench (um `initial`, um `$finish`) e módulos com cara de módulo, e a árvore se organiza sozinha. Se um arquivo cair na categoria errada, o menu de contexto permite marcá-lo como testbench manualmente.
+Os {file}`.py` entram como testbenches cocotb, e o que o YANC gera já nasce com o papel certo: o {file}`<proc>.v` é sintetizável e o {file}`<proc>_tb.v` é testbench. Nada muda de papel sozinho; para trocar, use o mesmo menu.
 
 ## Diagnósticos enquanto você digita
 

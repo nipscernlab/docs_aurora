@@ -46,6 +46,24 @@ Antes do YANC 7.1, cada processador tinha três subpastas, {file}`Software/`, {f
 
 No fim, um relatório lista o que foi movido e o que ficou. Se o `#PRNAME` antigo dava ao módulo um nome diferente do nome da pasta, o relatório oferece renomear o processador para esse nome, para o seu top-level continuar achando o módulo. O mesmo vale para um nome que não serve mais (com hífen ou acento). Quem responder {guilabel}`Agora não` pode converter depois, abrindo o projeto de novo; até lá ele não compila.
 
+```{list-table}
+:widths: 50 50
+:align: center
+
+* - **A pergunta**
+
+    ```{image} ../_static/assets/screenshots/aurora-conversao-pergunta.png
+    :alt: Dialogo Projeto na estrutura de pastas antiga, com os botoes Agora nao e Converter.
+    :width: 100%
+    ```
+  - **O relatório**
+
+    ```{image} ../_static/assets/screenshots/aurora-conversao-relatorio.png
+    :alt: Dialogo Projeto convertido, com a lista dos arquivos movidos e a linha do nome retirada do fonte.
+    :width: 100%
+    ```
+```
+
 ## Projetos de exemplo
 
 Quem prefere partir de algo pronto tem o botão {guilabel}`Projetos de exemplo...` na tela de boas-vindas: ele pergunta só onde salvar e cria **cinco projetos completos**, cada um com o seu {file}`.spf` e o testbench já registrado, todos dentro de uma pasta {file}`exemplos-sapho`. Os cinco entram na lista de recentes, do mais simples para o mais completo:
@@ -103,18 +121,18 @@ Todo arquivo Verilog do projeto tem um papel, guardado no {file}`.spf`: **sintet
 Além do papel, há o papel de raiz, que também é seu:
 
 ```{figure} ../_static/assets/screenshots/aurora-arvore-menu-contexto.png
-:alt: Menu de contexto de um arquivo Verilog com a opcao Definir como Top Level.
+:alt: Menu de contexto de um arquivo Verilog ainda sem papel, com as opcoes Marcar como sintese e Marcar como testbench.
 :width: 45%
 :align: center
 
-O menu de contexto de um {file}`.v` sintetizável na visão Arquivos.
+O menu de contexto de um {file}`.v` ainda sem papel, na visão Arquivos: as duas escolhas de papel.
 ```
 
 Top Level
 : O módulo raiz do circuito sintetizável. Define de onde a elaboração parte e o que o PRISM desenha. Marque pelo menu de contexto do arquivo na visão Arquivos: {guilabel}`Definir como Top Level`.
 
 Testbench Top
-: O arquivo que comanda a simulação, {file}`.v` ou {file}`.py`. Define o que roda quando você clica em {guilabel}`Analisar Verilog`. Marque por {guilabel}`Marcar como Testbench`.
+: O arquivo que comanda a simulação, {file}`.v` ou {file}`.py`. Define o que roda quando você clica em {guilabel}`Analisar Verilog`. Marque por {guilabel}`Definir como testbench atual`, no menu de um arquivo que já é testbench.
 
 ```{list-table}
 :widths: 50 50
@@ -123,13 +141,13 @@ Testbench Top
 * - **Top Level**
 
     ```{image} ../_static/assets/screenshots/aurora-top-level.png
-    :alt: Arquivo Verilog marcado como Top Level na árvore de arquivos.
+    :alt: Menu de contexto do media_movel.v gerado, com a opcao Definir como Top Level.
     :width: 100%
     ```
   - **Testbench Top**
 
     ```{image} ../_static/assets/screenshots/aurora-top-testbench.png
-    :alt: Arquivo de teste marcado como Testbench Top na árvore de arquivos.
+    :alt: Menu de contexto do media_movel_tb.v gerado, com a opcao Definir como testbench atual.
     :width: 100%
     ```
 ```

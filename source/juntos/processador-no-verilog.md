@@ -64,10 +64,10 @@ endmodule
 
 Passos na AURORA:
 
-1. Crie {file}`top_filtro.v` no projeto `MeuFiltro` (a classificação o marcará como sintetizável).
-2. Botão direito, {guilabel}`Definir como Top Level`. O processador deixa de ser o topo e vira um componente.
+1. Crie {file}`top_filtro.v` no projeto `MeuFiltro`. Ele entra sem papel: botão direito, {guilabel}`Marcar como síntese`.
+2. Botão direito de novo, {guilabel}`Definir como Top Level`. O processador deixa de ser o topo e vira um componente.
 3. Clique em {guilabel}`Sintetizar Verilog`. A elaboração resolve o módulo `media_movel` sozinha, porque o {file}`.v` gerado está no projeto.
-4. Escreva um testbench para o `top_filtro` (clock, reset, `$dumpvars`, `$finish`), marque como Testbench Top e clique em {guilabel}`Analisar Verilog`.
+4. Escreva um testbench para o `top_filtro` (clock, reset, `$dumpvars`, `$finish`), marque-o com {guilabel}`Marcar como testbench` e depois {guilabel}`Definir como testbench atual`, e clique em {guilabel}`Analisar Verilog`.
 
 Na onda, você verá a rampa entrando, o aperto de mão pulsando e a média saindo suavizada: dois mundos no mesmo diagrama de tempo.
 

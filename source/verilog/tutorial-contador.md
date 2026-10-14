@@ -66,7 +66,7 @@ Salve com {kbd}`Ctrl+S`.
 Enquanto você digita, dois analisadores conferem o código: erros de sintaxe aparecem sublinhados na hora, e a análise semântica aponta sinais não declarados e portas incompatíveis.
 ```
 
-**Confira:** na visão Arquivos, {file}`contador.v` apareceu com o ícone de fonte sintetizável. A AURORA o classificou sozinha, lendo o conteúdo: sem `initial`, sem `$finish`, é circuito.
+**Confira:** na visão Arquivos, {file}`contador.v` apareceu com um ponto de interrogação no ícone: ainda não tem papel. Botão direito nele, {guilabel}`Marcar como síntese`, e o ícone vira o de fonte sintetizável. Até ganhar um papel, o arquivo fica fora de toda compilação.
 
 ## Passo 3: escrever o testbench
 
@@ -109,7 +109,7 @@ endmodule
 
 Repare nos ingredientes que todo testbench tem: o clock gerado por `always #5`, o reset solto depois de alguns nanossegundos, o `$dumpvars` que grava os sinais para a forma de onda e o `$finish` que encerra a simulação.
 
-**Confira:** o arquivo entrou na árvore com o ícone de testbench. `initial`, `$finish` e o nome começando com `tb_` denunciaram a categoria.
+**Confira:** o arquivo entrou na árvore sem papel, com o ponto de interrogação. Botão direito, {guilabel}`Marcar como testbench`, e o ícone vira o de testbench.
 
 ## Passo 4: definir os papéis
 
@@ -124,7 +124,7 @@ Testbench Top
 Marque cada um:
 
 1. Botão direito em {file}`contador.v`, escolha {guilabel}`Definir como Top Level`.
-2. Botão direito em {file}`tb_contador.v`, escolha {guilabel}`Marcar como Testbench`.
+2. Botão direito em {file}`tb_contador.v`, escolha {guilabel}`Definir como testbench atual`.
 
 Os dois papéis são exclusivos: marcar um arquivo novo desmarca o anterior. Se um dia a compilação reclamar de módulo não encontrado, ou a onda vier vazia, o primeiro lugar a conferir é este par.
 
