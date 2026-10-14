@@ -246,6 +246,7 @@ latex_elements = {
 \setmainfont{Segoe UI}
 \setsansfont{Segoe UI}
 \setmonofont{Cascadia Mono}[
+  IgnoreFontspecFile,
   Scale=0.82,
   BoldFont={Cascadia Mono},
   ItalicFont={Cascadia Mono},
