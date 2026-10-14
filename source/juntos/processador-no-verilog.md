@@ -6,7 +6,7 @@ Até aqui os dois mundos andaram separados: Verilog escrito à mão na Parte II,
 
 ## As portas do processador gerado
 
-Abra {file}`Hardware/media_movel.v` e olhe o cabeçalho do módulo. As portas que ele expõe:
+Abra {file}`media_movel/media_movel/media_movel.v` e olhe o cabeçalho do módulo. As portas que ele expõe:
 
 | Porta | Direção | Largura | Papel |
 |---|---|---|---|
@@ -20,7 +20,7 @@ Abra {file}`Hardware/media_movel.v` e olhe o cabeçalho do módulo. As portas qu
 O aperto de mão é simples: quando o programa executa `in(k)`, o processador expõe `k` em `req_in` e espera o dado presente em `in`; quando executa `out(k, v)`, expõe `k` em `out_en` e `v` em `out` por um ciclo. Com uma porta só, `req_in` e `out_en` funcionam como sinais de "lendo agora" e "válido agora".
 
 :::{tip}
-O melhor guia de fiação é o testbench gerado, {file}`Simulation/media_movel_tb.v`: ele mostra exatamente como alimentar `in` em função de `req_in` e quando capturar `out`. Copiar a fiação dele para o seu top-level é o caminho seguro.
+O melhor guia de fiação é o testbench gerado, {file}`media_movel/media_movel/media_movel_tb.v`: ele mostra exatamente como alimentar `in` em função de `req_in` e quando capturar `out`. Copiar a fiação dele para o seu top-level é o caminho seguro.
 :::
 
 ## Um top-level de exemplo

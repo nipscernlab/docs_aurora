@@ -1,51 +1,52 @@
 # Compilação e artefatos
 
-O botão {guilabel}`Compilar C±` esconde uma cadeia de três compiladores. Conhecê-la ajuda a ler os terminais e a saber onde procurar cada arquivo gerado.
+O botão {guilabel}`Compilar C±` esconde o YANC, o compilador do SAPHO. A AURORA chama um programa só, o `yanc`, em duas etapas, e ele chama os compiladores que estão ao lado dele. Conhecer a cadeia ajuda a ler os terminais e a saber onde procurar cada arquivo gerado.
 
 ## A cadeia
 
 ```{mermaid}
 flowchart LR
   CMM[".cmm"] -->|"cmmcomp"| ASM[".asm"]
-  ASM -->|"appcomp"| PRE["endereços e<br>tamanhos resolvidos"]
-  PRE -->|"asmcomp"| OUT[".v  +  .mif  +  testbench"]
+  CPP[".cpp"] -->|"cppcomp"| ASM
+  ASM -->|"asmcomp"| OUT[".v  +  .mif  +  testbench"]
 ```
 
 cmmcomp
-: O compilador da linguagem: traduz o C± em assembly do processador SAPHO, resolve variáveis e expressões, aplica otimizações e anexa as rotinas de biblioteca usadas. Escreve no terminal **TCMM**.
+: O compilador do C±: traduz o programa em assembly do processador SAPHO, resolve variáveis e expressões, aplica otimizações e anexa as rotinas de biblioteca usadas. Escreve no terminal **TCMM**.
 
-appcomp
-: Uma pré-passagem sobre o assembly: conta instruções e dados e resolve os endereços de rótulos, informações de que o montador precisa antes de emitir a primeira palavra.
+cppcomp
+: O compilador do C++, a outra linguagem do SAPHO: aceita um subconjunto de C++ com classes, `for`, referências e parte da biblioteca padrão, e produz o mesmo {file}`.asm`. Ele mesmo resolve `#include` e `#define`, e as mensagens de erro apontam o arquivo e a linha que você escreveu, inclusive dentro de um header. Os parâmetros do processador entram por `#pragma yanc` em vez das diretivas `#`; sem pragmas, o processador nasce com 32 bits e ponto flutuante IEEE 754 de precisão simples. Também escreve no **TCMM**.
 
 asmcomp
-: O montador e gerador de hardware: produz as imagens de memória, o módulo Verilog do processador e o testbench. Escreve no terminal **TASM**, incluindo os avisos de recurso instanciado e a estimativa de ocupação do conjunto de instruções.
+: O montador e gerador de hardware. Uma primeira passada conta instruções e dados e resolve os endereços dos rótulos; a segunda produz as imagens de memória, o módulo Verilog do processador e o testbench. Escreve no terminal **TASM**, incluindo os avisos de recurso instanciado e a estimativa de ocupação do conjunto de instruções.
 
-Os três falam o idioma escolhido nas configurações da AURORA, português ou inglês; umas poucas mensagens pontuais, como as do marcador `#TOAQUI`, saem sempre em inglês.
+Qual dos dois compiladores roda, a AURORA decide pela extensão do fonte: o mesmo botão compila um {file}`.cmm` e um {file}`.cpp`, e o Processor Hub cria processadores nas duas linguagens.
 
-:::{note}
-O pacote traz ainda um front-end alternativo de C++, a dupla `cpppp` e `cppcomp`, que aceita um subconjunto de C++ com classes e produz o mesmo {file}`.asm`; dali em diante a cadeia é idêntica. Ele não tem botão na interface: usa-se pela linha de comando no TCMD ou pela Aurora Intelligence, que o conhece. Os parâmetros do processador entram por `#pragma yanc` no topo do {file}`.cpp` em vez das diretivas `#`; sem pragmas, o processador nasce com 32 bits e ponto flutuante IEEE 754 de precisão simples.
-:::
+As mensagens saem no idioma escolhido nas configurações da AURORA, português ou inglês. As do cppcomp saem sempre em inglês, e o terminal avisa disso uma vez.
 
 ## O que cada compilação gera
 
-Para um processador chamado `media_movel`:
+Para um processador chamado `media_movel`, tudo vai para a pasta de saída, {file}`media_movel/media_movel/`:
 
-| Arquivo | Onde | O que é |
-|---|---|---|
-| {file}`media_movel.asm` | {file}`Software/` | o assembly gerado, legível; vale abrir e comparar com o seu C± |
-| {file}`media_movel.v` | {file}`Hardware/` | o processador em Verilog, pronto para simulação e síntese |
-| {file}`media_movel_inst.mif` | {file}`Hardware/` | a imagem da memória de programa, uma instrução binária por linha |
-| {file}`media_movel_data.mif` | {file}`Hardware/` | a imagem da memória de dados, com variáveis e constantes |
-| {file}`media_movel_tb.v` | {file}`Simulation/` | o testbench gerado, com clock, reset e a leitura e escrita das portas |
+| Arquivo | O que é |
+|---|---|
+| {file}`media_movel.asm` | o assembly gerado, legível; vale abrir e comparar com o seu C± |
+| {file}`media_movel.v` | o processador em Verilog, pronto para simulação e síntese |
+| {file}`media_movel_inst.mif` | a imagem da memória de programa, uma instrução binária por linha |
+| {file}`media_movel_data.mif` | a imagem da memória de dados, com variáveis e constantes |
+| {file}`media_movel_tb.v` | o testbench gerado, com clock, reset e a leitura e escrita das portas |
+| {file}`prog_log.txt`, {file}`src_lines.txt`, {file}`pc_media_movel_mem.txt`, {file}`trad_opcode.txt`, {file}`app_log.txt` | as tabelas que a forma de onda usa para mostrar o assembly e a linha do fonte |
+
+O nome de tudo vem do nome do arquivo fonte: {file}`media_movel.cmm` gera o processador `media_movel` e o módulo Verilog `media_movel`.
 
 O {file}`.v` e os dois {file}`.mif` são exatamente o que se leva ao Quartus ou ao Vivado na hora de gravar o FPGA, como descreve {doc}`../juntos/fpga`.
 
 :::{note}
-O testbench é o único artefato da tabela que não sai direto do asmcomp: ele nasce na área temporária, e é a AURORA quem o copia para {file}`Simulation/`, e só se você ainda não tiver um testbench próprio para o processador. O seu nunca é sobrescrito.
+O testbench gerado lê os {file}`input_N.txt` da pasta do processador, um nível acima, e grava as saídas na pasta de saída. Ele roda com a pasta de saída como diretório de trabalho, e a AURORA cuida disso. Um testbench seu fica onde você o pôs e nunca é sobrescrito.
 :::
 
 :::{warning}
-Um arquivo presente em {file}`Hardware/` não prova que a última compilação passou: pode ser sobra de uma tentativa anterior. A prova é o terminal, com as duas etapas terminando sem erro.
+Um arquivo presente na pasta de saída não prova que a última compilação passou: pode ser sobra de uma tentativa anterior. A prova é o terminal, com as duas etapas terminando sem erro.
 :::
 
 ## Um programa, um processador sob medida
@@ -70,7 +71,7 @@ Serve para responder o que o terminal sozinho não responde: o que exatamente fo
 
 ## Lendo erros de compilação
 
-- As mensagens do cmmcomp apontam a linha do {file}`.cmm`; a referência é um link clicável no terminal.
+- As mensagens do cmmcomp apontam a linha do {file}`.cmm`, e as do cppcomp, o arquivo e a linha (inclusive de um header); nos dois casos a referência é um link clicável no terminal.
 - Vá sempre à primeira mensagem: as seguintes costumam ser consequência dela.
 - Constantes `float` aproximadas geram um aviso com o erro de representação. Não é defeito: é o formato de ponto flutuante escolhido, e {doc}`../avancado/ponto-flutuante` explica como dimensioná-lo.
 

@@ -123,7 +123,7 @@ A IDE por dentro: editor, terminais, Aurora Intelligence e o resto da janela ond
 <img class="sd-card-img-top" src="_static/assets/icons/yanc.svg" alt="">
 Página do YANC
 ^^^
-Os compiladores que traduzem o C± em processador: cmmcomp, appcomp e asmcomp.
+O compilador que traduz C± e C++ em processador: o yanc, com o cmmcomp, o cppcomp e o asmcomp.
 :::
 
 :::{grid-item-card}

@@ -4,7 +4,7 @@ Este capítulo abre a caixa: o que exatamente é o processador que o YANC gera, 
 
 ## A biblioteca de módulos
 
-O processador é montado a partir de uma biblioteca fixa de módulos Verilog, instalada com a AURORA em {file}`components/HDL`:
+O processador é montado a partir de uma biblioteca fixa de módulos Verilog, instalada com a AURORA em {file}`components/SAPHO`:
 
 | Arquivo | Contém |
 |---|---|
@@ -15,7 +15,7 @@ O processador é montado a partir de uma biblioteca fixa de módulos Verilog, in
 | {file}`addr_dec.v` | o decodificador one-hot das portas de I/O |
 | {file}`myFIFO.v` | uma FIFO de uso geral, útil como amortecedor entre processadores no padrão produtor–consumidor de {doc}`interrupcao-multiproc` |
 
-O arquivo gerado por projeto, {file}`Hardware/<proc>.v`, é um invólucro fino: instancia `processor` com os parâmetros do seu programa e liga as portas externas.
+O arquivo gerado por processador, {file}`<proc>/<proc>/<proc>.v`, é um invólucro fino: instancia `processor` com os parâmetros do seu programa e liga as portas externas.
 
 ## A arquitetura
 

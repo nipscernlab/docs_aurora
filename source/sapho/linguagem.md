@@ -74,20 +74,37 @@ out(0, a + 1);       // escreve na porta de saida 0
 fout(0, g);          // escreve mantendo o formato float
 ```
 
-O número da porta precisa ser um literal, não uma variável. Na simulação, cada porta de entrada lê de {file}`Simulation/input_N.txt` e cada saída grava em {file}`Simulation/output_N.txt`.
+O número da porta precisa ser um literal, não uma variável. Na simulação do processador sozinho, cada porta de entrada lê de {file}`input_N.txt`, ao lado do fonte, e cada saída grava em {file}`output_N.txt`, na pasta de saída.
+
+## Links entre processadores
+
+Dois processadores SAPHO de um mesmo projeto podem trocar valores diretamente, por **links** numerados a partir de 0:
+
+```cmm
+toma(0, x);        // entrega x pelo link 0 e espera o outro lado pegar
+y = cade(0);       // espera o link 0 oferecer um valor e o recebe como int
+f = fcade(1);      // o mesmo, recebendo como float
+```
+
+Quem chega primeiro espera, e nada se perde nem é lido duas vezes. Um processador tem quantos links o programa usar; cada link liga dois processadores e pode levar valores nos dois sentidos. As formas `toma_sync`, `cade_sync` e `fcade_sync` são para quando os dois processadores estão no mesmo clock: economizam 4 ciclos por valor. Um link usa a mesma forma nas duas pontas; misturar as duas é erro de compilação. O mesmo vale em C++.
+
+A palavra passa sem conversão: os dois processadores precisam do mesmo `#NUBITS` e, para `float`, do mesmo `#NBMANT` e `#NBEXPO`. O compilador não confere isso.
+
+Cada link cria pinos no processador: `toma_k` e `valeu_k` em quem usa `toma(k, ...)`, `cade_k`, `taqui_k` e `cade_dado_k` em quem usa `cade(k)`, e um `toma_dado` em quem usa algum `toma`. No top-level do projeto, o processador A (link i) liga ao B (link j) assim: `A.toma_i -> B.taqui_j`, `B.cade_j -> A.valeu_i` e `A.toma_dado -> B.cade_dado_j`.
+
+Simulado sozinho, o processador ganha do testbench gerado o papel do parceiro de cada link: os valores de cada `cade(k)` vêm de {file}`cade_k.txt`, ao lado do fonte, um por linha, e cada `toma(k, x)` é escrito em {file}`toma_k.txt`, na pasta de saída.
 
 ## Diretivas
 
-O bloco no topo do arquivo configura o processador. As nove que o Hub escreve:
+O bloco no topo do arquivo configura o processador. O nome do processador não é diretiva: é o nome do arquivo. As que o Hub escreve, e as que você pode acrescentar:
 
 | Diretiva | Configura |
 |---|---|
-| `#PRNAME` | nome do processador e do módulo Verilog |
 | `#NUBITS` | largura da palavra |
 | `#NBMANT`, `#NBEXPO` | formato do ponto flutuante (mantissa e expoente) |
-| `#NDSTAC`, `#SDEPTH` | profundidade das pilhas de dados e de chamadas |
+| `#NDSTAC`, `#SDEPTH` | profundidade das pilhas de dados e de chamadas (opcionais: sem elas o compilador calcula pelo programa) |
 | `#NUIOIN`, `#NUIOOU` | número de portas de entrada e de saída |
-| `#NUGAIN` | constante da função `norm()`, potência de dois |
+| `#NUGAIN` | constante da função `norm()`, potência de dois (opcional, padrão 128) |
 
 A regra estrutural: `#NUBITS` deve ser igual a `#NBMANT + #NBEXPO + 1`. A tabela completa, com as diretivas avançadas, está em {doc}`../referencia/diretivas`.
 

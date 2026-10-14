@@ -7,11 +7,11 @@ A AURORA valida, simula e desenha. A síntese física, com mapeamento em célula
 Para um projeto com processador:
 
 1. Os seus fontes Verilog (top-level e módulos próprios).
-2. O processador gerado: {file}`Hardware/<proc>.v`.
-3. As imagens de memória: {file}`Hardware/<proc>_inst.mif` e {file}`<proc>_data.mif`.
-4. A biblioteca de módulos do SAPHO, que o {file}`<proc>.v` instancia. Ela acompanha a instalação da AURORA, na pasta {file}`components/HDL` dentro da pasta de instalação: {file}`processor.v`, {file}`core.v`, {file}`ula.v`, {file}`instr_dec.v`, {file}`addr_dec.v`.
+2. O processador gerado: {file}`<proc>/<proc>/<proc>.v`.
+3. As imagens de memória: {file}`<proc>/<proc>/<proc>_inst.mif` e {file}`<proc>_data.mif`.
+4. A biblioteca de módulos do SAPHO, que o {file}`<proc>.v` instancia. Ela acompanha a instalação da AURORA, na pasta {file}`components/SAPHO` dentro da pasta de instalação: {file}`processor.v`, {file}`core.v`, {file}`ula.v`, {file}`instr_dec.v`, {file}`addr_dec.v` e os demais.
 
-Copie tudo para o projeto da ferramenta de síntese e adicione os arquivos ao projeto dela.
+Copie tudo para o projeto da ferramenta de síntese e adicione os arquivos ao projeto dela. O {file}`<proc>.v` nomeia as memórias pelo nome puro (`.IFILE("<proc>_inst.mif")`), então os dois {file}`.mif` têm de ficar na pasta do projeto da ferramenta; se preferir deixá-los em outro lugar, troque os nomes por caminhos completos nos parâmetros `IFILE` e `DFILE`.
 
 :::{warning}
 As memórias são carregadas por `$readmemb` com o caminho dos {file}`.mif`. Ao mover os arquivos, confira se o caminho gravado no {file}`<proc>.v` continua resolvendo, ou ajuste-o para o layout do projeto de síntese. Um caminho quebrado sintetiza memória vazia, e o processador executa nada.

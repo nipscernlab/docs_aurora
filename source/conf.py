@@ -53,11 +53,11 @@ class CmmLexer(CLexer):
             (r"[⟨⟩]", Operator),
             (r"->", Operator),
             # O `#` de atribuição vetorial vem cercado de espaço; as diretivas
-            # (#PRNAME e companhia) colam no nome e continuam a cargo da regra
+            # (#NUBITS e companhia) colam no nome e continuam a cargo da regra
             # de preprocessador herdada do C.
             (r"#(?=\s)", Operator),
             (r"\b(comp)\b", Keyword.Type),
-            (r"\b(in|out|fin|fout|complex|abs|sqrt|sin|cos|exp|log|atan)\b(?=\s*\()", Name.Builtin),
+            (r"\b(in|out|fin|fout|toma|cade|fcade|toma_sync|cade_sync|fcade_sync|complex|abs|sqrt|sin|cos|exp|log|atan)\b(?=\s*\()", Name.Builtin),
             inherit,
         ],
     }

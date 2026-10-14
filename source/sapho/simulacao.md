@@ -43,8 +43,9 @@ Na onda de um processador, duas trilhas de texto acompanham o clock: o mnemônic
 
 | Arquivo | Conteúdo |
 |---|---|
-| {file}`Simulation/input_N.txt` | estímulo da porta de entrada N, um inteiro por linha (você escreve) |
-| {file}`Simulation/output_N.txt` | o que o programa escreveu na porta N (a simulação gera) |
+| {file}`<proc>/input_N.txt` | estímulo da porta de entrada N, um inteiro por linha (você escreve, ao lado do fonte) |
+| {file}`<proc>/<proc>/output_N.txt` | o que o programa escreveu na porta N (a simulação gera, na pasta de saída) |
+| {file}`<proc>/cade_k.txt`, {file}`<proc>/<proc>/toma_k.txt` | o mesmo para os links entre processadores, quando o processador é simulado sozinho |
 | o arquivo de onda | os sinais gravados, aberto pelo visualizador |
 
 Os {file}`output_N.txt` são a ponte para a análise externa: planilha, script Python, comparação com um modelo de referência.

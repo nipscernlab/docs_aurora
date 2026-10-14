@@ -23,7 +23,6 @@ Crie um processador `proc_fft` (32 bits, mantissa 23, expoente 8) e escreva a FF
 :caption: proc_fft.cmm, FFT radix-2 de 8 pontos
 :linenos:
 
-#PRNAME proc_fft
 #NUBITS 32
 #NBMANT 23
 #NBEXPO 8

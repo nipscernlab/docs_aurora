@@ -40,10 +40,10 @@ A barra de status mostra os três o tempo todo.
 ## Arquivos de um processador
 
 ```text
-<proc>/Software/<proc>.cmm       voce escreve
-<proc>/Hardware/<proc>.v + .mif  a compilacao gera (levar ao FPGA)
-<proc>/Simulation/input_N.txt    estimulo, um inteiro por linha
-<proc>/Simulation/output_N.txt   resultado da simulacao
+<proc>/<proc>.cmm                voce escreve (o nome do arquivo e o do processador)
+<proc>/input_N.txt               estimulo, um inteiro por linha
+<proc>/<proc>/<proc>.v + .mif    a compilacao gera (levar ao FPGA)
+<proc>/<proc>/output_N.txt       resultado da simulacao
 ```
 
 ## A regra de ouro do Hub

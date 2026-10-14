@@ -34,8 +34,17 @@ O compilador aponta uma linha
 O total de bits foi recusado
 : `NUBITS` deve ser igual a `NBMANT + NBEXPO + 1`. Vale no Hub e nas diretivas.
 
-Arquivo em {file}`Hardware/` mas o terminal mostra erro
+Arquivo na pasta de saída mas o terminal mostra erro
 : O arquivo é de uma compilação anterior. Vale o terminal.
+
+`#PRNAME não existe mais`
+: Desde o YANC 7.1 o nome do processador é o nome do arquivo. Apague a linha; para outro nome, renomeie o processador.
+
+O nome do arquivo não serve de processador
+: O nome vira módulo Verilog: só letras sem acento, dígitos e `_`, sem dígito nem `__` no começo, e nenhuma palavra reservada do Verilog. Renomeie o processador.
+
+O fonte não tem o nome do processador
+: Um {file}`outro.cmm` dentro da pasta do processador `filtro` geraria o módulo `outro`. Renomeie o arquivo para {file}`filtro.cmm`, ou mova-o para um processador com o nome dele.
 
 ## Validação Verilog
 

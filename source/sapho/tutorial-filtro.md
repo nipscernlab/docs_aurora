@@ -30,7 +30,7 @@ Se você ainda estiver com o projeto do contador aberto, feche-o ou confira os p
   - Por quê
 * - Nome do Processador
   - `media_movel`
-  - Vira o nome da pasta, do módulo Verilog e da diretiva `#PRNAME`
+  - Vira o nome da pasta, do arquivo fonte e do módulo Verilog; só letras sem acento, dígitos e `_`
 * - Total de Bits
   - `16`
   - Largura da palavra; 16 bits bastam para sinais de instrumentação
@@ -42,13 +42,7 @@ Se você ainda estiver com o projeto do contador aberto, feche-o ou confira os p
   - Faixa do ponto flutuante
 * - Ganho
   - `128`
-  - Usado só por `norm()`; deve ser potência de dois
-* - Pilha de Instruções
-  - `2`
-  - Profundidade de chamadas de função aninhadas
-* - Pilha de Dados
-  - `4`
-  - Complexidade das expressões
+  - Usado só por `norm()`; deve ser potência de dois. 128 é o padrão, e o formulário só o escreve no fonte se for outro valor
 * - Portas de Entrada
   - `1`
   - Uma porta para receber as amostras
@@ -78,25 +72,23 @@ A regra que mais reprova o formulário: o total de bits deve ser a soma da manti
 Um campo fora da regra fica com a borda vermelha e trava o botão.
 ```
 
-**Confira:** a árvore mostra `media_movel` com as pastas {file}`Software`, {file}`Hardware` (vazia) e {file}`Simulation` (vazia). O arquivo {file}`media_movel.cmm` nasceu com o cabeçalho preenchido pelo formulário.
+O formulário não pergunta o tamanho das pilhas: o compilador calcula a profundidade de cada uma pelo programa.
+
+**Confira:** a árvore mostra o processador `media_movel`, com o arquivo {file}`media_movel.cmm` dentro, nascido com o cabeçalho preenchido pelo formulário. A pasta de saída, {file}`media_movel/media_movel/`, aparece na primeira compilação.
 
 ## Passo 3: escrever o algoritmo
 
-Abra {file}`Software/media_movel.cmm` e substitua o conteúdo por:
+Abra {file}`media_movel.cmm` e substitua o conteúdo por:
 
 ```{code-block} cmm
 :caption: media_movel.cmm
 :linenos:
 
-#PRNAME media_movel
 #NUBITS 16
-#NDSTAC 4
-#SDEPTH 2
 #NUIOIN 1
 #NUIOOU 1
 #NBMANT 10
 #NBEXPO 5
-#NUGAIN 128
 
 void main()
 {
@@ -118,8 +110,8 @@ void main()
 
 Salve com {kbd}`Ctrl+S`. Três observações sobre o programa:
 
-As nove primeiras linhas são diretivas
-: Não são código executável: configuram o hardware que será gerado. O formulário as escreveu, e a partir de agora o arquivo é a fonte da verdade. Editar uma diretiva muda o processador na próxima compilação.
+As cinco primeiras linhas são diretivas
+: Não são código executável: configuram o hardware que será gerado. O formulário as escreveu, e a partir de agora o arquivo é a fonte da verdade. Editar uma diretiva muda o processador na próxima compilação. O nome do processador não aparece aqui: ele é o nome do arquivo.
 
 O `while (1)` é a forma canônica
 : O programa modela um circuito, e circuitos não terminam: processam amostras para sempre.
@@ -129,13 +121,12 @@ A divisão virou deslocamento
 
 ## Passo 4: compilar
 
-Com o {file}`.cmm` em foco, clique em {guilabel}`Compilar C±`. Três compiladores rodam em sequência:
+Com o {file}`.cmm` em foco, clique em {guilabel}`Compilar C±`. Dois compiladores rodam em sequência:
 
 ```{mermaid}
 flowchart LR
   A[".cmm"] -->|cmmcomp| B[".asm"]
-  B -->|appcomp| C["endereços<br>resolvidos"]
-  C -->|asmcomp| D[".v + .mif<br>+ testbench"]
+  B -->|asmcomp| D[".v + .mif<br>+ testbench"]
 ```
 
 O terminal TCMM mostra a tradução para assembly; o TASM mostra a montagem e, o mais interessante, os avisos de recurso instanciado: cada bloco de hardware que o seu programa ligou no circuito.
@@ -146,7 +137,7 @@ O terminal TCMM mostra a tradução para assembly; o TASM mostra a montagem e, o
 :align: center
 ```
 
-**Confira:** a pasta {file}`Hardware` ganhou {file}`media_movel.v` (o processador), {file}`media_movel_inst.mif` e {file}`media_movel_data.mif` (as memórias). Em {file}`Simulation` apareceu o testbench gerado.
+**Confira:** apareceu a pasta de saída {file}`media_movel/media_movel/`, com {file}`media_movel.v` (o processador), {file}`media_movel_inst.mif` e {file}`media_movel_data.mif` (as memórias) e o testbench gerado, {file}`media_movel_tb.v`.
 
 Se a compilação falhar, vá à primeira mensagem de erro, não à última. A referência de linha é um link que abre o editor no ponto exato.
 
@@ -160,11 +151,11 @@ Se a compilação falhar, vá à primeira mensagem de erro, não à última. A r
 
 O testbench gerado alimenta cada porta de entrada com um arquivo de texto, um valor por linha, e grava cada porta de saída em outro.
 
-1. Na visão {guilabel}`Pastas`, botão direito em {file}`media_movel/Simulation`, {guilabel}`Novo arquivo`, nomeie {file}`input_0.txt`.
+1. Na visão {guilabel}`Pastas`, botão direito na pasta {file}`media_movel` (a do fonte, não a de saída), {guilabel}`Novo arquivo`, nomeie {file}`input_0.txt`.
 2. Escreva um degrau: quatro zeros e depois valores 100.
 
 ```{code-block} text
-:caption: Simulation/input_0.txt
+:caption: media_movel/input_0.txt
 
 0
 0
@@ -221,11 +212,11 @@ Procure na janela:
 - a porta de saída com o degrau suavizado;
 - as trilhas de texto que mostram, a cada ciclo, a instrução assembly executada e a linha do seu C± correspondente. É o seu programa rodando dentro do hardware, em sincronia com o clock.
 
-Os valores de saída também ficam em {file}`Simulation/output_0.txt`, prontos para uma planilha ou um script.
+Os valores de saída também ficam em {file}`media_movel/media_movel/output_0.txt`, prontos para uma planilha ou um script.
 
 ## Passo 7: ver o circuito por dentro
 
-1. Botão direito em {file}`Hardware/media_movel.v`, {guilabel}`Definir como Top Level`.
+1. Botão direito em {file}`media_movel/media_movel/media_movel.v`, {guilabel}`Definir como Top Level`.
 2. Clique em {guilabel}`Abrir PRISM`.
 
 O PRISM desenha o circuito como um diagrama navegável: clique em um módulo para entrar nele.
@@ -266,9 +257,9 @@ Fica o convite para o capítulo do PRISM: além do diagrama, ele tem um modo {gu
 
 ## O que você aprendeu
 
-- [x] Um processador é uma pasta com {file}`Software`, {file}`Hardware` e {file}`Simulation`, criada pelo Hub.
+- [x] Um processador é uma pasta com o fonte e os dados, criada pelo Hub, e o que o YANC gera fica numa pasta de saída com o mesmo nome, dentro dela.
 - [x] As diretivas no topo do {file}`.cmm` definem o hardware; o corpo define o comportamento.
-- [x] Compilar produz Verilog, imagens de memória e um testbench, por três compiladores encadeados.
+- [x] Compilar produz Verilog, imagens de memória e um testbench, por dois compiladores encadeados.
 - [x] A simulação lê {file}`input_N.txt` e grava {file}`output_N.txt`.
 - [x] A onda mostra as suas variáveis pelo nome e a linha do seu código a cada ciclo.
 - [x] Escolhas de linguagem têm custo em hardware, e o PRISM mostra esse custo.
