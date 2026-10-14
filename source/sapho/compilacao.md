@@ -22,7 +22,7 @@ asmcomp
 
 Qual dos dois compiladores roda, a AURORA decide pela extensão do fonte: o mesmo botão compila um {file}`.cmm` e um {file}`.cpp`, e o Processor Hub cria processadores nas duas linguagens.
 
-As mensagens saem no idioma escolhido nas configurações da AURORA, português ou inglês. As do cppcomp saem sempre em inglês, e o terminal avisa disso uma vez.
+As mensagens saem no idioma escolhido nas configurações da AURORA, português ou inglês. As do cppcomp saem sempre em inglês, e o terminal avisa disso uma vez. O que cada ferramenta faz, as opções da linha de comando e o que cada mensagem quer dizer estão no [manual do YANC](https://www.nipscern.com/library/yanc/command-line.html).
 
 ## O que cada compilação gera
 

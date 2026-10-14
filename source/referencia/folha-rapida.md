@@ -18,7 +18,7 @@ flowchart LR
 
 | Botão | Faz | Exige |
 |---|---|---|
-| {guilabel}`Compilar C±` | C± até Verilog e memórias | um {file}`.cmm` em foco |
+| {guilabel}`Compilar C±` | C± ou C++ até Verilog e memórias | o fonte do processador em foco |
 | {guilabel}`Sintetizar Verilog` | valida a elaboração, gera a hierarquia | Top Level |
 | {guilabel}`Analisar Verilog` | simula e abre a onda | Testbench Top |
 | {guilabel}`Execução rápida` | simula sem onda | Testbench Top e Verilator (ou testbench .py) |
@@ -62,4 +62,4 @@ A barra de status mostra os três o tempo todo.
 
 ## Quando algo der errado
 
-Leia a primeira mensagem de erro, não a última; clique no link de linha; e {doc}`diagnostico` tem os sintomas mais comuns.
+Leia a primeira mensagem de erro, não a última; clique no link de linha; e {doc}`diagnostico` tem os sintomas mais comuns. A linguagem, as diretivas e as mensagens do compilador estão no [manual do YANC](https://www.nipscern.com/library/yanc/).

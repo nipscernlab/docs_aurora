@@ -6,7 +6,7 @@ As falhas mais comuns de cada fluxo, com a causa e a correção. Regra geral que
 
 | Botão cinza | Falta |
 |---|---|
-| {guilabel}`Compilar C±` | um arquivo {file}`.cmm` aberto e em foco no editor |
+| {guilabel}`Compilar C±` | um fonte do processador ({file}`.cmm` ou {file}`.cpp`) aberto e em foco no editor |
 | {guilabel}`Sintetizar Verilog`, {guilabel}`Abrir PRISM` | um Top Level definido |
 | {guilabel}`Analisar Verilog`, {guilabel}`Configuração de ondas` | um Testbench Top definido |
 | {guilabel}`Execução rápida` | testbench definido, e Verilator selecionado ou testbench em Python |
@@ -18,12 +18,14 @@ Um caso à parte: se o clique abre o diálogo {guilabel}`Componente não instala
 ## Projeto
 
 O nome foi recusado
-: Nomes de projeto e de processador aceitam letras, números, hífen e sublinhado. Sem espaços e sem acentos.
+: Nomes de projeto aceitam letras, números, hífen e sublinhado, sem espaços e sem acentos. O nome do processador é mais estrito, porque vira módulo Verilog: só letras sem acento, dígitos e `_`, sem hífen, sem dígito nem `__` no começo, e nenhuma palavra reservada do Verilog.
 
 Aviso de arquivos ausentes na árvore
 : O {file}`.spf` lista arquivos que sumiram do disco (movidos ou apagados por fora). O botão do aviso remove as referências, com confirmação.
 
 ## Compilação C±
+
+Cada mensagem do compilador, com a causa e a correção, está no manual do YANC: [as mensagens mais comuns, explicadas](https://www.nipscern.com/library/yanc/messages.html) e [a lista completa](https://www.nipscern.com/library/yanc/reference/messages.html). Aqui ficam os casos em que a AURORA entra no meio.
 
 O compilador aponta uma linha
 : O link abre o editor no ponto. Erros em cascata quase sempre derivam do primeiro.

@@ -19,19 +19,9 @@ O literal exige as duas partes: `3.0 + 4.0i` funciona, `4.0i` sozinho não. O id
 
 ## O que funciona e o que não
 
-| Operação | Com `comp` |
-|---|---|
-| `+  -  *  /` e o `-` unário | sim, com a álgebra completa |
-| comparações (`<`, `==`, ...) | comparam o módulo, com aviso |
-| lógicos (`&&`, `\|\|`, `!`) | compilam, mas com aviso: só a parte real conta, arredondada para inteiro |
-| `%`, bits (`&`, `|`, `^`, `~`), deslocamentos, `++` | não |
-| `abs` | sim: devolve o módulo |
-| `sqrt`, `exp`, `log`, `sin`, `cos`, `tan`, `atan` | sim, nas versões complexas |
-| `pow`, hiperbólicas, arredondamentos, `pset`, `sign`, `norm` | não |
-| `out()` direto de um `comp` | não: escreva `fout(p, real(z))` e `fout(p, imag(z))` |
-| notação de Dirac | não; vetores Dirac são de `int` ou `float` |
+A soma, a subtração, a multiplicação e a divisão têm a álgebra completa, e `abs` devolve o módulo. Operadores de bits, `%`, `++` e a notação de Dirac não aceitam `comp`, e `out()` não escreve um complexo direto: escreva `fout(p, real(z))` e `fout(p, imag(z))`.
 
-As funções de acesso: `real(z)`, `imag(z)`, `mod2(z)`, `fase(z)`, `complex(a, b)`, `conj(z)`.
+O que vale para cada operador e função, e as funções de acesso (`real`, `imag`, `mod2`, `fase`, `complex`, `conj`): [complexos na linguagem](https://www.nipscern.com/library/yanc/language-cmm.html#complex-numbers) e [na biblioteca](https://www.nipscern.com/library/yanc/library.html#complex-numbers), no manual do YANC.
 
 ## Custo e representação
 

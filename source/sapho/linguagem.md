@@ -1,21 +1,10 @@
-# A linguagem C± essencial
+# C± em uma página
 
-C± é um dialeto de C reduzido ao que faz sentido virar hardware. Se você conhece C, aprende C± em uma tarde, e a leitura mais útil é a das ausências: elas existem porque cada construção da linguagem precisa mapear em circuito de tamanho conhecido em tempo de compilação.
+C± é um dialeto de C reduzido ao que faz sentido virar hardware. Esta página traz o mínimo para seguir os tutoriais e ler os exemplos do manual. A referência completa da linguagem, das diretivas, da biblioteca e das instruções está no [manual do YANC](https://www.nipscern.com/library/yanc/), o compilador do SAPHO, escrito junto com ele e atualizado a cada versão.
 
-Este capítulo cobre o essencial para a graduação. Complexos, notação de Dirac e os detalhes do ponto flutuante estão nos {doc}`estudos avançados <../avancado/complexos>`.
+## Tipos e variáveis
 
-## Tipos
-
-| Tipo | O que é |
-|---|---|
-| `int` | inteiro com sinal, largura definida por `#NUBITS` |
-| `float` | ponto flutuante customizado, formato definido por `#NBMANT` e `#NBEXPO` |
-| `comp` | número complexo (dois floats); assunto de {doc}`../avancado/complexos` |
-| `void` | apenas como retorno de função |
-
-Não existem `char`, `double`, `unsigned`, `bool`, `struct`, ponteiros nem strings. O identificador `i` é reservado para a parte imaginária dos complexos, e usá-lo como nome de variável é erro de compilação, não aviso: o programa não compila.
-
-## Variáveis e vetores
+`int` é inteiro com sinal, na largura de `#NUBITS`; `float` é o ponto flutuante do processador, no formato de `#NBMANT` e `#NBEXPO`; `comp` é um número complexo. Não existem `char`, `double`, `bool`, `struct`, ponteiros nem strings. O identificador `i` é a unidade imaginária: usá-lo como nome de variável não compila.
 
 ```cmm
 int a, b;
@@ -25,47 +14,23 @@ float M[4][4];                  // matriz (ate 2 dimensoes)
 int tabela[64] "valores.txt";   // inicializado por arquivo, um valor por linha
 ```
 
-Toda memória é estática: sem `malloc`, sem ponteiro, cada variável tem endereço fixo. É isso que faz cada variável aparecer pelo nome na forma de onda. A inicialização com chaves `{1, 2, 3}` não existe; vetores inicializam por arquivo.
+Toda memória é estática: cada variável tem endereço fixo, e é por isso que ela aparece pelo nome na forma de onda.
 
-## Operadores
+Detalhes: [tipos](https://www.nipscern.com/library/yanc/language-cmm.html#types), [variáveis e vetores](https://www.nipscern.com/library/yanc/language-cmm.html#variables-and-arrays), [complexos](https://www.nipscern.com/library/yanc/language-cmm.html#complex-numbers).
 
-| Família | Operadores | Observação |
-|---|---|---|
-| Aritméticos | `+` `-` `*` `/` `%` | `%` só entre inteiros |
-| Relacionais | `<` `>` `<=` `>=` `==` `!=` | resultado 0 ou 1 |
-| Lógicos | `&&` `\|\|` `!` | |
-| Bit a bit | `&` `\|` `^` `~` `<<` `>>` `>>>` | `>>>` preserva o sinal |
-| Pós-incremento | `a++` `v[k]++` | não existe `--` |
+## Operadores, controle e funções
 
-Não existem `--`, operadores compostos (`+=`, `-=` e família), operador ternário `?:`, cast explícito nem `sizeof`. Conversões entre `int` e `float` acontecem sozinhas, com aviso do compilador.
+Os operadores de C, menos `--`, os compostos (`+=` e família), o ternário, o cast e o `sizeof`. `>>>` é o deslocamento que preserva o sinal. `if`, `while`, `do while`, `for`, `switch`, `break`, `continue` e `return` funcionam como em C. `main()` é obrigatória; funções recebem até nove parâmetros por valor, não aceitam vetor como parâmetro e não podem ser recursivas.
 
 :::{tip}
 Deslocamentos substituem multiplicações e divisões por potências de dois: `x >> 2` no lugar de `x / 4`. A diferença não é estilo: `/` instancia um divisor no circuito, `>>` quase nada. O PRISM mostra isso ao vivo.
 :::
 
-## Controle de fluxo
-
-`if`/`else`, `while`, `do while`, `for`, `switch`/`case`/`default` (com fall-through como em C), `break`, `continue` e `return`. Sem `goto`.
-
-O `for` aceita as formas simples: `for (k = 0; k < 8; k++)`, com declaração no início ou cláusulas vazias. Não aceita múltiplas cláusulas separadas por vírgula.
-
-## Funções
-
-```cmm
-float media(float a, float b)
-{
-    return (a + b) * 0.5;
-}
-```
-
-- `main()` é obrigatória e é onde o programa vive.
-- Até nove parâmetros, passados por valor. Vetores não podem ser parâmetros.
-- Sem recursão: as variáveis locais têm endereço fixo, então uma função não pode chamar a si mesma.
-- Sem protótipos: defina a função antes de usar, em um único arquivo {file}`.cmm`.
+Detalhes: [operadores](https://www.nipscern.com/library/yanc/language-cmm.html#operators), [controle de fluxo](https://www.nipscern.com/library/yanc/language-cmm.html#control-flow), [funções](https://www.nipscern.com/library/yanc/language-cmm.html#functions), [o que não existe](https://www.nipscern.com/library/yanc/language-cmm.html#what-does-not-exist).
 
 ## Entrada e saída
 
-O processador conversa com o mundo por portas numeradas, definidas por `#NUIOIN` e `#NUIOOU`:
+O processador conversa com o mundo por portas numeradas, em número definido por `#NUIOIN` e `#NUIOOU`:
 
 ```cmm
 int  a = in(0);      // le um inteiro da porta 0
@@ -74,55 +39,34 @@ out(0, a + 1);       // escreve na porta de saida 0
 fout(0, g);          // escreve mantendo o formato float
 ```
 
-O número da porta precisa ser um literal, não uma variável. Na simulação do processador sozinho, cada porta de entrada lê de {file}`input_N.txt`, ao lado do fonte, e cada saída grava em {file}`output_N.txt`, na pasta de saída.
+O número da porta é um literal. Na simulação do processador sozinho, cada porta de entrada lê de {file}`input_N.txt`, ao lado do fonte, e cada saída grava em {file}`output_N.txt`, na pasta de saída.
 
 ## Links entre processadores
 
-Dois processadores SAPHO de um mesmo projeto podem trocar valores diretamente, por **links** numerados a partir de 0:
+Dois processadores de um mesmo projeto trocam valores por links numerados: `toma(k, x)` entrega `x` pelo link `k` e espera o outro lado pegar; `cade(k)` e `fcade(k)` esperam um valor e o recebem como `int` ou `float`. Simulado sozinho, o processador lê os valores de cada `cade(k)` de {file}`cade_k.txt`, ao lado do fonte, e grava cada `toma(k, x)` em {file}`toma_k.txt`, na pasta de saída.
 
-```cmm
-toma(0, x);        // entrega x pelo link 0 e espera o outro lado pegar
-y = cade(0);       // espera o link 0 oferecer um valor e o recebe como int
-f = fcade(1);      // o mesmo, recebendo como float
-```
-
-Quem chega primeiro espera, e nada se perde nem é lido duas vezes. Um processador tem quantos links o programa usar; cada link liga dois processadores e pode levar valores nos dois sentidos. As formas `toma_sync`, `cade_sync` e `fcade_sync` são para quando os dois processadores estão no mesmo clock: economizam 4 ciclos por valor. Um link usa a mesma forma nas duas pontas; misturar as duas é erro de compilação. O mesmo vale em C++.
-
-A palavra passa sem conversão: os dois processadores precisam do mesmo `#NUBITS` e, para `float`, do mesmo `#NBMANT` e `#NBEXPO`. O compilador não confere isso.
-
-Cada link cria pinos no processador: `toma_k` e `valeu_k` em quem usa `toma(k, ...)`, `cade_k`, `taqui_k` e `cade_dado_k` em quem usa `cade(k)`, e um `toma_dado` em quem usa algum `toma`. No top-level do projeto, o processador A (link i) liga ao B (link j) assim: `A.toma_i -> B.taqui_j`, `B.cade_j -> A.valeu_i` e `A.toma_dado -> B.cade_dado_j`.
-
-Simulado sozinho, o processador ganha do testbench gerado o papel do parceiro de cada link: os valores de cada `cade(k)` vêm de {file}`cade_k.txt`, ao lado do fonte, um por linha, e cada `toma(k, x)` é escrito em {file}`toma_k.txt`, na pasta de saída.
+Os pinos que cada link cria, como ligá-los no top level e as formas `_sync`: [links no manual do YANC](https://www.nipscern.com/library/yanc/multiprocessor.html#links-toma-and-cade).
 
 ## Diretivas
 
-O bloco no topo do arquivo configura o processador. O nome do processador não é diretiva: é o nome do arquivo. As que o Hub escreve, e as que você pode acrescentar:
+O bloco no topo do arquivo configura o processador. O nome do processador não é diretiva: é o nome do arquivo. O Hub escreve sempre estas cinco:
 
 | Diretiva | Configura |
 |---|---|
 | `#NUBITS` | largura da palavra |
-| `#NBMANT`, `#NBEXPO` | formato do ponto flutuante (mantissa e expoente) |
-| `#NDSTAC`, `#SDEPTH` | profundidade das pilhas de dados e de chamadas (opcionais: sem elas o compilador calcula pelo programa) |
-| `#NUIOIN`, `#NUIOOU` | número de portas de entrada e de saída |
-| `#NUGAIN` | constante da função `norm()`, potência de dois (opcional, padrão 128) |
+| `#NBMANT`, `#NBEXPO` | formato do ponto flutuante |
+| `#NUIOIN`, `#NUIOOU` | portas de entrada e de saída |
 
-A regra estrutural: `#NUBITS` deve ser igual a `#NBMANT + #NBEXPO + 1`. A tabela completa, com as diretivas avançadas, está em {doc}`../referencia/diretivas`.
+`#NUBITS` deve ser igual a `#NBMANT + #NBEXPO + 1`. Faltar uma diretiva não dá erro: o processador nasce com o padrão do compilador. As pilhas o compilador calcula pelo programa.
 
-Também existe `#define` para constantes simples (`#define TAM 8`), sem macros com argumentos, sem `#include` e sem compilação condicional.
+Todas as diretivas, com os padrões: [diretivas no manual do YANC](https://www.nipscern.com/library/yanc/directives.html).
 
 ## Biblioteca
 
-Funções que custam pouco, mapeadas quase uma a uma em instruções:
+As funções embutidas vão das baratas, que viram uma ou poucas instruções (`abs`, `pset`, `sign`, `norm`), às matemáticas, que viram rotinas anexadas ao programa (`sqrt`, `sin`, `exp`, `log`...). Cada uma usada aparece no relatório do TASM.
 
-| Função | Faz |
-|---|---|
-| `abs(x)` | valor absoluto |
-| `pset(x)` | zera se negativo |
-| `sign(x, y)` | devolve `y` com o sinal de `x` |
-| `norm(x)` | divide pelo `#NUGAIN`, sem instanciar divisor |
+A lista completa, com o custo de cada uma: [biblioteca no manual do YANC](https://www.nipscern.com/library/yanc/library.html).
 
-E as matemáticas, que custam mais porque viram rotinas de várias instruções: `sqrt`, `sin`, `cos`, `tan`, `atan`, `exp`, `log`, `pow`, hiperbólicas e arredondamentos. Use quando precisar; cada uma anexada ao programa aparece no relatório do TASM. A referência completa, com assinaturas e restrições, está em {doc}`../referencia/biblioteca`.
+## C++
 
-## O que não existe, em resumo
-
-Ponteiros, structs, strings, recursão, alocação dinâmica, `#include`, múltiplos arquivos-fonte, vetores com mais de duas dimensões, vetores como parâmetro de função. Se o seu algoritmo parece exigir algum desses, a pergunta certa costuma ser: como um circuito faria isso com memória fixa? A resposta cabe em C±.
+O mesmo processador também se programa em C++, com classes, referências e parte da biblioteca padrão; os parâmetros entram por `#pragma yanc`. O que o compilador aceita: [o C++ do YANC](https://www.nipscern.com/library/yanc/language-cpp.html).

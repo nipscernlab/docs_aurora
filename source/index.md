@@ -20,7 +20,7 @@ Versão descrita: SAPHO 6.11.0 para Windows 10 e 11. Detalhes da apuração em {
 
 Nunca usou a plataforma? {doc}`Instale <inicio/instalacao>`, veja o {doc}`mapa da janela <inicio/mapa-da-janela>` e siga direto para o {doc}`tutorial Verilog <verilog/tutorial-contador>`. De lá, o {doc}`tutorial do processador <sapho/tutorial-filtro>` completa a base. São dois tutoriais de vinte a trinta minutos cada.
 
-Já trabalha em um projeto? O menu lateral vai direto à tarefa, e a {doc}`referência <referencia/diretivas>` responde consultas pontuais sem repetir os tutoriais.
+Já trabalha em um projeto? O menu lateral vai direto à tarefa, e a {doc}`folha de consulta rápida <referencia/folha-rapida>` resume o essencial. A referência da linguagem e do compilador está no [manual do YANC](https://www.nipscern.com/library/yanc/).
 
 ```{toctree}
 :maxdepth: 2
@@ -87,9 +87,6 @@ diaadia/apoio
 :caption: Referência
 
 referencia/folha-rapida
-referencia/diretivas
-referencia/biblioteca
-referencia/instrucoes
 referencia/atalhos
 referencia/diagnostico
 ```

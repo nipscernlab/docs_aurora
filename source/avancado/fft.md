@@ -13,7 +13,7 @@ data[j]     // acesso normal
 data[j)     // acesso com os bits de j invertidos
 ```
 
-O parêntese no lugar do colchete final é a sintaxe. Quantos bits são invertidos é definido pela diretiva `#FFTSIZ`: para uma FFT de 8 pontos, `#FFTSIZ 3`.
+O parêntese no lugar do colchete final é a sintaxe. Quantos bits são invertidos é definido pela diretiva `#FFTSIZ`: para uma FFT de 8 pontos, `#FFTSIZ 3` ([diretivas no manual do YANC](https://www.nipscern.com/library/yanc/directives.html)).
 
 ## O programa
 

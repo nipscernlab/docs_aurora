@@ -119,6 +119,14 @@ A IDE por dentro: editor, terminais, Aurora Intelligence e o resto da janela ond
 :::
 
 :::{grid-item-card}
+:link: https://www.nipscern.com/library/yanc/
+<img class="sd-card-img-top" src="_static/assets/icons/yanc.svg" alt="">
+Manual do YANC
+^^^
+A referência da linguagem C±, do C++ aceito, das diretivas, da biblioteca, das instruções e das mensagens do compilador. Em inglês, atualizado a cada versão.
+:::
+
+:::{grid-item-card}
 :link: https://www.nipscern.com/projects/yanc
 <img class="sd-card-img-top" src="_static/assets/icons/yanc.svg" alt="">
 Página do YANC

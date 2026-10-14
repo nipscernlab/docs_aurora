@@ -47,26 +47,20 @@ Em qualquer outro editor, três caminhos:
 
 ## As formas suportadas
 
-Com vetores `a`, `b`, `d`, matrizes `A`, `B`, `M`, `P` e escalares `c`, `g`, `e`:
+O `#` marca a atribuição vetorial: `a # |M|b⟩;` faz $a = M b$, `A # |a⟩⟨b|;` faz o produto externo, e `⟨w|x⟩` é o produto interno dentro de qualquer expressão. As dimensões precisam ser compatíveis e os tipos iguais dos dois lados (`int` com `int`, `float` com `float`), sem `comp`.
+
+Todas as formas, com o que cada uma calcula: [vetores em notação de Dirac, no manual do YANC](https://www.nipscern.com/library/yanc/library.html#vectors-in-dirac-notation). As usadas no tutorial abaixo:
 
 | Escrita | Calcula |
 |---|---|
-| `e = d - ⟨w\|x⟩;` | produto interno $\langle w \mid x \rangle$ dentro de expressão |
+| `e = d - ⟨w\|x⟩;` | produto interno dentro de expressão |
 | `a # \|M\|b⟩;` | $a = M b$ (matriz vezes vetor) |
 | `a # c\|b⟩;` | $a = c\,b$ (escalar vezes vetor) |
 | `a # \|b⟩ + c\|d⟩;` | $a = b + c\,d$ (soma ponderada) |
-| `A # \|a⟩⟨b\|;` | $A = a\,b^{T}$ (produto externo) |
 | `A # \|B\| - \|a⟩⟨b\|;` | $A = B - a\,b^{T}$ |
-| `A # c\|B\|;` | $A = c\,B$ |
-| `A # c\|I\|;` | $A = c\,I$ (identidade escalada) |
+| `A # c\|B\|;`, `A # c\|I\|;` | escalar vezes matriz, identidade escalada |
 | `a # \|0⟩;` | zera o vetor |
-| `a # c\|in(p)⟩;` | preenche `a` lendo a porta `p`, cada leitura vezes `c` |
 | `a # c -> \|a⟩;` | registrador de deslocamento: desloca `a` e insere `c` |
-| `out(p, c\|a⟩);` | escreve o vetor inteiro na porta, cada elemento vezes `c` |
-
-O `#` marca a atribuição vetorial. As declarações também aceitam inicialização por Dirac: `float Px[4] # |P|x⟩;`.
-
-Regras verificadas na compilação: dimensões compatíveis, tipos iguais dos dois lados (`int` com `int`, `float` com `float`), e nada de `comp`. O registrador de deslocamento exige o mesmo vetor dos dois lados.
 
 ## Tutorial: um filtro RLS em 66 linhas
 

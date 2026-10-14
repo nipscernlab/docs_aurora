@@ -24,7 +24,7 @@ com o valor dado por $(-1)^{sinal} \times mantissa \times 2^{expoente}$. As dife
 | Sinal | sinal e magnitude | sinal e magnitude |
 | NaN, infinitos, subnormais | não existem | existem |
 
-A regra estrutural que o Hub impõe vem daqui: `NUBITS = NBMANT + NBEXPO + 1`, um bit para cada campo, sem sobra.
+A regra estrutural que o Hub impõe vem daqui: `NUBITS = NBMANT + NBEXPO + 1`, um bit para cada campo, sem sobra. O formato em detalhe, as constantes e os níveis de arredondamento de `#FROUND` estão no [manual do YANC](https://www.nipscern.com/library/yanc/floating-point.html).
 
 ## Faixa e precisão
 

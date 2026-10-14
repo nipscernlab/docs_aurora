@@ -90,9 +90,6 @@ diaadia/apoio
 :maxdepth: 2
 
 referencia/folha-rapida
-referencia/diretivas
-referencia/biblioteca
-referencia/instrucoes
 referencia/atalhos
 referencia/diagnostico
 ```

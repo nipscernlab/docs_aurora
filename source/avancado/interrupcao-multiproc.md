@@ -25,7 +25,7 @@ void main()
 }
 ```
 
-Só pode haver um `#PRACA` por programa. O uso típico: um periférico externo (o seu Verilog da Parte IV) levanta `itr` quando precisa de atenção, e o processador responde sem varrer a porta o tempo todo.
+Só pode haver um `#PRACA` por programa ([marcadores no manual do YANC](https://www.nipscern.com/library/yanc/directives.html#markers)). O uso típico: um periférico externo (o seu Verilog da Parte IV) levanta `itr` quando precisa de atenção, e o processador responde sem varrer a porta o tempo todo.
 
 ## Marcador de fim: `#TOAQUI`
 
@@ -42,7 +42,7 @@ Vários processadores SAPHO convivem no mesmo projeto e no mesmo circuito. A rec
 3. Escreva um top-level Verilog que instancia todos e a lógica de interconexão: quem alimenta quem, quem sincroniza quem.
 4. O testbench do conjunto é seu. O testbench gerado automaticamente dirige um processador isolado; um sistema com dois ou mais pede um testbench que conheça a interconexão.
 
-O padrão de interconexão mais comum é o produtor e consumidor: a porta de saída de um processador alimenta a porta de entrada do outro, com o aperto de mão `out_en` e `req_in` fazendo a sincronização, possivelmente com uma FIFO entre eles quando os ritmos diferem.
+Os processadores conversam de dois jeitos. O mais direto são os links: `toma(k, x)` num e `cade(k)` no outro, com a espera e a entrega resolvidas pelo próprio hardware (veja {doc}`../sapho/linguagem` e os [links no manual do YANC](https://www.nipscern.com/library/yanc/multiprocessor.html#links-toma-and-cade), que mostra os pinos e a ligação no top level). O outro é o produtor e consumidor pelas portas: a saída de um alimenta a entrada do outro, com o aperto de mão `out_en` e `req_in`, possivelmente com uma FIFO entre eles quando os ritmos diferem ([FIFOs no manual do YANC](https://www.nipscern.com/library/yanc/multiprocessor.html#fifos-myfifo-and-mydcfifo)).
 
 ### O top level como sistema
 
